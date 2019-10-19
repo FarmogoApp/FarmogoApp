@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bulls" translatable="false">Toros</string>
+    <string name="chart_of_evolution" translatable="false">Gráfico de evolución</string>
+    <string name="cows" translatable="false">Vacas</string>
+    <string name="cows_younger" translatable="false">Terneros</string>
+    <string name="search" translatable="false">Buscar</string>
+</resources>
