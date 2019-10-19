@@ -44,8 +44,8 @@ public class FarmStatsActivity extends Activity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(); // TODO: set destination
-                //startActivity(intent);
+                Intent intent = new Intent(FarmStatsActivity.this, SeachAnimalsActivity.class);
+                startActivity(intent);
             }
         });
 
