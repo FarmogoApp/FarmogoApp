@@ -84,9 +84,20 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:drawableStart="@android:drawable/ic_menu_search"
         android:text="@string/search"
         />
+
+
+
+    <ImageButton
+        android:id="@+id/configButton"
+        android:background="@color/colorBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_menu_manage"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"/>
 
 </RelativeLayout>
 
