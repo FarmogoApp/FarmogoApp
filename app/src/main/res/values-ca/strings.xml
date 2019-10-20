@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">FarmogoApp</string>
-    <string name="bulls">Bous</string>
-    <string name="chart_of_evolution">Gràfic d\'evolució</string>
-    <string name="cows">Vaques</string>
-    <string name="cows_younger">Vedells</string>
-    <string name="search">Cercar</string>
-</resources>

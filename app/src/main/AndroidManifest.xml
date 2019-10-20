@@ -16,8 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.FarmStatsActivity"/>
-        <activity android:name=".ui.main.SeachAnimalsActivity"/>
     </application>
 
 </manifest>
