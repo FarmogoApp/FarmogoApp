@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/back"
+        tools:ignore="UnknownId">
+
+        <TextView
+            android:id="@+id/animal_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Animal Information"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+
+            <TextView
+                android:id="@+id/animal_id"
+                android:layout_width="@dimen/farm_stats_label_width"
+                android:layout_height="wrap_content"
+                android:text="Number"
+                android:textSize="@dimen/farm_stats_label_font_width" />
+
+            <TextView
+                android:id="@+id/id_example"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/animal_id"
+                android:layout_toEndOf="@+id/animal_id"
+                android:text="151515"
+                android:textSize="@dimen/farm_stats_value_font_width" />
+
+            <TextView
+                android:id="@+id/animal_genere"
+                android:layout_width="@dimen/farm_stats_label_width"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/animal_id"
+                android:text="Sexo"
+                android:textSize="@dimen/farm_stats_label_font_width" />
+
+            <TextView
+                android:id="@+id/genere_example"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/animal_genere"
+                android:layout_toEndOf="@+id/animal_genere"
+                android:text="Hembra"
+                android:textSize="@dimen/farm_stats_value_font_width" />
+
+            <TextView
+                android:id="@+id/animal_raza"
+                android:layout_width="@dimen/farm_stats_label_width"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/animal_genere"
+                android:text="Raza"
+                android:textSize="@dimen/farm_stats_label_font_width" />
+
+            <TextView
+                android:id="@+id/raza_exemple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/animal_raza"
+                android:layout_toEndOf="@+id/animal_raza"
+                android:text="Limusin"
+                android:textSize="@dimen/farm_stats_value_font_width" />
+
+            <TextView
+                android:id="@+id/animal_farmNumber"
+                android:layout_width="@dimen/farm_stats_label_width"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/animal_raza"
+                android:text="Explotacion"
+                android:textSize="@dimen/farm_stats_label_font_width" />
+
+            <TextView
+                android:id="@+id/farmNumber_exemple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/animal_farmNumber"
+                android:layout_toEndOf="@+id/animal_farmNumber"
+                android:text="5858588998"
+                android:textSize="@dimen/farm_stats_value_font_width" />
+
+            <TextView
+                android:id="@+id/animal_mother"
+                android:layout_width="@dimen/farm_stats_label_width"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/animal_farmNumber"
+                android:text="Mother"
+                android:textSize="@dimen/farm_stats_label_font_width" />
+
+            <TextView
+                android:id="@+id/mother_exemple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/animal_mother"
+                android:layout_toEndOf="@+id/animal_mother"
+                android:text="5858588998"
+                android:textSize="@dimen/farm_stats_value_font_width" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/raza_exemple"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Historial"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:itemCount="20"
+                tools:listitem="@layout/recycler_view_item" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="back" />
+
+    <Button
+        android:id="@+id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="list"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"/>
+
+    <Button
+        android:id="@+id/mas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"/>
+
+    <Button
+        android:id="@+id/menos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/mas"/>
+</RelativeLayout>
