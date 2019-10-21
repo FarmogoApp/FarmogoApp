@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".ui.main.AddExploitationActivity"/>
         <activity android:name=".ui.main.ExploitationActivity"/>
+        <activity android:name=".ui.main.FarmStatsActivity"/>
+        <activity android:name=".ui.main.SeachAnimalsActivity"/>
     </application>
 
 </manifest>
