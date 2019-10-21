@@ -18,10 +18,10 @@ public class AnimalListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animal_list);
         btnBack = findViewById(R.id.back2);
-        registerListerners();
+        registerListeners();
     }
 
-    private void registerListerners() {
+    private void registerListeners() {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -21,10 +21,10 @@ public class AnimalInfoActivity extends AppCompatActivity {
         setContentView(R.layout.animal_info);
         btnList = findViewById(R.id.list);
         btnBack = findViewById(R.id.back);
-        registerListerners();
+        registerListeners();
     }
 
-    private void registerListerners() {
+    private void registerListeners() {
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
