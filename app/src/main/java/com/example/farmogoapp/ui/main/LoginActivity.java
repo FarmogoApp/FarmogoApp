@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.farmogoapp.R;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private Button btnRegistre;
     @Override

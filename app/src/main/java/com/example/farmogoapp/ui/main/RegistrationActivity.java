@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.farmogoapp.R;
 
-public class RegistrationActivity extends Activity {
+public class RegistrationActivity extends AppCompatActivity {
     private Button btnRegister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
