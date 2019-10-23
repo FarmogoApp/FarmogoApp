@@ -6,7 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.farmogoapp.R;
 import com.google.android.material.tabs.TabLayout;
 
-public class Unregistercow extends AppCompatActivity {
+public class UnregistercowActivity extends AppCompatActivity {
 
     ViewPager viewPager;
 
@@ -23,9 +23,9 @@ public class Unregistercow extends AppCompatActivity {
 
     private void addTabs(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new FragmentOne(), "Defuncion");
-        adapter.addFrag(new FragmentTwo(), "Venta");
-        adapter.addFrag(new FragmentThree(), "Matadero");
+        adapter.addFrag(new DeathCowFragment(), "Defuncion");
+        adapter.addFrag(new SellCowFragment(), "Venta");
+        adapter.addFrag(new AbattoirFragment(), "Matadero");
         viewPager.setAdapter(adapter);
     }
 }

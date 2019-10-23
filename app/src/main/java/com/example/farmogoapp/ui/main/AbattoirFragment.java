@@ -15,10 +15,10 @@ import com.example.farmogoapp.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentThree extends Fragment {
+public class AbattoirFragment extends Fragment {
 
 
-    public FragmentThree() {
+    public AbattoirFragment() {
         // Required empty public constructor
     }
 
@@ -27,7 +27,7 @@ public class FragmentThree extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_three, container, false);
+        return inflater.inflate(R.layout.abattoir_fragment, container, false);
     }
 
 }

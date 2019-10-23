@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.farmogoapp.R;
 import android.os.Bundle;
 
-public class RegisterCow extends AppCompatActivity {
+public class RegisterCowActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

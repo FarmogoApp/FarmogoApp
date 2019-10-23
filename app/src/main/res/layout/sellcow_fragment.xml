@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.farmogoapp.ui.main.FragmentOne">
+    tools:context="com.example.farmogoapp.ui.main.SellCowFragment">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -14,7 +15,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/tab_one"
+                android:text="@string/tab_two"
                 android:gravity="center"/>
         </LinearLayout>
 
@@ -27,7 +28,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:text="Guia"

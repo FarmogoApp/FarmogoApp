@@ -1,6 +1,7 @@
 package com.example.farmogoapp.ui.main;
 
-import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -43,8 +44,33 @@ public class AnimalListActivity extends AppCompatActivity {
         btnGestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AnimalListActivity.this, AnimalInfoActivity.class);
+                popUp();
+               // Intent intent = new Intent(AnimalListActivity.this, AnimalInfoActivity.class);
+              //  startActivity(intent);
+            }
+        });
+
+
+    }
+    private void popUp() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setMessage("¿Que desea hacer?").setCancelable(false).setPositiveButton("Alta", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(AnimalListActivity.this, RegisterCowActivity.class);
                 startActivity(intent);
+                dialog.cancel();
+            }
+        });
+
+        alert.setNegativeButton("Baja", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(AnimalListActivity.this, UnregistercowActivity.class);
+                startActivity(intent);
+                dialog.cancel();
+
+
             }
         });
     }
