@@ -10,13 +10,14 @@ import android.widget.ListView;
 import android.widget.SearchView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class SeachAnimalsActivity extends Activity {
+public class SeachAnimalsActivity extends AppCompatActivity {
 
     private SearchView searchView;
     private ListView resultListView;

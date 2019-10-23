@@ -24,6 +24,7 @@
         <activity android:name=".ui.main.AnimalInfoActivity"/>
         <activity android:name=".ui.main.RegisterCow"/>
         <activity android:name=".ui.main.Unregistercow"/>
+        <activity android:name=".ui.main.AnimalIncidence"/>
         <activity android:name=".ui.main.RegistrationActivity"/>
     </application>
 

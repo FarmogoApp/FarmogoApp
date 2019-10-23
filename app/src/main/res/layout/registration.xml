@@ -10,7 +10,7 @@
         android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="270dp"
-        app:srcCompat="@android:drawable/ic_menu_gallery" />
+        app:srcCompat="@drawable/logo" />
 
     <EditText
         android:id="@+id/registration_username"

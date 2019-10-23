@@ -22,11 +22,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="588dp"
             tools:itemCount="31"
+            tools:layoutManager="GridLayoutManager"
             tools:listitem="@layout/recycler_view_item_1"
-            tools:spanCount="5"
-            tools:layoutManager="GridLayoutManager"/>
+            tools:spanCount="5" />
 
     </LinearLayout>
 

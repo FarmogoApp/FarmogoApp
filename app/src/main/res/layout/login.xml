@@ -10,7 +10,7 @@
         android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="270dp"
-        app:srcCompat="@android:drawable/ic_menu_gallery" />
+        app:srcCompat="@drawable/logo" />
 
     <EditText
         android:id="@+id/login_email"
@@ -19,7 +19,7 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         android:hint="Email"
-        android:text="farmogo@gmail.com" />
+        android:text="info@farmogo.com" />
 
     <EditText
         android:id="@+id/login_password"

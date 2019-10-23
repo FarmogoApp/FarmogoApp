@@ -9,12 +9,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
 
 import java.util.Random;
 
-public class FarmStatsActivity extends Activity {
+public class FarmStatsActivity extends AppCompatActivity {
 
     private TextView yougerCowsTextView;
     private TextView cowsTextView;
