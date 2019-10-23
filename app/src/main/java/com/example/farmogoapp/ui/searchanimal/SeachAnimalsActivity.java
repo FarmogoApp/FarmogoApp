@@ -1,18 +1,23 @@
-package com.example.farmogoapp.ui.main;
+package com.example.farmogoapp.ui.searchanimal;
 
-import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SearchView;
+
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.ui.main.AnimalInfoActivity;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,13 +32,24 @@ public class SeachAnimalsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.animal_search);
+        setContentView(R.layout.searchanimal_activity);
         registerViews();
         registerListerners();
         prepareDataAdapter();
     }
 
-    private void registerListerners() {
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.searchanimal, menu);
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView =
+                (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -48,6 +64,11 @@ public class SeachAnimalsActivity extends AppCompatActivity {
                 return true;
             }
         });
+        return true;
+    }
+
+    private void registerListerners() {
+
 
         resultListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -75,7 +96,7 @@ public class SeachAnimalsActivity extends AppCompatActivity {
     }
 
     private void registerViews() {
-        searchView = findViewById(R.id.search);
+//        searchView = findViewById(R.id.search);
         resultListView = findViewById(R.id.result_list);
     }
 }
