@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
@@ -147,14 +149,99 @@
                 android:entries="@array/explotaciones"/>
         </RelativeLayout>
     </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linear6"
+        android:layout_below="@id/linear5">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/Building"
+                android:textSize="20dp"
+                android:textColor="@android:color/background_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edificio (Opcional)"></TextView>
+            <Spinner
+                android:layout_margin="20dp"
+                android:layout_below="@+id/Building"
+                android:padding="5dp"
+                android:id="@+id/sp_buildinf"
+                android:background="@color/colorGray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/building"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linear7"
+        android:layout_below="@id/linear6">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/Seccion"
+                android:textSize="20dp"
+                android:textColor="@android:color/background_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seccion (Opcional)"></TextView>
+            <Spinner
+                android:layout_margin="20dp"
+                android:layout_below="@+id/Seccion"
+                android:padding="5dp"
+                android:id="@+id/sp_seccion"
+                android:background="@color/colorGray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/section"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linear8"
+        android:layout_below="@id/linear7">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/Birthday"
 
+            android:textSize="20dp"
+            android:textColor="@android:color/background_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fecha_de_nacimiento"></TextView>
+
+    <EditText
+        android:layout_margin="20dp"
+        android:padding="5dp"
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="date" />
+    </RelativeLayout>
+    </LinearLayout>
     <LinearLayout
         android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/linear5"
+        android:layout_below="@id/linear8"
         >
         <Button
             android:layout_gravity="center"
@@ -167,5 +254,8 @@
             android:text="Registrar vaca"
 
             ></Button>
+
+
     </LinearLayout>
 </RelativeLayout>
+</ScrollView>
