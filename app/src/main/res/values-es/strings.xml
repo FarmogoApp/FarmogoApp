@@ -5,4 +5,7 @@
     <string name="cows" translatable="false">Vacas</string>
     <string name="cows_younger" translatable="false">Terneros</string>
     <string name="search" translatable="false">Buscar</string>
+    <string name="tab_one">Mer</string>
+    <string name="tab_two">Numero de explotación </string>
+    <string name="tab_three">Nombre</string>
 </resources>

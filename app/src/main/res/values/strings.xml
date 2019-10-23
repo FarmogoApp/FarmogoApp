@@ -6,5 +6,38 @@
     <string name="chart_of_evolution">Chart of evolution</string>
     <string name="search">search</string>
     <string name="number_example" translatable="false">1234</string>
+    <string name="tab_one">Mer</string>
+    <string name="tab_two">Numero de explotación </string>
+    <string name="tab_three">Nombre</string>
+    <string-array name="Genero">
+        <item>Macho</item>
+        <item>Hembra</item>
+
+    </string-array>
+    <string-array name="madre">
+        <item>Madre 1</item>
+        <item>Madre 2</item>
+        <item>Madre 3</item>
+        <item>Madre 4</item>
+        <item>Madre 5</item>
+        <item>Madre 6</item>
+        <item>Madre 7</item>
+        <item>Madre 8</item>
+        <item>Madre 1</item>
+        <item>Madre 2</item>
+        <item>Madre 3</item>
+        <item>Madre 4</item>
+        <item>Madre 5</item>
+        <item>Madre 6</item>
+        <item>Madre 7</item>
+        <item>Madre 8</item>
+    </string-array>
+    <string-array name="explotaciones">
+        <item>Explotación 1</item>
+        <item>Explotación 2</item>
+        <item>Explotación 3</item>
+        <item>Explotación 4</item>
+        <item>Explotación 5</item>
+    </string-array>
 </resources>
 
