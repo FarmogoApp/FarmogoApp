@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
 
-public class AnimalInfoActivity extends AppCompatActivity {
+public class AnimalInfoActivity extends Activity {
 
     private Button btnList;
     private Button btnBack;

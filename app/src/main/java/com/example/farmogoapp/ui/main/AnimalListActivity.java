@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
 
-public class AnimalListActivity extends AppCompatActivity {
+public class AnimalListActivity extends Activity {
 
     private Button btnBack;
     @Override

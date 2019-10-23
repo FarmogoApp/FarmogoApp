@@ -51,8 +51,8 @@ public class SeachAnimalsActivity extends Activity {
         resultListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent();
-                //startActivity(intent);
+                Intent intent = new Intent(SeachAnimalsActivity.this, AnimalInfoActivity.class);
+                startActivity(intent);
             }
         });
     }
