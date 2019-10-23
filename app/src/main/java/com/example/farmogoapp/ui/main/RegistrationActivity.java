@@ -5,30 +5,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.example.farmogoapp.R;
 
-public class AnimalListActivity extends Activity {
-
-    private Button btnBack;
+public class RegistrationActivity extends Activity {
+    private Button btnRegister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.animal_list);
-        btnBack = findViewById(R.id.back2);
+        setContentView(R.layout.registration);
+        btnRegister = findViewById(R.id.register_button);
         registerListeners();
     }
-
     private void registerListeners() {
-        btnBack.setOnClickListener(new View.OnClickListener() {
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AnimalListActivity.this, AnimalInfoActivity.class);
+                Toast toast1 = Toast.makeText(getApplicationContext(), "Registration Succesfull", Toast.LENGTH_SHORT);
+                toast1.show();
+                Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
     }
-
 }

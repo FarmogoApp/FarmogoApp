@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
 
-public class AnimalInfoActivity extends AppCompatActivity {
+public class AnimalInfoActivity extends Activity {
 
     private Button btnList;
     private Button btnBack;
@@ -21,10 +21,10 @@ public class AnimalInfoActivity extends AppCompatActivity {
         setContentView(R.layout.animal_info);
         btnList = findViewById(R.id.list);
         btnBack = findViewById(R.id.back);
-        registerListerners();
+        registerListeners();
     }
 
-    private void registerListerners() {
+    private void registerListeners() {
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
