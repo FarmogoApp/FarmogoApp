@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">FarmogoApp</string>
+    <string name="app_name" translatable="false">FarmogoApp</string>
+    <string name="cows_younger">Younger cows</string>
+    <string name="cows">Cows</string>
+    <string name="bulls">Bulls</string>
+    <string name="chart_of_evolution">Chart of evolution</string>
+    <string name="search">search</string>
+    <string name="number_example" translatable="false">1234</string>
 </resources>
+
