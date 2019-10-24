@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="588dp"
             tools:itemCount="31"
-            tools:listitem="@layout/recycler_view_statistics" />
+            tools:listitem="@layout/recycler_view_animal_list" />
 
     </LinearLayout>
 
