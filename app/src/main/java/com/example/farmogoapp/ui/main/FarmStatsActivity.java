@@ -20,7 +20,8 @@ public class FarmStatsActivity extends AppCompatActivity {
     private TextView cowsTextView;
     private TextView bullsTextView;
     private Button searchButton;
-    private ImageButton configButton;
+    private ImageButton addExplotation;
+    private ImageButton modifyExplotation;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,7 +37,8 @@ public class FarmStatsActivity extends AppCompatActivity {
         cowsTextView = findViewById(R.id.cows);
         bullsTextView = findViewById(R.id.bulls);
         searchButton = findViewById(R.id.search);
-        configButton = findViewById(R.id.modifyExplotation);
+        addExplotation = findViewById(R.id.addExplotation);
+        modifyExplotation = findViewById(R.id.modifyExplotation);
     }
 
     private void registerListeners() {
@@ -49,11 +51,18 @@ public class FarmStatsActivity extends AppCompatActivity {
             }
         });
 
-        configButton.setOnClickListener(new View.OnClickListener() {
+        addExplotation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(); // TODO: set destination
-                //startActivity(intent);
+                Intent intent = new Intent(FarmStatsActivity.this, AddExploitationActivity.class);
+                startActivity(intent);
+            }
+        });
+        modifyExplotation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FarmStatsActivity.this, AddExploitationActivity.class);
+                startActivity(intent);
             }
         });
     }
