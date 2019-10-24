@@ -1,24 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
 
-    <ImageView
-        android:id="@+id/chart"
+    <TextView
+        android:id="@+id/ScrapingResult"
+        android:layout_width="195dp"
+        android:layout_height="29dp"
+        android:text="Market Price: 1008" />
+
+    <RelativeLayout
+        android:id="@+id/explotationrelativelayout"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/farm_stats_chart_height"
-        android:contentDescription="@string/chart_of_evolution"
-        android:src="@drawable/barchart"
-        />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ScrapingResult"
+        android:gravity="center">
+
+
+        <TextView
+            android:id="@+id/Explotation"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:text="Nº Explotacion: "
+            android:textColor="#000000" />
+
+        <Spinner
+            android:id="@+id/spinnerstatistics"
+            android:layout_width="206dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginLeft="161dp" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/statisticsrelativelayout"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Farm History"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            tools:itemCount="31"
+            tools:listitem="@layout/recycler_view_statistics"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/modifyExplotation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/colorBackground"
+        android:src="@android:drawable/ic_menu_manage" />
+
+    <ImageButton
+        android:id="@+id/addExplotation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/modifyExplotation"
+        android:background="@color/colorBackground"
+        android:src="@android:drawable/ic_menu_add" />
+
+    <Button
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:drawableStart="@android:drawable/ic_menu_search"
+        android:text="@string/search" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/chart"
-        android:gravity="center">
+        android:layout_below="@+id/explotationrelativelayout"
+        android:gravity="center"
+        android:id="@+id/statisticsrelativelayout"
+        tools:ignore="DuplicateIds,NotSibling">
 
 
         <TextView
@@ -26,8 +106,7 @@
             android:layout_width="@dimen/farm_stats_label_width"
             android:layout_height="wrap_content"
             android:text="@string/cows_younger"
-            android:textSize="@dimen/farm_stats_label_font_width"
-            />
+            android:textSize="@dimen/farm_stats_label_font_width" />
 
         <TextView
             android:id="@+id/cows_younger"
@@ -35,9 +114,8 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/label_cows_youger"
             android:layout_toEndOf="@+id/label_cows_youger"
-            android:textSize="@dimen/farm_stats_value_font_width"
             android:text="@string/number_example"
-            />
+            android:textSize="@dimen/farm_stats_value_font_width" />
 
         <TextView
             android:id="@+id/label_cows"
@@ -45,8 +123,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/label_cows_youger"
             android:text="@string/cows"
-            android:textSize="@dimen/farm_stats_label_font_width"
-            />
+            android:textSize="@dimen/farm_stats_label_font_width" />
 
         <TextView
             android:id="@+id/cows"
@@ -54,9 +131,8 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/label_cows"
             android:layout_toEndOf="@+id/label_cows"
-            android:textSize="@dimen/farm_stats_value_font_width"
             android:text="@string/number_example"
-            />
+            android:textSize="@dimen/farm_stats_value_font_width" />
 
         <TextView
             android:id="@+id/label_bulls"
@@ -64,8 +140,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/label_cows"
             android:text="@string/bulls"
-            android:textSize="@dimen/farm_stats_label_font_width"
-            />
+            android:textSize="@dimen/farm_stats_label_font_width" />
 
         <TextView
             android:id="@+id/bulls"
@@ -73,31 +148,10 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/label_bulls"
             android:layout_toEndOf="@+id/label_bulls"
-            android:textSize="@dimen/farm_stats_value_font_width"
             android:text="@string/number_example"
-            />
+            android:textSize="@dimen/farm_stats_value_font_width" />
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:drawableStart="@android:drawable/ic_menu_search"
-        android:text="@string/search"
-        />
-
-
-
-    <ImageButton
-        android:id="@+id/configButton"
-        android:background="@color/colorBackground"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_menu_manage"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"/>
 
 </RelativeLayout>
 

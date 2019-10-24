@@ -1,6 +1,5 @@
 package com.example.farmogoapp.ui.main;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -37,7 +36,7 @@ public class FarmStatsActivity extends AppCompatActivity {
         cowsTextView = findViewById(R.id.cows);
         bullsTextView = findViewById(R.id.bulls);
         searchButton = findViewById(R.id.search);
-        configButton = findViewById(R.id.configButton);
+        configButton = findViewById(R.id.modifyExplotation);
     }
 
     private void registerListeners() {

@@ -15,7 +15,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Animal List"
+            android:text="Selected Animal"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -24,9 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="588dp"
             tools:itemCount="31"
-            tools:layoutManager="GridLayoutManager"
-            tools:listitem="@layout/recycler_view_item_1"
-            tools:spanCount="5" />
+            tools:listitem="@layout/recycler_view_statistics" />
 
     </LinearLayout>
 
