@@ -45,6 +45,9 @@
     <string name="registration">Registration</string>
     <string name="login_email_example" translatable="false">info@farmogo.com</string>
     <string name="password_example" translatable="false">12345678</string>
+    <string name="username">Username</string>
+    <string name="username_example" translatable="false">FarmWorker</string>
+    <string name="registration_succesfull">Registration Succesfull</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>

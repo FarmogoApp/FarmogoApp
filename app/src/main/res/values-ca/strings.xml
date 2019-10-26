@@ -68,7 +68,9 @@
     <string name="num_partitions_building">Núm. de lots a la nau</string>
     <string name="choose_farm">Seleccionar explotació</string>
     <string name="last_marquet_price">Últim preu de mercat: 1.008,45€</string>
-    <string name="login" translatable="false">Accedir</string>
+    <string name="login">Accedir</string>
     <string name="password">Contrassenya</string>
-    <string name="registration" translatable="false">Registrar-se</string>
+    <string name="registration" >Registrar-se</string>
+    <string name="username">Usuari</string>
+    <string name="registration_succesfull">Enregistrat correctament</string>
 </resources>
