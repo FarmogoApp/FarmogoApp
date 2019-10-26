@@ -33,12 +33,17 @@ public class SeachAnimalsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.searchanimal_activity);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         registerViews();
         registerListerners();
         prepareDataAdapter();
     }
 
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        this.finish();
+        return super.onSupportNavigateUp();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -65,6 +70,11 @@ public class SeachAnimalsActivity extends AppCompatActivity {
             }
         });
         return true;
+    }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
     }
 
     private void registerListerners() {
@@ -98,5 +108,7 @@ public class SeachAnimalsActivity extends AppCompatActivity {
     private void registerViews() {
 //        searchView = findViewById(R.id.search);
         resultListView = findViewById(R.id.result_list);
+
+
     }
 }
