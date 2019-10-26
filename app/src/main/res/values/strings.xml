@@ -9,35 +9,41 @@
     <string name="tab_one">Mer</string>
     <string name="tab_two">Numero de explotación </string>
     <string name="tab_three">Nombre</string>
-    <string-array name="Genero">
-        <item>Macho</item>
-        <item>Hembra</item>
+    <string name="tag">TAG</string>
+    <string name="id_eartag">Id offical eartag</string>
+    <string name="gender">Gender</string>
+    <string name="mother">Mother</string>
+    <string name="farm">Farm</string>
+    <string name="register_animal">Register animal</string>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
 
     </string-array>
-    <string-array name="madre">
-        <item>Madre 1</item>
-        <item>Madre 2</item>
-        <item>Madre 3</item>
-        <item>Madre 4</item>
-        <item>Madre 5</item>
-        <item>Madre 6</item>
-        <item>Madre 7</item>
-        <item>Madre 8</item>
-        <item>Madre 1</item>
-        <item>Madre 2</item>
-        <item>Madre 3</item>
-        <item>Madre 4</item>
-        <item>Madre 5</item>
-        <item>Madre 6</item>
-        <item>Madre 7</item>
-        <item>Madre 8</item>
+    <string-array name="mother">
+        <item>Mother 1</item>
+        <item>Mother 2</item>
+        <item>Mother 3</item>
+        <item>Mother 4</item>
+        <item>Mother 5</item>
+        <item>Mother 6</item>
+        <item>Mother 7</item>
+        <item>Mother 8</item>
+        <item>Mother 1</item>
+        <item>Mother 2</item>
+        <item>Mother 3</item>
+        <item>Mother 4</item>
+        <item>Mother 5</item>
+        <item>Mother 6</item>
+        <item>Mother 7</item>
+        <item>Mother 8</item>
     </string-array>
-    <string-array name="explotaciones">
-        <item>Explotación 1</item>
-        <item>Explotación 2</item>
-        <item>Explotación 3</item>
-        <item>Explotación 4</item>
-        <item>Explotación 5</item>
+    <string-array name="farm">
+        <item>Farm 1</item>
+        <item>Farm 2</item>
+        <item>Farm 3</item>
+        <item>Farm 4</item>
+        <item>Farm 5</item>
     </string-array>
 </resources>
 

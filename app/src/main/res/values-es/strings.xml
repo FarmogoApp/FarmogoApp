@@ -1,11 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="bulls" translatable="false">Toros</string>
-    <string name="chart_of_evolution" translatable="false">Gráfico de evolución</string>
-    <string name="cows" translatable="false">Vacas</string>
-    <string name="cows_younger" translatable="false">Terneros</string>
-    <string name="search" translatable="false">Buscar</string>
+    <string name="bulls">Toros</string>
+    <string name="chart_of_evolution">Gráfico de evolución</string>
+    <string name="cows">Vacas</string>
+    <string name="cows_younger" >Terneros</string>
+    <string name="search">Buscar</string>
     <string name="tab_one">Mer</string>
-    <string name="tab_two">Numero de explotación </string>
+    <string name="tab_two">Número de explotación </string>
     <string name="tab_three">Nombre</string>
+
+
+    <string-array name="gender">
+        <item>Macho</item>
+        <item>Hembra</item>
+    </string-array>
+    <string-array name="mother">
+        <item>Madre 1</item>
+        <item>Madre 2</item>
+        <item>Madre 3</item>
+        <item>Madre 4</item>
+        <item>Madre 5</item>
+        <item>Madre 6</item>
+        <item>Madre 7</item>
+        <item>Madre 8</item>
+        <item>Madre 1</item>
+        <item>Madre 2</item>
+        <item>Madre 3</item>
+        <item>Madre 4</item>
+        <item>Madre 5</item>
+        <item>Madre 6</item>
+        <item>Madre 7</item>
+        <item>Madre 8</item>
+    </string-array>
+    <string-array name="farm">
+        <item>Explotación 1</item>
+        <item>Explotación 2</item>
+        <item>Explotación 3</item>
+        <item>Explotación 4</item>
+        <item>Explotación 5</item>
+    </string-array>
+    <string name="tag">TAG</string>
+    <string name="id_eartag">Código crotal oficial</string>
+    <string name="gender">Género</string>
+    <string name="mother">Madre</string>
+    <string name="farm">Explotación</string>
+    <string name="register_animal">Registrar animal</string>
 </resources>
