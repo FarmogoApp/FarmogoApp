@@ -68,4 +68,7 @@
     <string name="num_partitions_building">Nº Lotes en la nave</string>
     <string name="choose_farm">Elegir explotación</string>
     <string name="last_marquet_price">Último precio de mercado: 1.008,45€</string>
+    <string name="login" translatable="false">Acceder</string>
+    <string name="password">Contraseña</string>
+    <string name="registration" translatable="false">Registrarse</string>
 </resources>
