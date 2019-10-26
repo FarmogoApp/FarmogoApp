@@ -57,4 +57,7 @@
     <string name="animal_information">Informació animal</string>
     <string name="back">tornar</string>
     <string name="list">llista</string>
+    <string name="incidence">Incidència</string>
+    <string name="management">Gestió</string>
+    <string name="selected_animal">Animals seleccionats</string>
 </resources>

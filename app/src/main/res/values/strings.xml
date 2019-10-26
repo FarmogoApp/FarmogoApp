@@ -27,6 +27,9 @@
     <string name="list">list</string>
     <string name="plus" translatable="false">+</string>
     <string name="minus" translatable="false">-</string>
+    <string name="management">Management</string>
+    <string name="incidence">Incidence</string>
+    <string name="selected_animal">Selected Animal</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
