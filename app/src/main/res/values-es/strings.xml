@@ -66,4 +66,5 @@
     <string name="new_farm">Nueva explotación</string>
     <string name="farm_added_succesfull">Explotación añadida correctamente</string>
     <string name="num_partitions_building">Nº Lotes en la nave</string>
+    <string name="choose_farm">Elegir explotación</string>
 </resources>

@@ -37,6 +37,7 @@
     <string name="add">Add</string>
     <string name="farm_added_succesfull">Farm added Succesfull</string>
     <string name="num_partitions_building">Num. partitions in build </string>
+    <string name="choose_farm">Choose farm</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
