@@ -50,4 +50,11 @@
         <item>Opción 2</item>
         <item>Nueva incidéncia+</item>
     </string-array>
+    <string name="record">Historial</string>
+    <string name="race">Raza</string>
+    <string name="number">Número</string>
+    <string name="gender_example">Hembra</string>
+    <string name="animal_information">Información animal</string>
+    <string name="back">volver</string>
+    <string name="list">lista</string>
 </resources>
