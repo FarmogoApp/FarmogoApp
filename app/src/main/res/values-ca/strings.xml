@@ -73,4 +73,8 @@
     <string name="registration" >Registrar-se</string>
     <string name="username">Usuari</string>
     <string name="registration_succesfull">Enregistrat correctament</string>
+    <string name="died">Defunció</string>
+    <string name="login_succesfull">Accès correcte</string>
+    <string name="slaughterhouse">Matadero</string>
+    <string name="sold">Venut</string>
 </resources>

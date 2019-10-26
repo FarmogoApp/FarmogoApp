@@ -48,6 +48,10 @@
     <string name="username">Username</string>
     <string name="username_example" translatable="false">FarmWorker</string>
     <string name="registration_succesfull">Registration Succesfull</string>
+    <string name="login_succesfull">Login Succesfull</string>
+    <string name="sold">Sold</string>
+    <string name="died">Died</string>
+    <string name="slaughterhouse">Slaughterhouse</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
@@ -82,6 +86,10 @@
         <item>Option 1</item>
         <item>Option 2</item>
         <item>Add new incidence+</item>
+    </string-array>
+    <string-array name="incidences_example">
+        <item>95597533343</item>
+        <item>95597553222</item>
     </string-array>
 </resources>
 

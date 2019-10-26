@@ -39,6 +39,8 @@ public class FarmStatsActivity extends AppCompatActivity {
         registerViews();
         registerListeners();
         fillData();
+        initSpinnerFarmChoose();
+        registerListeners();
     }
 
     private void registerViews() {
@@ -48,7 +50,7 @@ public class FarmStatsActivity extends AppCompatActivity {
         searchButton = findViewById(R.id.search);
         addExplotation = findViewById(R.id.addExplotation);
         modifyExplotation = findViewById(R.id.modifyExplotation);
-        spinner= findViewById(R.id.spinnerstatistics);
+        spinner = findViewById(R.id.spinnerstatistics);
     }
 
     private void registerListeners() {
@@ -82,13 +84,26 @@ public class FarmStatsActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 //int item = parent.getSelectedItemPosition();
-                Toast.makeText(getBaseContext(), "Explotation:" + parent.getItemAtPosition(position).toString() , Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), getString(R.string.farm) + ":" + parent.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
 
-                }
+            }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+
+        });
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                FarmStatsActivity.this.fillData();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
             }
 
         });
@@ -100,10 +115,17 @@ public class FarmStatsActivity extends AppCompatActivity {
         cowsTextView.setText(String.valueOf(r.nextInt(100)));
         bullsTextView.setText(String.valueOf(r.nextInt(100)));
 
-        String[] incidences =new String[]{"59446556","59846465"};
-        ArrayAdapter<String> adapter= new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, incidences);
+
+    }
+
+    private void initSpinnerFarmChoose() {
+        String[] incidences = getResources().getStringArray(R.array.incidences_example);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, incidences);
         spinner.setAdapter(adapter);
-        registerListeners();
+
+
+
+
     }
 
 }
