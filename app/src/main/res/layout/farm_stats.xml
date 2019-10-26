@@ -9,9 +9,9 @@
 
     <TextView
         android:id="@+id/ScrapingResult"
-        android:layout_width="195dp"
+        android:layout_width="wrap_content"
         android:layout_height="29dp"
-        android:text="Market Price: 1008" />
+        android:text="@string/last_marquet_price" />
 
     <RelativeLayout
         android:id="@+id/explotationrelativelayout"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="0dp"
-            android:text="Nº Explotacion: "
+            android:text="@string/farm_id"
             android:textColor="#000000" />
 
         <Spinner
@@ -53,7 +53,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Farm History"
+            android:text="@string/record"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"
             android:textStyle="bold" />

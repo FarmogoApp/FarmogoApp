@@ -67,4 +67,5 @@
     <string name="farm_added_succesfull">Explotació afegida correctament</string>
     <string name="num_partitions_building">Núm. de lots a la nau</string>
     <string name="choose_farm">Seleccionar explotació</string>
+    <string name="last_marquet_price">Últim preu de mercat: 1.008,45€</string>
 </resources>
