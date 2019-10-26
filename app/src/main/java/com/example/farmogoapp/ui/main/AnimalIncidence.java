@@ -22,9 +22,7 @@ public class AnimalIncidence extends AppCompatActivity {
         setContentView(R.layout.animal_incidence);
         spinner= findViewById(R.id.incidencespiner);
 
-
-
-        String[] incidences =new String[]{"opcion1","opcion2","Add new incidence+"};
+        String[] incidences = getResources().getStringArray(R.array.incidences);
         ArrayAdapter<String> adapter= new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, incidences);
         spinner.setAdapter(adapter);
         registerListeners();

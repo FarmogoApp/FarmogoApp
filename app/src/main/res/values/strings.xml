@@ -45,5 +45,10 @@
         <item>Farm 4</item>
         <item>Farm 5</item>
     </string-array>
+    <string-array name="incidences">
+        <item>Option 1</item>
+        <item>Option 2</item>
+        <item>Add new incidence+</item>
+    </string-array>
 </resources>
 

@@ -45,5 +45,9 @@
     <string name="mother">Mare</string>
     <string name="farm">Explotació</string>
     <string name="register_animal">Registrar animal</string>
-
+    <string-array name="incidences">
+        <item>Opció 1</item>
+        <item>Opció 2</item>
+        <item>Nova incidència+</item>
+    </string-array>
 </resources>

@@ -45,4 +45,9 @@
     <string name="mother">Madre</string>
     <string name="farm">Explotación</string>
     <string name="register_animal">Registrar animal</string>
+    <string-array name="incidences">
+        <item>Opción 1</item>
+        <item>Opción 2</item>
+        <item>Nueva incidéncia+</item>
+    </string-array>
 </resources>
