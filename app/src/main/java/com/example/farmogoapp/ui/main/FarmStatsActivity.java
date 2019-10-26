@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.ui.searchanimal.SeachAnimalsActivity;
 
 import java.util.Random;
 

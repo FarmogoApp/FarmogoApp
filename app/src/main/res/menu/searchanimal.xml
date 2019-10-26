@@ -7,11 +7,12 @@
     <item android:id="@+id/action_search"
         android:title="Search"
         android:icon="@android:drawable/ic_menu_search"
-        app:showAsAction="collapseActionView|always"
+        app:showAsAction="collapseActionView|ifRoom"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
 
     <item
         android:id="@+id/action_settings"
+        android:icon="@android:drawable/ic_menu_manage"
         android:title="Settings"
         app:showAsAction="never" />
 
