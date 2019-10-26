@@ -60,4 +60,10 @@
     <string name="incidence">Incidència</string>
     <string name="management">Gestió</string>
     <string name="selected_animal">Animals seleccionats</string>
+    <string name="add">Afegir</string>
+    <string name="builds_number">Núm. Naus</string>
+    <string name="farm_id">Núm. Explotació</string>
+    <string name="new_farm">Nova explotació</string>
+    <string name="farm_added_succesfull">Explotació afegida correctament</string>
+    <string name="num_partitions_building">Núm. de lots a la nau</string>
 </resources>

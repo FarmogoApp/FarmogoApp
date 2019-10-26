@@ -60,4 +60,10 @@
     <string name="incidence">Incidencia</string>
     <string name="management">Gestión</string>
     <string name="selected_animal">Animales seleccionados</string>
+    <string name="add">Añadir</string>
+    <string name="builds_number">Nº. Naves</string>
+    <string name="farm_id">Nº Explotación</string>
+    <string name="new_farm">Nueva explotación</string>
+    <string name="farm_added_succesfull">Explotación añadida correctamente</string>
+    <string name="num_partitions_building">Nº Lotes en la nave</string>
 </resources>
