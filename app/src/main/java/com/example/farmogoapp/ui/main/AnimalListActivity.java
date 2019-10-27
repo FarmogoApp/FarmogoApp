@@ -24,7 +24,8 @@ public class AnimalListActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     List<String> animal_Id_List = new ArrayList<String>();
-    animal_Id_List.add("1");
+    animal_Id_List.add("7587");
+    animal_Id_List.add("7578");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
