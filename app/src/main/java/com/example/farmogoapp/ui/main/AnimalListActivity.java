@@ -1,20 +1,19 @@
 package com.example.farmogoapp.ui.main;
 
 import java.util.*;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
-
 import java.util.ArrayList;
+import java.util.Random;
+
 
 public class AnimalListActivity extends AppCompatActivity {
 
@@ -23,9 +22,16 @@ public class AnimalListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    List<String> animal_Id_List = new ArrayList<String>();
-    animal_Id_List.add("7587");
-    animal_Id_List.add("7578");
+
+    ArrayList<String> animal_Id_List = new ArrayList<>();
+    Random r = new Random();
+       // for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 100; i++) {
+        animal_Id_List.add(String.format("%04d", r.nextInt(10000)));
+    }
+    //List<String> animal_Id_List = new ArrayList<String>();
+    //animal_Id_List.add("7587");
+    //animal_Id_List.add("7578");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
