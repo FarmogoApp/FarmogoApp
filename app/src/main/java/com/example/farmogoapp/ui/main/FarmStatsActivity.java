@@ -1,5 +1,6 @@
 package com.example.farmogoapp.ui.main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
