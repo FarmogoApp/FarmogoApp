@@ -17,6 +17,7 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnRegister = findViewById(R.id.register_button);
         registerListeners();
     }
@@ -31,5 +32,11 @@ public class RegistrationActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        this.finish();
+        return super.onSupportNavigateUp();
     }
 }
