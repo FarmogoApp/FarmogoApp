@@ -9,7 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
@@ -18,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.ui.main.AnimalInfoActivity;
 import com.example.farmogoapp.ui.main.RegisterCow;
 
@@ -28,7 +28,7 @@ public class SeachAnimalsActivity extends AppCompatActivity {
 
     private SearchView searchView;
     private ListView resultListView;
-    private ArrayAdapter<String> resultsListAdapter;
+    private SearchAnimalsAdapter searchAnimalsAdapter;
 
 
     @Override
@@ -102,25 +102,21 @@ public class SeachAnimalsActivity extends AppCompatActivity {
     }
 
     private void prepareDataAdapter() {
-        ArrayList<String> testData = new ArrayList<>();
+        ArrayList<Animal> testData = new ArrayList<>();
         Random r = new Random();
         for (int i = 0; i < 100; i++) {
-            testData.add(String.format("%04d", r.nextInt(10000)));
+            testData.add(new Animal(Math.abs(r.nextLong() % 1_000_000_000_000L)));
         }
-        resultsListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, testData.toArray(new String[testData.size()]));
-        resultsListAdapter.getFilter().filter("");
-        resultListView.setAdapter(resultsListAdapter);
+
+        searchAnimalsAdapter = new SearchAnimalsAdapter(this, testData);
+        resultListView.setAdapter(searchAnimalsAdapter);
     }
 
     private void doSearch(CharSequence query) {
-        resultsListAdapter.getFilter().filter(query);
-        resultsListAdapter.notifyDataSetChanged();
+        searchAnimalsAdapter.setFilter(query);
     }
 
     private void registerViews() {
-//        searchView = findViewById(R.id.search);
         resultListView = findViewById(R.id.result_list);
-
-
     }
 }
