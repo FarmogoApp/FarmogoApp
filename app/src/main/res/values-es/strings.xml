@@ -9,6 +9,11 @@
     <string name="tab_two">Numero de explotación </string>
     <string name="tab_three">Nombre</string>
     <string name="fecha_de_nacimiento">fecha de nacimiento</string>
+    <string-array name="Genero">
+        <item>Macho</item>
+        <item>Hembra</item>
+
+    </string-array>
     <string-array name="explotaciones">
         <item>Granja 1</item>
         <item>Granja 2</item>
