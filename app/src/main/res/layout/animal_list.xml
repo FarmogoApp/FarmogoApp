@@ -19,7 +19,8 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <android.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_list"
             android:layout_width="match_parent"
             android:layout_height="588dp"
             tools:itemCount="31"
