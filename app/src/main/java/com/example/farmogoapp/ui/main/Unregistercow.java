@@ -23,9 +23,9 @@ public class Unregistercow extends AppCompatActivity {
 
     private void addTabs(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new FragmentOne(), "Defuncion");
-        adapter.addFrag(new FragmentTwo(), "Venta");
-        adapter.addFrag(new FragmentThree(), "Matadero");
+        adapter.addFrag(new FragmentOne(), getString(R.string.died));
+        adapter.addFrag(new FragmentTwo(), getString(R.string.sold));
+        adapter.addFrag(new FragmentThree(), getString(R.string.slaughterhouse));
         viewPager.setAdapter(adapter);
     }
 }

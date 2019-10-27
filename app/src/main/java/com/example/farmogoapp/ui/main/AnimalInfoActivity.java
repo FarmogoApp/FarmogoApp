@@ -1,14 +1,14 @@
 package com.example.farmogoapp.ui.main;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.ui.searchanimal.SeachAnimalsActivity;
 
 public class AnimalInfoActivity extends AppCompatActivity {
 

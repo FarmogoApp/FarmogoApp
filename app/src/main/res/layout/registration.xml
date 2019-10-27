@@ -18,8 +18,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Username"
-        android:text="FarmWorker" />
+        android:hint="@string/username"
+        android:text="@string/username_example" />
 
     <EditText
         android:id="@+id/registration_email"
@@ -27,8 +27,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:hint="Email"
-        android:text="farmogo@gmail.com" />
+        android:hint="@string/email"
+        android:text="@string/login_email_example" />
 
     <EditText
         android:id="@+id/registration_password1"
@@ -36,8 +36,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Password"
-        android:text="password" />
+        android:hint="@string/password"
+        android:text="@string/password_example" />
 
     <EditText
         android:id="@+id/registration_password2"
@@ -45,12 +45,12 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Password"
-        android:text="password" />
+        android:hint="@string/password"
+        android:text="@string/password_example" />
 
     <Button
         android:id="@+id/register_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register" />
+        android:text="@android:string/ok" />
 </LinearLayout>

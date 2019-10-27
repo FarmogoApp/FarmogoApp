@@ -1,12 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FarmogoApp</string>
     <string name="bulls">Bous</string>
     <string name="chart_of_evolution">Gràfic d\'evolució</string>
     <string name="cows">Vaques</string>
     <string name="cows_younger">Vedells</string>
     <string name="search">Cercar</string>
     <string name="tab_one">Mer</string>
-    <string name="tab_two">Nombre explotacio </string>
-    <string name="tab_three">Matader</string>
+    <string name="tab_two">Número d\'explotació</string>
+    <string name="tab_three">Escorxador</string>
+
+    <string-array name="gender">
+        <item>Mascle</item>
+        <item>Femella</item>
+    </string-array>
+
+    <string-array name="mother">
+        <item>Mare 1</item>
+        <item>Mare 2</item>
+        <item>Mare 3</item>
+        <item>Mare 4</item>
+        <item>Mare 5</item>
+        <item>Mare 6</item>
+        <item>Mare 7</item>
+        <item>Mare 8</item>
+        <item>Mare 1</item>
+        <item>Mare 2</item>
+        <item>Mare 3</item>
+        <item>Mare 4</item>
+        <item>Mare 5</item>
+        <item>Mare 6</item>
+        <item>Mare 7</item>
+        <item>Mare 8</item>
+    </string-array>
+    <string-array name="farm">
+        <item>Explotació 1</item>
+        <item>Explotació 2</item>
+        <item>Explotació 3</item>
+        <item>Explotació 4</item>
+        <item>Explotació 5</item>
+    </string-array>
+    <string name="tag">TAG</string>
+    <string name="id_eartag">Codi crotal oficial</string>
+    <string name="gender">Génere</string>
+    <string name="mother">Mare</string>
+    <string name="farm">Explotació</string>
+    <string name="register_animal">Registrar animal</string>
+    <string-array name="incidences">
+        <item>Opció 1</item>
+        <item>Opció 2</item>
+        <item>Nova incidència+</item>
+    </string-array>
+    <string name="record">Historial</string>
+    <string name="race">Raça</string>
+    <string name="number">Número</string>
+    <string name="gender_example">Femella</string>
+    <string name="animal_information">Informació animal</string>
+    <string name="back">tornar</string>
+    <string name="list">llista</string>
+    <string name="incidence">Incidència</string>
+    <string name="management">Gestió</string>
+    <string name="selected_animal">Animals seleccionats</string>
+    <string name="add">Afegir</string>
+    <string name="builds_number">Núm. Naus</string>
+    <string name="farm_id">Núm. Explotació</string>
+    <string name="new_farm">Nova explotació</string>
+    <string name="farm_added_succesfull">Explotació afegida correctament</string>
+    <string name="num_partitions_building">Núm. de lots a la nau</string>
+    <string name="choose_farm">Seleccionar explotació</string>
+    <string name="last_marquet_price">Últim preu de mercat: 1.008,45€</string>
+    <string name="login">Accedir</string>
+    <string name="password">Contrassenya</string>
+    <string name="registration" >Registrar-se</string>
+    <string name="username">Usuari</string>
+    <string name="registration_succesfull">Enregistrat correctament</string>
+    <string name="died">Defunció</string>
+    <string name="login_succesfull">Accès correcte</string>
+    <string name="slaughterhouse">Matadero</string>
+    <string name="sold">Venut</string>
 </resources>

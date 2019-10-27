@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast1 = Toast.makeText(getApplicationContext(), "Login Succesfull", Toast.LENGTH_SHORT);
+                Toast toast1 = Toast.makeText(getApplicationContext(), getString(R.string.login_succesfull), Toast.LENGTH_SHORT);
                 toast1.show();
                 Intent intent = new Intent(LoginActivity.this, ExploitationActivity.class);
                 startActivity(intent);

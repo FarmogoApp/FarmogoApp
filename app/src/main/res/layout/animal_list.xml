@@ -15,7 +15,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Selected Animal"
+            android:text="@string/selected_animal"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -32,7 +32,7 @@
         android:id="@+id/back2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="back" />
+        android:text="@string/back" />
 
     <Button
         android:id="@+id/Gestion"
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:text="Gestion" />
+        android:text="@string/management" />
 
     <Button
         android:id="@+id/Incidencia"
@@ -48,6 +48,6 @@
         android:layout_height="wrap_content"
         android:layout_toStartOf="@id/Gestion"
         android:layout_alignParentBottom="true"
-        android:text="Incidencia" />
+        android:text="@string/incidence" />
 
 </RelativeLayout>

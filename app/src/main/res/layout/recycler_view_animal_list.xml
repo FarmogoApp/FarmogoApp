@@ -18,7 +18,7 @@
       android:layout_height="wrap_content"
       android:layout_gravity="center"
       android:padding="5dp"
-      tools:text="1995958225" />
+      tools:text="@string/animal_example" />
 
   <ImageButton
       android:id="@+id/animal_list_button"

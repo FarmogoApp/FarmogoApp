@@ -9,35 +9,87 @@
     <string name="tab_one">Mer</string>
     <string name="tab_two">Numero de explotación </string>
     <string name="tab_three">Nombre</string>
-    <string-array name="Genero">
-        <item>Macho</item>
-        <item>Hembra</item>
+    <string name="tag">TAG</string>
+    <string name="id_eartag">Id offical eartag</string>
+    <string name="gender">Gender</string>
+    <string name="mother">Mother</string>
+    <string name="farm">Farm</string>
+    <string name="register_animal">Register animal</string>
+    <string name="animal_information">Animal Information</string>
+    <string name="number">Number</string>
+    <string name="gender_example">Female</string>
+    <string name="race">Race</string>
+    <string name="race_example" translatable="false">Limusin</string>
+    <string name="farm_example" translatable="false">2342342342</string>
+    <string name="animal_example" translatable="false">5858588998</string>
+    <string name="record">Record</string>
+    <string name="back">back</string>
+    <string name="list">list</string>
+    <string name="plus" translatable="false">+</string>
+    <string name="minus" translatable="false">-</string>
+    <string name="management">Management</string>
+    <string name="incidence">Incidence</string>
+    <string name="selected_animal">Selected Animal</string>
+    <string name="space" translatable="false">\u0020</string>
+    <string name="new_farm">New farm</string>
+    <string name="farm_id">Farm Id</string>
+    <string name="builds_number">Num. Buildings</string>
+    <string name="add">Add</string>
+    <string name="farm_added_succesfull">Farm added Succesfull</string>
+    <string name="num_partitions_building">Num. partitions in build </string>
+    <string name="choose_farm">Choose farm</string>
+    <string name="last_marquet_price">Last Market Price: 1,008.45€</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="registration">Registration</string>
+    <string name="login_email_example" translatable="false">info@farmogo.com</string>
+    <string name="password_example" translatable="false">12345678</string>
+    <string name="username">Username</string>
+    <string name="username_example" translatable="false">FarmWorker</string>
+    <string name="registration_succesfull">Registration Succesfull</string>
+    <string name="login_succesfull">Login Succesfull</string>
+    <string name="sold">Sold</string>
+    <string name="died">Died</string>
+    <string name="slaughterhouse">Slaughterhouse</string>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
 
     </string-array>
-    <string-array name="madre">
-        <item>Madre 1</item>
-        <item>Madre 2</item>
-        <item>Madre 3</item>
-        <item>Madre 4</item>
-        <item>Madre 5</item>
-        <item>Madre 6</item>
-        <item>Madre 7</item>
-        <item>Madre 8</item>
-        <item>Madre 1</item>
-        <item>Madre 2</item>
-        <item>Madre 3</item>
-        <item>Madre 4</item>
-        <item>Madre 5</item>
-        <item>Madre 6</item>
-        <item>Madre 7</item>
-        <item>Madre 8</item>
+    <string-array name="mother">
+        <item>Mother 1</item>
+        <item>Mother 2</item>
+        <item>Mother 3</item>
+        <item>Mother 4</item>
+        <item>Mother 5</item>
+        <item>Mother 6</item>
+        <item>Mother 7</item>
+        <item>Mother 8</item>
+        <item>Mother 1</item>
+        <item>Mother 2</item>
+        <item>Mother 3</item>
+        <item>Mother 4</item>
+        <item>Mother 5</item>
+        <item>Mother 6</item>
+        <item>Mother 7</item>
+        <item>Mother 8</item>
     </string-array>
-    <string-array name="explotaciones">
-        <item>Explotación 1</item>
-        <item>Explotación 2</item>
-        <item>Explotación 3</item>
-        <item>Explotación 4</item>
-        <item>Explotación 5</item>
+    <string-array name="farm">
+        <item>Farm 1</item>
+        <item>Farm 2</item>
+        <item>Farm 3</item>
+        <item>Farm 4</item>
+        <item>Farm 5</item>
+    </string-array>
+    <string-array name="incidences">
+        <item>Option 1</item>
+        <item>Option 2</item>
+        <item>Add new incidence+</item>
+    </string-array>
+    <string-array name="incidences_example">
+        <item>95597533343</item>
+        <item>95597553222</item>
     </string-array>
 </resources>
 

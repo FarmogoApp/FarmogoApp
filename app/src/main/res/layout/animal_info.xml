@@ -18,7 +18,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Animal Information"
+            android:text="@string/animal_information"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -33,7 +33,7 @@
                 android:id="@+id/animal_id"
                 android:layout_width="@dimen/farm_stats_label_width"
                 android:layout_height="wrap_content"
-                android:text="Number"
+                android:text="@string/number"
                 android:textSize="@dimen/farm_stats_label_font_width" />
 
             <TextView
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/animal_id"
                 android:layout_toEndOf="@+id/animal_id"
-                android:text="151515"
+                android:text="@string/animal_example"
                 android:textSize="@dimen/farm_stats_value_font_width" />
 
             <TextView
@@ -50,7 +50,7 @@
                 android:layout_width="@dimen/farm_stats_label_width"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/animal_id"
-                android:text="Sexo"
+                android:text="@string/gender"
                 android:textSize="@dimen/farm_stats_label_font_width" />
 
             <TextView
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/animal_genere"
                 android:layout_toEndOf="@+id/animal_genere"
-                android:text="Hembra"
+                android:text="@string/gender_example"
                 android:textSize="@dimen/farm_stats_value_font_width" />
 
             <TextView
@@ -67,7 +67,7 @@
                 android:layout_width="@dimen/farm_stats_label_width"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/animal_genere"
-                android:text="Raza"
+                android:text="@string/race"
                 android:textSize="@dimen/farm_stats_label_font_width" />
 
             <TextView
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/animal_raza"
                 android:layout_toEndOf="@+id/animal_raza"
-                android:text="Limusin"
+                android:text="@string/race_example"
                 android:textSize="@dimen/farm_stats_value_font_width" />
 
             <TextView
@@ -84,7 +84,7 @@
                 android:layout_width="@dimen/farm_stats_label_width"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/animal_raza"
-                android:text="Explotacion"
+                android:text="@string/farm"
                 android:textSize="@dimen/farm_stats_label_font_width" />
 
             <TextView
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/animal_farmNumber"
                 android:layout_toEndOf="@+id/animal_farmNumber"
-                android:text="5858588998"
+                android:text="@string/farm_example"
                 android:textSize="@dimen/farm_stats_value_font_width" />
 
             <TextView
@@ -101,7 +101,7 @@
                 android:layout_width="@dimen/farm_stats_label_width"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/animal_farmNumber"
-                android:text="Mother"
+                android:text="@string/mother"
                 android:textSize="@dimen/farm_stats_label_font_width" />
 
             <TextView
@@ -110,7 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/animal_mother"
                 android:layout_toEndOf="@+id/animal_mother"
-                android:text="5858588998"
+                android:text="@string/animal_example"
                 android:textSize="@dimen/farm_stats_value_font_width" />
 
         </RelativeLayout>
@@ -127,7 +127,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Historial"
+                android:text="@string/record"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -146,13 +146,13 @@
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="back" />
+        android:text="@string/back" />
 
     <Button
         android:id="@+id/list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="list"
+        android:text="@string/list"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"/>
 
@@ -160,7 +160,7 @@
         android:id="@+id/mas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+"
+        android:text="@string/plus"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"/>
 
@@ -168,7 +168,7 @@
         android:id="@+id/menos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="-"
+        android:text="@string/minus"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@id/mas"/>
 </RelativeLayout>
