@@ -9,4 +9,26 @@
     <string name="tab_one">Mer</string>
     <string name="tab_two">Nombre explotacio </string>
     <string name="tab_three">Matader</string>
+    <string name="fecha_de_nacimiento">Data de naixement</string>
+    <string-array name="explotaciones">
+        <item>Granja 1</item>
+        <item>Granja 2</item>
+        <item>Granja 3</item>
+        <item>Granja 4</item>
+        <item>Granja 5</item>
+    </string-array>
+    <string-array name="building">
+        <item>Edifici 1</item>
+        <item>Edifici 2</item>
+        <item>Edifici 3</item>
+        <item>Edifici 4</item>
+        <item>Edifici 5</item>
+    </string-array>
+    <string-array name="section">
+        <item>Seccion 1</item>
+        <item>Seccion 2</item>
+        <item>Seccion 3</item>
+        <item>Seccion 4</item>
+        <item>Seccion 5</item>
+    </string-array>
 </resources>
