@@ -8,5 +8,5 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:textSize="20sp"
-        android:text="Fragment Treatment" />
+        android:text="Fragment New Incidence" />
 </FrameLayout>

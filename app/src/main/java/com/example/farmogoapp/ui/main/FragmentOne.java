@@ -17,7 +17,10 @@ import com.example.farmogoapp.R;
  */
 public class FragmentOne extends Fragment {
 
-
+    public static FragmentOne newInstance() {
+        FragmentOne fragment = new FragmentOne();
+        return fragment;
+    }
     public FragmentOne() {
         // Required empty public constructor
     }

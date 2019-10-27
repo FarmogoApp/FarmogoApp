@@ -46,9 +46,17 @@
     <string name="farm">Explotació</string>
     <string name="register_animal">Registrar animal</string>
     <string-array name="incidences">
-        <item>Opció 1</item>
-        <item>Opció 2</item>
-        <item>Nova incidència+</item>
+        <item>---------</item>
+        <item>Tractament</item>
+        <item>Seguiment embaràs</item>
+        <item>Pesatge</item>
+        <item>Programat</item>
+        <item>Afegir nova incidència+</item>
+    </string-array>
+    <string-array name="pregnancy_state">
+        <item>Zel</item>
+        <item>Parada</item>
+        <item>Abortament</item>
     </string-array>
     <string name="record">Historial</string>
     <string name="race">Raça</string>
@@ -77,4 +85,18 @@
     <string name="login_succesfull">Accès correcte</string>
     <string name="slaughterhouse">Matadero</string>
     <string name="sold">Venut</string>
+    <string name="choose_incidence">Escollir incidència:</string>
+    <string name="animal_incidence">Incidència Animal</string>
+    <string name="treatment">Tractament</string>
+    <string name="type">Tipus</string>
+    <string name="medicine">Medicament</string>
+    <string name="dose">Dosi</string>
+    <string name="observations">Observacions</string>
+    <string name="save">Desar</string>
+    <string name="pregnancy_monitoring">Seguiment embaràs</string>
+    <string name="wheighing">Pesatge</string>
+    <string name="wheight">Pes</string>
+    <string name="incidence_saved">Incidence saved correctly</string>
+    <string name="scheduled">Programat</string>
+    <string name="scheduled_for">Programat per</string>
 </resources>
