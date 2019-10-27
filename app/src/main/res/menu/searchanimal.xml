@@ -10,10 +10,10 @@
         app:showAsAction="collapseActionView|ifRoom"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
 
-    <!--item
-        android:id="@+id/action_settings"
+    <item
+        android:id="@+id/register_animal"
         android:icon="@android:drawable/ic_menu_manage"
-        android:title="Settings"
-        app:showAsAction="never" /-->
+        android:title="@string/register_animal"
+        app:showAsAction="never" />
 
 </menu>

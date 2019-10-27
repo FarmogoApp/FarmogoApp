@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,6 +19,7 @@ import androidx.appcompat.widget.SearchView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.ui.main.AnimalInfoActivity;
+import com.example.farmogoapp.ui.main.RegisterCow;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -66,6 +68,16 @@ public class SeachAnimalsActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 doSearch(searchView.getQuery());
+                return true;
+            }
+        });
+
+        MenuItem item = menu.findItem(R.id.register_animal);
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intent = new Intent(SeachAnimalsActivity.this, RegisterCow.class);
+                startActivity(intent);
                 return true;
             }
         });

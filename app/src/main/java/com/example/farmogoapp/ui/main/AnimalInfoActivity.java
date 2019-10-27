@@ -13,15 +13,20 @@ import com.example.farmogoapp.ui.searchanimal.SeachAnimalsActivity;
 public class AnimalInfoActivity extends AppCompatActivity {
 
     private Button btnList;
-    private Button btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animal_info);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnList = findViewById(R.id.list);
-        btnBack = findViewById(R.id.back);
         registerListeners();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        this.finish();
+        return super.onSupportNavigateUp();
     }
 
     private void registerListeners() {
@@ -30,13 +35,6 @@ public class AnimalInfoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(AnimalInfoActivity.this, AnimalListActivity.class);
                 startActivity(intent);
-            }
-        });
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent2 = new Intent(AnimalInfoActivity.this, SeachAnimalsActivity.class);
-                startActivity(intent2);
             }
         });
     }

@@ -20,13 +20,20 @@ public class AnimalIncidence extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animal_incidence);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         spinner= findViewById(R.id.incidencespiner);
-
         String[] incidences = getResources().getStringArray(R.array.incidences);
         ArrayAdapter<String> adapter= new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, incidences);
         spinner.setAdapter(adapter);
         registerListeners();
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        this.finish();
+        return super.onSupportNavigateUp();
+    }
+
     private void registerListeners() {
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

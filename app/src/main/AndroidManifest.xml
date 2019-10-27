@@ -16,16 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.AddExploitationActivity"/>
-        <activity android:name=".ui.main.ExploitationActivity"/>
-        <activity android:name=".ui.main.FarmStatsActivity"/>
-        <activity android:name=".ui.searchanimal.SeachAnimalsActivity"/>
-        <activity android:name=".ui.main.AnimalListActivity"/>
-        <activity android:name=".ui.main.AnimalInfoActivity"/>
-        <activity android:name=".ui.main.RegisterCow"/>
-        <activity android:name=".ui.main.Unregistercow"/>
-        <activity android:name=".ui.main.AnimalIncidence"/>
-        <activity android:name=".ui.main.RegistrationActivity"/>
+        <activity android:name=".ui.main.AddExploitationActivity" android:exported="true"/>
+        <activity android:name=".ui.main.ExploitationActivity" android:exported="true"/>
+        <activity android:name=".ui.main.FarmStatsActivity" android:exported="true"/>
+        <activity android:name=".ui.searchanimal.SeachAnimalsActivity" android:exported="true"/>
+        <activity android:name=".ui.main.AnimalListActivity" android:exported="true"/>
+        <activity android:name=".ui.main.AnimalInfoActivity" android:exported="true"/>
+        <activity android:name=".ui.main.RegisterCow" android:exported="true"/>
+
+        <activity android:name=".ui.main.Unregistercow" android:exported="true"/>
+        <activity android:name=".ui.main.AnimalIncidence" android:exported="true"/>
+        <activity android:name=".ui.main.RegistrationActivity" android:exported="true"/>
     </application>
 
 </manifest>
