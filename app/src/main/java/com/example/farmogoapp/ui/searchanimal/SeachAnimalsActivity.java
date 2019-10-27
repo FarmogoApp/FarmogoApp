@@ -7,10 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +15,7 @@ import androidx.appcompat.widget.SearchView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.model.Animal;
-import com.example.farmogoapp.ui.main.AnimalInfoActivity;
+import com.example.farmogoapp.ui.main.AnimalListActivity;
 import com.example.farmogoapp.ui.main.RegisterCow;
 
 import java.util.ArrayList;
@@ -37,7 +34,6 @@ public class SeachAnimalsActivity extends AppCompatActivity {
         setContentView(R.layout.searchanimal_activity);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         registerViews();
-        registerListerners();
         prepareDataAdapter();
     }
 
@@ -81,6 +77,16 @@ public class SeachAnimalsActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        MenuItem list = menu.findItem(R.id.list_selected);
+        list.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intent = new Intent(SeachAnimalsActivity.this, AnimalListActivity.class);
+                startActivity(intent);
+                return true;
+            }
+        });
         return true;
     }
 
@@ -89,17 +95,6 @@ public class SeachAnimalsActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
     }
 
-    private void registerListerners() {
-
-
-        resultListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(SeachAnimalsActivity.this, AnimalInfoActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
 
     private void prepareDataAdapter() {
         ArrayList<Animal> testData = new ArrayList<>();
