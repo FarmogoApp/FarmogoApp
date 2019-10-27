@@ -32,17 +32,47 @@ public class AnimalIncidence extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //LinearLayout ll = findViewById(R.id.linearLayout2);
-                //ll.removeAllViews();
-                //int item = parent.getSelectedItemPosition();
-                //Toast.makeText(getBaseContext(), parent.getItemAtPosition(position).toString() , Toast.LENGTH_LONG).show();
-            }
+                switch (position) {
+                    case 0:
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.Fragment, FragmentDefaultIncidence.newInstance()).commit();
+                        break;
 
+                    case 1:
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.Fragment, FragmentTreatmentIncidence.newInstance()).commit();
+                        break;
+                    case 2:
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.Fragment, FragmentPregnancyIncidence.newInstance()).commit();
+                        break;
+                    case 3:
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.Fragment, FragmentWheighingIncidence.newInstance()).commit();
+                        break;
+                    case 4:
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.Fragment, FragmentScheduledIncidence.newInstance()).commit();
+                        break;
+                    case 5:
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.Fragment, FragmentNewIncidence.newInstance()).commit();
+                        break;
+                    default:
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.Fragment, new FragmentDefaultIncidence()).commit();
+                        break;
+
+                }
+            }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
 
         });
+
+
 }
+
 }

@@ -52,6 +52,20 @@
     <string name="sold">Sold</string>
     <string name="died">Died</string>
     <string name="slaughterhouse">Slaughterhouse</string>
+    <string name="choose_incidence">Choose incidence:</string>
+    <string name="animal_incidence">Animal Incidence</string>
+    <string name="treatment">Treatment</string>
+    <string name="type">Type</string>
+    <string name="medicine">Medicine</string>
+    <string name="dose">Dose</string>
+    <string name="observations">Observations</string>
+    <string name="save">Save</string>
+    <string name="pregnancy_monitoring">Pregnancy Monitoring</string>
+    <string name="wheighing">Wheighing</string>
+    <string name="wheight">Wheight</string>
+    <string name="incidence_saved">Incidence saved correctly</string>
+    <string name="scheduled">Scheduled</string>
+    <string name="scheduled_for">Scheduled for</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
@@ -83,13 +97,27 @@
         <item>Farm 5</item>
     </string-array>
     <string-array name="incidences">
-        <item>Option 1</item>
-        <item>Option 2</item>
+        <item>---------</item>
+        <item>Treatment</item>
+        <item>Pregnancy Monitoring</item>
+        <item>Weighing</item>
+        <item>Scheduled</item>
         <item>Add new incidence+</item>
     </string-array>
     <string-array name="incidences_example">
         <item>95597533343</item>
         <item>95597553222</item>
+    </string-array>
+    <string-array name="type">
+        <item>Vaccine</item>
+        <item>Deworm</item>
+        <item>Inseminate</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="pregnancy_state">
+        <item>Zeal</item>
+        <item>Stand</item>
+        <item>Abortion</item>
     </string-array>
 </resources>
 
