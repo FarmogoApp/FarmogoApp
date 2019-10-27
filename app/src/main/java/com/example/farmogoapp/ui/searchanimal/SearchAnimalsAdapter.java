@@ -2,6 +2,7 @@ package com.example.farmogoapp.ui.searchanimal;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.RelativeSizeSpan;
@@ -14,13 +15,14 @@ import android.widget.TextView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.model.Animal;
+import com.example.farmogoapp.ui.main.AnimalInfoActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.graphics.Typeface.BOLD;
 
-public class SearchAnimalsAdapter extends BaseAdapter {
+public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickListener{
 
     private Activity activity;
     private List<Animal> animalList;
@@ -74,6 +76,7 @@ public class SearchAnimalsAdapter extends BaseAdapter {
                         Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 
         listid.setText(spannableString);
+        v.setOnClickListener(this);
         return v;
     }
 
@@ -89,5 +92,11 @@ public class SearchAnimalsAdapter extends BaseAdapter {
         }
         this.notifyDataSetChanged();
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(activity, AnimalInfoActivity.class);
+        activity.startActivity(intent);
     }
 }
