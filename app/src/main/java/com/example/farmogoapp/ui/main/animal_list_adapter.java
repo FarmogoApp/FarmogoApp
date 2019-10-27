@@ -1,11 +1,14 @@
 package com.example.farmogoapp.ui.main;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,13 +27,16 @@ public class animal_list_adapter extends RecyclerView.Adapter<animal_list_adapte
         // for any view that will be set as you render a row
         public TextView nameTextView;
         public ImageButton messageButton;
+        public ImageView animalImage;
 
+        @SuppressLint("WrongViewCast")
         public MyViewHolder(View itemView) {
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
             nameTextView = (TextView) itemView.findViewById(R.id.animal_listid);
             messageButton = (ImageButton) itemView.findViewById(R.id.animal_list_button);
+            animalImage = (ImageView) itemView.findViewById(R.id.animal_list_image);
         }
     }
     public animal_list_adapter(List<String> IdList) {
