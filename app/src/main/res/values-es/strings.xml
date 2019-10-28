@@ -9,7 +9,10 @@
     <string name="tab_two">Número de explotación </string>
     <string name="tab_three">Nombre</string>
 
-
+    <string name="unregisrer_cow">Baja vaca</string>
+    <string name="choose_type">Elige el tipo</string>
+    <string name="guide">Guia</string>
+    <string name="unregistersucces">Baja correcta</string>
     <string-array name="gender">
         <item>Macho</item>
         <item>Hembra</item>

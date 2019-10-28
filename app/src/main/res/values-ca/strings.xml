@@ -58,6 +58,10 @@
         <item>Parada</item>
         <item>Abortament</item>
     </string-array>
+    <string name="unregistersucces">Baixa correcta</string>
+    <string name="choose_type">tria el tipus</string>
+    <string name="unregisrer_cow">Baixa vaca</string>
+    <string name="guide">Guia</string>
     <string name="record">Historial</string>
     <string name="race">Raça</string>
     <string name="number">Número</string>
