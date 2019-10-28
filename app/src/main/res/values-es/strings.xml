@@ -46,9 +46,17 @@
     <string name="farm">Explotación</string>
     <string name="register_animal">Registrar animal</string>
     <string-array name="incidences">
-        <item>Opción 1</item>
-        <item>Opción 2</item>
-        <item>Nueva incidéncia+</item>
+        <item>-------</item>
+        <item>Tratamiento</item>
+        <item>Seguimiento embarazo</item>
+        <item>Pesaje</item>
+        <item>Programado</item>
+        <item>Añadir nueva incidencia+</item>
+    </string-array>
+    <string-array name="pregnancy_state">
+        <item>Celo</item>
+        <item>Parada</item>
+        <item>Aborto</item>
     </string-array>
     <string name="record">Historial</string>
     <string name="race">Raza</string>
@@ -77,4 +85,18 @@
     <string name="login_succesfull">Acceso correcto</string>
     <string name="slaughterhouse">Matadero</string>
     <string name="sold">Vendido</string>
+    <string name="choose_incidence">Elegir incidencia:</string>
+    <string name="animal_incidence">Incidencia Animal</string>
+    <string name="treatment">Tratamiento</string>
+    <string name="type">Tipo</string>
+    <string name="medicine">Medicamento</string>
+    <string name="dose">Dosis</string>
+    <string name="observations">Observaciones</string>
+    <string name="save">Guardar</string>
+    <string name="pregnancy_monitoring">Seguimiento de embarazo</string>
+    <string name="wheighing">Pesaje</string>
+    <string name="wheight">Peso</string>
+    <string name="incidence_saved">Incidence saved correctly</string>
+    <string name="scheduled">Programado</string>
+    <string name="scheduled_for">Programado para</string>
 </resources>
