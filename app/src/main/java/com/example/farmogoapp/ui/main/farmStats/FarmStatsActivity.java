@@ -17,9 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.model.FarmHistory;
 import com.example.farmogoapp.ui.main.AddExploitationActivity;
-import com.example.farmogoapp.ui.main.animalInfo.HistoryInfo;
-import com.example.farmogoapp.ui.main.animalInfo.animal_info_adapter;
 import com.example.farmogoapp.ui.searchanimal.SeachAnimalsActivity;
 
 import java.util.ArrayList;

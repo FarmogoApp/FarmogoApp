@@ -1,18 +1,17 @@
-package com.example.farmogoapp.ui.main.farmStats;
+package com.example.farmogoapp.model;
 
-public class FarmHistory {
+public class HistoryInfo {
 
-    private String mAnimalId;
     private String mIncidence;
     private String mMedicine;
     private String mDate;
 
-    public FarmHistory( String animalId, String Incidence, String medicine, String date) {
-        mAnimalId = animalId;
+    public HistoryInfo(String Incidence, String medicine, String date) {
         mIncidence = Incidence;
         mMedicine = medicine;
         mDate = date;
     }
+
 
     public String getmIncidence() {
         return mIncidence;
@@ -33,8 +32,4 @@ public class FarmHistory {
     public void setmDate(String mDate) {
         this.mDate = mDate;
     }
-
-    public String getmAnimalId() { return mAnimalId; }
-
-    public void setmAnimalId(String mAnimalId) { this.mAnimalId = mAnimalId; }
 }

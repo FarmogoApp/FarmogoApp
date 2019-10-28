@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
-import com.example.farmogoapp.ui.main.animalInfo.HistoryInfo;
+import com.example.farmogoapp.model.FarmHistory;
 
 import java.util.List;
 
