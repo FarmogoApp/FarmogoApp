@@ -1,4 +1,4 @@
-package com.example.farmogoapp.ui.main;
+package com.example.farmogoapp.ui.main.animalInfo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,13 +6,25 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
+import com.example.farmogoapp.ui.main.animallist.animal_list_adapter;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class AnimalInfoActivity extends AppCompatActivity {
 
     private Button btnList;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+
+    ArrayList<String> animal_History = new ArrayList<>();
+    Random r = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +32,11 @@ public class AnimalInfoActivity extends AppCompatActivity {
         setContentView(R.layout.animal_info);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnList = findViewById(R.id.list);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview_animalInfo);
+        recyclerView.setHasFixedSize(true);
+        mAdapter = new animal_info_adapter(animal_History);
+        recyclerView.setAdapter(mAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         registerListeners();
     }
 

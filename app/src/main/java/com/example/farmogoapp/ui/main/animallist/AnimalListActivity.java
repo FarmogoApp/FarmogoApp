@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.ui.main.AnimalIncidence;
-import com.example.farmogoapp.ui.main.AnimalInfoActivity;
+import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,9 +27,9 @@ public class AnimalListActivity extends AppCompatActivity {
     ArrayList<String> animal_Id_List = new ArrayList<>();
     Random r = new Random();
        // for (int i = 0; i < 100; i++)
-    for (int i = 0; i < 100; i++) {
-        animal_Id_List.add(String.format("%04d", r.nextInt(10000)));
-    }
+    //for (int i = 0; i < 100; i++) {
+      //  animal_Id_List.add(String.format("%04d", r.nextInt(10000)));
+    //}
     //List<String> animal_Id_List = new ArrayList<String>();
     //animal_Id_List.add("7587");
     //animal_Id_List.add("7578");
