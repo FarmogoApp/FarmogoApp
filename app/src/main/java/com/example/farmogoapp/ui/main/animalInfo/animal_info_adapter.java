@@ -47,7 +47,7 @@ public class animal_info_adapter extends RecyclerView.Adapter<animal_info_adapte
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.recycler_view_animal_list, parent, false);
+        View contactView = inflater.inflate(R.layout.recycler_view_animal_info, parent, false);
 
         // Return a new holder instance
         MyViewHolder viewHolder = new MyViewHolder(contactView);
@@ -66,9 +66,9 @@ public class animal_info_adapter extends RecyclerView.Adapter<animal_info_adapte
         TextView textView = viewHolder.incidenceTextView;
         textView.setText(animal_incidence);
         TextView textView2 = viewHolder.medicineTextView;
-        textView2.setText(animal_incidence);
+        textView2.setText(animal_medicine);
         TextView textView3 = viewHolder.dateTextView;
-        textView3.setText(animal_incidence);
+        textView3.setText(animal_date);
         //Button button = viewHolder.messageButton;
        // button.setText(id_List.isOnline() ? "Message" : "Offline");
        // button.setEnabled(id_List.isOnline());
