@@ -38,24 +38,24 @@ public class FarmStatsActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    ArrayList<FarmHistory> Farm_History = new ArrayList<>();
-    FarmHistory FarmHistory1 = new FarmHistory( "ES19022525","Causa1","Selevit","28/10/2019");
-    FarmHistory FarmHistory2 = new FarmHistory("ES19022529","Causa2","Selevit","28/10/2019");
-
-    //animal_History.add(FarmHistory1);
-    //animal_History.add(FarmHistory2);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farm_stats);
         registerViews();
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview_animalInfo);
+        ArrayList<FarmHistory> Farm_History = new ArrayList<>();
+        FarmHistory FarmHistory1 = new FarmHistory( "ES19022525","Causa1","Selevit","28/10/2019");
+        FarmHistory FarmHistory2 = new FarmHistory("ES19022529","Causa2","Selevit","28/10/2019");
+        Farm_History.add(FarmHistory1);
+        Farm_History.add(FarmHistory2);
+        registerListeners();
+
+        recyclerView = findViewById(R.id.recyclerviewStatistics);
         recyclerView.setHasFixedSize(true);
         mAdapter = new farm_stats_adapter(Farm_History);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        registerListeners();
         fillData();
         initSpinnerFarmChoose();
         registerListeners();

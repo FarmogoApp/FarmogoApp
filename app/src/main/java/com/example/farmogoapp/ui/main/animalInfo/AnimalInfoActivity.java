@@ -23,12 +23,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    ArrayList<HistoryInfo> animal_History = new ArrayList<>();
-    HistoryInfo historyInfo1 = new HistoryInfo("dolor","Selevit","28/10/2019");
-    HistoryInfo historyInfo2 = new HistoryInfo("dolor","Selevit","28/10/2019");
 
-    //animal_History.add(historyInfo1);
-    //animal_History.add(historyInfo1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +31,14 @@ public class AnimalInfoActivity extends AppCompatActivity {
         setContentView(R.layout.animal_info);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnList = findViewById(R.id.list);
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview_animalInfo);
+
+        ArrayList<HistoryInfo> animal_History = new ArrayList<>();
+        HistoryInfo historyInfo1 = new HistoryInfo("dolor","Selevit","28/10/2019");
+        HistoryInfo historyInfo2 = new HistoryInfo("dolor","Selevit","28/10/2019");
+        animal_History.add(historyInfo1);
+        animal_History.add(historyInfo2);
+
+        recyclerView = findViewById(R.id.recyclerview_animalInfo);
         recyclerView.setHasFixedSize(true);
         mAdapter = new animal_info_adapter(animal_History);
         recyclerView.setAdapter(mAdapter);

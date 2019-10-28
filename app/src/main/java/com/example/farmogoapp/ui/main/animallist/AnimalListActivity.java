@@ -13,7 +13,7 @@ import com.example.farmogoapp.ui.main.AnimalIncidence;
 import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
 
 import java.util.ArrayList;
-import java.util.Random;
+
 
 
 public class AnimalListActivity extends AppCompatActivity {
@@ -24,15 +24,6 @@ public class AnimalListActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    ArrayList<String> animal_Id_List = new ArrayList<>();
-    Random r = new Random();
-       // for (int i = 0; i < 100; i++)
-    //for (int i = 0; i < 100; i++) {
-      //  animal_Id_List.add(String.format("%04d", r.nextInt(10000)));
-    //}
-    //List<String> animal_Id_List = new ArrayList<String>();
-    //animal_Id_List.add("7587");
-    //animal_Id_List.add("7578");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +32,11 @@ public class AnimalListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnIncidence = findViewById(R.id.Incidencia);
         btnGestion = findViewById(R.id.Gestion);
+
+        ArrayList<String> animal_Id_List = new ArrayList<>();
+        animal_Id_List.add("7587");
+        animal_Id_List.add("7578");
+
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview_list);
         recyclerView.setHasFixedSize(true);
         mAdapter = new animal_list_adapter(animal_Id_List);
