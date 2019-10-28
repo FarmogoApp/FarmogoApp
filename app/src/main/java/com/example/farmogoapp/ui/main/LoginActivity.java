@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.ui.main.farmStats.FarmStatsActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
@@ -29,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast toast1 = Toast.makeText(getApplicationContext(), getString(R.string.login_succesfull), Toast.LENGTH_SHORT);
                 toast1.show();
-                Intent intent = new Intent(LoginActivity.this, ExploitationActivity.class);
+                Intent intent = new Intent(LoginActivity.this, FarmStatsActivity.class);
                 startActivity(intent);
             }
         });
