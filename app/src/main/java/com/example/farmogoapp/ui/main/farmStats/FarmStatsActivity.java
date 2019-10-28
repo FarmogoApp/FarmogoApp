@@ -1,26 +1,28 @@
-package com.example.farmogoapp.ui.main;
+package com.example.farmogoapp.ui.main.farmStats;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.ui.main.AddExploitationActivity;
+import com.example.farmogoapp.ui.main.animalInfo.HistoryInfo;
+import com.example.farmogoapp.ui.main.animalInfo.animal_info_adapter;
 import com.example.farmogoapp.ui.searchanimal.SeachAnimalsActivity;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class FarmStatsActivity extends AppCompatActivity {
@@ -32,13 +34,28 @@ public class FarmStatsActivity extends AppCompatActivity {
     private ImageButton addExplotation;
     private ImageButton modifyExplotation;
     private Spinner spinner;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farm_stats);
         registerViews();
+        ArrayList<FarmHistory> Farm_History = new ArrayList<>();
+        FarmHistory FarmHistory1 = new FarmHistory( "ES19022525","Causa1","Selevit","28/10/2019");
+        FarmHistory FarmHistory2 = new FarmHistory("ES19022529","Causa2","Selevit","28/10/2019");
+        Farm_History.add(FarmHistory1);
+        Farm_History.add(FarmHistory2);
         registerListeners();
+
+        recyclerView = findViewById(R.id.recyclerviewStatistics);
+        recyclerView.setHasFixedSize(true);
+        mAdapter = new farm_stats_adapter(Farm_History);
+        recyclerView.setAdapter(mAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         fillData();
         initSpinnerFarmChoose();
         registerListeners();

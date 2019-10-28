@@ -6,24 +6,18 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
 
-  <Button
-      android:id="@+id/button"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="Button" />
-
   <TextView
-      android:id="@+id/textView1"
+      android:id="@+id/incidence"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       tools:text="@tools:sample/lorem" />
   <TextView
-      android:id="@+id/textView2"
+      android:id="@+id/medicine"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       tools:text="@tools:sample/lorem" />
   <TextView
-      android:id="@+id/textView3"
+      android:id="@+id/date"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       tools:text="@tools:sample/lorem" />

@@ -1,19 +1,30 @@
-package com.example.farmogoapp.ui.main;
+package com.example.farmogoapp.ui.main.animallist;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.ui.main.AnimalIncidence;
+import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
+
+import java.util.ArrayList;
+
+
 
 public class AnimalListActivity extends AppCompatActivity {
 
     private Button btnIncidence;
     private Button btnGestion;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +32,17 @@ public class AnimalListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnIncidence = findViewById(R.id.Incidencia);
         btnGestion = findViewById(R.id.Gestion);
+
+        ArrayList<String> animal_Id_List = new ArrayList<>();
+        animal_Id_List.add("7587");
+        animal_Id_List.add("7578");
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview_list);
+        recyclerView.setHasFixedSize(true);
+        mAdapter = new animal_list_adapter(animal_Id_List);
+        recyclerView.setAdapter(mAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         registerListeners();
     }
 
