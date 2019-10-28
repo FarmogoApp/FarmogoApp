@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
-import com.example.farmogoapp.ui.searchanimal.SeachAnimalsActivity;
+import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
 
 public class AnimalInfoActivity extends AppCompatActivity {
 

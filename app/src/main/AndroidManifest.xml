@@ -20,7 +20,7 @@
         <activity android:name=".ui.main.ExploitationActivity" android:exported="true"/>
         <activity android:name=".ui.main.FarmStatsActivity" android:exported="true"/>
         <activity android:name=".ui.searchanimal.SeachAnimalsActivity" android:exported="true"/>
-        <activity android:name=".ui.main.AnimalListActivity" android:exported="true"/>
+        <activity android:name=".ui.main.animallist.AnimalListActivity" android:exported="true"/>
         <activity android:name=".ui.main.AnimalInfoActivity" android:exported="true"/>
         <activity android:name=".ui.main.RegisterCow" android:exported="true"/>
 

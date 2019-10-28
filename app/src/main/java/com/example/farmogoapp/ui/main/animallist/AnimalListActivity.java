@@ -1,7 +1,5 @@
-package com.example.farmogoapp.ui.main;
+package com.example.farmogoapp.ui.main.animallist;
 
-import java.util.*;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.ui.main.AnimalIncidence;
+import com.example.farmogoapp.ui.main.AnimalInfoActivity;
+
 import java.util.ArrayList;
 import java.util.Random;
 
