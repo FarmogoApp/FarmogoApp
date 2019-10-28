@@ -7,13 +7,14 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.ui.main.AnimalIncidence;
 import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
+import com.example.farmogoapp.ui.searchanimal.SearchAnimalsAdapter;
 
 import java.util.ArrayList;
-
+import java.util.Random;
 
 
 public class AnimalListActivity extends AppCompatActivity {
@@ -33,14 +34,10 @@ public class AnimalListActivity extends AppCompatActivity {
         btnIncidence = findViewById(R.id.Incidencia);
         btnGestion = findViewById(R.id.Gestion);
 
-        ArrayList<String> animal_Id_List = new ArrayList<>();
-        animal_Id_List.add("7587");
-        animal_Id_List.add("7578");
-
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview_list);
         recyclerView.setHasFixedSize(true);
-        mAdapter = new animal_list_adapter(animal_Id_List);
-        recyclerView.setAdapter(mAdapter);
+        prepareDataAdapter();
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         registerListeners();
@@ -50,6 +47,17 @@ public class AnimalListActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         this.finish();
         return super.onSupportNavigateUp();
+    }
+
+    private void prepareDataAdapter() {
+        ArrayList<Animal> animal_Id_List = new ArrayList<>();
+        Random r = new Random();
+        for (int i = 0; i < 100; i++) {
+            animal_Id_List.add(new Animal(Math.abs(r.nextLong() % 1_000_000_000_000L)));
+        }
+
+        mAdapter = new animal_list_adapter(animal_Id_List);
+        recyclerView.setAdapter(mAdapter);
     }
 
     private void registerListeners() {

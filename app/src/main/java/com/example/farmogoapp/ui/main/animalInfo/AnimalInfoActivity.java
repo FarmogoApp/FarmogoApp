@@ -10,11 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.model.HistoryInfo;
 import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
-import com.example.farmogoapp.ui.main.animallist.animal_list_adapter;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class AnimalInfoActivity extends AppCompatActivity {
 

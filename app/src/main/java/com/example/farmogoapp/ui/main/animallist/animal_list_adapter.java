@@ -2,6 +2,10 @@ package com.example.farmogoapp.ui.main.animallist;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +16,14 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.model.Animal;
 
 import java.util.List;
 
+import static android.graphics.Typeface.BOLD;
+
 public class animal_list_adapter extends RecyclerView.Adapter<animal_list_adapter.MyViewHolder> {
-    private List<String> Animal_Id_List;
+    private List<Animal> Animal_Id_List;
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -36,7 +43,7 @@ public class animal_list_adapter extends RecyclerView.Adapter<animal_list_adapte
             animalImage = (ImageView) itemView.findViewById(R.id.animal_list_image);
         }
     }
-    public animal_list_adapter(List<String> IdList) {
+    public animal_list_adapter(List<Animal> IdList) {
         Animal_Id_List = IdList;
 
     }
@@ -58,11 +65,24 @@ public class animal_list_adapter extends RecyclerView.Adapter<animal_list_adapte
     @Override
     public void onBindViewHolder(animal_list_adapter.MyViewHolder viewHolder, int position) {
         // Get the data model based on position
-        String animal_id= Animal_Id_List.get(position);
+        Animal animal_id= Animal_Id_List.get(position);
 
         // Set item views based on your views and data model
         TextView textView = viewHolder.nameTextView;
-        textView.setText(animal_id);
+        SpannableString spannableString = new SpannableString(animal_id.getOfficialId());
+        spannableString
+                .setSpan(new StyleSpan(BOLD),
+                        spannableString.length() - 4,
+                        spannableString.length(),
+                        Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        spannableString
+                .setSpan(new RelativeSizeSpan(2f),
+                        spannableString.length() - 4,
+                        spannableString.length(),
+                        Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+
+        textView.setText(spannableString);
+
         //Button button = viewHolder.messageButton;
        // button.setText(id_List.isOnline() ? "Message" : "Offline");
        // button.setEnabled(id_List.isOnline());
