@@ -16,7 +16,7 @@ import com.example.farmogoapp.R;
 import java.util.List;
 
 public class animal_info_adapter extends RecyclerView.Adapter<animal_info_adapter.MyViewHolder> {
-    private List<String> Animal_History;
+    private List<HistoryInfo> Animal_History;
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -58,11 +58,17 @@ public class animal_info_adapter extends RecyclerView.Adapter<animal_info_adapte
     @Override
     public void onBindViewHolder(animal_info_adapter.MyViewHolder viewHolder, int position) {
         // Get the data model based on position
-        String animal_id= Animal_Id_List.get(position);
+        String animal_incidence = Animal_History.get(position).getmIncidence();
+        String animal_medicine = Animal_History.get(position).getmMedicine();
+        String animal_date = Animal_History.get(position).getmDate();
 
         // Set item views based on your views and data model
-        TextView textView = viewHolder.nameTextView;
-        textView.setText(animal_id);
+        TextView textView = viewHolder.incidenceTextView;
+        textView.setText(animal_incidence);
+        TextView textView2 = viewHolder.medicineTextView;
+        textView2.setText(animal_incidence);
+        TextView textView3 = viewHolder.dateTextView;
+        textView3.setText(animal_incidence);
         //Button button = viewHolder.messageButton;
        // button.setText(id_List.isOnline() ? "Message" : "Offline");
        // button.setEnabled(id_List.isOnline());
@@ -71,7 +77,7 @@ public class animal_info_adapter extends RecyclerView.Adapter<animal_info_adapte
     // Returns the total count of items in the list
     @Override
     public int getItemCount() {
-        return Animal_Id_List.size();
+        return Animal_History.size();
     }
 
 }

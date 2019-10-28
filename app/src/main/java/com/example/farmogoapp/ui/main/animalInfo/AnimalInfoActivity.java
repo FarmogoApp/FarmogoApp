@@ -23,8 +23,12 @@ public class AnimalInfoActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    ArrayList<String> animal_History = new ArrayList<>();
-    Random r = new Random();
+    ArrayList<HistoryInfo> animal_History = new ArrayList<>();
+    HistoryInfo historyInfo1 = new HistoryInfo("dolor","Selevit","28/10/2019");
+    HistoryInfo historyInfo2 = new HistoryInfo("dolor","Selevit","28/10/2019");
+
+    animal_History.add(historyInfo1);
+    animal_History.add(historyInfo1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
