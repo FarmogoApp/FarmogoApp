@@ -1,16 +1,12 @@
-package com.example.farmogoapp.ui.main;
+package com.example.farmogoapp.ui.main.farmStats;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.ui.main.AddExploitationActivity;
 import com.example.farmogoapp.ui.searchanimal.SeachAnimalsActivity;
 
 import java.util.Random;

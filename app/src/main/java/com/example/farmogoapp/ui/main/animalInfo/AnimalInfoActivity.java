@@ -27,8 +27,8 @@ public class AnimalInfoActivity extends AppCompatActivity {
     HistoryInfo historyInfo1 = new HistoryInfo("dolor","Selevit","28/10/2019");
     HistoryInfo historyInfo2 = new HistoryInfo("dolor","Selevit","28/10/2019");
 
-    animal_History.add(historyInfo1);
-    animal_History.add(historyInfo1);
+    //animal_History.add(historyInfo1);
+    //animal_History.add(historyInfo1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

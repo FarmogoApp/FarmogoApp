@@ -59,10 +59,11 @@
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
-            tools:itemCount="31"
-            tools:listitem="@layout/recycler_view_statistics"
+            android:id="@+id/recyclerviewStatistics"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            tools:itemCount="31"
+            tools:listitem="@layout/recycler_view_statistics" />
 
     </LinearLayout>
 
