@@ -15,8 +15,9 @@ import androidx.appcompat.widget.SearchView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.model.Animal;
+import com.example.farmogoapp.ui.main.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
-import com.example.farmogoapp.ui.main.RegisterCow;
+
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -72,7 +73,7 @@ public class SeachAnimalsActivity extends AppCompatActivity {
         item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                Intent intent = new Intent(SeachAnimalsActivity.this, RegisterCow.class);
+                Intent intent = new Intent(SeachAnimalsActivity.this, RegisterCowActivity.class);
                 startActivity(intent);
                 return true;
             }

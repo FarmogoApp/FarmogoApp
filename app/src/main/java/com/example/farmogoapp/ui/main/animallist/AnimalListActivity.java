@@ -1,5 +1,7 @@
 package com.example.farmogoapp.ui.main.animallist;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.ui.main.AnimalIncidence;
+import com.example.farmogoapp.ui.main.RegisterCowActivity;
+
+import com.example.farmogoapp.ui.main.UnregistercowActivity;
 import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
 import com.example.farmogoapp.ui.searchanimal.SearchAnimalsAdapter;
 
@@ -71,10 +76,33 @@ public class AnimalListActivity extends AppCompatActivity {
         btnGestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AnimalListActivity.this, AnimalInfoActivity.class);
-                startActivity(intent);
+                popUp();
             }
         });
+    }
+    private void popUp() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("What do you want?")
+
+                .setCancelable(false)
+                .setPositiveButton("Register cow",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(AnimalListActivity.this, RegisterCowActivity.class);
+                        startActivity(intent);
+                        dialog.cancel();
+                    }
+                });
+
+        builder.setNegativeButton("Unegister cow",new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(AnimalListActivity.this, UnregistercowActivity.class);
+                startActivity(intent);
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
 }
