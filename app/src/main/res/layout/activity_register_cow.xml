@@ -242,13 +242,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/linear8">
+
             <Button
-                android:id="@+id/register"
+                android:id="@+id/btnregister"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:background="@color/colorPrimary"
-                android:text="@string/register_animal"></Button>
+                android:text="@string/register_animal" />
 
 
         </LinearLayout>

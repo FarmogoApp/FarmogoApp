@@ -66,8 +66,8 @@
     <string name="incidence_saved">Incidence saved correctly</string>
     <string name="scheduled">Scheduled</string>
     <string name="scheduled_for">Scheduled for</string>
-    <string name="building_optional" translatable="false">Building</string>
-    <string name="section_optional" translatable="false">Section</string>
+    <string name="building_optional" translatable="false">Building (optional)</string>
+    <string name="section_optional" translatable="false">Section (optional)</string>
     <string name="birthday" translatable="false">Birthday</string>
     <string name="unregisrer_cow">Unregister Cow</string>
     <string name="guide">Guide</string>
@@ -104,13 +104,7 @@
         <item>Farm 5</item>
     </string-array>
 
-    <string-array name="unregistercow">
-        <item>---------</item>
-        <item>Death Cow</item>
-        <item>Abattoir</item>
-        <item>Sell Cow</item>
 
-    </string-array>
 
 
     <string-array name="building">
@@ -134,6 +128,9 @@
         <item>Pregnancy Monitoring</item>
         <item>Weighing</item>
         <item>Scheduled</item>
+        <item>Death Cow</item>
+        <item>Abattoir</item>
+        <item>Sell Cow</item>
         <item>Add new incidence+</item>
     </string-array>
     <string-array name="incidences_example">

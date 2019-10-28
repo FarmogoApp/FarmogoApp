@@ -54,6 +54,9 @@
         <item>Seguimiento embarazo</item>
         <item>Pesaje</item>
         <item>Programado</item>
+        <item>Defuncio</item>
+        <item>Matadero</item>
+        <item>Venta de vaca</item>
         <item>Añadir nueva incidencia+</item>
     </string-array>
     <string-array name="pregnancy_state">
