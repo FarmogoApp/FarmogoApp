@@ -1,4 +1,4 @@
-package com.example.farmogoapp.ui.main;
+package com.example.farmogoapp.ui.main.animalIncidence;
 
 
 import android.os.Bundle;
@@ -9,22 +9,17 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import android.view.View.OnClickListener;
+
 import com.example.farmogoapp.R;
 
-
-public class FragmentPregnancyIncidence extends Fragment {
-
+public class FragmentTreatmentIncidence extends Fragment {
     private Button saveButton;
     private View view;
-
-
-    public static FragmentPregnancyIncidence newInstance() {
-
-        FragmentPregnancyIncidence fragment = new FragmentPregnancyIncidence();
+    public static FragmentTreatmentIncidence newInstance() {
+        FragmentTreatmentIncidence fragment = new FragmentTreatmentIncidence();
         return fragment;
     }
-    public FragmentPregnancyIncidence() {
+    public FragmentTreatmentIncidence() {
         // Required empty public constructor
     }
 
@@ -32,9 +27,9 @@ public class FragmentPregnancyIncidence extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_pregnancy_incidence, container, false);
+        view = inflater.inflate(R.layout.fragment_treatment_incidence, container, false);
         saveButton = view.findViewById(R.id.save);
-        saveButton.setOnClickListener(new OnClickListener() {
+        saveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Toast.makeText(getView().getContext(),getActivity().getString(R.string.incidence_saved),Toast.LENGTH_SHORT).show();
             }

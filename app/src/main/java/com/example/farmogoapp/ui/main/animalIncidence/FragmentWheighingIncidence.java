@@ -1,4 +1,4 @@
-package com.example.farmogoapp.ui.main;
+package com.example.farmogoapp.ui.main.animalIncidence;
 
 
 import android.os.Bundle;
@@ -12,14 +12,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.farmogoapp.R;
 
-public class FragmentTreatmentIncidence extends Fragment {
+public class FragmentWheighingIncidence extends Fragment {
     private Button saveButton;
     private View view;
-    public static FragmentTreatmentIncidence newInstance() {
-        FragmentTreatmentIncidence fragment = new FragmentTreatmentIncidence();
+    public static FragmentWheighingIncidence newInstance() {
+        FragmentWheighingIncidence fragment = new FragmentWheighingIncidence();
         return fragment;
     }
-    public FragmentTreatmentIncidence() {
+    public FragmentWheighingIncidence() {
         // Required empty public constructor
     }
 
@@ -27,7 +27,7 @@ public class FragmentTreatmentIncidence extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_treatment_incidence, container, false);
+        view = inflater.inflate(R.layout.fragment_weighing_incidence, container, false);
         saveButton = view.findViewById(R.id.save);
         saveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -36,5 +36,6 @@ public class FragmentTreatmentIncidence extends Fragment {
         });
         return view;
     }
+
 
 }

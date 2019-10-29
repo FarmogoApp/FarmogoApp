@@ -1,4 +1,4 @@
-package com.example.farmogoapp.ui.main;
+package com.example.farmogoapp.ui.main.animalIncidence;
 
 
 import android.os.Bundle;
@@ -17,13 +17,15 @@ import com.example.farmogoapp.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DeathCowFragment extends Fragment {
+public class AbattoirFragment extends Fragment {
+
     private Button saveButton;
-    public static DeathCowFragment newInstance() {
-        DeathCowFragment fragment = new DeathCowFragment();
+    public static AbattoirFragment newInstance() {
+        AbattoirFragment fragment = new AbattoirFragment();
         return fragment;
     }
-    public DeathCowFragment() {
+
+    public AbattoirFragment() {
         // Required empty public constructor
     }
 
@@ -32,15 +34,14 @@ public class DeathCowFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view= inflater.inflate(R.layout.deathcow_fragment, container, false);
+        View view= inflater.inflate(R.layout.abattoir_fragment, container, false);
         saveButton = view.findViewById(R.id.inregistercow);
-        saveButton.setOnClickListener(new View.OnClickListener() {
+         saveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Toast.makeText(getView().getContext(),getActivity().getString(R.string.unregistersucces),Toast.LENGTH_SHORT).show();
             }
         });
-        return  view;
-    }
+         return  view;
     }
 
-
+}

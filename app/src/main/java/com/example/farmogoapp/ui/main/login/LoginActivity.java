@@ -1,6 +1,5 @@
-package com.example.farmogoapp.ui.main;
+package com.example.farmogoapp.ui.main.login;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;

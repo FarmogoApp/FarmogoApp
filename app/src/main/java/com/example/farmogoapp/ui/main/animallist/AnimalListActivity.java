@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.R;
-import com.example.farmogoapp.ui.main.AnimalIncidence;
+import com.example.farmogoapp.ui.main.animalIncidence.AnimalIncidence;
 
 import java.util.ArrayList;
 import java.util.Random;

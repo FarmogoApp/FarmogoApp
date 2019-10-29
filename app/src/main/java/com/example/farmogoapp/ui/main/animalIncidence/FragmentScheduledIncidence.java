@@ -1,4 +1,4 @@
-package com.example.farmogoapp.ui.main;
+package com.example.farmogoapp.ui.main.animalIncidence;
 
 
 import android.app.DatePickerDialog;

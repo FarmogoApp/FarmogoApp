@@ -1,4 +1,4 @@
-package com.example.farmogoapp.ui.main;
+package com.example.farmogoapp.ui.main.animalIncidence;
 
 
 import android.os.Bundle;
@@ -10,13 +10,13 @@ import androidx.fragment.app.Fragment;
 
 import com.example.farmogoapp.R;
 
-public class FragmentDefaultIncidence extends Fragment {
+public class FragmentNewIncidence extends Fragment {
 
-    public static FragmentDefaultIncidence newInstance() {
-        FragmentDefaultIncidence fragment = new FragmentDefaultIncidence();
+    public static FragmentNewIncidence newInstance() {
+        FragmentNewIncidence fragment = new FragmentNewIncidence();
         return fragment;
     }
-    public FragmentDefaultIncidence() {
+    public FragmentNewIncidence() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class FragmentDefaultIncidence extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_default_incidence, container, false);
+        return inflater.inflate(R.layout.fragment_new_incidence, container, false);
     }
 
 }

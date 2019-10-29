@@ -1,4 +1,6 @@
-package com.example.farmogoapp.ui.main;
+package com.example.farmogoapp.ui.main.animalIncidence;
+
+
 
 
 import android.os.Bundle;
@@ -17,15 +19,13 @@ import com.example.farmogoapp.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AbattoirFragment extends Fragment {
-
+public class SellCowFragment extends Fragment {
     private Button saveButton;
-    public static AbattoirFragment newInstance() {
-        AbattoirFragment fragment = new AbattoirFragment();
+    public static SellCowFragment newInstance() {
+        SellCowFragment fragment = new SellCowFragment();
         return fragment;
     }
-
-    public AbattoirFragment() {
+    public SellCowFragment() {
         // Required empty public constructor
     }
 
@@ -33,15 +33,16 @@ public class AbattoirFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View view= inflater.inflate(R.layout.abattoir_fragment, container, false);
+        // Inflate the layout for this fragment
+        View view=inflater.inflate(R.layout.sellcow_fragment, container, false);
         saveButton = view.findViewById(R.id.inregistercow);
-         saveButton.setOnClickListener(new View.OnClickListener() {
+        saveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Toast.makeText(getView().getContext(),getActivity().getString(R.string.unregistersucces),Toast.LENGTH_SHORT).show();
             }
         });
-         return  view;
+        return  view;
+    }
     }
 
-}
+
