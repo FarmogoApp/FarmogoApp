@@ -1,4 +1,4 @@
-package com.example.farmogoapp.ui.main.farmStats;
+package com.example.farmogoapp.ui.main.farms;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,8 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.model.FarmHistory;
-import com.example.farmogoapp.ui.main.AddExploitationActivity;
-import com.example.farmogoapp.ui.main.RegisterCowActivity;
+import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 
 import java.util.ArrayList;

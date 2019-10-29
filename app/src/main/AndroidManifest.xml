@@ -16,14 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.AddExploitationActivity" android:exported="true"/>
-        <activity android:name=".ui.main.ExploitationActivity" android:exported="true"/>
-        <activity android:name=".ui.main.farmStats.FarmStatsActivity" android:exported="true"/>
+        <activity android:name=".ui.main.farms.AddExploitationActivity" android:exported="true"/>
+        <activity android:name=".ui.main.farms.FarmStatsActivity" android:exported="true"/>
         <activity android:name=".ui.main.searchanimal.SeachAnimalsActivity" android:exported="true"/>
         <activity android:name=".ui.main.animallist.AnimalListActivity" android:exported="true"/>
         <activity android:name=".ui.main.animalInfo.AnimalInfoActivity" android:exported="true"/>
-        <activity android:name=".ui.main.RegisterCowActivity" android:exported="true"/>
-
+        <activity android:name=".ui.main.registerAnimal.RegisterCowActivity" android:exported="true"/>
         <activity android:name=".ui.main.animalIncidence.AnimalIncidence" android:exported="true"/>
         <activity android:name=".ui.main.login.RegistrationActivity" android:exported="true"/>
     </application>

@@ -1,4 +1,4 @@
-package com.example.farmogoapp.ui.main.farmStats;
+package com.example.farmogoapp.ui.main.farms;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
