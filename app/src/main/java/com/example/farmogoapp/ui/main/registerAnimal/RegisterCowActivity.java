@@ -1,8 +1,8 @@
-package com.example.farmogoapp.ui.main;
+package com.example.farmogoapp.ui.main.registerAnimal;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.farmogoapp.R;
-import com.example.farmogoapp.ui.main.farmStats.FarmStatsActivity;
+import com.example.farmogoapp.ui.main.farms.FarmStatsActivity;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
-import com.example.farmogoapp.ui.main.farmStats.FarmStatsActivity;
+import com.example.farmogoapp.ui.main.farms.FarmStatsActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;

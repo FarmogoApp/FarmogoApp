@@ -15,7 +15,7 @@ import androidx.appcompat.widget.SearchView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.model.Animal;
-import com.example.farmogoapp.ui.main.RegisterCowActivity;
+import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
 
 
