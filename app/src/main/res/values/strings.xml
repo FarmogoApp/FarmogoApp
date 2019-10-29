@@ -66,9 +66,9 @@
     <string name="incidence_saved">Incidence saved correctly</string>
     <string name="scheduled">Scheduled</string>
     <string name="scheduled_for">Scheduled for</string>
-    <string name="building_optional" translatable="false">Building (optional)</string>
-    <string name="section_optional" translatable="false">Section (optional)</string>
-    <string name="birthday" translatable="false">Birthday</string>
+    <string name="building_optional">Building (optional)</string>
+    <string name="section_optional">Section (optional)</string>
+    <string name="birthday" >Birthday</string>
     <string name="unregisrer_cow">Unregister Cow</string>
     <string name="guide">Guide</string>
     <string name="choose_type">Choose type</string>

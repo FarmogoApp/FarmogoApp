@@ -22,7 +22,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_list"
             android:layout_width="match_parent"
-            android:layout_height="588dp"
+            android:layout_height="match_parent"
             tools:itemCount="31"
             tools:listitem="@layout/recycler_view_animal_list" />
 

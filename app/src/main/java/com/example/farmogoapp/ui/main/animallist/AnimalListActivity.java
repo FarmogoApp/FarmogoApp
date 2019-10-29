@@ -50,7 +50,7 @@ public class AnimalListActivity extends AppCompatActivity {
     private void prepareDataAdapter() {
         ArrayList<Animal> animal_Id_List = new ArrayList<>();
         Random r = new Random();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 5; i++) {
             animal_Id_List.add(new Animal(Math.abs(r.nextLong() % 1_000_000_000_000L)));
         }
 
