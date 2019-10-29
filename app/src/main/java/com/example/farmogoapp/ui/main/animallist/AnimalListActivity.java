@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.ui.main.AnimalIncidence;
-import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
-import com.example.farmogoapp.ui.searchanimal.SearchAnimalsAdapter;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -32,7 +30,7 @@ public class AnimalListActivity extends AppCompatActivity {
         setContentView(R.layout.animal_list);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnIncidence = findViewById(R.id.Incidencia);
-        btnGestion = findViewById(R.id.Gestion);
+
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview_list);
         recyclerView.setHasFixedSize(true);
@@ -68,13 +66,8 @@ public class AnimalListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btnGestion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AnimalListActivity.this, AnimalInfoActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
+
 
 }

@@ -22,9 +22,8 @@
         <activity android:name=".ui.searchanimal.SeachAnimalsActivity" android:exported="true"/>
         <activity android:name=".ui.main.animallist.AnimalListActivity" android:exported="true"/>
         <activity android:name=".ui.main.animalInfo.AnimalInfoActivity" android:exported="true"/>
-        <activity android:name=".ui.main.RegisterCow" android:exported="true"/>
+        <activity android:name=".ui.main.RegisterCowActivity" android:exported="true"/>
 
-        <activity android:name=".ui.main.Unregistercow" android:exported="true"/>
         <activity android:name=".ui.main.AnimalIncidence" android:exported="true"/>
         <activity android:name=".ui.main.RegistrationActivity" android:exported="true"/>
     </application>

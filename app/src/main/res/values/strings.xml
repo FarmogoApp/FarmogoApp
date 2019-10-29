@@ -7,8 +7,8 @@
     <string name="search">search</string>
     <string name="number_example" translatable="false">1234</string>
     <string name="tab_one">Mer</string>
-    <string name="tab_two">Numero de explotación </string>
-    <string name="tab_three">Nombre</string>
+    <string name="tab_two">Number of farm </string>
+    <string name="tab_three">Name</string>
     <string name="tag">TAG</string>
     <string name="id_eartag">Id offical eartag</string>
     <string name="gender">Gender</string>
@@ -66,6 +66,13 @@
     <string name="incidence_saved">Incidence saved correctly</string>
     <string name="scheduled">Scheduled</string>
     <string name="scheduled_for">Scheduled for</string>
+    <string name="building_optional" translatable="false">Building (optional)</string>
+    <string name="section_optional" translatable="false">Section (optional)</string>
+    <string name="birthday" translatable="false">Birthday</string>
+    <string name="unregisrer_cow">Unregister Cow</string>
+    <string name="guide">Guide</string>
+    <string name="choose_type">Choose type</string>
+    <string name="unregistersucces">Unregister succesfully</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
@@ -96,12 +103,34 @@
         <item>Farm 4</item>
         <item>Farm 5</item>
     </string-array>
+
+
+
+
+    <string-array name="building">
+        <item>Building 1</item>
+        <item>Building 2</item>
+        <item>Building 3</item>
+        <item>Building 4</item>
+        <item>Building 5</item>
+    </string-array>
+
+    <string-array name="section">
+        <item>Section 1</item>
+        <item>Section 2</item>
+        <item>Section 3</item>
+        <item>Section 4</item>
+        <item>Section 5</item>
+    </string-array>
     <string-array name="incidences">
         <item>---------</item>
         <item>Treatment</item>
         <item>Pregnancy Monitoring</item>
         <item>Weighing</item>
         <item>Scheduled</item>
+        <item>Death Cow</item>
+        <item>Abattoir</item>
+        <item>Sell Cow</item>
         <item>Add new incidence+</item>
     </string-array>
     <string-array name="incidences_example">
