@@ -1,4 +1,4 @@
-package com.example.farmogoapp.ui.searchanimal;
+package com.example.farmogoapp.ui.main.searchanimal;
 
 import android.app.SearchManager;
 import android.content.Context;

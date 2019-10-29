@@ -20,7 +20,7 @@ import com.example.farmogoapp.R;
 import com.example.farmogoapp.model.FarmHistory;
 import com.example.farmogoapp.ui.main.AddExploitationActivity;
 import com.example.farmogoapp.ui.main.RegisterCowActivity;
-import com.example.farmogoapp.ui.searchanimal.SeachAnimalsActivity;
+import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 
 import java.util.ArrayList;
 import java.util.Random;
