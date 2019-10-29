@@ -106,4 +106,7 @@
     <string name="incidence_saved">Incidence saved correctly</string>
     <string name="scheduled">Programat</string>
     <string name="scheduled_for">Programat per</string>
+    <string name="building_optional">Granja (opcional)</string>
+    <string name="section_optional">Secció (opcional)</string>
+    <string name="birthday" >Naixement</string>
 </resources>
