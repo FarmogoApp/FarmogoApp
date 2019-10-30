@@ -100,8 +100,8 @@
     <string name="observations">Observaciones</string>
     <string name="save">Guardar</string>
     <string name="pregnancy_monitoring">Seguimiento de embarazo</string>
-    <string name="wheighing">Pesaje</string>
-    <string name="wheight">Peso</string>
+    <string name="weighing">Pesaje</string>
+    <string name="weight">Peso</string>
     <string name="incidence_saved">Incidencia guardada correctamente</string>
     <string name="scheduled">Programado</string>
     <string name="scheduled_for">Programado para</string>

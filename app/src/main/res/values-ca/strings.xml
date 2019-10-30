@@ -101,8 +101,8 @@
     <string name="observations">Observacions</string>
     <string name="save">Desar</string>
     <string name="pregnancy_monitoring">Seguiment embaràs</string>
-    <string name="wheighing">Pesatge</string>
-    <string name="wheight">Pes</string>
+    <string name="weighing">Pesatge</string>
+    <string name="weight">Pes</string>
     <string name="incidence_saved">Incidència guardada correctament</string>
     <string name="scheduled">Programat</string>
     <string name="scheduled_for">Programat per</string>

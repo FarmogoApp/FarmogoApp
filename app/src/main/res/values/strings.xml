@@ -62,8 +62,8 @@
     <string name="observations">Observations</string>
     <string name="save">Save</string>
     <string name="pregnancy_monitoring">Pregnancy Monitoring</string>
-    <string name="wheighing">Wheighing</string>
-    <string name="wheight">Wheight</string>
+    <string name="weighing">Weighing</string>
+    <string name="weight">Weight</string>
     <string name="incidence_saved">Incidence saved correctly</string>
     <string name="scheduled">Scheduled</string>
     <string name="scheduled_for">Scheduled for</string>
