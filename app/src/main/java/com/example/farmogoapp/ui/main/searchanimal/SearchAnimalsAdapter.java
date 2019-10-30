@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.farmogoapp.R;
@@ -58,9 +59,30 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
             LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inf.inflate(R.layout.searchanimal_itemlist, null);
         }
+        final View row = v;
 
-        Animal animal = animalListVisible.get(position);
+        final Animal animal = animalListVisible.get(position);
         TextView listid = v.findViewById(R.id.animal_listid);
+
+        final ImageButton button = v.findViewById(R.id.animal_list_button);
+
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View buttonView) {
+                if (animal.isSelected()){
+                    animal.setSelected(false);
+                    button.setImageResource(android.R.drawable.ic_menu_add);
+                    row.setBackgroundColor(activity.getResources().getColor(R.color.colorBackground));
+                }else{
+                    animal.setSelected(true);
+                    button.setImageResource(android.R.drawable.ic_menu_delete);
+                    row.setBackgroundColor(activity.getResources().getColor(R.color.colorGray));
+                }
+
+            }
+        });
+
 
 
         SpannableString spannableString = new SpannableString(animal.getOfficialId());
