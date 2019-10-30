@@ -137,7 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:itemCount="20"
-                tools:listitem="@layout/recycler_view_animalInfo" />
+                tools:listitem="@layout/recycler_view_animal_info" />
 
         </LinearLayout>
 
@@ -153,19 +153,13 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/mas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/animal_info_button_size"
+        android:layout_height="@dimen/animal_info_button_size"
         android:text="@string/plus"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"/>
-
-    <Button
-        android:id="@+id/menos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/minus"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@id/mas"/>
+        android:src="@android:drawable/ic_menu_add"/>
+
 </RelativeLayout>

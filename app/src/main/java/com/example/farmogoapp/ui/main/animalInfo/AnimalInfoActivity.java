@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 public class AnimalInfoActivity extends AppCompatActivity {
 
     private Button btnList;
+    private boolean state;
+    private ImageButton btnAddRemove;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -30,6 +33,8 @@ public class AnimalInfoActivity extends AppCompatActivity {
         setContentView(R.layout.animal_info);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnList = findViewById(R.id.list);
+        btnAddRemove = findViewById(R.id.mas);
+        state = true;
 
         ArrayList<HistoryInfo> animal_History = new ArrayList<>();
         HistoryInfo historyInfo1 = new HistoryInfo("dolor","Selevit","28/10/2019");
@@ -57,6 +62,17 @@ public class AnimalInfoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(AnimalInfoActivity.this, AnimalListActivity.class);
                 startActivity(intent);
+            }
+        });
+        btnAddRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (state){
+                    btnAddRemove.setImageResource(android.R.drawable.ic_menu_delete);
+                }else{
+                    btnAddRemove.setImageResource(android.R.drawable.ic_menu_add);
+                }
+                state=!state;
             }
         });
     }
