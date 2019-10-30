@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.farmogoapp.ui.main.animalIncidence.DeathCowFragment">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:paddingTop="50dp"
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/tab_one"
+                android:gravity="center"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:paddingTop="50dp"
+            android:id="@+id/linear1"
+            android:layout_below="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:text="@string/guide"
+                android:gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_below="@id/linear1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="30dp">
+            <Button
+                android:id="@+id/inregistercow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="@string/unregisrer_cow"></Button>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</FrameLayout>

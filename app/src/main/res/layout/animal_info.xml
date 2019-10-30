@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/list"
+        tools:ignore="UnknownId">
+
+        <TextView
+            android:id="@+id/animal_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/animal_information"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+
+            <TextView
+                android:id="@+id/animal_id"
+                android:layout_width="@dimen/farm_stats_label_width"
+                android:layout_height="wrap_content"
+                android:text="@string/number"
+                android:textSize="@dimen/farm_stats_label_font_width" />
+
+            <TextView
+                android:id="@+id/id_example"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/animal_id"
+                android:layout_toEndOf="@+id/animal_id"
+                android:text="@string/animal_example"
+                android:textSize="@dimen/farm_stats_value_font_width" />
+
+            <TextView
+                android:id="@+id/animal_genere"
+                android:layout_width="@dimen/farm_stats_label_width"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/animal_id"
+                android:text="@string/gender"
+                android:textSize="@dimen/farm_stats_label_font_width" />
+
+            <TextView
+                android:id="@+id/genere_example"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/animal_genere"
+                android:layout_toEndOf="@+id/animal_genere"
+                android:text="@string/gender_example"
+                android:textSize="@dimen/farm_stats_value_font_width" />
+
+            <TextView
+                android:id="@+id/animal_raza"
+                android:layout_width="@dimen/farm_stats_label_width"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/animal_genere"
+                android:text="@string/race"
+                android:textSize="@dimen/farm_stats_label_font_width" />
+
+            <TextView
+                android:id="@+id/raza_exemple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/animal_raza"
+                android:layout_toEndOf="@+id/animal_raza"
+                android:text="@string/race_example"
+                android:textSize="@dimen/farm_stats_value_font_width" />
+
+            <TextView
+                android:id="@+id/animal_farmNumber"
+                android:layout_width="@dimen/farm_stats_label_width"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/animal_raza"
+                android:text="@string/farm"
+                android:textSize="@dimen/farm_stats_label_font_width" />
+
+            <TextView
+                android:id="@+id/farmNumber_exemple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/animal_farmNumber"
+                android:layout_toEndOf="@+id/animal_farmNumber"
+                android:text="@string/farm_example"
+                android:textSize="@dimen/farm_stats_value_font_width" />
+
+            <TextView
+                android:id="@+id/animal_mother"
+                android:layout_width="@dimen/farm_stats_label_width"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/animal_farmNumber"
+                android:text="@string/mother"
+                android:textSize="@dimen/farm_stats_label_font_width" />
+
+            <TextView
+                android:id="@+id/mother_exemple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/animal_mother"
+                android:layout_toEndOf="@+id/animal_mother"
+                android:text="@string/animal_example"
+                android:textSize="@dimen/farm_stats_value_font_width" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/raza_exemple"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/record"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_animalInfo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:itemCount="20"
+                tools:listitem="@layout/recycler_view_animal_info" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <ImageButton
+        android:id="@+id/mas"
+        android:layout_width="@dimen/animal_info_button_size"
+        android:layout_height="@dimen/animal_info_button_size"
+        android:text="@string/plus"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:src="@android:drawable/ic_menu_add"/>
+
+</RelativeLayout>

@@ -1,3 +1,153 @@
 <resources>
-    <string name="app_name">FarmogoApp</string>
+    <string name="app_name" translatable="false">FarmogoApp</string>
+    <string name="cows_younger">Younger cows</string>
+    <string name="cows">Cows</string>
+    <string name="bulls">Bulls</string>
+    <string name="chart_of_evolution">Chart of evolution</string>
+    <string name="search">search</string>
+    <string name="number_example" translatable="false">1234</string>
+    <string name="tab_one">Mer</string>
+    <string name="tab_two">Number of farm </string>
+    <string name="tab_three">Name</string>
+    <string name="tag">TAG</string>
+    <string name="id_eartag">Id offical eartag</string>
+    <string name="gender">Gender</string>
+    <string name="mother">Mother</string>
+    <string name="farm">Farm</string>
+    <string name="register_animal">Register animal</string>
+    <string name="animal_information">Animal Information</string>
+    <string name="number">Number</string>
+    <string name="gender_example">Female</string>
+    <string name="race">Race</string>
+    <string name="race_example" translatable="false">Limusin</string>
+    <string name="farm_example" translatable="false">2342342342</string>
+    <string name="animal_example" translatable="false">5858588998</string>
+    <string name="record">Record</string>
+    <string name="back">back</string>
+    <string name="list">list</string>
+    <string name="plus" translatable="false">+</string>
+    <string name="minus" translatable="false">-</string>
+    <string name="management">Management</string>
+    <string name="incidence">Incidence</string>
+    <string name="selected_animal">Selected Animal</string>
+    <string name="space" translatable="false">\u0020</string>
+    <string name="new_farm">New farm</string>
+    <string name="edit_farm">Edit farm</string>
+    <string name="farm_id">Farm Id</string>
+    <string name="builds_number">Num. Buildings</string>
+    <string name="add">Add</string>
+    <string name="farm_added_succesfull">Farm added Succesfull</string>
+    <string name="num_partitions_building">Num. partitions in build </string>
+    <string name="choose_farm">Choose farm</string>
+    <string name="last_marquet_price">Last Market Price: 1,008.45€</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="registration">Registration</string>
+    <string name="login_email_example" translatable="false">info@farmogo.com</string>
+    <string name="password_example" translatable="false">12345678</string>
+    <string name="username">Username</string>
+    <string name="username_example" translatable="false">FarmWorker</string>
+    <string name="registration_succesfull">Registration Succesfull</string>
+    <string name="login_succesfull">Login Succesfull</string>
+    <string name="sold">Sold</string>
+    <string name="died">Died</string>
+    <string name="slaughterhouse">Slaughterhouse</string>
+    <string name="choose_incidence">Choose incidence:</string>
+    <string name="animal_incidence">Animal Incidence</string>
+    <string name="treatment">Treatment</string>
+    <string name="type">Type</string>
+    <string name="medicine">Medicine</string>
+    <string name="dose">Dose</string>
+    <string name="observations">Observations</string>
+    <string name="save">Save</string>
+    <string name="pregnancy_monitoring">Pregnancy Monitoring</string>
+    <string name="weighing">Weighing</string>
+    <string name="weight">Weight</string>
+    <string name="incidence_saved">Incidence saved correctly</string>
+    <string name="scheduled">Scheduled</string>
+    <string name="scheduled_for">Scheduled for</string>
+    <string name="building_optional">Building (optional)</string>
+    <string name="section_optional">Section (optional)</string>
+    <string name="birthday" >Birthday</string>
+    <string name="unregisrer_cow">Unregister Cow</string>
+    <string name="guide">Guide</string>
+    <string name="choose_type">Choose type</string>
+    <string name="unregistersucces">Unregister succesfully</string>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+
+    </string-array>
+    <string-array name="mother">
+        <item>Mother 1</item>
+        <item>Mother 2</item>
+        <item>Mother 3</item>
+        <item>Mother 4</item>
+        <item>Mother 5</item>
+        <item>Mother 6</item>
+        <item>Mother 7</item>
+        <item>Mother 8</item>
+        <item>Mother 1</item>
+        <item>Mother 2</item>
+        <item>Mother 3</item>
+        <item>Mother 4</item>
+        <item>Mother 5</item>
+        <item>Mother 6</item>
+        <item>Mother 7</item>
+        <item>Mother 8</item>
+    </string-array>
+    <string-array name="farm">
+        <item>Farm 1</item>
+        <item>Farm 2</item>
+        <item>Farm 3</item>
+        <item>Farm 4</item>
+        <item>Farm 5</item>
+    </string-array>
+
+
+
+
+    <string-array name="building">
+        <item>Building 1</item>
+        <item>Building 2</item>
+        <item>Building 3</item>
+        <item>Building 4</item>
+        <item>Building 5</item>
+    </string-array>
+
+    <string-array name="section">
+        <item>Section 1</item>
+        <item>Section 2</item>
+        <item>Section 3</item>
+        <item>Section 4</item>
+        <item>Section 5</item>
+    </string-array>
+    <string-array name="incidences">
+        <item>---------</item>
+        <item>Treatment</item>
+        <item>Pregnancy Monitoring</item>
+        <item>Weighing</item>
+        <item>Scheduled</item>
+        <item>Death Cow</item>
+        <item>Abattoir</item>
+        <item>Sell Cow</item>
+        <item>Add new incidence+</item>
+    </string-array>
+    <string-array name="incidences_example">
+        <item>95597533343</item>
+        <item>95597553222</item>
+    </string-array>
+    <string-array name="type">
+        <item>Vaccine</item>
+        <item>Deworm</item>
+        <item>Inseminate</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="pregnancy_state">
+        <item>Zeal</item>
+        <item>Stand</item>
+        <item>Abortion</item>
+    </string-array>
 </resources>
+

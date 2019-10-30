@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bulls">Toros</string>
+    <string name="chart_of_evolution">Gráfico de evolución</string>
+    <string name="cows">Vacas</string>
+    <string name="cows_younger" >Terneros</string>
+    <string name="search">Buscar</string>
+    <string name="tab_one">Mer</string>
+    <string name="tab_two">Número de explotación </string>
+    <string name="tab_three">Nombre</string>
+
+    <string name="unregisrer_cow">Baja vaca</string>
+    <string name="choose_type">Elige el tipo</string>
+    <string name="guide">Guia</string>
+    <string name="unregistersucces">Baja correcta</string>
+    <string-array name="gender">
+        <item>Macho</item>
+        <item>Hembra</item>
+    </string-array>
+    <string-array name="mother">
+        <item>Madre 1</item>
+        <item>Madre 2</item>
+        <item>Madre 3</item>
+        <item>Madre 4</item>
+        <item>Madre 5</item>
+        <item>Madre 6</item>
+        <item>Madre 7</item>
+        <item>Madre 8</item>
+        <item>Madre 1</item>
+        <item>Madre 2</item>
+        <item>Madre 3</item>
+        <item>Madre 4</item>
+        <item>Madre 5</item>
+        <item>Madre 6</item>
+        <item>Madre 7</item>
+        <item>Madre 8</item>
+    </string-array>
+    <string-array name="farm">
+        <item>Explotación 1</item>
+        <item>Explotación 2</item>
+        <item>Explotación 3</item>
+        <item>Explotación 4</item>
+        <item>Explotación 5</item>
+    </string-array>
+    <string name="tag">TAG</string>
+    <string name="id_eartag">Código crotal oficial</string>
+    <string name="gender">Género</string>
+    <string name="mother">Madre</string>
+    <string name="farm">Explotación</string>
+    <string name="register_animal">Registrar animal</string>
+    <string-array name="incidences">
+        <item>-------</item>
+        <item>Tratamiento</item>
+        <item>Seguimiento embarazo</item>
+        <item>Pesaje</item>
+        <item>Programado</item>
+        <item>Defuncio</item>
+        <item>Matadero</item>
+        <item>Venta de vaca</item>
+        <item>Añadir nueva incidencia+</item>
+    </string-array>
+    <string-array name="pregnancy_state">
+        <item>Celo</item>
+        <item>Parada</item>
+        <item>Aborto</item>
+    </string-array>
+    <string name="record">Historial</string>
+    <string name="race">Raza</string>
+    <string name="number">Número</string>
+    <string name="gender_example">Hembra</string>
+    <string name="animal_information">Información animal</string>
+    <string name="back">volver</string>
+    <string name="list">lista</string>
+    <string name="incidence">Incidencia</string>
+    <string name="management">Gestión</string>
+    <string name="selected_animal">Animales seleccionados</string>
+    <string name="add">Añadir</string>
+    <string name="builds_number">Nº. Naves</string>
+    <string name="farm_id">Nº Explotación</string>
+    <string name="new_farm">Nueva explotación</string>
+    <string name="farm_added_succesfull">Explotación añadida correctamente</string>
+    <string name="num_partitions_building">Nº Lotes en la nave</string>
+    <string name="choose_farm">Elegir explotación</string>
+    <string name="last_marquet_price">Último precio de mercado: 1.008,45€</string>
+    <string name="login">Acceder</string>
+    <string name="password">Contraseña</string>
+    <string name="registration">Registrarse</string>
+    <string name="username">Usuario</string>
+    <string name="registration_succesfull">Registrado correctamente</string>
+    <string name="died">Defunción</string>
+    <string name="login_succesfull">Acceso correcto</string>
+    <string name="slaughterhouse">Matadero</string>
+    <string name="sold">Vendido</string>
+    <string name="choose_incidence">Elegir incidencia:</string>
+    <string name="animal_incidence">Incidencia Animal</string>
+    <string name="treatment">Tratamiento</string>
+    <string name="type">Tipo</string>
+    <string name="medicine">Medicamento</string>
+    <string name="dose">Dosis</string>
+    <string name="observations">Observaciones</string>
+    <string name="save">Guardar</string>
+    <string name="pregnancy_monitoring">Seguimiento de embarazo</string>
+    <string name="weighing">Pesaje</string>
+    <string name="weight">Peso</string>
+    <string name="incidence_saved">Incidencia guardada correctamente</string>
+    <string name="scheduled">Programado</string>
+    <string name="scheduled_for">Programado para</string>
+    <string name="building_optional">Granja (opcional)</string>
+    <string name="section_optional">Sección (opcional)</string>
+    <string name="birthday" >Nacimiento</string>
+    <string name="edit_farm">Editar Explotación</string>
+</resources>
