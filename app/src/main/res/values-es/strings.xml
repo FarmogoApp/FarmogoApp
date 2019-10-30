@@ -108,4 +108,5 @@
     <string name="building_optional">Granja (opcional)</string>
     <string name="section_optional">Sección (opcional)</string>
     <string name="birthday" >Nacimiento</string>
+    <string name="edit_farm">Editar Explotación</string>
 </resources>
