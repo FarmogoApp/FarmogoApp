@@ -29,6 +29,7 @@ public class animal_list_adapter extends RecyclerView.Adapter<animal_list_adapte
     public class MyViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
+        public Animal animal;
         public TextView nameTextView;
         public ImageButton messageButton;
         public ImageView animalImage;
@@ -54,10 +55,19 @@ public class animal_list_adapter extends RecyclerView.Adapter<animal_list_adapte
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.recycler_view_animal_list, parent, false);
+        final View contactView = inflater.inflate(R.layout.recycler_view_animal_list, parent, false);
+        final MyViewHolder viewHolder = new MyViewHolder(contactView);
+        ImageButton removeButton = contactView.findViewById(R.id.animal_list_button);
+        removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Animal_Id_List.remove(viewHolder.animal);
+               notifyDataSetChanged();
+            }
+        });
 
         // Return a new holder instance
-        MyViewHolder viewHolder = new MyViewHolder(contactView);
+
         return viewHolder;
     }
 
@@ -66,7 +76,7 @@ public class animal_list_adapter extends RecyclerView.Adapter<animal_list_adapte
     public void onBindViewHolder(animal_list_adapter.MyViewHolder viewHolder, int position) {
         // Get the data model based on position
         Animal animal_id= Animal_Id_List.get(position);
-
+        viewHolder.animal = animal_id;
         // Set item views based on your views and data model
         TextView textView = viewHolder.nameTextView;
         SpannableString spannableString = new SpannableString(animal_id.getOfficialId());

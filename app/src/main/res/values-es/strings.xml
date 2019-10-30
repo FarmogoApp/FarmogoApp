@@ -100,12 +100,13 @@
     <string name="observations">Observaciones</string>
     <string name="save">Guardar</string>
     <string name="pregnancy_monitoring">Seguimiento de embarazo</string>
-    <string name="wheighing">Pesaje</string>
-    <string name="wheight">Peso</string>
+    <string name="weighing">Pesaje</string>
+    <string name="weight">Peso</string>
     <string name="incidence_saved">Incidencia guardada correctamente</string>
     <string name="scheduled">Programado</string>
     <string name="scheduled_for">Programado para</string>
     <string name="building_optional">Granja (opcional)</string>
     <string name="section_optional">Sección (opcional)</string>
     <string name="birthday" >Nacimiento</string>
+    <string name="edit_farm">Editar Explotación</string>
 </resources>

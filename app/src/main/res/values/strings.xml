@@ -32,6 +32,7 @@
     <string name="selected_animal">Selected Animal</string>
     <string name="space" translatable="false">\u0020</string>
     <string name="new_farm">New farm</string>
+    <string name="edit_farm">Edit farm</string>
     <string name="farm_id">Farm Id</string>
     <string name="builds_number">Num. Buildings</string>
     <string name="add">Add</string>
@@ -61,8 +62,8 @@
     <string name="observations">Observations</string>
     <string name="save">Save</string>
     <string name="pregnancy_monitoring">Pregnancy Monitoring</string>
-    <string name="wheighing">Wheighing</string>
-    <string name="wheight">Wheight</string>
+    <string name="weighing">Weighing</string>
+    <string name="weight">Weight</string>
     <string name="incidence_saved">Incidence saved correctly</string>
     <string name="scheduled">Scheduled</string>
     <string name="scheduled_for">Scheduled for</string>

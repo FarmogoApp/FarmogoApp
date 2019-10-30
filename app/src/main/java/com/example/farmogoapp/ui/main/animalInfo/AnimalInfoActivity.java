@@ -1,23 +1,34 @@
 package com.example.farmogoapp.ui.main.animalInfo;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.model.HistoryInfo;
 import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
+import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
+import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 
 import java.util.ArrayList;
 
 public class AnimalInfoActivity extends AppCompatActivity {
 
     private Button btnList;
+    private boolean state;
+    private ImageButton btnAddRemove;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -29,7 +40,8 @@ public class AnimalInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animal_info);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        btnList = findViewById(R.id.list);
+        btnAddRemove = findViewById(R.id.mas);
+        state = true;
 
         ArrayList<HistoryInfo> animal_History = new ArrayList<>();
         HistoryInfo historyInfo1 = new HistoryInfo("dolor","Selevit","28/10/2019");
@@ -52,13 +64,34 @@ public class AnimalInfoActivity extends AppCompatActivity {
     }
 
     private void registerListeners() {
-        btnList.setOnClickListener(new View.OnClickListener() {
+        btnAddRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AnimalInfoActivity.this, AnimalListActivity.class);
-                startActivity(intent);
+                if (state){
+                    btnAddRemove.setImageResource(android.R.drawable.ic_menu_delete);
+                }else{
+                    btnAddRemove.setImageResource(android.R.drawable.ic_menu_add);
+                }
+                state=!state;
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.animalinfo, menu);
+
+        MenuItem list = menu.findItem(R.id.list_selected);
+        list.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intent = new Intent(AnimalInfoActivity.this, AnimalListActivity.class);
+                startActivity(intent);
+                return true;
+            }
+        });
+        return true;
     }
 
 }

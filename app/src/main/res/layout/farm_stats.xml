@@ -67,23 +67,6 @@
 
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/modifyExplotation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:background="@color/colorBackground"
-        android:src="@android:drawable/ic_menu_manage" />
-
-    <ImageButton
-        android:id="@+id/addExplotation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/modifyExplotation"
-        android:background="@color/colorBackground"
-        android:src="@android:drawable/ic_menu_add" />
-
     <Button
         android:id="@+id/search"
         android:layout_width="wrap_content"

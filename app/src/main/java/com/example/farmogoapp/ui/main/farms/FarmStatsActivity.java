@@ -2,11 +2,13 @@ package com.example.farmogoapp.ui.main.farms;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,12 +32,37 @@ public class FarmStatsActivity extends AppCompatActivity {
     private TextView cowsTextView;
     private TextView bullsTextView;
     private Button searchButton;
-    private ImageButton addExplotation;
-    private ImageButton modifyExplotation;
     private Spinner spinner;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.farmstats, menu);
+
+        MenuItem item = menu.findItem(R.id.add_farm);
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intent = new Intent(FarmStatsActivity.this, AddExploitationActivity.class);
+                startActivity(intent);
+                return true;
+            }
+        });
+
+        MenuItem list = menu.findItem(R.id.edit_farm);
+        list.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intent = new Intent(FarmStatsActivity.this, AddExploitationActivity.class);
+                startActivity(intent);
+                return true;
+            }
+        });
+        return true;
+    }
 
 
     @Override
@@ -44,8 +71,8 @@ public class FarmStatsActivity extends AppCompatActivity {
         setContentView(R.layout.farm_stats);
         registerViews();
         ArrayList<FarmHistory> Farm_History = new ArrayList<>();
-        FarmHistory FarmHistory1 = new FarmHistory( "ES19022525","Causa1","Selevit","28/10/2019");
-        FarmHistory FarmHistory2 = new FarmHistory("ES19022529","Causa2","Selevit","28/10/2019");
+        FarmHistory FarmHistory1 = new FarmHistory("ES19022525", "Causa1", "Selevit", "28/10/2019");
+        FarmHistory FarmHistory2 = new FarmHistory("ES19022529", "Causa2", "Selevit", "28/10/2019");
         Farm_History.add(FarmHistory1);
         Farm_History.add(FarmHistory2);
         registerListeners();
@@ -65,8 +92,6 @@ public class FarmStatsActivity extends AppCompatActivity {
         cowsTextView = findViewById(R.id.cows);
         bullsTextView = findViewById(R.id.bulls);
         searchButton = findViewById(R.id.search);
-        addExplotation = findViewById(R.id.addExplotation);
-        modifyExplotation = findViewById(R.id.modifyExplotation);
         spinner = findViewById(R.id.spinnerstatistics);
         btnGestion = findViewById(R.id.Gestion);
     }
@@ -88,21 +113,6 @@ public class FarmStatsActivity extends AppCompatActivity {
             }
         });
 
-        addExplotation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(FarmStatsActivity.this, AddExploitationActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        modifyExplotation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(FarmStatsActivity.this, AddExploitationActivity.class);
-                startActivity(intent);
-            }
-        });
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -147,8 +157,6 @@ public class FarmStatsActivity extends AppCompatActivity {
         String[] incidences = getResources().getStringArray(R.array.incidences_example);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, incidences);
         spinner.setAdapter(adapter);
-
-
 
 
     }

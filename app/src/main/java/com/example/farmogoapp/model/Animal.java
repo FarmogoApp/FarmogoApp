@@ -4,6 +4,8 @@ public class Animal {
 
     private long id;
 
+    private boolean selected;
+
     public Animal(long id) {
         this.id = id;
     }
@@ -16,7 +18,17 @@ public class Animal {
         this.id = id;
     }
 
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
     public String getOfficialId(){
         return String.format("ES%012d",this.id);
     }
+
+
 }
