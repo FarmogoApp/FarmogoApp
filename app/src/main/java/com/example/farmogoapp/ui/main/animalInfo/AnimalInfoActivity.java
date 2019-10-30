@@ -1,18 +1,26 @@
 package com.example.farmogoapp.ui.main.animalInfo;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.model.HistoryInfo;
 import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
+import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
+import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 
 import java.util.ArrayList;
 
@@ -32,7 +40,6 @@ public class AnimalInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animal_info);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        btnList = findViewById(R.id.list);
         btnAddRemove = findViewById(R.id.mas);
         state = true;
 
@@ -57,13 +64,6 @@ public class AnimalInfoActivity extends AppCompatActivity {
     }
 
     private void registerListeners() {
-        btnList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AnimalInfoActivity.this, AnimalListActivity.class);
-                startActivity(intent);
-            }
-        });
         btnAddRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +75,23 @@ public class AnimalInfoActivity extends AppCompatActivity {
                 state=!state;
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.animalinfo, menu);
+
+        MenuItem list = menu.findItem(R.id.list_selected);
+        list.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intent = new Intent(AnimalInfoActivity.this, AnimalListActivity.class);
+                startActivity(intent);
+                return true;
+            }
+        });
+        return true;
     }
 
 }
