@@ -49,12 +49,12 @@
     <string name="farm">Explotación</string>
     <string name="register_animal">Registrar animal</string>
     <string-array name="incidences">
-        <item>-------</item>
+        <item>Nacimiento</item>
         <item>Tratamiento</item>
         <item>Seguimiento embarazo</item>
         <item>Pesaje</item>
         <item>Programado</item>
-        <item>Defuncio</item>
+        <item>Defunción</item>
         <item>Matadero</item>
         <item>Venta de vaca</item>
         <item>Añadir nueva incidencia+</item>

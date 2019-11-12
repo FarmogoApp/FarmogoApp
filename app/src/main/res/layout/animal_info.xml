@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
@@ -8,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_below="@+id/list"
+
         tools:ignore="UnknownId">
 
         <TextView
@@ -143,14 +144,20 @@
 
     </LinearLayout>
 
-
     <ImageButton
         android:id="@+id/mas"
         android:layout_width="@dimen/animal_info_button_size"
         android:layout_height="@dimen/animal_info_button_size"
-        android:text="@string/plus"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:src="@android:drawable/ic_menu_add"/>
+        android:src="@android:drawable/ic_menu_add"
+        android:text="@string/plus" />
+    <Button
+        android:id="@+id/IncidenciaAnimalInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:text="@string/incidence" />
 
 </RelativeLayout>
