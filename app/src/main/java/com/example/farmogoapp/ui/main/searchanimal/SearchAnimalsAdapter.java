@@ -73,11 +73,11 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
                 if (animal.isSelected()){
                     animal.setSelected(false);
                     button.setImageResource(android.R.drawable.ic_menu_add);
-                    row.setBackgroundColor(activity.getResources().getColor(R.color.colorBackground));
+                    row.setBackgroundColor(activity.getResources().getColor(R.color.colorText));
                 }else{
                     animal.setSelected(true);
                     button.setImageResource(android.R.drawable.ic_menu_delete);
-                    row.setBackgroundColor(activity.getResources().getColor(R.color.colorGray));
+                    row.setBackgroundColor(activity.getResources().getColor(R.color.colorSecondary));
                 }
 
             }

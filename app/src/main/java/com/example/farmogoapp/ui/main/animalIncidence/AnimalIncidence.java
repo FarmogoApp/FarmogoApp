@@ -38,7 +38,7 @@ public class AnimalIncidence extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.Fragment, FragmentDefaultIncidence.newInstance()).commit();
+                                .replace(R.id.Fragment, FragmentBirthIncidence.newInstance()).commit();
                         break;
                     case 1:
                         getSupportFragmentManager().beginTransaction()
@@ -76,7 +76,7 @@ public class AnimalIncidence extends AppCompatActivity {
                         break;
                     default:
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.Fragment, new FragmentDefaultIncidence()).commit();
+                                .replace(R.id.Fragment, new FragmentBirthIncidence()).commit();
                         break;
 
                 }

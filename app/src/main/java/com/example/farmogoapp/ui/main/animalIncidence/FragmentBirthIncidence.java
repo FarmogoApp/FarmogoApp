@@ -10,13 +10,13 @@ import androidx.fragment.app.Fragment;
 
 import com.example.farmogoapp.R;
 
-public class FragmentDefaultIncidence extends Fragment {
+public class FragmentBirthIncidence extends Fragment {
 
-    public static FragmentDefaultIncidence newInstance() {
-        FragmentDefaultIncidence fragment = new FragmentDefaultIncidence();
+    public static FragmentBirthIncidence newInstance() {
+        FragmentBirthIncidence fragment = new FragmentBirthIncidence();
         return fragment;
     }
-    public FragmentDefaultIncidence() {
+    public FragmentBirthIncidence() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class FragmentDefaultIncidence extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_default_incidence, container, false);
+        return inflater.inflate(R.layout.fragment_birth_incidence, container, false);
     }
 
 }

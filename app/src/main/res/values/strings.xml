@@ -124,7 +124,7 @@
         <item>Section 5</item>
     </string-array>
     <string-array name="incidences">
-        <item>---------</item>
+        <item>Birth</item>
         <item>Treatment</item>
         <item>Pregnancy Monitoring</item>
         <item>Weighing</item>
