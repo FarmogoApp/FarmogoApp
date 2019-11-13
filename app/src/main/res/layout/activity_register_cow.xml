@@ -86,7 +86,7 @@
                     android:layout_margin="20dp"
                     android:padding="5dp"
                     android:id="@+id/sp_genero"
-                    android:background="@color/colorGray"
+                    android:background="@color/colorAccent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:entries="@array/gender"/>
@@ -114,7 +114,7 @@
                     android:layout_margin="20dp"
                     android:padding="5dp"
                     android:id="@+id/sp_madre"
-                    android:background="@color/colorGray"
+                    android:background="@color/colorAccent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:entries="@array/mother"/>
@@ -142,7 +142,7 @@
                     android:layout_below="@+id/Explotacion"
                     android:padding="5dp"
                     android:id="@+id/sp_aves"
-                    android:background="@color/colorGray"
+                    android:background="@color/colorAccent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:entries="@array/farm"/>
@@ -171,7 +171,7 @@
                     android:layout_below="@+id/Building"
                     android:padding="5dp"
                     android:id="@+id/sp_buildinf"
-                    android:background="@color/colorGray"
+                    android:background="@color/colorAccent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:entries="@array/building"/>
@@ -199,7 +199,7 @@
                     android:layout_below="@+id/Seccion"
                     android:padding="5dp"
                     android:id="@+id/sp_seccion"
-                    android:background="@color/colorGray"
+                    android:background="@color/colorAccent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:entries="@array/section"/>
