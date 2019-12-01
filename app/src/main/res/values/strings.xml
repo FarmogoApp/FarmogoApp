@@ -74,6 +74,9 @@
     <string name="guide">Guide</string>
     <string name="choose_type">Choose type</string>
     <string name="unregistersucces">Unregister succesfully</string>
+    <string name="Exit">Exit</string>
+    <string name="destino">Destination</string>
+    <string name="guia_certificado">Guide/Certificate</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
@@ -130,7 +133,7 @@
         <item>Weighing</item>
         <item>Scheduled</item>
         <item>Death Cow</item>
-        <item>Abattoir</item>
+        <item>Exit</item>
         <item>Sell Cow</item>
         <item>Add new incidence+</item>
     </string-array>
@@ -142,6 +145,12 @@
         <item>Vaccine</item>
         <item>Deworm</item>
         <item>Inseminate</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="exitType">
+        <item>Death</item>
+        <item>Abattoir</item>
+        <item>Sell</item>
         <item>Others</item>
     </string-array>
     <string-array name="pregnancy_state">

@@ -63,7 +63,7 @@ public class AnimalIncidence extends AppCompatActivity {
                         break;
                     case 6:
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.Fragment, AbattoirFragment.newInstance()).commit();
+                                .replace(R.id.Fragment, ExitFragment.newInstance()).commit();
                         break;
 
                     case 7:

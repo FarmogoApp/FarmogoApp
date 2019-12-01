@@ -17,6 +17,12 @@
         <item>Macho</item>
         <item>Hembra</item>
     </string-array>
+    <string-array name="exitType">
+        <item>Muerte</item>
+        <item>Matadero</item>
+        <item>Venta</item>
+        <item>Otros</item>
+    </string-array>
     <string-array name="mother">
         <item>Madre 1</item>
         <item>Madre 2</item>
@@ -55,7 +61,7 @@
         <item>Pesaje</item>
         <item>Programado</item>
         <item>Defunción</item>
-        <item>Matadero</item>
+        <item>Salida</item>
         <item>Venta de vaca</item>
         <item>Añadir nueva incidencia+</item>
     </string-array>
@@ -109,4 +115,7 @@
     <string name="section_optional">Sección (opcional)</string>
     <string name="birthday" >Nacimiento</string>
     <string name="edit_farm">Editar Explotación</string>
+    <string name="Exit">Salida</string>
+    <string name="destino">Destino</string>
+    <string name="guia_certificado">Guia/Certificado</string>
 </resources>

@@ -110,4 +110,7 @@
     <string name="section_optional">Secció (opcional)</string>
     <string name="birthday" >Naixement</string>
     <string name="edit_farm">Editar Explotació</string>
+    <string name="Exit">Sortida</string>
+    <string name="destino">Destino</string>
+    <string name="guia_certificado">Guia/Certificado</string>
 </resources>
