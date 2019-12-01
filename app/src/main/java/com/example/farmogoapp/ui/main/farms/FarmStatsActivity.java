@@ -175,6 +175,13 @@ public class FarmStatsActivity extends AppCompatActivity implements Callback<Arr
         if(response.isSuccessful()){
             ArrayList<animalTypesResponse> animalTypes = response.body();
             Log.e("ANIMAL TYPES:", String.valueOf(animalTypes.size()));
+            for(int i = 0; i< animalTypes.size();i++){
+                Log.e("Animal Tpye UID:", animalTypes.get(i).getmUid());
+                Log.e("Animal Tpye Descriptio:", animalTypes.get(i).getDescription());
+                Log.e("Animal Tpye Icon:", animalTypes.get(i).getIcon());
+
+
+            }
         }
     }
 

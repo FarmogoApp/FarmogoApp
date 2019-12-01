@@ -19,5 +19,14 @@ public class animalTypesResponse {
         this.description = description;
         this.icon = icon;
     }
+    public String getmUid(){
+        return this.mUid;
+    }
+    public String getDescription(){
+        return this.description;
+    }
+    public String getIcon(){
+        return this.icon;
+    }
 
 }
