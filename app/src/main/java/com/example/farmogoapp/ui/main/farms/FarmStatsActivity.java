@@ -2,6 +2,7 @@ package com.example.farmogoapp.ui.main.farms;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,6 +20,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.io.FarmogoApiAdapter;
+import com.example.farmogoapp.io.response.animalTypesResponse;
 import com.example.farmogoapp.model.FarmHistory;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
@@ -26,7 +29,11 @@ import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class FarmStatsActivity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class FarmStatsActivity extends AppCompatActivity implements Callback<ArrayList<animalTypesResponse>> {
     private Button btnGestion;
     private TextView yougerCowsTextView;
     private TextView cowsTextView;
@@ -76,6 +83,8 @@ public class FarmStatsActivity extends AppCompatActivity {
         Farm_History.add(FarmHistory1);
         Farm_History.add(FarmHistory2);
         registerListeners();
+        Call<ArrayList<animalTypesResponse>> call = FarmogoApiAdapter.getApiService().getAnimalTypes();
+        call.enqueue(this);
 
         recyclerView = findViewById(R.id.recyclerviewStatistics);
         recyclerView.setHasFixedSize(true);
@@ -161,4 +170,16 @@ public class FarmStatsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onResponse(Call<ArrayList<animalTypesResponse>> call, Response<ArrayList<animalTypesResponse>> response) {
+        if(response.isSuccessful()){
+            ArrayList<animalTypesResponse> animalTypes = response.body();
+            Log.e("ANIMAL TYPES:", String.valueOf(animalTypes.size()));
+        }
+    }
+
+    @Override
+    public void onFailure(Call<ArrayList<animalTypesResponse>> call, Throwable t) {
+
+    }
 }
