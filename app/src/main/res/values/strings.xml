@@ -132,10 +132,7 @@
         <item>Pregnancy Monitoring</item>
         <item>Weighing</item>
         <item>Scheduled</item>
-        <item>Death Cow</item>
         <item>Exit</item>
-        <item>Sell Cow</item>
-        <item>Add new incidence+</item>
     </string-array>
     <string-array name="incidences_example">
         <item>95597533343</item>

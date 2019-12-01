@@ -59,21 +59,9 @@ public class AnimalIncidence extends AppCompatActivity {
 
                     case 5:
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.Fragment, DeathCowFragment.newInstance()).commit();
-                        break;
-                    case 6:
-                        getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.Fragment, ExitFragment.newInstance()).commit();
                         break;
 
-                    case 7:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.Fragment, SellCowFragment.newInstance()).commit();
-                        break;
-                    case 8:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.Fragment, FragmentNewIncidence.newInstance()).commit();
-                        break;
                     default:
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.Fragment, new FragmentBirthIncidence()).commit();

@@ -51,10 +51,8 @@
         <item>Seguiment embaràs</item>
         <item>Pesatge</item>
         <item>Programat</item>
-        <item>Defuncio</item>
-        <item>Matader</item>
-        <item>Venta de vaca</item>
-        <item>Afegir nova incidència+</item>
+        <item>Sortida</item>
+
     </string-array>
     <string-array name="pregnancy_state">
         <item>Zel</item>
