@@ -77,6 +77,12 @@
     <string name="Exit">Exit</string>
     <string name="destino">Destination</string>
     <string name="guia_certificado">Guide/Certificate</string>
+    <string name="BirthTitle">Birth</string>
+    <string name="OfficialIDbirth">OfficialId</string>
+    <string name="register_cow">Register cow</string>
+    <string name="Date">Date</string>
+
+
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
@@ -107,9 +113,6 @@
         <item>Farm 4</item>
         <item>Farm 5</item>
     </string-array>
-
-
-
 
     <string-array name="building">
         <item>Building 1</item>
@@ -154,6 +157,13 @@
         <item>Zeal</item>
         <item>Stand</item>
         <item>Abortion</item>
+    </string-array>
+    <string-array name="races">
+        <item>Pirenaica</item>
+        <item>Parda de Montaña</item>
+        <item>Limusina</item>
+        <item>Frisona</item>
+        <item>Charoles</item>
     </string-array>
 </resources>
 

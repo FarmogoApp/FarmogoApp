@@ -67,6 +67,14 @@
         <item>Parada</item>
         <item>Aborto</item>
     </string-array>
+    <string-array name="races">
+        <item>Pirenaica</item>
+        <item>Parda de Montaña</item>
+        <item>Limusina</item>
+        <item>Frisona</item>
+        <item>Charoles</item>
+    </string-array>
+
     <string name="record">Historial</string>
     <string name="race">Raza</string>
     <string name="number">Número</string>
@@ -115,4 +123,8 @@
     <string name="Exit">Salida</string>
     <string name="destino">Destino</string>
     <string name="guia_certificado">Guia/Certificado</string>
+    <string name="BirthTitle">Nacimiento</string>
+    <string name="OfficialIDbirth">OfficialId</string>
+    <string name="register_cow">Registrar vaca</string>
+    <string name="Date">Fecha</string>
 </resources>
