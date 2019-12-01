@@ -2,6 +2,8 @@ package com.example.farmogoapp.ui.main.farms;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,6 +27,18 @@ import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import android.os.StrictMode;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class FarmStatsActivity extends AppCompatActivity {
     private Button btnGestion;
@@ -77,6 +91,7 @@ public class FarmStatsActivity extends AppCompatActivity {
         Farm_History.add(FarmHistory2);
         registerListeners();
 
+        getData();
         recyclerView = findViewById(R.id.recyclerviewStatistics);
         recyclerView.setHasFixedSize(true);
         mAdapter = new farm_stats_adapter(Farm_History);
@@ -86,6 +101,59 @@ public class FarmStatsActivity extends AppCompatActivity {
         initSpinnerFarmChoose();
         registerListeners();
     }
+
+    public void getData(){
+        String sql = "http://localhost:8080/api/farms";
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        URL url = null;
+        HttpURLConnection conn;
+
+        try {
+            url = new URL(sql);
+            conn = (HttpURLConnection) url.openConnection();
+
+            conn.setRequestMethod("GET");
+
+            conn.connect();
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+            String inputLine;
+
+            StringBuffer response = new StringBuffer();
+
+            String json = "";
+
+            while((inputLine = in.readLine()) != null){
+                response.append(inputLine);
+            }
+
+            json = response.toString();
+
+            JSONArray jsonArr = null;
+
+            jsonArr = new JSONArray(json);
+            String mensaje = "";
+            for(int i = 0;i<jsonArr.length();i++){
+                JSONObject jsonObject = jsonArr.getJSONObject(i);
+
+                Log.d("SLIDA",jsonObject.optString("description"));
+                mensaje += "DESCRIPCION "+i+" "+jsonObject.optString("description")+"\n";
+            }
+            System.out.println(mensaje);
+            cowsTextView.setText(mensaje);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void registerViews() {
         yougerCowsTextView = findViewById(R.id.cows_younger);
