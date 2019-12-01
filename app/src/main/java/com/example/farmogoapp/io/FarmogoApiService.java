@@ -11,5 +11,4 @@ import retrofit2.http.Path;
 public interface FarmogoApiService {
     @GET("animalTypes")
     Call<ArrayList<animalTypesResponse>> getAnimalTypes();
-
 }

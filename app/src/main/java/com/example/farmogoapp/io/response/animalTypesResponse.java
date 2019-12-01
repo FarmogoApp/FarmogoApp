@@ -20,7 +20,4 @@ public class animalTypesResponse {
         this.icon = icon;
     }
 
-    public animalTypesResponse getAnimalTypes(){
-        return animalTypesResponse;
-    }
 }
