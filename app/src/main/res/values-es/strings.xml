@@ -127,4 +127,11 @@
     <string name="OfficialIDbirth">OfficialId</string>
     <string name="register_cow">Registrar vaca</string>
     <string name="Date">Fecha</string>
+    <string name="user_auth_failed">Autenticación fallida:</string>
+    <string name="log_in">Iniciando sessión...</string>
+    <string name="please_enter_email">Porfavor introduzca su correo</string>
+    <string name="please_enter_password">Porfavor introduzca su contrasenya</string>
+    <string name="forgot_your_password">Ha olvidado su contraseña?</string>
+    <string name="recovery_email">Le hemos enviado un correo para recuperar su contraseña</string>
+    <string name="reset_password">Recuperar contraseña:</string>
 </resources>

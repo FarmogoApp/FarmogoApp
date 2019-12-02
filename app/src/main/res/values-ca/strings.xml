@@ -116,6 +116,13 @@
     <string name="section_optional">Secció (opcional)</string>
     <string name="birthday" >Naixement</string>
     <string name="edit_farm">Editar Explotació</string>
+    <string name="user_auth_failed">Autenticació fallida:</string>
+    <string name="log_in">Iniciant sessió...</string>
+    <string name="please_enter_email">Sisplau introdueixi el seu correu</string>
+    <string name="please_enter_password">Sisplau introdueixi la seva contrasenya</string>
+    <string name="forgot_your_password">Heu oblidat la vostra contrasenya?</string>
+    <string name="recovery_email">Li hem enviat un correu per recuperar la contrasenya</string>
+    <string name="reset_password">Recuperar contrasenya:</string>
     <string name="Exit">Sortida</string>
     <string name="destino">Destino</string>
     <string name="guia_certificado">Guia/Certificado</string>

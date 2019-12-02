@@ -2,7 +2,6 @@ package com.example.farmogoapp.ui.main.farms;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +20,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.io.FarmogoApiAdapter;
+import com.example.farmogoapp.io.response.animalTypesResponse;
 import com.example.farmogoapp.model.FarmHistory;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
@@ -28,19 +29,11 @@ import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 import java.util.ArrayList;
 import java.util.Random;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import android.os.StrictMode;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class FarmStatsActivity extends AppCompatActivity {
+public class FarmStatsActivity extends AppCompatActivity implements Callback<ArrayList<animalTypesResponse>> {
     private Button btnGestion;
     private TextView yougerCowsTextView;
     private TextView cowsTextView;
@@ -90,8 +83,9 @@ public class FarmStatsActivity extends AppCompatActivity {
         Farm_History.add(FarmHistory1);
         Farm_History.add(FarmHistory2);
         registerListeners();
+        Call<ArrayList<animalTypesResponse>> call = FarmogoApiAdapter.getApiService().getAnimalTypes();
+        call.enqueue(this);
 
-        getData();
         recyclerView = findViewById(R.id.recyclerviewStatistics);
         recyclerView.setHasFixedSize(true);
         mAdapter = new farm_stats_adapter(Farm_History);
@@ -101,59 +95,6 @@ public class FarmStatsActivity extends AppCompatActivity {
         initSpinnerFarmChoose();
         registerListeners();
     }
-
-    public void getData(){
-        String sql = "http://localhost:8080/api/farms";
-
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-        URL url = null;
-        HttpURLConnection conn;
-
-        try {
-            url = new URL(sql);
-            conn = (HttpURLConnection) url.openConnection();
-
-            conn.setRequestMethod("GET");
-
-            conn.connect();
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-            String inputLine;
-
-            StringBuffer response = new StringBuffer();
-
-            String json = "";
-
-            while((inputLine = in.readLine()) != null){
-                response.append(inputLine);
-            }
-
-            json = response.toString();
-
-            JSONArray jsonArr = null;
-
-            jsonArr = new JSONArray(json);
-            String mensaje = "";
-            for(int i = 0;i<jsonArr.length();i++){
-                JSONObject jsonObject = jsonArr.getJSONObject(i);
-
-                Log.d("SLIDA",jsonObject.optString("description"));
-                mensaje += "DESCRIPCION "+i+" "+jsonObject.optString("description")+"\n";
-            }
-            System.out.println(mensaje);
-            cowsTextView.setText(mensaje);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     private void registerViews() {
         yougerCowsTextView = findViewById(R.id.cows_younger);
@@ -229,4 +170,23 @@ public class FarmStatsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onResponse(Call<ArrayList<animalTypesResponse>> call, Response<ArrayList<animalTypesResponse>> response) {
+        if(response.isSuccessful()){
+            ArrayList<animalTypesResponse> animalTypes = response.body();
+            Log.e("ANIMAL TYPES:", String.valueOf(animalTypes.size()));
+            for(int i = 0; i< animalTypes.size();i++){
+                Log.e("Animal Tpye UID:", animalTypes.get(i).getmUid());
+                Log.e("Animal Tpye Descriptio:", animalTypes.get(i).getDescription());
+                Log.e("Animal Tpye Icon:", animalTypes.get(i).getIcon());
+
+
+            }
+        }
+    }
+
+    @Override
+    public void onFailure(Call<ArrayList<animalTypesResponse>> call, Throwable t) {
+
+    }
 }

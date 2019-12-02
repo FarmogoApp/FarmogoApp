@@ -83,6 +83,13 @@
     <string name="Date">Date</string>
 
 
+    <string name="user_auth_failed">User Authentication Failed:</string>
+    <string name="log_in">Log in...</string>
+    <string name="please_enter_email">Please enter your email</string>
+    <string name="please_enter_password">Please enter your password</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="recovery_email">We have sent an email to reset your password</string>
+    <string name="reset_password">Reset password:</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
