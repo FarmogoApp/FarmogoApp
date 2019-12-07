@@ -28,7 +28,7 @@ public abstract class Incidence {
     private Date dueDate;
     private boolean done;
     private boolean complete;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-ddTHH:mm:ss.S")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.S")
     private Date created;
     private String createdBy;
     private String animalId;

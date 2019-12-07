@@ -3,9 +3,11 @@ package com.example.farmogoapp.io;
 import com.example.farmogoapp.io.response.AnimalTypes;
 import com.example.farmogoapp.io.response.User;
 import com.example.farmogoapp.io.response.Farms;
+import com.example.farmogoapp.model.incidences.Incidence;
+
+
 
 import java.util.ArrayList;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -21,5 +23,7 @@ public interface FarmogoApiService {
     @POST("users")
     Call<User> createUser(@Body User user);
 
+    @GET("incidences")
+    Call<ArrayList<Incidence>> getIncidences();
 }
 
