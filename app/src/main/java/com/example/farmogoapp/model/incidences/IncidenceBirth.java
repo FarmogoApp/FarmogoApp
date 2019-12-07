@@ -1,13 +1,17 @@
 package com.example.farmogoapp.model.incidences;
 
-import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
 
 public class IncidenceBirth extends Incidence {
     private String officialId;
-    private LocalDate birthDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date birthDate;
     private String raceId;
     private String sex;
-    private LocalDate enrollmentDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date enrollmentDate;
 
     public IncidenceBirth() {
         super(IncidenceType.BIRTH);
@@ -21,11 +25,11 @@ public class IncidenceBirth extends Incidence {
         this.officialId = officialId;
     }
 
-    public LocalDate getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -45,11 +49,11 @@ public class IncidenceBirth extends Incidence {
         this.sex = sex;
     }
 
-    public LocalDate getEnrollmentDate() {
+    public Date getEnrollmentDate() {
         return enrollmentDate;
     }
 
-    public void setEnrollmentDate(LocalDate enrollmentDate) {
+    public void setEnrollmentDate(Date enrollmentDate) {
         this.enrollmentDate = enrollmentDate;
     }
 
