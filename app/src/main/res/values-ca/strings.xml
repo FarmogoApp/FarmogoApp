@@ -40,7 +40,7 @@
         <item>Explotació 5</item>
     </string-array>
     <string name="tag">TAG</string>
-    <string name="id_eartag">Codi crotal oficial</string>
+    <string name="id_eartag">ID oficial</string>
     <string name="gender">Génere</string>
     <string name="mother">Mare</string>
     <string name="farm">Explotació</string>
@@ -108,6 +108,6 @@
     <string name="scheduled_for">Programat per</string>
     <string name="building_optional">Granja (opcional)</string>
     <string name="section_optional">Secció (opcional)</string>
-    <string name="birthday" >Naixement</string>
+    <string name="birthday" >Data de naixement</string>
     <string name="edit_farm">Editar Explotació</string>
 </resources>
