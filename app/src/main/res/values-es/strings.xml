@@ -109,4 +109,11 @@
     <string name="section_optional">Sección (opcional)</string>
     <string name="birthday" >Fecha de nacimiento</string>
     <string name="edit_farm">Editar Explotación</string>
+    <string name="user_auth_failed">Autenticación fallida:</string>
+    <string name="log_in">Iniciando sessión...</string>
+    <string name="please_enter_email">Porfavor introduzca su correo</string>
+    <string name="please_enter_password">Porfavor introduzca su contrasenya</string>
+    <string name="forgot_your_password">Ha olvidado su contraseña?</string>
+    <string name="recovery_email">Le hemos enviado un correo para recuperar su contraseña</string>
+    <string name="reset_password">Recuperar contraseña:</string>
 </resources>

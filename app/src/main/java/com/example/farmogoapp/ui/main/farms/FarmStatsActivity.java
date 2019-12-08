@@ -2,6 +2,7 @@ package com.example.farmogoapp.ui.main.farms;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,14 +20,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.io.FarmogoApiAdapter;
+import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
+import com.example.farmogoapp.io.response.animalTypesResponse;
 import com.example.farmogoapp.model.FarmHistory;
+import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class FarmStatsActivity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class FarmStatsActivity extends AppCompatActivity implements Callback<ArrayList<animalTypesResponse>> {
     private Button btnGestion;
     private TextView yougerCowsTextView;
     private TextView cowsTextView;
@@ -76,6 +85,8 @@ public class FarmStatsActivity extends AppCompatActivity {
         Farm_History.add(FarmHistory1);
         Farm_History.add(FarmHistory2);
         registerListeners();
+        Call<ArrayList<animalTypesResponse>> call = FarmogoApiAdapter.getApiService().getAnimalTypes();
+        call.enqueue(this);
 
         recyclerView = findViewById(R.id.recyclerviewStatistics);
         recyclerView.setHasFixedSize(true);
@@ -85,6 +96,26 @@ public class FarmStatsActivity extends AppCompatActivity {
         fillData();
         initSpinnerFarmChoose();
         registerListeners();
+
+
+
+        Call<ArrayList<Incidence>> incidences = FarmogoApiJacksonAdapter.getApiService(this).getIncidences();
+        incidences.enqueue(new Callback<ArrayList<Incidence>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Incidence>> call, Response<ArrayList<Incidence>> response) {
+                ArrayList<Incidence> data = response.body();
+                Log.d("TEST INDICENCES", "size: "+ data.size());
+                for (Incidence i : data) {
+                    Log.d("type" ,i.getType().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Incidence>> call, Throwable t) {
+                t.printStackTrace();
+                Log.e("TEST INDICENCES","error" );
+            }
+        });
     }
 
     private void registerViews() {
@@ -161,4 +192,23 @@ public class FarmStatsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onResponse(Call<ArrayList<animalTypesResponse>> call, Response<ArrayList<animalTypesResponse>> response) {
+        if(response.isSuccessful()){
+            ArrayList<animalTypesResponse> animalTypes = response.body();
+            Log.e("ANIMAL TYPES:", String.valueOf(animalTypes.size()));
+            for(int i = 0; i< animalTypes.size();i++){
+                Log.e("Animal Tpye UID:", animalTypes.get(i).getmUid());
+                Log.e("Animal Tpye Descriptio:", animalTypes.get(i).getDescription());
+                Log.e("Animal Tpye Icon:", animalTypes.get(i).getIcon());
+
+
+            }
+        }
+    }
+
+    @Override
+    public void onFailure(Call<ArrayList<animalTypesResponse>> call, Throwable t) {
+
+    }
 }
