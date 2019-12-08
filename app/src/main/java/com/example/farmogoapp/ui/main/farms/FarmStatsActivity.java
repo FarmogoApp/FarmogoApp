@@ -2,6 +2,7 @@ package com.example.farmogoapp.ui.main.farms;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,6 +20,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.io.FarmogoApiAdapter;
+import com.example.farmogoapp.io.response.Building;
+import com.example.farmogoapp.io.response.Farms;
 import com.example.farmogoapp.model.FarmHistory;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
@@ -26,7 +30,11 @@ import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class FarmStatsActivity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class FarmStatsActivity extends AppCompatActivity implements Callback {
     private Button btnGestion;
     private TextView yougerCowsTextView;
     private TextView cowsTextView;
@@ -76,6 +84,8 @@ public class FarmStatsActivity extends AppCompatActivity {
         Farm_History.add(FarmHistory1);
         Farm_History.add(FarmHistory2);
         registerListeners();
+        Call call = FarmogoApiAdapter.getApiService().getFarms();
+        call.enqueue(this);
 
         recyclerView = findViewById(R.id.recyclerviewStatistics);
         recyclerView.setHasFixedSize(true);
@@ -155,10 +165,26 @@ public class FarmStatsActivity extends AppCompatActivity {
 
     private void initSpinnerFarmChoose() {
         String[] incidences = getResources().getStringArray(R.array.incidences_example);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, incidences);
         spinner.setAdapter(adapter);
 
 
     }
 
+    @Override
+    public void onResponse(Call call, Response response) {
+        if(response.isSuccessful()){
+            ArrayList<Farms> farms = (ArrayList<Farms>) response.body();
+            ArrayAdapter farmAdapter = new ArrayAdapter(this, R.layout.spinner, farms);
+            Spinner farmSpinner = (Spinner) findViewById(R.id.spinnerstatistics);
+            farmSpinner.setAdapter(farmAdapter);
+
+        }
+    }
+
+    @Override
+    public void onFailure(Call call, Throwable t) {
+
+    }
 }

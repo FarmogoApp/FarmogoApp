@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
-        android:layout_height="270dp"
+        android:layout_height="240dp"
         app:srcCompat="@drawable/logo" />
 
     <EditText
@@ -18,8 +18,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:hint="@string/email"
-        android:text="@string/login_email_example" />
+        android:hint="@string/email" />
 
     <EditText
         android:id="@+id/login_password"
@@ -27,18 +26,33 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="@string/password"
-        android:text="@string/password_example" />
+        android:hint="@string/password" />
+
+    <TextView
+        android:id="@+id/forgot"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/forgot_your_password"
+        android:clickable="true"
+        android:onClick="forgotPassword"
+        android:textSize="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:gravity="center"
+        android:focusable="true" />
 
     <Button
         android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="login"
         android:text="@string/login" />
 
     <Button
         android:id="@+id/registration_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="register"
         android:text="@string/registration" />
 </LinearLayout>
