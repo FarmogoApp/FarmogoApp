@@ -46,6 +46,14 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         pd = new ProgressDialog(LoginActivity.this);
         pd.setMessage(getString(R.string.log_in));
+
+
+        Session s = new Session(this);
+        if (s.isValidSession()) {
+            Intent intent = new Intent(LoginActivity.this, FarmStatsActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
 

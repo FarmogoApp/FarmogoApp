@@ -49,7 +49,7 @@ public class Session {
         return prefs.getString(key, null);
     }
 
-    private boolean isValidSession() {
+    public boolean isValidSession() {
         return prefs.getLong(KEY_API_AUTH_CAD, 0) > new Date().getTime();
     }
 
