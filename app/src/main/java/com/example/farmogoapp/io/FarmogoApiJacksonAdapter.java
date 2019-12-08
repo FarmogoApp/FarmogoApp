@@ -1,5 +1,9 @@
 package com.example.farmogoapp.io;
 
+import android.content.Context;
+
+import com.example.farmogoapp.ui.main.Session;
+
 import java.io.IOException;
 
 import okhttp3.Interceptor;
@@ -15,7 +19,7 @@ public class FarmogoApiJacksonAdapter {
 
     private static FarmogoApiService API_SERVICE;
 
-    public static FarmogoApiService getApiService() {
+    public static FarmogoApiService getApiService(Context ctx) {
 
         // Creamos un interceptor y le indicamos el log level a usar
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
@@ -23,13 +27,16 @@ public class FarmogoApiJacksonAdapter {
 
         // Asociamos el interceptor a las peticiones
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+
+        final Session s = new Session(ctx);
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
                 Request newRequest = request.newBuilder()
-                        .addHeader("Authorization", "Bearer EGXfYFAz8SeXBm7wAVxKpXcH0cz1")
+                        .addHeader("Authorization", "Bearer " + s.getApiAuth())
                         .build();
+                System.out.println("TOKEN USED" + s.getApiAuth());
                 return chain.proceed(newRequest);
             }
         });
