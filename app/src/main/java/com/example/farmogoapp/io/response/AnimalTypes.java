@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class animalTypesResponse {
+public class AnimalTypes {
     @SerializedName("uuid")
     String mUid;
     @SerializedName("description")
@@ -12,9 +12,7 @@ public class animalTypesResponse {
     @SerializedName("icon")
     String icon;
 
-    animalTypesResponse animalTypesResponse;
-
-    public animalTypesResponse(String mUid, String description, String icon){
+    public AnimalTypes(String mUid, String description, String icon){
         this.mUid = mUid;
         this.description = description;
         this.icon = icon;

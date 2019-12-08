@@ -117,4 +117,6 @@
     <string name="forgot_your_password">Heu oblidat la vostra contrasenya?</string>
     <string name="recovery_email">Li hem enviat un correu per recuperar la contrasenya</string>
     <string name="reset_password">Recuperar contrasenya:</string>
+    <string name="telephone">Telèfon</string>
+    <string name="name">Nom</string>
 </resources>
