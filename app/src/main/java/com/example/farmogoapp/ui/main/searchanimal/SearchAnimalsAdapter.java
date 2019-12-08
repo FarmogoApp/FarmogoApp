@@ -64,6 +64,7 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
         final View row = v;
 
         final Animal animal = animalListVisible.get(position);
+        v.setTag(animal.getUuid());
         TextView listid = v.findViewById(R.id.animal_listid);
 
         final ImageButton button = v.findViewById(R.id.animal_list_button);
@@ -121,6 +122,7 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(activity, AnimalInfoActivity.class);
+        intent.putExtra("animalId", (String) v.getTag());
         activity.startActivity(intent);
     }
 }
