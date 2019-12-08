@@ -15,11 +15,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.model.incidences.Incidence;
+import com.example.farmogoapp.ui.main.Session;
 import com.example.farmogoapp.ui.main.farms.FarmStatsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -44,26 +46,6 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         pd = new ProgressDialog(LoginActivity.this);
         pd.setMessage(getString(R.string.log_in));
-
-
-
-        Call<ArrayList<Incidence>> incidences = FarmogoApiJacksonAdapter.getApiService().getIncidences();
-        incidences.enqueue(new Callback<ArrayList<Incidence>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Incidence>> call, Response<ArrayList<Incidence>> response) {
-                ArrayList<Incidence> data = response.body();
-                Log.d("TEST INDICENCES", "size: "+ data.size());
-                for (Incidence i : data) {
-                    Log.d("type" ,i.getType().toString());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<Incidence>> call, Throwable t) {
-                t.printStackTrace();
-                Log.e("TEST INDICENCES","error" );
-            }
-        });
     }
 
 
@@ -92,9 +74,10 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            mAuth.getCurrentUser();
                             pd.hide();
                             pd.dismiss();
+                            FirebaseUser currentUser = mAuth.getCurrentUser();
+                            startSession(currentUser);
                             Intent intent = new Intent(LoginActivity.this, FarmStatsActivity.class);
                             startActivity(intent);
                             finish();
@@ -102,6 +85,11 @@ public class LoginActivity extends AppCompatActivity {
                             pd.hide();
                             Toast.makeText(LoginActivity.this, getString(R.string.user_auth_failed) + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
+                    }
+
+                    private void startSession(FirebaseUser currentUser) {
+                        Session s = new Session(LoginActivity.this.getApplicationContext());
+                        s.start(currentUser.getUid(), currentUser.getDisplayName(), currentUser.getEmail());
                     }
                 });
 
