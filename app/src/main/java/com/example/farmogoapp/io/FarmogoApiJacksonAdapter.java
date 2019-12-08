@@ -36,13 +36,13 @@ public class FarmogoApiJacksonAdapter {
                 Request newRequest = request.newBuilder()
                         .addHeader("Authorization", "Bearer " + s.getApiAuth())
                         .build();
-                System.out.println("TOKEN USED" + s.getApiAuth());
                 return chain.proceed(newRequest);
             }
         });
         httpClient.addInterceptor(logging);
 
-        String baseUrl = "http://10.0.2.2:8080/api/";
+        //String baseUrl = "http://10.0.2.2:8080/api/";
+        String baseUrl = "http://farmogo.quierovinos.com:8080/api/";
 
 
         if (API_SERVICE == null) {
