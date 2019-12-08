@@ -20,6 +20,7 @@ import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static android.graphics.Typeface.BOLD;
 
@@ -47,8 +48,9 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
 
     @Override
     public long getItemId(int position) {
-        return animalListVisible.get(position).getId();
+        return position;
     }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {

@@ -21,9 +21,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiAdapter;
-import com.example.farmogoapp.io.response.Building;
 import com.example.farmogoapp.io.response.Farms;
+import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
+
 import com.example.farmogoapp.model.FarmHistory;
+import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 
@@ -95,6 +97,26 @@ public class FarmStatsActivity extends AppCompatActivity implements Callback {
         fillData();
         initSpinnerFarmChoose();
         registerListeners();
+
+
+
+        Call<ArrayList<Incidence>> incidences = FarmogoApiJacksonAdapter.getApiService(this).getIncidences();
+        incidences.enqueue(new Callback<ArrayList<Incidence>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Incidence>> call, Response<ArrayList<Incidence>> response) {
+                ArrayList<Incidence> data = response.body();
+                Log.d("TEST INDICENCES", "size: "+ data.size());
+                for (Incidence i : data) {
+                    Log.d("type" ,i.getType().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Incidence>> call, Throwable t) {
+                t.printStackTrace();
+                Log.e("TEST INDICENCES","error" );
+            }
+        });
     }
 
     private void registerViews() {
