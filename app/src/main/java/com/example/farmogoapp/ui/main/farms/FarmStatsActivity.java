@@ -21,8 +21,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiAdapter;
+import com.example.farmogoapp.io.response.Farms;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
-import com.example.farmogoapp.io.response.animalTypesResponse;
+
 import com.example.farmogoapp.model.FarmHistory;
 import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
@@ -35,7 +36,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FarmStatsActivity extends AppCompatActivity implements Callback<ArrayList<animalTypesResponse>> {
+public class FarmStatsActivity extends AppCompatActivity implements Callback {
     private Button btnGestion;
     private TextView yougerCowsTextView;
     private TextView cowsTextView;
@@ -85,7 +86,7 @@ public class FarmStatsActivity extends AppCompatActivity implements Callback<Arr
         Farm_History.add(FarmHistory1);
         Farm_History.add(FarmHistory2);
         registerListeners();
-        Call<ArrayList<animalTypesResponse>> call = FarmogoApiAdapter.getApiService().getAnimalTypes();
+        Call call = FarmogoApiAdapter.getApiService().getFarms();
         call.enqueue(this);
 
         recyclerView = findViewById(R.id.recyclerviewStatistics);
@@ -186,6 +187,7 @@ public class FarmStatsActivity extends AppCompatActivity implements Callback<Arr
 
     private void initSpinnerFarmChoose() {
         String[] incidences = getResources().getStringArray(R.array.incidences_example);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, incidences);
         spinner.setAdapter(adapter);
 
@@ -193,22 +195,18 @@ public class FarmStatsActivity extends AppCompatActivity implements Callback<Arr
     }
 
     @Override
-    public void onResponse(Call<ArrayList<animalTypesResponse>> call, Response<ArrayList<animalTypesResponse>> response) {
+    public void onResponse(Call call, Response response) {
         if(response.isSuccessful()){
-            ArrayList<animalTypesResponse> animalTypes = response.body();
-            Log.e("ANIMAL TYPES:", String.valueOf(animalTypes.size()));
-            for(int i = 0; i< animalTypes.size();i++){
-                Log.e("Animal Tpye UID:", animalTypes.get(i).getmUid());
-                Log.e("Animal Tpye Descriptio:", animalTypes.get(i).getDescription());
-                Log.e("Animal Tpye Icon:", animalTypes.get(i).getIcon());
+            ArrayList<Farms> farms = (ArrayList<Farms>) response.body();
+            ArrayAdapter farmAdapter = new ArrayAdapter(this, R.layout.spinner, farms);
+            Spinner farmSpinner = (Spinner) findViewById(R.id.spinnerstatistics);
+            farmSpinner.setAdapter(farmAdapter);
 
-
-            }
         }
     }
 
     @Override
-    public void onFailure(Call<ArrayList<animalTypesResponse>> call, Throwable t) {
+    public void onFailure(Call call, Throwable t) {
 
     }
 }

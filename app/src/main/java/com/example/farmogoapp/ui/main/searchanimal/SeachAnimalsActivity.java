@@ -101,7 +101,7 @@ public class SeachAnimalsActivity extends AppCompatActivity {
         ArrayList<Animal> testData = new ArrayList<>();
         Random r = new Random();
         for (int i = 0; i < 100; i++) {
-            testData.add(new Animal(Math.abs(r.nextLong() % 1_000_000_000_000L)));
+            testData.add(new Animal(""+Math.abs(r.nextLong() % 1_000_000_000_000L)));
         }
 
         searchAnimalsAdapter = new SearchAnimalsAdapter(this, testData);
