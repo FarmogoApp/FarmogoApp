@@ -1,6 +1,5 @@
 package com.example.farmogoapp.io;
 
-import com.example.farmogoapp.io.response.User;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
