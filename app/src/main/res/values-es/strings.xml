@@ -133,5 +133,10 @@
     <string name="register_cow">Registrar Vaca</string>
     <string name="Date">Fecha</string>
     <string name="forgot_your_password">¿Olvidate la contraseña?</string>
-    forgot_your_password
+    <string name="user_auth_failed">Autenticacion de usuario fallida:</string>
+    <string name="log_in">Logueando...</string>
+    <string name="please_enter_email">Por favor introduce el email</string>
+    <string name="please_enter_password">Por favor introduce la contraseña</string>
+    <string name="recovery_email">Hemos enviado un email para restablecer la contraseña</string>
+    <string name="reset_password">Contraseña restablecida:</string>
 </resources>
