@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "326315669120",
+    "firebase_url": "https://farmogo-50cb4.firebaseio.com",
+    "project_id": "farmogo-50cb4",
+    "storage_bucket": "farmogo-50cb4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:326315669120:android:a5597d89e1f7a15b09d865",
+        "android_client_info": {
+          "package_name": "com.example.farmogoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "326315669120-760rkqfp5cctmos3hhsm847h6318kv3r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.farmogoapp",
+            "certificate_hash": "72c140eb9b5296f0798afc1f9b52178cf62ccd0c"
+          }
+        },
+        {
+          "client_id": "326315669120-kgvqk00d4nu09c2mcf4anuab71gh1431.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrZvZARxbfoDc1XnkVuNIBB3XPdimdWYU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "326315669120-kgvqk00d4nu09c2mcf4anuab71gh1431.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
