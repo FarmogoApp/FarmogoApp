@@ -17,6 +17,11 @@
         <item>Macho</item>
         <item>Hembra</item>
     </string-array>
+    <string-array name="exitType">
+        <item>Muerte</item>
+        <item>Venta de vaca</item>
+        <item>Matadero</item>
+    </string-array>
     <string-array name="mother">
         <item>Madre 1</item>
         <item>Madre 2</item>
@@ -113,4 +118,9 @@
     <string name="name">Nombre</string>
     <string name="telephone">Teléfono</string>
     <string name="telephone_example">656565656</string>
+    <string name="Exit">Salida</string>
+    <string name="Destino">Destino</string>
+    <string name="guia_certificado">Guía/Certificado</string>
+    <string name="BirthTitle">Nacimiento</string>
+    <string name="OfficialIDbirth">Id Oficial</string>
 </resources>

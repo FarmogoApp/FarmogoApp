@@ -69,7 +69,7 @@
                 android:id="@+id/exitDestinationText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/destino"
+                android:text="@string/Destino"
                 android:textColor="@android:color/background_dark"
                 android:textSize="20sp" />
 

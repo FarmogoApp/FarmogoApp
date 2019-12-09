@@ -78,10 +78,20 @@
     <string name="name_example">Juan</string>
     <string name="telephone">Telephone</string>
     <string name="telephone_example">656565656</string>
+    <string name="Exit">Exit</string>
+    <string name="Destino">Destination</string>guia_certificado
+    <string name="guia_certificado">Guide/Certificate</string>
+    <string name="BirthTitle">Birth</string>
+    <string name="OfficialIDbirth">Official Id</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
+    </string-array>
 
+    <string-array name="exitType">
+        <item>Death</item>
+        <item>Sell cow</item>
+        <item>Slaugter house</item>
     </string-array>
     <string-array name="mother">
         <item>Mother 1</item>
