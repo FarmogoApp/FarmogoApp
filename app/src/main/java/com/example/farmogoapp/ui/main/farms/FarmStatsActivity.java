@@ -85,6 +85,16 @@ public class FarmStatsActivity extends AppCompatActivity implements Callback {
         FarmHistory FarmHistory2 = new FarmHistory("ES19022529", "Causa2", "Selevit", "28/10/2019");
         Farm_History.add(FarmHistory1);
         Farm_History.add(FarmHistory2);
+        Farm_History.add(FarmHistory2);
+        Farm_History.add(FarmHistory2);
+        Farm_History.add(FarmHistory2);
+        Farm_History.add(FarmHistory2);
+        Farm_History.add(FarmHistory2);
+        Farm_History.add(FarmHistory2);
+        Farm_History.add(FarmHistory2);
+        Farm_History.add(FarmHistory2);
+        Farm_History.add(FarmHistory2);
+        Farm_History.add(FarmHistory2);
         registerListeners();
         Call call = FarmogoApiAdapter.getApiService().getFarms();
         call.enqueue(this);

@@ -5,101 +5,126 @@
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/titleRegister"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="REGISTER COW"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
+
         <LinearLayout
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
+            android:layout_below="@+id/titleRegister"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:id="@+id/linear1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <TextView
                 android:textColor="@android:color/background_dark"
                 android:id="@+id/tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:text="@string/tag"></TextView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:id="@+id/linear2"
-            android:layout_below="@id/linear1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                android:text="@string/tag"/>
+
             <EditText
-                android:layout_margin="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingStart="5dp"
+                android:background="@drawable/round_corner"
+                android:layout_below="@+id/tag"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/tag"></EditText>
+                android:layout_height="30dp"
+                android:hint="@string/tag"/>
+            </RelativeLayout>
 
         </LinearLayout>
+
         <LinearLayout
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_below="@id/linear2"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_below="@id/linear1"
             android:id="@+id/linearr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
             <TextView
                 android:textColor="@android:color/background_dark"
                 android:id="@+id/ID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
-                android:text="@string/id_eartag"></TextView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:id="@+id/linear"
-            android:layout_below="@id/linearr"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                android:text="@string/id_eartag"/>
+
             <EditText
-                android:layout_margin="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingStart="5dp"
+                android:background="@drawable/round_corner"
+                android:layout_below="@+id/ID"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/id_eartag"></EditText>
-
+                android:layout_height="30dp"
+                android:hint="@string/id_eartag"/>
+            </RelativeLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
 
+        <LinearLayout
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:id="@+id/linear3"
-            android:layout_below="@id/linear"
+            android:layout_below="@id/linearr"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <RelativeLayout
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <TextView
                     android:id="@+id/sexo"
                     android:textSize="20dp"
                     android:textColor="@android:color/background_dark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/gender"></TextView>
+                    android:text="@string/gender"/>
+
                 <Spinner
-                    android:layout_below="@+id/sexo"
-                    android:layout_margin="20dp"
-                    android:padding="5dp"
+                    android:layout_marginTop="5dp"
                     android:id="@+id/sp_genero"
-                    android:background="@color/colorAccent"
+                    android:background="@drawable/spinner_bg"
+                    android:layout_below="@+id/sexo"
+                    android:entries="@array/gender"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/gender"/>
+                    android:layout_height="30dp"/>
+
             </RelativeLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/linear4"
-            android:layout_below="@id/linear3">
+
             <RelativeLayout
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
@@ -108,25 +133,28 @@
                     android:textColor="@android:color/background_dark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/mother"></TextView>
+                    android:text="@string/mother"/>
+
                 <Spinner
-                    android:layout_below="@+id/Madre"
-                    android:layout_margin="20dp"
-                    android:padding="5dp"
+                    android:layout_marginTop="5dp"
                     android:id="@+id/sp_madre"
-                    android:background="@color/colorAccent"
+                    android:background="@drawable/spinner_bg"
+                    android:layout_below="@+id/Madre"
+                    android:entries="@array/mother"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/mother"/>
+                    android:layout_height="30dp"/>
             </RelativeLayout>
         </LinearLayout>
+
         <LinearLayout
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/linear5"
-            android:layout_below="@id/linear4">
+            android:layout_below="@id/linear3">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -136,13 +164,13 @@
                     android:textColor="@android:color/background_dark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/farm"></TextView>
+                    android:text="@string/farm"/>
+
                 <Spinner
-                    android:layout_margin="20dp"
                     android:layout_below="@+id/Explotacion"
                     android:padding="5dp"
                     android:id="@+id/sp_aves"
-                    android:background="@color/colorAccent"
+                    android:background="@drawable/spinner_bg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:entries="@array/farm"/>
@@ -150,41 +178,43 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:id="@+id/linear6"
-            android:layout_below="@id/linear5">
+            android:layout_below="@id/linear5"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
             <RelativeLayout
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <TextView
-                    android:id="@+id/Building"
+                    android:id="@+id/buildTit"
                     android:textSize="20dp"
                     android:textColor="@android:color/background_dark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/building_optional"></TextView>
+                    android:text="@string/building_optional"/>
+
                 <Spinner
-                    android:layout_margin="20dp"
-                    android:layout_below="@+id/Building"
-                    android:padding="5dp"
-                    android:id="@+id/sp_buildinf"
-                    android:background="@color/colorAccent"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/build"
+                    android:background="@drawable/spinner_bg"
+                    android:layout_below="@+id/buildTit"
+                    android:entries="@array/building"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/building"/>
+                    android:layout_height="30dp"/>
+
             </RelativeLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/linear7"
-            android:layout_below="@id/linear6">
+
             <RelativeLayout
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
@@ -193,48 +223,51 @@
                     android:textColor="@android:color/background_dark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/section_optional"></TextView>
+                    android:text="@string/section_optional"/>
+
                 <Spinner
-                    android:layout_margin="20dp"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/sp_buildinf"
+                    android:background="@drawable/spinner_bg"
                     android:layout_below="@+id/Seccion"
-                    android:padding="5dp"
-                    android:id="@+id/sp_seccion"
-                    android:background="@color/colorAccent"
+                    android:entries="@array/section"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/section"/>
+                    android:layout_height="30dp"/>
             </RelativeLayout>
         </LinearLayout>
+
         <LinearLayout
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/linear8"
-            android:layout_below="@id/linear7">
+            android:layout_below="@id/linear6">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
                     android:id="@+id/Birthday"
-
                     android:textSize="20dp"
                     android:textColor="@android:color/background_dark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/birthday"></TextView>
+                    android:text="@string/birthday"/>
 
                 <EditText
-                    android:layout_margin="20dp"
+                    android:background="@drawable/spinner_bg"
                     android:padding="5dp"
                     android:id="@+id/editText2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/Birthday"
                     android:ems="10"
                     android:inputType="date" />
             </RelativeLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
@@ -245,13 +278,14 @@
 
             <Button
                 android:id="@+id/btnregister"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:background="@color/colorPrimary"
-                android:text="@string/register_animal" />
-
-
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/register_animal"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:background="@drawable/round_shape"
+                android:layout_margin="5dp"
+                android:textColor="@android:color/white" />
         </LinearLayout>
     </RelativeLayout>
 </ScrollView>
