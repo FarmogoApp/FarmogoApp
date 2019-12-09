@@ -161,9 +161,6 @@
             android:hint="@string/password"
             android:text="@string/password_example" />
     </com.google.android.material.textfield.TextInputLayout>
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="@string/password"/>
 
 
     <Button
@@ -173,7 +170,7 @@
         android:layout_gravity="center"
         android:background="@drawable/round_shape"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="50dp"
         android:textColor="@android:color/white"
         android:text="@android:string/ok" />
 
