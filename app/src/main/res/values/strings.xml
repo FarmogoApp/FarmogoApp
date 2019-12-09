@@ -83,11 +83,20 @@
     <string name="guia_certificado">Guide/Certificate</string>
     <string name="BirthTitle">Birth</string>
     <string name="OfficialIDbirth">Official Id</string>
+    <string name="register_cow">Register cow</string>
+    <string name="Date">Date</string>
+    <string name="forgot_your_password">forgot your password?</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
     </string-array>
-
+    <string-array name="races">
+        <item>Pirenaica</item>
+        <item>Parda de Montaña</item>
+        <item>Limusina</item>
+        <item>Frisona</item>
+        <item>Charoles</item>
+    </string-array>
     <string-array name="exitType">
         <item>Death</item>
         <item>Sell cow</item>

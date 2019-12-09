@@ -22,6 +22,13 @@
         <item>Venta de vaca</item>
         <item>Matadero</item>
     </string-array>
+    <string-array name="races">
+        <item>Pirenaica</item>
+        <item>Parda de Montaña</item>
+        <item>Limusina</item>
+        <item>Frisona</item>
+        <item>Charoles</item>
+    </string-array>
     <string-array name="mother">
         <item>Madre 1</item>
         <item>Madre 2</item>
@@ -123,4 +130,8 @@
     <string name="guia_certificado">Guía/Certificado</string>
     <string name="BirthTitle">Nacimiento</string>
     <string name="OfficialIDbirth">Id Oficial</string>
+    <string name="register_cow">Registrar Vaca</string>
+    <string name="Date">Fecha</string>
+    <string name="forgot_your_password">¿Olvidate la contraseña?</string>
+    forgot_your_password
 </resources>
