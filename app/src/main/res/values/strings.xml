@@ -10,7 +10,7 @@
     <string name="tab_two">Number of farm </string>
     <string name="tab_three">Name</string>
     <string name="tag">TAG</string>
-    <string name="id_eartag">Id offical eartag</string>
+    <string name="id_eartag">Official ID</string>
     <string name="gender">Gender</string>
     <string name="mother">Mother</string>
     <string name="farm">Farm</string>
@@ -48,7 +48,7 @@
     <string name="password_example" translatable="false">12345678</string>
     <string name="username">Username</string>
     <string name="username_example" translatable="false">FarmWorker</string>
-    <string name="registration_succesfull">Registration Succesfull</string>
+    <string name="registration_succesful">Registration Succesful</string>
     <string name="login_succesfull">Login Succesfull</string>
     <string name="sold">Sold</string>
     <string name="died">Died</string>
@@ -69,7 +69,7 @@
     <string name="scheduled_for">Scheduled for</string>
     <string name="building_optional">Building (optional)</string>
     <string name="section_optional">Section (optional)</string>
-    <string name="birthday" >Birthday</string>
+    <string name="birthday" >Birth date</string>
     <string name="unregisrer_cow">Unregister Cow</string>
     <string name="guide">Guide</string>
     <string name="choose_type">Choose type</string>

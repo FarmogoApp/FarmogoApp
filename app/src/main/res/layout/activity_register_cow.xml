@@ -2,290 +2,142 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_margin="20sp"
     android:layout_height="match_parent">
-    <RelativeLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/titleRegister"
-            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-            android:layout_width="wrap_content"
+            android:id="@+id/tag"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="REGISTER COW"
-            android:textColor="@color/colorPrimary"
+            android:text="NFC ear tag"
+            android:textColor="@android:color/background_dark"
             android:textSize="20sp" />
 
-        <LinearLayout
-            android:layout_below="@+id/titleRegister"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:id="@+id/linear1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            <TextView
-                android:textColor="@android:color/background_dark"
-                android:id="@+id/tag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="@string/tag"/>
-
-            <EditText
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:paddingStart="5dp"
-                android:background="@drawable/round_corner"
-                android:layout_below="@+id/tag"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:hint="@string/tag"/>
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_below="@id/linear1"
-            android:id="@+id/linearr"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            <TextView
-                android:textColor="@android:color/background_dark"
-                android:id="@+id/ID"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="@string/id_eartag"/>
-
-            <EditText
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:paddingStart="5dp"
-                android:background="@drawable/round_corner"
-                android:layout_below="@+id/ID"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:hint="@string/id_eartag"/>
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:id="@+id/linear3"
-            android:layout_below="@id/linearr"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_marginEnd="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/sexo"
-                    android:textSize="20dp"
-                    android:textColor="@android:color/background_dark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/gender"/>
-
-                <Spinner
-                    android:layout_marginTop="5dp"
-                    android:id="@+id/sp_genero"
-                    android:background="@drawable/spinner_bg"
-                    android:layout_below="@+id/sexo"
-                    android:entries="@array/gender"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_marginStart="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:id="@+id/Madre"
-                    android:textSize="20dp"
-                    android:textColor="@android:color/background_dark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/mother"/>
-
-                <Spinner
-                    android:layout_marginTop="5dp"
-                    android:id="@+id/sp_madre"
-                    android:background="@drawable/spinner_bg"
-                    android:layout_below="@+id/Madre"
-                    android:entries="@array/mother"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"/>
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
+        <Button
+            android:id="@+id/buttonScan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/linear5"
-            android:layout_below="@id/linear3">
+            android:text="Scan NFC" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:id="@+id/Explotacion"
-                    android:textSize="20dp"
-                    android:textColor="@android:color/background_dark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/farm"/>
-
-                <Spinner
-                    android:layout_below="@+id/Explotacion"
-                    android:padding="5dp"
-                    android:id="@+id/sp_aves"
-                    android:background="@drawable/spinner_bg"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/farm"/>
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:id="@+id/linear6"
-            android:layout_below="@id/linear5"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_marginEnd="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/buildTit"
-                    android:textSize="20dp"
-                    android:textColor="@android:color/background_dark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/building_optional"/>
-
-                <Spinner
-                    android:layout_marginTop="5dp"
-                    android:id="@+id/build"
-                    android:background="@drawable/spinner_bg"
-                    android:layout_below="@+id/buildTit"
-                    android:entries="@array/building"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_marginStart="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:id="@+id/Seccion"
-                    android:textSize="20dp"
-                    android:textColor="@android:color/background_dark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/section_optional"/>
-
-                <Spinner
-                    android:layout_marginTop="5dp"
-                    android:id="@+id/sp_buildinf"
-                    android:background="@drawable/spinner_bg"
-                    android:layout_below="@+id/Seccion"
-                    android:entries="@array/section"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"/>
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
+        <TextView
+            android:id="@+id/officialID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/linear8"
-            android:layout_below="@id/linear6">
+            android:text="Official ID"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:id="@+id/Birthday"
-                    android:textSize="20dp"
-                    android:textColor="@android:color/background_dark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/birthday"/>
-
-                <EditText
-                    android:background="@drawable/spinner_bg"
-                    android:padding="5dp"
-                    android:id="@+id/editText2"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_below="@id/Birthday"
-                    android:ems="10"
-                    android:inputType="date" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
-            android:gravity="center"
+        <EditText
+            android:id="@+id/editTextOfficialID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/linear8">
+            android:ems="10"
+            android:inputType="textPersonName" />
 
-            <Button
-                android:id="@+id/btnregister"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:text="@string/register_animal"
-                android:layout_width="150dp"
-                android:layout_height="35dp"
-                android:background="@drawable/round_shape"
-                android:layout_margin="5dp"
-                android:textColor="@android:color/white" />
-        </LinearLayout>
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/motherID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mother ID"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/spinnerMotherID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+
+            android:id="@+id/birthDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Birth date"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp"></TextView>
+
+        <CalendarView
+            android:id="@+id/calendarBirthDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/origin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Origin"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editTextOrigin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sex"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/spinnerSex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/animalType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Animal type"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/spinnerAnimalType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/race"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/race"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/spinnerRace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/spinnerLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnregister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register_animal" />
+
+    </LinearLayout>
 </ScrollView>

@@ -48,7 +48,7 @@
         <item>Explotación 5</item>
     </string-array>
     <string name="tag">TAG</string>
-    <string name="id_eartag">Código crotal oficial</string>
+    <string name="id_eartag">ID oficial</string>
     <string name="gender">Género</string>
     <string name="mother">Madre</string>
     <string name="farm">Explotación</string>
@@ -91,7 +91,7 @@
     <string name="password">Contraseña</string>
     <string name="registration">Registrarse</string>
     <string name="username">Usuario</string>
-    <string name="registration_succesfull">Registrado correctamente</string>
+    <string name="registration_succesful">Registrado correctamente</string>
     <string name="died">Defunción</string>
     <string name="login_succesfull">Acceso correcto</string>
     <string name="slaughterhouse">Matadero</string>
@@ -112,7 +112,7 @@
     <string name="scheduled_for">Programado para</string>
     <string name="building_optional">Granja (opcional)</string>
     <string name="section_optional">Sección (opcional)</string>
-    <string name="birthday" >Nacimiento</string>
+    <string name="birthday" >Fecha de nacimiento</string>
     <string name="edit_farm">Editar Explotación</string>
     <string name="name_example">Juan</string>
     <string name="name">Nombre</string>
