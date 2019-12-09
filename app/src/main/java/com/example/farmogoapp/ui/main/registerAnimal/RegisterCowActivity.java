@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,6 +24,7 @@ import retrofit2.Response;
 public class RegisterCowActivity extends AppCompatActivity implements Callback{
     private Button btnRegister;
     private Spinner raceSpinner;
+    private Spinner animalTypeSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,16 +43,17 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback{
 
                 // Set Animal Type Spinner
                 if(data!= null){
-                    ArrayList<String> racesDesc = new ArrayList<>();
+
+                    ArrayList<String> animalTypes = new ArrayList<>();
                     for (AnimalType animalType : data) {
-                        racesDesc.add(animalType.getDescription());
+                        animalTypes.add(animalType.getDescription());
                     }
 
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                            RegisterCowActivity.this, android.R.layout.simple_spinner_item, racesDesc);
+                            RegisterCowActivity.this, android.R.layout.simple_spinner_item, animalTypes);
 
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    raceSpinner.setAdapter(adapter);
+                    animalTypeSpinner.setAdapter(adapter);
                 }
             }
 
@@ -66,6 +67,7 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback{
         setContentView(R.layout.activity_register_cow);
         btnRegister = findViewById(R.id.btnregister);
         raceSpinner = findViewById(R.id.spinnerRace);
+        animalTypeSpinner = findViewById(R.id.spinnerAnimalType);
 
         registerListeners();
     }
@@ -80,7 +82,7 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback{
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast1 = Toast.makeText(getApplicationContext(), getString(R.string.registration_succesfull), Toast.LENGTH_SHORT);
+                Toast toast1 = Toast.makeText(getApplicationContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                 toast1.show();
                 Intent intent = new Intent(RegisterCowActivity.this, FarmStatsActivity.class);
                 startActivity(intent);

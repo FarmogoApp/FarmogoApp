@@ -48,7 +48,7 @@
     <string name="password_example" translatable="false">12345678</string>
     <string name="username">Username</string>
     <string name="username_example" translatable="false">FarmWorker</string>
-    <string name="registration_succesfull">Registration Succesfull</string>
+    <string name="registration_succesful">Registration Succesful</string>
     <string name="login_succesfull">Login Succesfull</string>
     <string name="sold">Sold</string>
     <string name="died">Died</string>

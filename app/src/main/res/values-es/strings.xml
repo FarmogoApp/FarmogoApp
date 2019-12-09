@@ -86,7 +86,7 @@
     <string name="password">Contraseña</string>
     <string name="registration">Registrarse</string>
     <string name="username">Usuario</string>
-    <string name="registration_succesfull">Registrado correctamente</string>
+    <string name="registration_succesful">Registrado correctamente</string>
     <string name="died">Defunción</string>
     <string name="login_succesfull">Acceso correcto</string>
     <string name="slaughterhouse">Matadero</string>
