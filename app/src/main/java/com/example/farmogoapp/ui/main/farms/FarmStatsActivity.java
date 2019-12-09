@@ -21,7 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiAdapter;
-import com.example.farmogoapp.io.response.Farms;
+import com.example.farmogoapp.model.Animal;
+import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 
 import com.example.farmogoapp.model.FarmHistory;
@@ -36,7 +37,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FarmStatsActivity extends AppCompatActivity implements Callback {
+public class FarmStatsActivity extends AppCompatActivity {
     private Button btnGestion;
     private TextView yougerCowsTextView;
     private TextView cowsTextView;
@@ -96,8 +97,7 @@ public class FarmStatsActivity extends AppCompatActivity implements Callback {
         Farm_History.add(FarmHistory2);
         Farm_History.add(FarmHistory2);
         registerListeners();
-        Call call = FarmogoApiAdapter.getApiService().getFarms();
-        call.enqueue(this);
+        loadFarms();
 
         recyclerView = findViewById(R.id.recyclerviewStatistics);
         recyclerView.setHasFixedSize(true);
@@ -109,22 +109,21 @@ public class FarmStatsActivity extends AppCompatActivity implements Callback {
         registerListeners();
 
 
-
         Call<ArrayList<Incidence>> incidences = FarmogoApiJacksonAdapter.getApiService(this).getIncidences();
         incidences.enqueue(new Callback<ArrayList<Incidence>>() {
             @Override
             public void onResponse(Call<ArrayList<Incidence>> call, Response<ArrayList<Incidence>> response) {
                 ArrayList<Incidence> data = response.body();
-                Log.d("TEST INDICENCES", "size: "+ data.size());
+                Log.d("TEST INDICENCES", "size: " + data.size());
                 for (Incidence i : data) {
-                    Log.d("type" ,i.getType().toString());
+                    Log.d("type", i.getType().toString());
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<Incidence>> call, Throwable t) {
                 t.printStackTrace();
-                Log.e("TEST INDICENCES","error" );
+                Log.e("TEST INDICENCES", "error");
             }
         });
     }
@@ -194,7 +193,6 @@ public class FarmStatsActivity extends AppCompatActivity implements Callback {
 
 
     }
-
     private void initSpinnerFarmChoose() {
         String[] incidences = getResources().getStringArray(R.array.incidences_example);
 
@@ -203,20 +201,23 @@ public class FarmStatsActivity extends AppCompatActivity implements Callback {
 
 
     }
+    private void loadFarms() {
+        final Call<ArrayList<Farm>> farm = FarmogoApiJacksonAdapter.getApiService(this).getFarms();
+        farm.enqueue(new Callback<ArrayList<Farm>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Farm>> call, Response<ArrayList<Farm>> response) {
+                if (response.isSuccessful()) {
+                    ArrayList<Farm> farm = response.body();
+                    ArrayAdapter farmAdapter = new ArrayAdapter(FarmStatsActivity.this, R.layout.spinner, farm);
+                    Spinner farmSpinner = (Spinner) findViewById(R.id.spinnerstatistics);
+                    farmSpinner.setAdapter(farmAdapter);
+                }
+            }
 
-    @Override
-    public void onResponse(Call call, Response response) {
-        if(response.isSuccessful()){
-            ArrayList<Farms> farms = (ArrayList<Farms>) response.body();
-            ArrayAdapter farmAdapter = new ArrayAdapter(this, R.layout.spinner, farms);
-            Spinner farmSpinner = (Spinner) findViewById(R.id.spinnerstatistics);
-            farmSpinner.setAdapter(farmAdapter);
+            @Override
+            public void onFailure(Call<ArrayList<Farm>> call, Throwable t) {
 
-        }
-    }
-
-    @Override
-    public void onFailure(Call call, Throwable t) {
-
+            }
+        });
     }
 }
