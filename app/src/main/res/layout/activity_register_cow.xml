@@ -11,13 +11,12 @@
         android:orientation="vertical">
 
         <TextView
-
             android:id="@+id/tag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="NFC ear tag"
             android:textColor="@android:color/background_dark"
-            android:textSize="20sp"></TextView>
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/buttonScan"
@@ -26,13 +25,12 @@
             android:text="Scan NFC" />
 
         <TextView
-
             android:id="@+id/officialID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Official ID"
             android:textColor="@android:color/background_dark"
-            android:textSize="20sp"></TextView>
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/editTextOfficialID"
@@ -139,7 +137,7 @@
             android:id="@+id/btnregister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="@string/register_animal" />
 
     </LinearLayout>
 </ScrollView>

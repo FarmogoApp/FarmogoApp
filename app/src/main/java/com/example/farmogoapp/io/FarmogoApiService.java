@@ -1,6 +1,7 @@
 package com.example.farmogoapp.io;
 
 import com.example.farmogoapp.model.AnimalType;
+import com.example.farmogoapp.model.Race;
 import com.example.farmogoapp.model.User;
 import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.model.Animal;
@@ -18,6 +19,9 @@ import retrofit2.http.Path;
 public interface FarmogoApiService {
     @GET("animalTypes")
     Call<ArrayList<AnimalType>> getAnimalTypes();
+
+    @GET("races")
+    Call<ArrayList<Race>> getRaces();
 
     @GET("farms")
     Call<ArrayList<Farm>> getFarms();

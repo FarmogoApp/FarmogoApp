@@ -1,44 +1,40 @@
-package com.example.farmogoapp.io.response;
+package com.example.farmogoapp.model;
 
-import com.google.gson.annotations.SerializedName;
 
-public class AnimalType {
-    @SerializedName("uuid")
-    String uuid;
-    @SerializedName("description")
-    String description;
-    @SerializedName("icon")
-    String icon;
+import java.io.Serializable;
 
-    public AnimalType() {
-    }
+public class AnimalType implements Serializable {
 
-    public AnimalType(String uuid, String description, String icon){
-        this.uuid = uuid;
-        this.description = description;
-        this.icon = icon;
+    private String uuid;
+    private String description;
+    private String icon;
+
+    public String getUuid() {
+        return uuid;
     }
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getIcon() {
+        return icon;
     }
 
     public void setIcon(String icon) {
         this.icon = icon;
     }
 
-    public String getUuid(){
-        return this.uuid;
+    @Override
+    public String toString() {
+        return description;
     }
-    public String getDescription(){
-        return this.description;
-    }
-    public String getIcon(){
-        return this.icon;
-    }
-
 }
