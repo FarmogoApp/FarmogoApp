@@ -16,9 +16,6 @@
         android:layout_height="220dp"
         app:srcCompat="@drawable/logo" />
 
-
-
-
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:background="@drawable/round_corner"
