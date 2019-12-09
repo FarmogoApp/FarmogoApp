@@ -74,6 +74,10 @@
     <string name="guide">Guide</string>
     <string name="choose_type">Choose type</string>
     <string name="unregistersucces">Unregister succesfully</string>
+    <string name="name">Name</string>
+    <string name="name_example">Juan</string>
+    <string name="telephone">Telephone</string>
+    <string name="telephone_example">656565656</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>

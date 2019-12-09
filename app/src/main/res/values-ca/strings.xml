@@ -110,4 +110,8 @@
     <string name="section_optional">Secció (opcional)</string>
     <string name="birthday" >Naixement</string>
     <string name="edit_farm">Editar Explotació</string>
+    <string name="name_example">Juan</string>
+    <string name="name">Nom</string>
+    <string name="telephone">telèfon</string>
+    <string name="telephone_example">656565656</string>
 </resources>
