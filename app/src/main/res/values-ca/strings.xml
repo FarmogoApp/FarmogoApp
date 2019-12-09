@@ -130,4 +130,6 @@
     <string name="OfficialIDbirth">OfficialId</string>
     <string name="register_cow">Register cow</string>
     <string name="Date">Date</string>
+    <string name="telephone">Telèfon</string>
+    <string name="name">Nom</string>
 </resources>

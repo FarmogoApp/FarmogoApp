@@ -134,4 +134,6 @@
     <string name="forgot_your_password">Ha olvidado su contraseña?</string>
     <string name="recovery_email">Le hemos enviado un correo para recuperar su contraseña</string>
     <string name="reset_password">Recuperar contraseña:</string>
+    <string name="telephone">Teléfono</string>
+    <string name="name">Nombre</string>
 </resources>
