@@ -57,11 +57,13 @@ public class AnimalInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animal_info);
 
-        Log.d("ANINALINFO", "TRY TO LOAD THIS ACTIVITY" + this.getIntent().getAction());
         if (getIntent().getAction() == NfcAdapter.ACTION_NDEF_DISCOVERED) {
             loadAnimalDataFromNfc(getIntent());
         }
 
+        if (getIntent().hasExtra("animalId")){
+            loadAnimalData(getIntent().getStringExtra("animalId"));
+        }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnAddRemove = findViewById(R.id.mas);

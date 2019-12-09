@@ -8,19 +8,26 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
 
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SeachAnimalsActivity extends AppCompatActivity {
 
@@ -98,14 +105,20 @@ public class SeachAnimalsActivity extends AppCompatActivity {
 
 
     private void prepareDataAdapter() {
-        ArrayList<Animal> testData = new ArrayList<>();
-        Random r = new Random();
-        for (int i = 0; i < 100; i++) {
-            testData.add(new Animal(""+Math.abs(r.nextLong() % 1_000_000_000_000L)));
-        }
+        Call<List<Animal>> allAnimals = FarmogoApiJacksonAdapter.getApiService(this).getAllAnimals();
+        allAnimals.enqueue(new Callback<List<Animal>>() {
+            @Override
+            public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
+                searchAnimalsAdapter = new SearchAnimalsAdapter(SeachAnimalsActivity.this, response.body());
+                resultListView.setAdapter(searchAnimalsAdapter);
+            }
 
-        searchAnimalsAdapter = new SearchAnimalsAdapter(this, testData);
-        resultListView.setAdapter(searchAnimalsAdapter);
+            @Override
+            public void onFailure(Call<List<Animal>> call, Throwable t) {
+                Toast.makeText(SeachAnimalsActivity.this, "Error getting animals", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     private void doSearch(CharSequence query) {

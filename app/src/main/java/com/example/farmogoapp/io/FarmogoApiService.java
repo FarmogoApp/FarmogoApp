@@ -1,12 +1,14 @@
 package com.example.farmogoapp.io;
 
-import com.example.farmogoapp.io.response.AnimalType;
-import com.example.farmogoapp.io.response.User;
-import com.example.farmogoapp.io.response.Farms;
+import com.example.farmogoapp.model.AnimalType;
+import com.example.farmogoapp.model.User;
+import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.incidences.Incidence;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -18,7 +20,7 @@ public interface FarmogoApiService {
     Call<ArrayList<AnimalType>> getAnimalTypes();
 
     @GET("farms")
-    Call<ArrayList<Farms>> getFarms();
+    Call<ArrayList<Farm>> getFarms();
 
     @POST("users")
     Call<User> createUser(@Body User user);
@@ -28,6 +30,9 @@ public interface FarmogoApiService {
 
     @GET("animals/{id}")
     Call<Animal> getAnimal(@Path("id") String idAnimal);
+
+    @GET("animals")
+    Call<List<Animal>> getAllAnimals();
 
 }
 
