@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,26 +13,44 @@
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
-
-        android:layout_height="120dp"
+        android:layout_height="220dp"
         app:srcCompat="@drawable/logo" />
-    <com.google.android.material.textfield.TextInputLayout
-     
-    <EditText
-        android:id="@+id/registration_name"
 
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:background="@drawable/round_corner"
         android:layout_height="wrap_content"
+
         android:layout_marginBottom="20dp"
         android:padding="5dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:hintTextAppearance="@style/AppHintText">
+        <EditText
+            android:id="@+id/registration_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:layout_margin="5dp"
+            android:theme="@style/AppEditText"
+            android:hint="@string/name"
+            android:text="@string/username_example" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        android:ems="10"
-        android:inputType="text"
-        android:hint="@string/name" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/round_corner"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="20dp"
+        android:padding="5dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:hintTextAppearance="@style/AppHintText">
         <EditText
             android:id="@+id/registration_username"
             android:layout_width="match_parent"
@@ -69,29 +90,41 @@
         android:inputType="textEmailAddress"
         android:hint="@string/email" />
 
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/round_corner"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="20dp"
+        android:padding="5dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:hintTextAppearance="@style/AppHintText">
+
     <EditText
         android:id="@+id/registration_telephone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
+        android:maxLines="1"
+        android:layout_margin="5dp"
+        android:textColor="@android:color/black"
+        android:theme="@style/AppEditText"
         android:hint="@string/telephone"
+        android:text="@string/password_example"
         tools:ignore="TextFields" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:background="@drawable/round_corner_password"
         android:padding="5dp"
         app:hintTextAppearance="@style/AppHintText"
         android:layout_marginBottom="20dp"
         app:passwordToggleEnabled="true">
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="@string/password" />
-
 
         <EditText
             android:id="@+id/registration_password1"
@@ -110,7 +143,6 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:background="@drawable/round_corner_password"
         android:padding="5dp"
         app:hintTextAppearance="@style/AppHintText"
@@ -146,3 +178,4 @@
         android:text="@android:string/ok" />
 
 </LinearLayout>
+    </ScrollView>
