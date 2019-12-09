@@ -15,14 +15,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiAdapter;
-import com.example.farmogoapp.io.response.User;
+import com.example.farmogoapp.model.User;
 import com.example.farmogoapp.ui.main.farms.FarmStatsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GetTokenResult;
 
 import java.util.Objects;
 
