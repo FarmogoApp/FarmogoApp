@@ -74,6 +74,24 @@
     <string name="guide">Guide</string>
     <string name="choose_type">Choose type</string>
     <string name="unregistersucces">Unregister succesfully</string>
+    <string name="Exit">Exit</string>
+    <string name="destino">Destination</string>
+    <string name="guia_certificado">Guide/Certificate</string>
+    <string name="BirthTitle">Birth</string>
+    <string name="OfficialIDbirth">OfficialId</string>
+    <string name="register_cow">Register cow</string>
+    <string name="Date">Date</string>
+
+
+    <string name="user_auth_failed">User Authentication Failed:</string>
+    <string name="log_in">Log in...</string>
+    <string name="please_enter_email">Please enter your email</string>
+    <string name="please_enter_password">Please enter your password</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="recovery_email">We have sent an email to reset your password</string>
+    <string name="reset_password">Reset password:</string>
+    <string name="telephone">Telephone</string>
+    <string name="name">Name</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
@@ -105,9 +123,6 @@
         <item>Farm 5</item>
     </string-array>
 
-
-
-
     <string-array name="building">
         <item>Building 1</item>
         <item>Building 2</item>
@@ -129,10 +144,7 @@
         <item>Pregnancy Monitoring</item>
         <item>Weighing</item>
         <item>Scheduled</item>
-        <item>Death Cow</item>
-        <item>Abattoir</item>
-        <item>Sell Cow</item>
-        <item>Add new incidence+</item>
+        <item>Exit</item>
     </string-array>
     <string-array name="incidences_example">
         <item>95597533343</item>
@@ -144,10 +156,23 @@
         <item>Inseminate</item>
         <item>Others</item>
     </string-array>
+    <string-array name="exitType">
+        <item>Death</item>
+        <item>Abattoir</item>
+        <item>Sell</item>
+        <item>Others</item>
+    </string-array>
     <string-array name="pregnancy_state">
         <item>Zeal</item>
         <item>Stand</item>
         <item>Abortion</item>
+    </string-array>
+    <string-array name="races">
+        <item>Pirenaica</item>
+        <item>Parda de Montaña</item>
+        <item>Limusina</item>
+        <item>Frisona</item>
+        <item>Charoles</item>
     </string-array>
 </resources>
 
