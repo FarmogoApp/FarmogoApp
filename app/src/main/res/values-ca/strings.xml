@@ -51,16 +51,22 @@
         <item>Seguiment embaràs</item>
         <item>Pesatge</item>
         <item>Programat</item>
-        <item>Defuncio</item>
-        <item>Matader</item>
-        <item>Venta de vaca</item>
-        <item>Afegir nova incidència+</item>
+        <item>Sortida</item>
+
     </string-array>
     <string-array name="pregnancy_state">
         <item>Zel</item>
         <item>Parada</item>
         <item>Abortament</item>
     </string-array>
+    <string-array name="races">
+        <item>Pirenaica</item>
+        <item>Parda de Montaña</item>
+        <item>Limusina</item>
+        <item>Frisona</item>
+        <item>Charoles</item>
+    </string-array>
+
     <string name="unregistersucces">Baixa correcta</string>
     <string name="choose_type">tria el tipus</string>
     <string name="unregisrer_cow">Baixa vaca</string>
@@ -117,6 +123,13 @@
     <string name="forgot_your_password">Heu oblidat la vostra contrasenya?</string>
     <string name="recovery_email">Li hem enviat un correu per recuperar la contrasenya</string>
     <string name="reset_password">Recuperar contrasenya:</string>
+    <string name="Exit">Sortida</string>
+    <string name="destino">Destino</string>
+    <string name="guia_certificado">Guia/Certificado</string>
+    <string name="BirthTitle">Naixement</string>
+    <string name="OfficialIDbirth">OfficialId</string>
+    <string name="register_cow">Register cow</string>
+    <string name="Date">Date</string>
     <string name="telephone">Telèfon</string>
     <string name="name">Nom</string>
 </resources>

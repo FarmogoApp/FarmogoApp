@@ -17,6 +17,12 @@
         <item>Macho</item>
         <item>Hembra</item>
     </string-array>
+    <string-array name="exitType">
+        <item>Muerte</item>
+        <item>Matadero</item>
+        <item>Venta</item>
+        <item>Otros</item>
+    </string-array>
     <string-array name="mother">
         <item>Madre 1</item>
         <item>Madre 2</item>
@@ -54,16 +60,21 @@
         <item>Seguimiento embarazo</item>
         <item>Pesaje</item>
         <item>Programado</item>
-        <item>Defunción</item>
-        <item>Matadero</item>
-        <item>Venta de vaca</item>
-        <item>Añadir nueva incidencia+</item>
+        <item>Salida</item>
     </string-array>
     <string-array name="pregnancy_state">
         <item>Celo</item>
         <item>Parada</item>
         <item>Aborto</item>
     </string-array>
+    <string-array name="races">
+        <item>Pirenaica</item>
+        <item>Parda de Montaña</item>
+        <item>Limusina</item>
+        <item>Frisona</item>
+        <item>Charoles</item>
+    </string-array>
+
     <string name="record">Historial</string>
     <string name="race">Raza</string>
     <string name="number">Número</string>
@@ -109,6 +120,13 @@
     <string name="section_optional">Sección (opcional)</string>
     <string name="birthday" >Nacimiento</string>
     <string name="edit_farm">Editar Explotación</string>
+    <string name="Exit">Salida</string>
+    <string name="destino">Destino</string>
+    <string name="guia_certificado">Guia/Certificado</string>
+    <string name="BirthTitle">Nacimiento</string>
+    <string name="OfficialIDbirth">OfficialId</string>
+    <string name="register_cow">Registrar vaca</string>
+    <string name="Date">Fecha</string>
     <string name="user_auth_failed">Autenticación fallida:</string>
     <string name="log_in">Iniciando sessión...</string>
     <string name="please_enter_email">Porfavor introduzca su correo</string>
