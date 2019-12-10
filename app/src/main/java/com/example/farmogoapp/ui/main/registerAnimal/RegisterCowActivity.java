@@ -14,22 +14,28 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterCowActivity extends AppCompatActivity implements Callback{
+    private EditText etOfficialId;
+    private Spinner spnMotherId;
+    private CalendarView clvBirthDate;
+    private EditText etOrigin;
+    private Spinner spnSex;
+    private Spinner spnAnimalType;
+    private Spinner spnRace;
+    private Spinner spnLocation;
     private Button btnRegister;
-    private Spinner raceSpinner;
-    private Spinner animalTypeSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +45,58 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback{
         initializeAnimalTypeSpinner();
         initializeRaceSpinner();
         initializeLocationSpinner();
+        initializeSexSpinner();
         
         setContentView(R.layout.activity_register_cow);
-        btnRegister = findViewById(R.id.btnregister);
-        raceSpinner = findViewById(R.id.spinnerRace);
-        animalTypeSpinner = findViewById(R.id.spinnerAnimalType);
+        findAllComponents();
 
         registerListeners();
+    }
+
+
+
+    private void findAllComponents(){
+        etOfficialId = findViewById(R.id.etOfficialId);
+        spnMotherId = findViewById(R.id.spnMotherId);
+        clvBirthDate = findViewById(R.id.clvBirthDate);
+        etOrigin = findViewById(R.id.etOrigin);
+        spnSex = findViewById(R.id.spnSex);
+        spnAnimalType = findViewById(R.id.spnAnimalType);
+        spnRace = findViewById(R.id.spnRace);
+        spnLocation = findViewById(R.id.spnLocation);
+        btnRegister = findViewById(R.id.btnRegister);
+
+    }
+
+    private void registerAnimal() {
+
+        // Get user input
+        String officialId = etOfficialId.getText().toString();
+        Animal selectedMother = (Animal) spnMotherId.getSelectedItem();
+        Date birthDate = new Date(clvBirthDate.getDate());
+        String origin = etOrigin.getText().toString();
+        String selectedSex = spnSex.getSelectedItem().toString();
+        AnimalType selectedAnimalType = (AnimalType) spnAnimalType.getSelectedItem();
+        Race selectedRace = (Race) spnRace.getSelectedItem();
+        // TODO: Location
+
+
+        Log.e("Register", "officialId: " + officialId);
+        Log.e("Register", "selectedMother ID: " + selectedMother.getOfficialId());
+        Log.e("Register", "birthDate: " + birthDate.toString());
+        Log.e("Register", "origin: " + origin);
+        Log.e("Register", "selectedSex: " + selectedSex);
+        Log.e("Register", "selectedAnimalType: " + selectedAnimalType.getDescription());
+        Log.e("Register", "Location: " + "TODO");
+
+
+        // Set animal
+        Animal animal = new Animal();
+        animal.setOfficialId(officialId);
+        animal.setAnimalTypeId(selectedAnimalType.getUuid());
+        animal.setRaceId(selectedRace.getUuid());
+
+
     }
 
 
@@ -68,22 +119,7 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback{
         });
     }
 
-    private void registerAnimal() {
 
-        // Get user input
-        AnimalType selectedAnimalType = (AnimalType) animalTypeSpinner.getSelectedItem();
-        Race selectedRace = (Race) raceSpinner.getSelectedItem();
-
-        Log.e("Register", selectedAnimalType.getDescription());
-        Log.e("Register", selectedRace.getName());
-
-
-        // Set animal
-        Animal animal = new Animal();
-        animal.setAnimalTypeId(selectedAnimalType.getUuid());
-
-
-    }
 
 
     @Override
@@ -108,7 +144,7 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback{
 
                 if(data != null){
                     ArrayAdapter animalTypeAdapater = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, data);
-                    animalTypeSpinner.setAdapter(animalTypeAdapater);
+                    spnAnimalType.setAdapter(animalTypeAdapater);
                 }
             }
 
@@ -130,7 +166,7 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback{
 
                 if(data != null){
                     ArrayAdapter raceAdapater = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, data);
-                    raceSpinner.setAdapter(raceAdapater);
+                    spnRace.setAdapter(raceAdapater);
                 }
             }
 
@@ -143,6 +179,16 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback{
     }
 
     private void initializeLocationSpinner() {
+
+    }
+
+    private void initializeSexSpinner() {
+
+        ArrayList<String> sexs = new ArrayList<>();
+        sexs.add("Male");
+        sexs.add("Female");
+        ArrayAdapter sexAdapater = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, sexs);
+        spnSex.setAdapter(sexAdapater);
 
     }
 

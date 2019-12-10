@@ -118,7 +118,6 @@
     <string name="scheduled_for">Programado para</string>
     <string name="building_optional">Granja (opcional)</string>
     <string name="section_optional">Sección (opcional)</string>
-    <string name="birthday" >Fecha de nacimiento</string>
     <string name="edit_farm">Editar Explotación</string>
     <string name="Exit">Salida</string>
     <string name="destino">Destino</string>
@@ -136,4 +135,12 @@
     <string name="reset_password">Recuperar contraseña:</string>
     <string name="telephone">Teléfono</string>
     <string name="name">Nombre</string>
+    <string name="location">Ubicación</string>
+    <string name="animal_type">Tipo de animal</string>
+    <string name="sex">Sexo</string>
+    <string name="origin">Origen</string>
+    <string name="birth_date">Fecha de nacimiento</string>
+    <string name="mother_id">ID madre</string>
+    <string name="official_id">ID oficial</string>
+    <string name="nfc_ear_tag">Crotal NFC</string>
 </resources>

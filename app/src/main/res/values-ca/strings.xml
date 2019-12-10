@@ -114,7 +114,6 @@
     <string name="scheduled_for">Programat per</string>
     <string name="building_optional">Granja (opcional)</string>
     <string name="section_optional">Secció (opcional)</string>
-    <string name="birthday" >Data de naixement</string>
     <string name="edit_farm">Editar Explotació</string>
     <string name="user_auth_failed">Autenticació fallida:</string>
     <string name="log_in">Iniciant sessió...</string>
@@ -132,4 +131,12 @@
     <string name="Date">Date</string>
     <string name="telephone">Telèfon</string>
     <string name="name">Nom</string>
+    <string name="location">Ubicació</string>
+    <string name="animal_type">Tipus d\'animal</string>
+    <string name="sex">Sexe</string>
+    <string name="origin">Origen</string>
+    <string name="birth_date">Data de naixement</string>
+    <string name="mother_id">ID mare</string>
+    <string name="official_id">ID oficial</string>
+    <string name="nfc_ear_tag">Crotal NFC</string>
 </resources>

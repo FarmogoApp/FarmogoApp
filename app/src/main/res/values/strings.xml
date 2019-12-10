@@ -69,7 +69,6 @@
     <string name="scheduled_for">Scheduled for</string>
     <string name="building_optional">Building (optional)</string>
     <string name="section_optional">Section (optional)</string>
-    <string name="birthday" >Birth date</string>
     <string name="unregisrer_cow">Unregister Cow</string>
     <string name="guide">Guide</string>
     <string name="choose_type">Choose type</string>
@@ -92,6 +91,14 @@
     <string name="reset_password">Reset password:</string>
     <string name="telephone">Telephone</string>
     <string name="name">Name</string>
+    <string name="location">Location</string>
+    <string name="animal_type">Animal type</string>
+    <string name="sex">Sex</string>
+    <string name="origin">Origin</string>
+    <string name="birth_date">Birth date</string>
+    <string name="mother_id">Mother ID</string>
+    <string name="official_id">Official ID</string>
+    <string name="nfc_ear_tag">NFC ear tag</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
