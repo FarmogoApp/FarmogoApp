@@ -10,6 +10,7 @@ public class AppGlobal extends Application {
     public void onCreate() {
         super.onCreate();
         CacheManager.init(this);
+        SessionData.init(this);
     }
 
 
