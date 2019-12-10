@@ -175,4 +175,15 @@
         android:background="@drawable/round_shape"
         android:text="@string/incidence" />
 
+    <Switch
+        android:id="@+id/writeNfc"
+        android:layout_width="75dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:textColor="@android:color/white"
+        android:enabled="false"
+        android:checked="false"
+        android:background="@drawable/round_shape" />
+
 </RelativeLayout>

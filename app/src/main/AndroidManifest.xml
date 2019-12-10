@@ -19,7 +19,9 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.main.login.LoginActivity">
+        <activity android:name=".ui.main.login.LoginActivity"
+            android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -27,22 +29,29 @@
         </activity>
         <activity
             android:name=".ui.main.farms.AddExploitationActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ui.main.farms.FarmStatsActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ui.main.searchanimal.SeachAnimalsActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ui.main.animallist.AnimalListActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ui.main.animalInfo.AnimalInfoActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="animal"
                     android:scheme="farmogo" />
@@ -50,14 +59,20 @@
         </activity>
         <activity
             android:name=".ui.main.registerAnimal.RegisterCowActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ui.main.animalIncidence.AnimalIncidence"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ui.main.login.RegistrationActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
-
+        <activity android:name=".ui.main.animalInfo.NfcWritter"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
     </application>
+
 
 </manifest>

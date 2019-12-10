@@ -14,6 +14,11 @@
         <item>Femella</item>
     </string-array>
 
+    <string-array name="exitType">
+        <item>Mort</item>
+        <item>venda de vaca</item>
+        <item>Escorxador</item>
+    </string-array>
     <string-array name="mother">
         <item>Mare 1</item>
         <item>Mare 2</item>
@@ -115,6 +120,10 @@
     <string name="building_optional">Granja (opcional)</string>
     <string name="section_optional">Secció (opcional)</string>
     <string name="edit_farm">Editar Explotació</string>
+    <string name="name_example">Juan</string>
+    <string name="name">Nom</string>
+    <string name="telephone">telèfon</string>
+    <string name="telephone_example">656565656</string>
     <string name="user_auth_failed">Autenticació fallida:</string>
     <string name="log_in">Iniciant sessió...</string>
     <string name="please_enter_email">Sisplau introdueixi el seu correu</string>
@@ -123,8 +132,6 @@
     <string name="recovery_email">Li hem enviat un correu per recuperar la contrasenya</string>
     <string name="reset_password">Recuperar contrasenya:</string>
     <string name="Exit">Sortida</string>
-    <string name="destino">Destino</string>
-    <string name="guia_certificado">Guia/Certificado</string>
     <string name="BirthTitle">Naixement</string>
     <string name="OfficialIDbirth">OfficialId</string>
     <string name="register_cow">Register cow</string>
@@ -139,4 +146,12 @@
     <string name="mother_id">ID mare</string>
     <string name="official_id">ID oficial</string>
     <string name="nfc_ear_tag">Crotal NFC</string>
+    <string name="Date">Fecha</string>
+    <string name="Destino">Destí</string>
+    <string name="guia_certificado">Guía/Certificat</string>
+    <string name="password_example" translatable="false">111111</string>
+    <string name="login_email_example" translatable="false">a@b.com</string>
+    <string name="unregister_cow">Unregister cow</string>
+
+
 </resources>

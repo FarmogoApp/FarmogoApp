@@ -44,8 +44,8 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="registration">Registration</string>
-    <string name="login_email_example" translatable="false">info@farmogo.com</string>
-    <string name="password_example" translatable="false">12345678</string>
+    <string name="login_email_example" translatable="false">a@b.com</string>
+    <string name="password_example" translatable="false">111111</string>
     <string name="username">Username</string>
     <string name="username_example" translatable="false">FarmWorker</string>
     <string name="registration_succesful">Registration Succesful</string>
@@ -73,24 +73,25 @@
     <string name="guide">Guide</string>
     <string name="choose_type">Choose type</string>
     <string name="unregistersucces">Unregister succesfully</string>
+    <string name="name">Name</string>
+    <string name="name_example">Juan</string>
+    <string name="telephone">Telephone</string>
+    <string name="telephone_example">656565656</string>
     <string name="Exit">Exit</string>
-    <string name="destino">Destination</string>
+    <string name="Destino">Destination</string>guia_certificado
     <string name="guia_certificado">Guide/Certificate</string>
     <string name="BirthTitle">Birth</string>
-    <string name="OfficialIDbirth">OfficialId</string>
+    <string name="OfficialIDbirth">Official Id</string>
     <string name="register_cow">Register cow</string>
     <string name="Date">Date</string>
-
-
+    <string name="forgot_your_password">forgot your password?</string>
     <string name="user_auth_failed">User Authentication Failed:</string>
     <string name="log_in">Log in...</string>
     <string name="please_enter_email">Please enter your email</string>
     <string name="please_enter_password">Please enter your password</string>
-    <string name="forgot_your_password">Forgot your password?</string>
     <string name="recovery_email">We have sent an email to reset your password</string>
     <string name="reset_password">Reset password:</string>
-    <string name="telephone">Telephone</string>
-    <string name="name">Name</string>
+    <string name="unregister_cow">Unregister cow</string>
     <string name="location">Location</string>
     <string name="animal_type">Animal type</string>
     <string name="sex">Sex</string>
@@ -102,7 +103,18 @@
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
-
+    </string-array>
+    <string-array name="races">
+        <item>Pirenaica</item>
+        <item>Parda de Montaña</item>
+        <item>Limusina</item>
+        <item>Frisona</item>
+        <item>Charoles</item>
+    </string-array>
+    <string-array name="exitType">
+        <item>Death</item>
+        <item>Sell cow</item>
+        <item>Slaugter house</item>
     </string-array>
     <string-array name="mother">
         <item>Mother 1</item>
@@ -130,6 +142,9 @@
         <item>Farm 5</item>
     </string-array>
 
+
+
+
     <string-array name="building">
         <item>Building 1</item>
         <item>Building 2</item>
@@ -152,6 +167,7 @@
         <item>Weighing</item>
         <item>Scheduled</item>
         <item>Exit</item>
+
     </string-array>
     <string-array name="incidences_example">
         <item>95597533343</item>
@@ -163,23 +179,10 @@
         <item>Inseminate</item>
         <item>Others</item>
     </string-array>
-    <string-array name="exitType">
-        <item>Death</item>
-        <item>Abattoir</item>
-        <item>Sell</item>
-        <item>Others</item>
-    </string-array>
     <string-array name="pregnancy_state">
         <item>Zeal</item>
         <item>Stand</item>
         <item>Abortion</item>
-    </string-array>
-    <string-array name="races">
-        <item>Pirenaica</item>
-        <item>Parda de Montaña</item>
-        <item>Limusina</item>
-        <item>Frisona</item>
-        <item>Charoles</item>
     </string-array>
 </resources>
 
