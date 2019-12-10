@@ -13,7 +13,7 @@
     <string name="choose_type">Elige el tipo</string>
     <string name="guide">Guia</string>
     <string name="unregistersucces">Baja correcta</string>
-    <string-array name="gender">
+    <string-array name="sexs">
         <item>Macho</item>
         <item>Hembra</item>
     </string-array>

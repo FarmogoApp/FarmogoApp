@@ -94,7 +94,7 @@
                     android:id="@+id/genderBirthSpinner"
                     android:background="@drawable/spinner_bg"
                     android:layout_below="@+id/genderBirth"
-                    android:entries="@array/gender"
+                    android:entries="@array/sexs"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"/>
 

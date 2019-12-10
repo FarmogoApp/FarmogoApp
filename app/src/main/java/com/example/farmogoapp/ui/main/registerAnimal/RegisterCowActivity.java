@@ -20,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import retrofit2.Call;
@@ -37,6 +38,8 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback{
     private Spinner spnLocation;
     private Button btnRegister;
 
+    Date birthDate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,12 +48,25 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback{
         initializeAnimalTypeSpinner();
         initializeRaceSpinner();
         initializeLocationSpinner();
-        initializeSexSpinner();
-        
+
         setContentView(R.layout.activity_register_cow);
         findAllComponents();
 
         registerListeners();
+
+
+
+        clvBirthDate.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
+            @Override
+            public void onSelectedDayChange(CalendarView clv, int year, int month, int date) {
+                Calendar cal = Calendar.getInstance();
+                cal.set(Calendar.YEAR, year);
+                cal.set(Calendar.MONTH, month);
+                cal.set(Calendar.DAY_OF_MONTH, date);
+                birthDate = cal.getTime();
+            }
+        });
     }
 
 
@@ -72,8 +88,7 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback{
 
         // Get user input
         String officialId = etOfficialId.getText().toString();
-        Animal selectedMother = (Animal) spnMotherId.getSelectedItem();
-        Date birthDate = new Date(clvBirthDate.getDate());
+        //Animal selectedMother = (Animal) spnMotherId.getSelectedItem();
         String origin = etOrigin.getText().toString();
         String selectedSex = spnSex.getSelectedItem().toString();
         AnimalType selectedAnimalType = (AnimalType) spnAnimalType.getSelectedItem();
@@ -82,7 +97,7 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback{
 
 
         Log.e("Register", "officialId: " + officialId);
-        Log.e("Register", "selectedMother ID: " + selectedMother.getOfficialId());
+        //Log.e("Register", "selectedMother ID: " + selectedMother.getOfficialId());
         Log.e("Register", "birthDate: " + birthDate.toString());
         Log.e("Register", "origin: " + origin);
         Log.e("Register", "selectedSex: " + selectedSex);
@@ -182,14 +197,6 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback{
 
     }
 
-    private void initializeSexSpinner() {
 
-        ArrayList<String> sexs = new ArrayList<>();
-        sexs.add("Male");
-        sexs.add("Female");
-        ArrayAdapter sexAdapater = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, sexs);
-        spnSex.setAdapter(sexAdapater);
-
-    }
 
 }

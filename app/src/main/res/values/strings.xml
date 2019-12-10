@@ -100,7 +100,7 @@
     <string name="mother_id">Mother ID</string>
     <string name="official_id">Official ID</string>
     <string name="nfc_ear_tag">NFC ear tag</string>
-    <string-array name="gender">
+    <string-array name="sexs">
         <item>Male</item>
         <item>Female</item>
     </string-array>

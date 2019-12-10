@@ -92,7 +92,8 @@
         <Spinner
             android:id="@+id/spnSex"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:entries="@array/sexs"/>
 
         <TextView
             android:id="@+id/animalType"
