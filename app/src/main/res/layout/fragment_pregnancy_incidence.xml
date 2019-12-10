@@ -30,23 +30,32 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/linear1">
-        <TextView
-            android:textColor="@android:color/background_dark"
-            android:id="@+id/estado_embarazo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/type"/>
 
-        <Spinner
-            android:padding="5dp"
-            android:id="@+id/sp_tipo"
-            android:background="@color/colorAccent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/pregnancy_state"
-            android:layout_marginStart="20dp"
-            />
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/estado_embarazo"
+                android:textSize="20dp"
+                android:textColor="@android:color/background_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/type"/>
+
+            <Spinner
+                android:layout_marginTop="5dp"
+                android:id="@+id/sp_tipo"
+                android:background="@drawable/spinner_bg"
+                android:layout_below="@+id/estado_embarazo"
+                android:entries="@array/pregnancy_state"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+
+        </RelativeLayout>
+
     </LinearLayout>
     <LinearLayout
         android:layout_marginTop="15dp"
@@ -56,19 +65,30 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/linear3">
-        <TextView
-            android:textColor="@android:color/background_dark"
-            android:id="@+id/obs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/observations"
-            />
-        <EditText
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ed_obs"
-            android:layout_marginStart="15dp"/>
+            android:layout_height="match_parent">
+
+            <TextView
+                android:textColor="@android:color/background_dark"
+                android:id="@+id/obs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="@string/observations"/>
+
+            <EditText
+                android:id="@+id/ed_obs"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingStart="5dp"
+                android:background="@drawable/round_corner"
+                android:layout_below="@+id/obs"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:hint="@string/observations"/>
+        </RelativeLayout>
 
     </LinearLayout>
     <LinearLayout
@@ -80,15 +100,18 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/linear4">
+
         <Button
             android:id="@+id/save"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@color/colorPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
             android:text="@string/save"
-            />
+            android:layout_width="150dp"
+            android:layout_height="35dp"
+            android:background="@drawable/round_shape"
+            android:layout_margin="5dp"
+            android:textColor="@android:color/white" />
+
     </LinearLayout>
 
 </RelativeLayout>

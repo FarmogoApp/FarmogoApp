@@ -44,8 +44,8 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="registration">Registration</string>
-    <string name="login_email_example" translatable="false">info@farmogo.com</string>
-    <string name="password_example" translatable="false">12345678</string>
+    <string name="login_email_example" translatable="false">a@b.com</string>
+    <string name="password_example" translatable="false">111111</string>
     <string name="username">Username</string>
     <string name="username_example" translatable="false">FarmWorker</string>
     <string name="registration_succesful">Registration Succesful</string>
@@ -92,6 +92,7 @@
     <string name="please_enter_password">Please enter your password</string>
     <string name="recovery_email">We have sent an email to reset your password</string>
     <string name="reset_password">Reset password:</string>
+    <string name="unregister_cow">Unregister cow</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
@@ -158,10 +159,8 @@
         <item>Pregnancy Monitoring</item>
         <item>Weighing</item>
         <item>Scheduled</item>
-        <item>Death Cow</item>
-        <item>Abattoir</item>
-        <item>Sell Cow</item>
-        <item>Add new incidence+</item>
+        <item>Exit</item>
+
     </string-array>
     <string-array name="incidences_example">
         <item>95597533343</item>

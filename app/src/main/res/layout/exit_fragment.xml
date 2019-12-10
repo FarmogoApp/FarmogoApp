@@ -37,22 +37,32 @@
             android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/type"
-                android:textColor="@android:color/background_dark"
-                android:textSize="20sp" />
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <Spinner
-                android:id="@+id/exitType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:background="@color/colorAccent"
-                android:entries="@array/exitType"
-                android:padding="5dp" />
+                <TextView
+                    android:id="@+id/tipo"
+                    android:textSize="20dp"
+                    android:textColor="@android:color/background_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/type"/>
+
+                <Spinner
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/exitType"
+                    android:background="@drawable/spinner_bg"
+                    android:layout_below="@+id/tipo"
+                    android:entries="@array/exitType"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"/>
+
+            </RelativeLayout>
+
+
         </LinearLayout>
 
 
@@ -65,19 +75,30 @@
             android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/exitDestinationText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Destino"
-                android:textColor="@android:color/background_dark"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/exitDestinationEdit"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp" />
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:textColor="@android:color/background_dark"
+                    android:id="@+id/exitDestinationText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="@string/Destino"/>
+
+                <EditText
+                    android:id="@+id/exitDestinationEdit"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingStart="5dp"
+                    android:background="@drawable/round_corner"
+                    android:layout_below="@+id/exitDestinationText"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:hint="@string/Destino"/>
+            </RelativeLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -89,19 +110,30 @@
             android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/exitCertificadoText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/guia_certificado"
-                android:textColor="@android:color/background_dark"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/exitCertificadoEdit"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp" />
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:textColor="@android:color/background_dark"
+                    android:id="@+id/exitCertificadoText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="@string/guia_certificado"/>
+
+                <EditText
+                    android:id="@+id/exitCertificadoEdit"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingStart="5dp"
+                    android:background="@drawable/round_corner"
+                    android:layout_below="@+id/exitCertificadoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:hint="@string/guia_certificado"/>
+            </RelativeLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -112,10 +144,15 @@
             android:paddingTop="30dp">
             <Button
                 android:id="@+id/inregistercow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:text="Unregister cow"></Button>
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/unregister_cow"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:background="@drawable/round_shape"
+                android:layout_margin="5dp"
+                android:textColor="@android:color/white" />
+
         </LinearLayout>
 
     </RelativeLayout>

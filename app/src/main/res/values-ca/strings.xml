@@ -139,7 +139,9 @@
     <string name="Date">Fecha</string>
     <string name="Destino">Destí</string>
     <string name="guia_certificado">Guía/Certificat</string>
-
+    <string name="password_example" translatable="false">111111</string>
+    <string name="login_email_example" translatable="false">a@b.com</string>
+    <string name="unregister_cow">Unregister cow</string>
 
 
 </resources>
