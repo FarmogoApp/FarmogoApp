@@ -229,5 +229,8 @@ public class Animal {
         this.selected = selected;
     }
 
-
+    @Override
+    public String toString() {
+        return officialId;
+    }
 }
