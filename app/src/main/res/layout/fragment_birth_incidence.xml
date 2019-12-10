@@ -216,22 +216,22 @@
 
                 <TextView
                     android:textColor="@android:color/background_dark"
-                    android:id="@+id/exitCertificadoText"
+                    android:id="@+id/obs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
-                    android:text="@string/guia_certificado"/>
+                    android:text="@string/observations"/>
 
                 <EditText
-                    android:id="@+id/exitCertificadoEdit"
+                    android:id="@+id/ed_obs"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:paddingStart="5dp"
                     android:background="@drawable/round_corner"
-                    android:layout_below="@+id/exitCertificadoText"
+                    android:layout_below="@+id/obs"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:hint="@string/guia_certificado"/>
+                    android:hint="@string/observations"/>
             </RelativeLayout>
 
         </LinearLayout>

@@ -33,7 +33,7 @@ public class FarmogoApiAdapter {
             }
         });
         httpClient.addInterceptor(logging);
-        String baseUrl = "http://10.0.2.2:8080/api/";
+        String baseUrl = "http://farmogo.quierovinos.com:8080/api/";
 
         if (API_SERVICE == null) {
             Retrofit retrofit = new Retrofit.Builder()
