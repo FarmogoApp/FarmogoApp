@@ -146,4 +146,5 @@
     <string name="mother_id">ID madre</string>
     <string name="official_id">ID oficial</string>
     <string name="nfc_ear_tag">Crotal NFC</string>
+    <string name="registration_failed">No se ha podido registrar el animal</string>
 </resources>

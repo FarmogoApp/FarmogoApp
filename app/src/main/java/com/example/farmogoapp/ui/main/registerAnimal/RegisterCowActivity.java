@@ -78,6 +78,7 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback {
         // Get user input
         String officialId = etOfficialId.getText().toString();
         Animal selectedMother = (Animal) spnMotherId.getSelectedItem();
+        if(birthDate == null) birthDate = new Date(clvBirthDate.getDate());
         String origin = etOrigin.getText().toString();
         String selectedSex = spnSex.getSelectedItem().toString();
         AnimalType selectedAnimalType = (AnimalType) spnAnimalType.getSelectedItem();
@@ -97,14 +98,36 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback {
         animal.setOfficialId(officialId);
         animal.setMotherId(selectedMother.getUuid());
         animal.setMotherOfficialId(selectedMother.getOfficialId());
+        animal.setBirthDay(birthDate);
         animal.setOrigin(origin);
         animal.setSex(selectedSex);
         animal.setAnimalTypeId(selectedAnimalType.getUuid());
         animal.setRaceId(selectedRace.getUuid());
         // animal.setDivisionId();
 
+        Call<Animal> animalCall = FarmogoApiJacksonAdapter.getApiService(this).postAnimal(animal);
+        animalCall.enqueue(new Callback<Animal>() {
+            @Override
+            public void onResponse(Call<Animal> call, Response<Animal> response) {
 
+                if(response.isSuccessful()) {
+                    Toast toast1 = Toast.makeText(getApplicationContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
+                    toast1.show();
+                    Intent intent = new Intent(RegisterCowActivity.this, FarmStatsActivity.class);
+                    startActivity(intent);
 
+                } else {
+                    Toast toast1 = Toast.makeText(getApplicationContext(), getString(R.string.registration_failed), Toast.LENGTH_SHORT);
+                    toast1.show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Animal> call, Throwable t) {
+                Toast toast1 = Toast.makeText(getApplicationContext(), getString(R.string.registration_failed), Toast.LENGTH_SHORT);
+                toast1.show();
+            }
+        });
     }
 
 
@@ -120,10 +143,6 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback {
             @Override
             public void onClick(View v) {
                 registerAnimal();
-                Toast toast1 = Toast.makeText(getApplicationContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
-                toast1.show();
-                Intent intent = new Intent(RegisterCowActivity.this, FarmStatsActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -153,9 +172,9 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback {
 
     private void initializeAnimalTypeSpinner() {
 
-        Call<ArrayList<AnimalType>> animalTypes = FarmogoApiJacksonAdapter.getApiService(this).getAnimalTypes();
+        Call<ArrayList<AnimalType>> animalTypeCall = FarmogoApiJacksonAdapter.getApiService(this).getAnimalTypes();
 
-        animalTypes.enqueue(new Callback<ArrayList<AnimalType>>() {
+        animalTypeCall.enqueue(new Callback<ArrayList<AnimalType>>() {
             @Override
             public void onResponse(Call<ArrayList<AnimalType>> call, Response<ArrayList<AnimalType>> response) {
                 ArrayList<AnimalType> data = response.body();
@@ -176,9 +195,9 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback {
 
 
     private void initializeRaceSpinner() {
-        Call<ArrayList<Race>> races = FarmogoApiJacksonAdapter.getApiService(this).getRaces();
+        Call<ArrayList<Race>> raceCall = FarmogoApiJacksonAdapter.getApiService(this).getRaces();
 
-        races.enqueue(new Callback<ArrayList<Race>>() {
+        raceCall.enqueue(new Callback<ArrayList<Race>>() {
             @Override
             public void onResponse(Call<ArrayList<Race>> call, Response<ArrayList<Race>> response) {
                 ArrayList<Race> data = response.body();
@@ -202,9 +221,9 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback {
      * Get all animals and filter by sex female
      */
     private void initializeMotherIDSpinner() {
-        Call<List<Animal>> animals = FarmogoApiJacksonAdapter.getApiService(this).getAllAnimals();
+        Call<List<Animal>> animalCall = FarmogoApiJacksonAdapter.getApiService(this).getAllAnimals();
 
-        animals.enqueue(new Callback<List<Animal>>() {
+        animalCall.enqueue(new Callback<List<Animal>>() {
             @Override
             public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
                 List<Animal> data = response.body();

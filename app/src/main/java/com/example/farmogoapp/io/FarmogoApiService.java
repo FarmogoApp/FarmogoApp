@@ -13,6 +13,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -38,5 +39,8 @@ public interface FarmogoApiService {
     @GET("animals")
     Call<List<Animal>> getAllAnimals();
 
+    @Headers("Content-Type: application/json")
+    @POST("animals")
+    Call<Animal> postAnimal(@Body Animal animal);
 }
 
