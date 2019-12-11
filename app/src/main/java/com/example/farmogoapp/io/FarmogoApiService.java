@@ -42,5 +42,8 @@ public interface FarmogoApiService {
     @Headers("Content-Type: application/json")
     @POST("animals")
     Call<Animal> postAnimal(@Body Animal animal);
+
+    @GET("farms/{id}/lastIncidences")
+    Call<ArrayList<Incidence>> getLastIncidences(@Path("id") String idFarm);
 }
 

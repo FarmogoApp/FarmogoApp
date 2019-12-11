@@ -48,6 +48,9 @@ public class farm_stats_adapter extends RecyclerView.Adapter<farm_stats_adapter.
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
+
+
+
         View contactView = inflater.inflate(R.layout.recycler_view_statistics, parent, false);
 
         // Return a new holder instance
