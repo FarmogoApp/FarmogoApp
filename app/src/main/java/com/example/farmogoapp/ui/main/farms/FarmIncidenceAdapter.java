@@ -45,15 +45,25 @@ public class FarmIncidenceAdapter extends RecyclerView.Adapter<FarmIncidenceAdap
         public TextView incidence_weight_weight;
         public TextView incidence_weight_date;
 
+        public TextView incidence_pregnancy_animal_id;
+        public TextView incidence_pregnancy_type;
+        public TextView incidence_pregnancy_date;
 
+        public TextView incidence_discharge_animal_id;
+        public TextView incidence_discharge_type;
+        public TextView incidence_discharge_health_register;
+        public TextView incidence_discharge_date;
 
+        IncidenceType incidenceType;
 
 
         @SuppressLint("WrongViewCast")
-        public MyViewHolder(View itemView) {
+        public MyViewHolder(View itemView, IncidenceType incidenceType) {
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
+            this.incidenceType = incidenceType;
+
             incidence_birth_animal_id = (TextView) itemView.findViewById(R.id.incidence_birth_animal_id);
             incidence_birth_type = (TextView) itemView.findViewById(R.id.incidence_birth_type);
             incidence_birth_sex = (TextView) itemView.findViewById(R.id.incidence_birth_sex);
@@ -61,13 +71,25 @@ public class FarmIncidenceAdapter extends RecyclerView.Adapter<FarmIncidenceAdap
 
             incidence_treatment_animal_id = (TextView) itemView.findViewById(R.id.incidence_treatment_animal_id);
             incidence_treatment_type = (TextView) itemView.findViewById(R.id.incidence_treatment_type);
-            incidence_treatment_medicine = (TextView) itemView.findViewWithTag(R.id.incidence_treatment_medicine);
+            incidence_treatment_medicine = (TextView) itemView.findViewById(R.id.incidence_treatment_medicine);
             incidence_treatment_date = (TextView) itemView.findViewById(R.id.incidence_treatment_date);
 
             incidence_weight_animal_id = (TextView) itemView.findViewById(R.id.incidence_weight_animal_id);
             incidence_weight_type = (TextView) itemView.findViewById(R.id.incidence_weight_type);
-            incidence_weight_weight = (TextView) itemView.findViewWithTag(R.id.incidence_weight_weight);
+            incidence_weight_weight = (TextView) itemView.findViewById(R.id.incidence_weight_weight);
             incidence_weight_date = (TextView) itemView.findViewById(R.id.incidence_weight_date);
+
+
+            incidence_pregnancy_animal_id = (TextView) itemView.findViewById(R.id.incidence_pregnancy_animal_id);
+            incidence_pregnancy_type = (TextView) itemView.findViewById(R.id.incidence_pregnancy_type);
+            incidence_pregnancy_date = (TextView) itemView.findViewById(R.id.incidence_pregnancy_date);
+
+            incidence_discharge_animal_id = (TextView) itemView.findViewById(R.id.incidence_discharge_animal_id);
+            incidence_discharge_type = (TextView) itemView.findViewById(R.id.incidence_discharge_dischargeType);
+            incidence_discharge_health_register = (TextView) itemView.findViewById(R.id.incidence_discharge_health_register);
+            incidence_discharge_date = (TextView) itemView.findViewById(R.id.incidence_discharge_date);
+
+
         }
     }
     public FarmIncidenceAdapter(List<Incidence> incidences) {
@@ -84,6 +106,7 @@ public class FarmIncidenceAdapter extends RecyclerView.Adapter<FarmIncidenceAdap
         Context context = parent.getContext();
         final LayoutInflater inflater = LayoutInflater.from(context);
         IncidenceType type = IncidenceType.values()[viewType];
+        Log.d("CreateView Holder", "View Holder: ");
 
         View view=null;
         switch (type){
@@ -103,13 +126,14 @@ public class FarmIncidenceAdapter extends RecyclerView.Adapter<FarmIncidenceAdap
                 view = inflater.inflate(R.layout.recycler_view_incidence_treatment, parent, false);
                 break;
         }
-        return new MyViewHolder(view);
+        return new MyViewHolder(view, type);
     }
 
     // Involves populating data into the item through holder
     @Override
     public void onBindViewHolder(final FarmIncidenceAdapter.MyViewHolder viewHolder, int position) {
-        Incidence incidence1 = incidencesList.get(position);
+        final Incidence incidence1 = incidencesList.get(position);
+        Log.d("Position", "Position: " + position + " - " + viewHolder.incidenceType.name());
         incidence1.accept(new IncidenceVisitor(){
                               @Override
                               public void visit(IncidenceDischarge obj) {
@@ -143,7 +167,14 @@ public class FarmIncidenceAdapter extends RecyclerView.Adapter<FarmIncidenceAdap
                                   animal_weight_type_tv.setText(obj.getType().toString());
 
                                   TextView animal_weight_weight_tv = viewHolder.incidence_weight_weight;
-                                  animal_weight_weight_tv.setText(obj.getWeight());
+                                  if(animal_weight_weight_tv == null){
+                                      Log.d("null", "null");
+
+                                  }else{
+                                      animal_weight_weight_tv.setText(String.valueOf(obj.getWeight()));
+
+                                  }
+
 
                                   TextView animal_weight_date_tv = viewHolder.incidence_weight_date;
                                   animal_weight_date_tv.setText(obj.getDate().toString());
@@ -152,7 +183,6 @@ public class FarmIncidenceAdapter extends RecyclerView.Adapter<FarmIncidenceAdap
                               @Override
                               public void visit(IncidenceBirth obj) {
                               }
-
 
             });
         }

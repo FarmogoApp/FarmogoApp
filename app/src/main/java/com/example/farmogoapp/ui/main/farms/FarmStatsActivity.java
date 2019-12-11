@@ -228,6 +228,7 @@ public class FarmStatsActivity extends AppCompatActivity {
         farm.enqueue(new Callback<ArrayList<Farm>>() {
             @Override
             public void onResponse(Call<ArrayList<Farm>> call, Response<ArrayList<Farm>> response) {
+                if(response.isSuccessful()){
                     ArrayList<Farm> farm = response.body();
                     Log.d("Farms", "Name: " + farm.size());
                     ArrayAdapter farmAdapter = new ArrayAdapter(FarmStatsActivity.this, R.layout.spinner, farm);
@@ -235,6 +236,7 @@ public class FarmStatsActivity extends AppCompatActivity {
                     spinner.setAdapter(farmAdapter);
                     actualFarm = farm.get(0);
                     loadHistoric(actualFarm.getUuid());
+                }
 
             }
 
@@ -260,18 +262,11 @@ public class FarmStatsActivity extends AppCompatActivity {
         });
     }
     private void refreshRecyclerView(ArrayList<Incidence> lastIncidences){
-       for (Incidence lastIncidence : lastIncidences) {
-            Log.e("Data", lastIncidence.getDate().toString());
-            Log.e("Tipo", lastIncidence.getType().toString());
-            Log.e("AnimalId", lastIncidence.getAnimalId());
-
-        }
         recyclerView = findViewById(R.id.recyclerviewStatistics);
         recyclerView.setHasFixedSize(true);
         mAdapter = new FarmIncidenceAdapter(lastIncidences);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
     }
 
 

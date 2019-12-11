@@ -6,25 +6,19 @@
 
 
     <TextView
-        android:id="@+id/statistics_animal_id"
+        android:id="@+id/incidence_pregnancy_animal_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="@tools:sample/lorem" />
     <TextView
-        android:id="@+id/statistics_animal_incidence"
+        android:id="@+id/incidence_pregnancy_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/statistics_animal_id"
+        android:layout_below="@+id/incidence_pregnancy_animal_id"
         tools:text="@tools:sample/lorem" />
+
     <TextView
-        android:id="@+id/statistics_animal_medicine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/statistics_animal_date"
-        android:layout_alignParentEnd="true"
-        tools:text="@tools:sample/lorem" />
-    <TextView
-        android:id="@+id/statistics_animal_date"
+        android:id="@+id/incidence_pregnancy_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
