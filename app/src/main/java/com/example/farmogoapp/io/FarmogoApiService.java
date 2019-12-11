@@ -1,10 +1,10 @@
 package com.example.farmogoapp.io;
 
+import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.AnimalType;
+import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.model.Race;
 import com.example.farmogoapp.model.User;
-import com.example.farmogoapp.model.Farm;
-import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.incidences.Incidence;
 
 import java.util.ArrayList;
@@ -45,5 +45,9 @@ public interface FarmogoApiService {
 
     @GET("farms/{id}/lastIncidences")
     Call<ArrayList<Incidence>> getLastIncidences(@Path("id") String idFarm);
+
+    @GET("users/firebase/{uuid}")
+    Call<User> getByFirebaseUuid(@Path("uuid") String uuid);
+
 }
 
