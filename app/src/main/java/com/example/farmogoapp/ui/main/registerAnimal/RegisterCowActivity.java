@@ -74,6 +74,7 @@ public class RegisterCowActivity extends AppCompatActivity {
     private Button btnRegister;
 
     private Date birthDate;
+    private Farm currentFarm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,10 +85,27 @@ public class RegisterCowActivity extends AppCompatActivity {
         findAllComponents();
         registerListeners();
 
+        getSessionFarm();
         initializeMotherIdSpinner();
         initializeAnimalTypeSpinner();
         initializeRaceSpinner();
         initializeLocationSpinner();
+    }
+
+    /**
+     * If it fails, then go back to FarmStats
+     */
+    private void getSessionFarm(){
+        try {
+            currentFarm = SessionData.getInstance().getActualFarm();
+
+        } catch (IOException e) {
+            Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.get_current_farm_error), Toast.LENGTH_LONG);
+            toast.show();
+            Intent intent = new Intent(RegisterCowActivity.this, FarmStatsActivity.class);
+            startActivity(intent);
+            e.printStackTrace();
+        }
     }
 
 
@@ -139,6 +157,7 @@ public class RegisterCowActivity extends AppCompatActivity {
         animal.setAnimalTypeId(selectedAnimalType.getUuid());
         animal.setRaceId(selectedRace.getUuid());
         animal.setDivisionId(location.getDivision().getUuid());
+        animal.setFarmId(currentFarm.getUuid());
 
         // POST animal
         Call<Animal> animalCall = FarmogoApiJacksonAdapter.getApiService(this).postAnimal(animal);
@@ -275,37 +294,20 @@ public class RegisterCowActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Get current farm and initialize location spinner
-     */
+
     private void initializeLocationSpinner() {
-        Farm farm = null;
 
-        try {
-            farm = SessionData.getInstance().getActualFarm();
+        ArrayList<Location> locations = new ArrayList<>();
 
-        } catch (IOException e) {
-            Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.get_current_farm_error), Toast.LENGTH_LONG);
-            toast.show();
-            Intent intent = new Intent(RegisterCowActivity.this, FarmStatsActivity.class);
-            startActivity(intent);
-            e.printStackTrace();
-        }
-
-        if(farm != null){
-
-            ArrayList<Location> locations = new ArrayList<>();
-
-            for (Building building: farm.getBuildings()){
-                for (Division division: building.getDivisions()) {
-                    Location location = new Location(building, division);
-                    locations.add(location);
-                    Log.e("location", location.toString());
-                }
+        for (Building building: currentFarm.getBuildings()){
+            for (Division division: building.getDivisions()) {
+                Location location = new Location(building, division);
+                locations.add(location);
+                Log.e("location", location.toString());
             }
-
-            ArrayAdapter locationAdapter = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, locations);
-            spnLocation.setAdapter(locationAdapter);
         }
+
+        ArrayAdapter locationAdapter = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, locations);
+        spnLocation.setAdapter(locationAdapter);
     }
 }
