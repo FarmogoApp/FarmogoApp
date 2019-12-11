@@ -137,15 +137,6 @@ public class RegisterCowActivity extends AppCompatActivity {
         Race selectedRace = (Race) spnRace.getSelectedItem();
         Location location = (Location) spnLocation.getSelectedItem();
 
-        // Log (Just for develop)
-        Log.e("Register", "officialId: " + officialId);
-        Log.e("Register", "selectedMother ID: " + selectedMother.getOfficialId());
-        Log.e("Register", "birthDate: " + birthDate.toString());
-        Log.e("Register", "origin: " + origin);
-        Log.e("Register", "selectedSex: " + selectedSex);
-        Log.e("Register", "selectedAnimalType: " + selectedAnimalType.getDescription());
-        Log.e("Register", "Location: " + location.toString());
-
         // Set animal
         Animal animal = new Animal();
         animal.setOfficialId(officialId);
