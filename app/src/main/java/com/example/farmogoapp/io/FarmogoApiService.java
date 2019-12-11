@@ -34,5 +34,7 @@ public interface FarmogoApiService {
     @GET("animals")
     Call<List<Animal>> getAllAnimals();
 
+    @GET("farms/{id}/lastIncidences")
+    Call<ArrayList<Incidence>> getLastIncidences(@Path("id") String idFarm);
 }
 
