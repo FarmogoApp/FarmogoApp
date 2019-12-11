@@ -19,9 +19,15 @@
     </string-array>
     <string-array name="exitType">
         <item>Muerte</item>
+        <item>Venta de vaca</item>
         <item>Matadero</item>
-        <item>Venta</item>
-        <item>Otros</item>
+    </string-array>
+    <string-array name="races">
+        <item>Pirenaica</item>
+        <item>Parda de Montaña</item>
+        <item>Limusina</item>
+        <item>Frisona</item>
+        <item>Charoles</item>
     </string-array>
     <string-array name="mother">
         <item>Madre 1</item>
@@ -49,7 +55,7 @@
         <item>Explotación 5</item>
     </string-array>
     <string name="tag">TAG</string>
-    <string name="id_eartag">Código crotal oficial</string>
+    <string name="id_eartag">ID oficial</string>
     <string name="gender">Género</string>
     <string name="mother">Madre</string>
     <string name="farm">Explotación</string>
@@ -67,14 +73,6 @@
         <item>Parada</item>
         <item>Aborto</item>
     </string-array>
-    <string-array name="races">
-        <item>Pirenaica</item>
-        <item>Parda de Montaña</item>
-        <item>Limusina</item>
-        <item>Frisona</item>
-        <item>Charoles</item>
-    </string-array>
-
     <string name="record">Historial</string>
     <string name="race">Raza</string>
     <string name="number">Número</string>
@@ -97,7 +95,7 @@
     <string name="password">Contraseña</string>
     <string name="registration">Registrarse</string>
     <string name="username">Usuario</string>
-    <string name="registration_succesfull">Registrado correctamente</string>
+    <string name="registration_succesful">Registrado correctamente</string>
     <string name="died">Defunción</string>
     <string name="login_succesfull">Acceso correcto</string>
     <string name="slaughterhouse">Matadero</string>
@@ -118,22 +116,27 @@
     <string name="scheduled_for">Programado para</string>
     <string name="building_optional">Granja (opcional)</string>
     <string name="section_optional">Sección (opcional)</string>
-    <string name="birthday" >Nacimiento</string>
+    <string name="birthday" >Fecha de nacimiento</string>
     <string name="edit_farm">Editar Explotación</string>
-    <string name="Exit">Salida</string>
-    <string name="destino">Destino</string>
-    <string name="guia_certificado">Guia/Certificado</string>
-    <string name="BirthTitle">Nacimiento</string>
-    <string name="OfficialIDbirth">OfficialId</string>
-    <string name="register_cow">Registrar vaca</string>
-    <string name="Date">Fecha</string>
-    <string name="user_auth_failed">Autenticación fallida:</string>
-    <string name="log_in">Iniciando sessión...</string>
-    <string name="please_enter_email">Porfavor introduzca su correo</string>
-    <string name="please_enter_password">Porfavor introduzca su contrasenya</string>
-    <string name="forgot_your_password">Ha olvidado su contraseña?</string>
-    <string name="recovery_email">Le hemos enviado un correo para recuperar su contraseña</string>
-    <string name="reset_password">Recuperar contraseña:</string>
-    <string name="telephone">Teléfono</string>
+    <string name="name_example">Juan</string>
     <string name="name">Nombre</string>
+    <string name="telephone">Teléfono</string>
+    <string name="telephone_example">656565656</string>
+    <string name="Exit">Salida</string>
+    <string name="Destino">Destino</string>
+    <string name="guia_certificado">Guía/Certificado</string>
+    <string name="BirthTitle">Nacimiento</string>
+    <string name="OfficialIDbirth">Id Oficial</string>
+    <string name="register_cow">Registrar Vaca</string>
+    <string name="Date">Fecha</string>
+    <string name="forgot_your_password">¿Olvidate la contraseña?</string>
+    <string name="user_auth_failed">Autenticacion de usuario fallida:</string>
+    <string name="log_in">Logueando...</string>
+    <string name="please_enter_email">Por favor introduce el email</string>
+    <string name="please_enter_password">Por favor introduce la contraseña</string>
+    <string name="recovery_email">Hemos enviado un email para restablecer la contraseña</string>
+    <string name="reset_password">Contraseña restablecida:</string>
+    <string name="password_example" translatable="false">111111</string>
+    <string name="login_email_example" translatable="false">a@b.com</string>
+    <string name="unregister_cow">Quitar vaca</string>
 </resources>

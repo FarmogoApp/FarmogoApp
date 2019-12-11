@@ -14,6 +14,11 @@
         <item>Femella</item>
     </string-array>
 
+    <string-array name="exitType">
+        <item>Mort</item>
+        <item>venda de vaca</item>
+        <item>Escorxador</item>
+    </string-array>
     <string-array name="mother">
         <item>Mare 1</item>
         <item>Mare 2</item>
@@ -40,7 +45,7 @@
         <item>Explotació 5</item>
     </string-array>
     <string name="tag">TAG</string>
-    <string name="id_eartag">Codi crotal oficial</string>
+    <string name="id_eartag">ID oficial</string>
     <string name="gender">Génere</string>
     <string name="mother">Mare</string>
     <string name="farm">Explotació</string>
@@ -90,10 +95,10 @@
     <string name="choose_farm">Seleccionar explotació</string>
     <string name="last_marquet_price">Últim preu de mercat: 1.008,45€</string>
     <string name="login">Accedir</string>
-    <string name="password">Contrassenya</string>
+    <string name="password">Contrasenya</string>
     <string name="registration" >Registrar-se</string>
     <string name="username">Usuari</string>
-    <string name="registration_succesfull">Enregistrat correctament</string>
+    <string name="registration_succesful">Enregistrat correctament</string>
     <string name="died">Defunció</string>
     <string name="login_succesfull">Accès correcte</string>
     <string name="slaughterhouse">Matadero</string>
@@ -114,8 +119,12 @@
     <string name="scheduled_for">Programat per</string>
     <string name="building_optional">Granja (opcional)</string>
     <string name="section_optional">Secció (opcional)</string>
-    <string name="birthday" >Naixement</string>
+    <string name="birthday" >Data de naixement</string>
     <string name="edit_farm">Editar Explotació</string>
+    <string name="name_example">Juan</string>
+    <string name="name">Nom</string>
+    <string name="telephone">telèfon</string>
+    <string name="telephone_example">656565656</string>
     <string name="user_auth_failed">Autenticació fallida:</string>
     <string name="log_in">Iniciant sessió...</string>
     <string name="please_enter_email">Sisplau introdueixi el seu correu</string>
@@ -124,12 +133,15 @@
     <string name="recovery_email">Li hem enviat un correu per recuperar la contrasenya</string>
     <string name="reset_password">Recuperar contrasenya:</string>
     <string name="Exit">Sortida</string>
-    <string name="destino">Destino</string>
-    <string name="guia_certificado">Guia/Certificado</string>
     <string name="BirthTitle">Naixement</string>
     <string name="OfficialIDbirth">OfficialId</string>
     <string name="register_cow">Register cow</string>
-    <string name="Date">Date</string>
-    <string name="telephone">Telèfon</string>
-    <string name="name">Nom</string>
+    <string name="Date">Fecha</string>
+    <string name="Destino">Destí</string>
+    <string name="guia_certificado">Guía/Certificat</string>
+    <string name="password_example" translatable="false">111111</string>
+    <string name="login_email_example" translatable="false">a@b.com</string>
+    <string name="unregister_cow">Unregister cow</string>
+
+
 </resources>

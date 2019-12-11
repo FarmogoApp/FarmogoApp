@@ -1,9 +1,13 @@
 package com.example.farmogoapp.ui.main.animalInfo;
 
+import android.app.PendingIntent;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.nfc.FormatException;
 import android.nfc.NdefMessage;
+import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
@@ -15,7 +19,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +40,7 @@ import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
@@ -50,6 +57,9 @@ public class AnimalInfoActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private Switch nfcSwitch;
+    private NfcAdapter nfcAdapter;
+    private Animal animal;
 
 
     @Override
@@ -61,7 +71,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
             loadAnimalDataFromNfc(getIntent());
         }
 
-        if (getIntent().hasExtra("animalId")){
+        if (getIntent().hasExtra("animalId")) {
             loadAnimalData(getIntent().getStringExtra("animalId"));
         }
 
@@ -82,7 +92,75 @@ public class AnimalInfoActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         registerListeners();
+
+        nfcSwitch = findViewById(R.id.writeNfc);
+
+        nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        nfcSwitch.setEnabled(nfcAdapter != null);
+        nfcSwitch.setChecked(false);
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        enableNfcWriter();
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        disableNfcWriter();
+    }
+
+    private void enableNfcWriter() {
+        if (nfcAdapter != null) {
+            Intent i = new Intent(this, this.getClass());
+            i.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            PendingIntent pIntent = PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_CANCEL_CURRENT);
+            IntentFilter[] fillterArr = new IntentFilter[]{};
+            nfcAdapter.enableForegroundDispatch(this, pIntent, fillterArr, null);
+        }
+    }
+
+    private void disableNfcWriter() {
+        if (nfcAdapter != null)
+            nfcAdapter.disableForegroundDispatch(this);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.d("intent", "new inten.  NFC detected " + intent.getAction());
+        if (!nfcSwitch.isChecked()) return;
+        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())) {
+            writeTag(intent);
+        }
+
+    }
+
+    private void writeTag(Intent intent) {
+        Tag myTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+        Ndef ndef = Ndef.get(myTag);
+        try {
+            Log.d("intent", "connection to tag");
+            ndef.connect();
+            NdefMessage message;
+            NdefRecord[] records = new NdefRecord[1];
+            records[0] = NdefRecord.createUri("farmogo://animal/" + animal.getUuid());
+            message = new NdefMessage(records);
+            ndef.writeNdefMessage(message);
+            ndef.close();
+            nfcSwitch.setChecked(false);
+            Toast.makeText(this, "Tag has been written", Toast.LENGTH_SHORT).show();
+        } catch (FormatException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void loadAnimalDataFromNfc(Intent intent) {
         loadAnimalData(intent.getData().getPathSegments().get(0));
@@ -105,8 +183,8 @@ public class AnimalInfoActivity extends AppCompatActivity {
 
     }
 
-    public void updateViewWithAnimal(Animal animal){
-
+    public void updateViewWithAnimal(Animal animal) {
+        this.animal = animal;
         TextView officialId = findViewById(R.id.id_example);
         TextView sex = findViewById(R.id.genere_example);
         TextView race = findViewById(R.id.raza_exemple);
@@ -121,7 +199,6 @@ public class AnimalInfoActivity extends AppCompatActivity {
         //TODO: update list of incidences
 
     }
-
 
 
     @Override
