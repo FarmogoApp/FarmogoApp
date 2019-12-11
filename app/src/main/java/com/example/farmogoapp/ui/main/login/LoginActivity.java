@@ -39,7 +39,19 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
+        Session s = new Session(this);
+        if (s.isValidSession()) {
+            Intent intent = new Intent(LoginActivity.this, FarmStatsActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            finish();
+            startActivity(intent);
+            return;
+        }
+
+
         setContentView(R.layout.login);
         email = findViewById(R.id.login_email);
         password = findViewById(R.id.login_password);
@@ -48,12 +60,6 @@ public class LoginActivity extends AppCompatActivity {
         pd.setMessage(getString(R.string.log_in));
 
 
-        Session s = new Session(this);
-        if (s.isValidSession()) {
-            Intent intent = new Intent(LoginActivity.this, FarmStatsActivity.class);
-            startActivity(intent);
-            finish();
-        }
     }
 
 

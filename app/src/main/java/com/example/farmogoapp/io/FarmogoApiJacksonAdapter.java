@@ -2,6 +2,7 @@ package com.example.farmogoapp.io;
 
 import android.content.Context;
 
+import com.example.farmogoapp.ui.main.CacheManager;
 import com.example.farmogoapp.ui.main.Session;
 
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class FarmogoApiJacksonAdapter {
 
         // Creamos un interceptor y le indicamos el log level a usar
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.HEADERS);
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         // Asociamos el interceptor a las peticiones
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -39,6 +40,14 @@ public class FarmogoApiJacksonAdapter {
                 return chain.proceed(newRequest);
             }
         });
+
+        httpClient.addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                return CacheManager.getInstance().manageRequest(chain);
+            }
+        });
+
         httpClient.addInterceptor(logging);
 
         //String baseUrl = "http://10.0.2.2:8080/api/";
