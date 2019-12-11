@@ -5,14 +5,18 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.example.farmogoapp.model.Farm;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SessionData {
 
     public static final String ACTUAL_FARM = "actual.farm";
+    public static final String FARMS = "farms";
     private static SessionData instance;
     private Context context;
     private ObjectMapper objectMapper;
@@ -38,7 +42,14 @@ public class SessionData {
         return loadObject(ACTUAL_FARM, Farm.class);
     }
 
+    public void setFarms(List<Farm> farms) throws IOException {
+        saveObject(FARMS, farms);
+    }
 
+    public List<Farm> getFarms() throws IOException {
+        return loadObject(FARMS, new TypeReference<List<Farm>>() {});
+    }
+    
 
     private void saveObject(String key, Object value) throws IOException {
         StringWriter sw = new StringWriter();
@@ -54,7 +65,14 @@ public class SessionData {
         SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         String str = defaultSharedPreferences.getString(key, null);
         if (str == null) return null;
-        return objectMapper.readValue(key, tClass);
+        return objectMapper.readValue(str, tClass);
+    }
+
+    private <T> T loadObject(String key, TypeReference<T> tRef) throws IOException {
+        SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String str = defaultSharedPreferences.getString(key, null);
+        if (str == null) return null;
+        return objectMapper.readValue(str, tRef);
     }
 
 }
