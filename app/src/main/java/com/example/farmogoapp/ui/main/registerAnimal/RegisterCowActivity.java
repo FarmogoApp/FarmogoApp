@@ -1,11 +1,16 @@
 package com.example.farmogoapp.ui.main.registerAnimal;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.AnimalType;
+import com.example.farmogoapp.model.Building;
+import com.example.farmogoapp.model.Division;
+import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.model.Race;
+import com.example.farmogoapp.ui.main.SessionData;
 import com.example.farmogoapp.ui.main.farms.FarmStatsActivity;
 
 import android.content.Intent;
@@ -19,6 +24,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -28,7 +34,35 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RegisterCowActivity extends AppCompatActivity implements Callback {
+
+
+public class RegisterCowActivity extends AppCompatActivity {
+
+
+    class Location {
+        private Building building;
+        private Division division;
+
+        public Location(Building building, Division division) {
+            this.building = building;
+            this.division = division;
+        }
+
+        public Building getBuilding() {
+            return building;
+        }
+
+        public Division getDivision() {
+            return division;
+        }
+
+        @Override
+        public String toString() {
+            return building.getName() + " - " + division.getName();
+        }
+    }
+
+
     private EditText etOfficialId;
     private Spinner spnMotherId;
     private CalendarView clvBirthDate;
@@ -39,7 +73,7 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback {
     private Spinner spnLocation;
     private Button btnRegister;
 
-    Date birthDate;
+    private Date birthDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +84,10 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback {
         findAllComponents();
         registerListeners();
 
+        initializeMotherIdSpinner();
         initializeAnimalTypeSpinner();
         initializeRaceSpinner();
         initializeLocationSpinner();
-        initializeMotherIDSpinner();
     }
 
 
@@ -83,15 +117,16 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback {
         String selectedSex = spnSex.getSelectedItem().toString();
         AnimalType selectedAnimalType = (AnimalType) spnAnimalType.getSelectedItem();
         Race selectedRace = (Race) spnRace.getSelectedItem();
-        // TODO: Location
+        Location location = (Location) spnLocation.getSelectedItem();
 
+        // Log (Just for develop)
         Log.e("Register", "officialId: " + officialId);
         Log.e("Register", "selectedMother ID: " + selectedMother.getOfficialId());
         Log.e("Register", "birthDate: " + birthDate.toString());
         Log.e("Register", "origin: " + origin);
         Log.e("Register", "selectedSex: " + selectedSex);
         Log.e("Register", "selectedAnimalType: " + selectedAnimalType.getDescription());
-        Log.e("Register", "Location: " + "TODO");
+        Log.e("Register", "Location: " + location.toString());
 
         // Set animal
         Animal animal = new Animal();
@@ -103,29 +138,30 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback {
         animal.setSex(selectedSex);
         animal.setAnimalTypeId(selectedAnimalType.getUuid());
         animal.setRaceId(selectedRace.getUuid());
-        // animal.setDivisionId();
+        animal.setDivisionId(location.getDivision().getUuid());
 
+        // POST animal
         Call<Animal> animalCall = FarmogoApiJacksonAdapter.getApiService(this).postAnimal(animal);
         animalCall.enqueue(new Callback<Animal>() {
             @Override
             public void onResponse(Call<Animal> call, Response<Animal> response) {
 
                 if(response.isSuccessful()) {
-                    Toast toast1 = Toast.makeText(getApplicationContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
-                    toast1.show();
+                    Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
+                    toast.show();
                     Intent intent = new Intent(RegisterCowActivity.this, FarmStatsActivity.class);
                     startActivity(intent);
 
                 } else {
-                    Toast toast1 = Toast.makeText(getApplicationContext(), getString(R.string.registration_failed), Toast.LENGTH_SHORT);
-                    toast1.show();
+                    Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
+                    toast.show();
                 }
             }
 
             @Override
             public void onFailure(Call<Animal> call, Throwable t) {
-                Toast toast1 = Toast.makeText(getApplicationContext(), getString(R.string.registration_failed), Toast.LENGTH_SHORT);
-                toast1.show();
+                Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
+                toast.show();
             }
         });
     }
@@ -157,17 +193,6 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback {
             }
         });
     }
-
-
-    @Override
-    public void onResponse(Call call, Response response) {
-
-    }
-
-    @Override
-    public void onFailure(Call call, Throwable t) {
-
-    };
 
 
     private void initializeAnimalTypeSpinner() {
@@ -220,7 +245,7 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback {
     /**
      * Get all animals and filter by sex female
      */
-    private void initializeMotherIDSpinner() {
+    private void initializeMotherIdSpinner() {
         Call<List<Animal>> animalCall = FarmogoApiJacksonAdapter.getApiService(this).getAllAnimals();
 
         animalCall.enqueue(new Callback<List<Animal>>() {
@@ -250,7 +275,37 @@ public class RegisterCowActivity extends AppCompatActivity implements Callback {
         });
     }
 
+    /**
+     * Get current farm and initialize location spinner
+     */
     private void initializeLocationSpinner() {
-        // TODO: Get buildings from current farm
+        Farm farm = null;
+
+        try {
+            farm = SessionData.getInstance().getActualFarm();
+
+        } catch (IOException e) {
+            Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.get_current_farm_error), Toast.LENGTH_LONG);
+            toast.show();
+            Intent intent = new Intent(RegisterCowActivity.this, FarmStatsActivity.class);
+            startActivity(intent);
+            e.printStackTrace();
+        }
+
+        if(farm != null){
+
+            ArrayList<Location> locations = new ArrayList<>();
+
+            for (Building building: farm.getBuildings()){
+                for (Division division: building.getDivisions()) {
+                    Location location = new Location(building, division);
+                    locations.add(location);
+                    Log.e("location", location.toString());
+                }
+            }
+
+            ArrayAdapter locationAdapter = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, locations);
+            spnLocation.setAdapter(locationAdapter);
+        }
     }
 }

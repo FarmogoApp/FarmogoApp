@@ -150,6 +150,7 @@
     <string name="login_email_example" translatable="false">a@b.com</string>
     <string name="unregister_cow">Unregister cow</string>
     <string name="registration_failed">No s\'ha pogut registrar l\'animal</string>
+    <string name="get_current_farm_error">No s\'ha pogut obtenir la granja actual</string>
 
 
 </resources>

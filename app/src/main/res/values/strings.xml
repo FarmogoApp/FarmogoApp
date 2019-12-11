@@ -48,7 +48,7 @@
     <string name="password_example" translatable="false">111111</string>
     <string name="username">Username</string>
     <string name="username_example" translatable="false">FarmWorker</string>
-    <string name="registration_succesful">Registration Succesful</string>
+    <string name="registration_succesful">Registration Successful</string>
     <string name="login_succesfull">Login Succesfull</string>
     <string name="sold">Sold</string>
     <string name="died">Died</string>
@@ -185,5 +185,6 @@
         <item>Stand</item>
         <item>Abortion</item>
     </string-array>
+    <string name="get_current_farm_error">Couldn\'t get current farm</string>
 </resources>
 
