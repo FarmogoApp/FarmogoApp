@@ -21,7 +21,7 @@
     <string name="race">Race</string>
     <string name="race_example" translatable="false">Limusin</string>
     <string name="farm_example" translatable="false">2342342342</string>
-    <string name="animal_example" translatable="false">5858588998</string>
+    <string name="animal_example" translatable="false">ES255858588998</string>
     <string name="record">Record</string>
     <string name="back">back</string>
     <string name="list">list</string>
