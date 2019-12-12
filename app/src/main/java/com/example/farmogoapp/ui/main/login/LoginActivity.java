@@ -15,8 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.model.User;
+import com.example.farmogoapp.ui.main.LoadDataActivity;
 import com.example.farmogoapp.ui.main.SessionData;
-import com.example.farmogoapp.ui.main.farms.FarmStatsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -41,9 +41,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         User actualUser = SessionData.getInstance().getActualUser();
-        Log.d("LoginActivity", "Actual user" + actualUser);
+
         if (actualUser != null) {
-            Intent intent = new Intent(LoginActivity.this, FarmStatsActivity.class);
+            Log.d("LoginActivity", "Actual user" + actualUser.getUuid());
+            Intent intent = new Intent(LoginActivity.this, LoadDataActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             finish();
             startActivity(intent);
@@ -110,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 SessionData.getInstance().setActualUser(response.body());
-                Intent intent = new Intent(LoginActivity.this, FarmStatsActivity.class);
+                Intent intent = new Intent(LoginActivity.this, LoadDataActivity.class);
                 startActivity(intent);
                 finish();
             }
