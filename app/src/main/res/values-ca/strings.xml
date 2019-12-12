@@ -9,7 +9,7 @@
     <string name="tab_two">Número d\'explotació</string>
     <string name="tab_three">Escorxador</string>
 
-    <string-array name="gender">
+    <string-array name="sexs">
         <item>Mascle</item>
         <item>Femella</item>
     </string-array>
@@ -119,11 +119,8 @@
     <string name="scheduled_for">Programat per</string>
     <string name="building_optional">Granja (opcional)</string>
     <string name="section_optional">Secció (opcional)</string>
-    <string name="birthday" >Data de naixement</string>
     <string name="edit_farm">Editar Explotació</string>
     <string name="name_example">Juan</string>
-    <string name="name">Nom</string>
-    <string name="telephone">telèfon</string>
     <string name="telephone_example">656565656</string>
     <string name="user_auth_failed">Autenticació fallida:</string>
     <string name="log_in">Iniciant sessió...</string>
@@ -136,12 +133,24 @@
     <string name="BirthTitle">Naixement</string>
     <string name="OfficialIDbirth">OfficialId</string>
     <string name="register_cow">Register cow</string>
+    <string name="telephone">Telèfon</string>
+    <string name="name">Nom</string>
+    <string name="location">Ubicació</string>
+    <string name="animal_type">Tipus d\'animal</string>
+    <string name="sex">Sexe</string>
+    <string name="origin">Origen</string>
+    <string name="birth_date">Data de naixement</string>
+    <string name="mother_id">ID mare</string>
+    <string name="official_id">ID oficial</string>
+    <string name="nfc_ear_tag">Crotal NFC</string>
     <string name="Date">Fecha</string>
     <string name="Destino">Destí</string>
     <string name="guia_certificado">Guía/Certificat</string>
     <string name="password_example" translatable="false">111111</string>
     <string name="login_email_example" translatable="false">a@b.com</string>
     <string name="unregister_cow">Unregister cow</string>
+    <string name="registration_failed">No s\'ha pogut registrar l\'animal</string>
+    <string name="get_current_farm_error">No s\'ha pogut obtenir la granja actual</string>
 
 
 </resources>

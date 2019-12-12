@@ -20,18 +20,35 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
-import com.example.farmogoapp.io.FarmogoApiAdapter;
 import com.example.farmogoapp.model.Animal;
+import com.example.farmogoapp.model.AnimalType;
 import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 
 import com.example.farmogoapp.model.FarmHistory;
 import com.example.farmogoapp.model.incidences.Incidence;
+import com.example.farmogoapp.model.incidences.IncidenceBirth;
+import com.example.farmogoapp.model.incidences.IncidenceDischarge;
+import com.example.farmogoapp.model.incidences.IncidencePregnancy;
+import com.example.farmogoapp.model.incidences.IncidenceTreatment;
+import com.example.farmogoapp.model.incidences.IncidenceVisitor;
+import com.example.farmogoapp.model.incidences.IncidenceWeight;
+import com.example.farmogoapp.ui.main.Session;
+import com.example.farmogoapp.ui.main.SessionData;
+import com.example.farmogoapp.ui.main.login.LoginActivity;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,6 +63,7 @@ public class FarmStatsActivity extends AppCompatActivity {
     private Spinner spinner;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
+    private Farm actualFarm;
 
 
     @Override
@@ -81,51 +99,10 @@ public class FarmStatsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farm_stats);
         registerViews();
-        ArrayList<FarmHistory> Farm_History = new ArrayList<>();
-        FarmHistory FarmHistory1 = new FarmHistory("ES19022525", "Causa1", "Selevit", "28/10/2019");
-        FarmHistory FarmHistory2 = new FarmHistory("ES19022529", "Causa2", "Selevit", "28/10/2019");
-        Farm_History.add(FarmHistory1);
-        Farm_History.add(FarmHistory2);
-        Farm_History.add(FarmHistory2);
-        Farm_History.add(FarmHistory2);
-        Farm_History.add(FarmHistory2);
-        Farm_History.add(FarmHistory2);
-        Farm_History.add(FarmHistory2);
-        Farm_History.add(FarmHistory2);
-        Farm_History.add(FarmHistory2);
-        Farm_History.add(FarmHistory2);
-        Farm_History.add(FarmHistory2);
-        Farm_History.add(FarmHistory2);
+        fillData();
         registerListeners();
         loadFarms();
 
-        recyclerView = findViewById(R.id.recyclerviewStatistics);
-        recyclerView.setHasFixedSize(true);
-        mAdapter = new farm_stats_adapter(Farm_History);
-        recyclerView.setAdapter(mAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        fillData();
-        initSpinnerFarmChoose();
-        registerListeners();
-
-
-        Call<ArrayList<Incidence>> incidences = FarmogoApiJacksonAdapter.getApiService(this).getIncidences();
-        incidences.enqueue(new Callback<ArrayList<Incidence>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Incidence>> call, Response<ArrayList<Incidence>> response) {
-                ArrayList<Incidence> data = response.body();
-                Log.d("TEST INDICENCES", "size: " + data.size());
-                for (Incidence i : data) {
-                    Log.d("type", i.getType().toString());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<Incidence>> call, Throwable t) {
-                t.printStackTrace();
-                Log.e("TEST INDICENCES", "error");
-            }
-        });
     }
 
     private void registerViews() {
@@ -154,32 +131,22 @@ public class FarmStatsActivity extends AppCompatActivity {
             }
         });
 
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                //int item = parent.getSelectedItemPosition();
-                Toast.makeText(getBaseContext(), getString(R.string.farm) + ":" + parent.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-
-        });
-
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                loadFarmStats();
+                try {
+                    SessionData.getInstance().setActualFarm((Farm) parentView.getItemAtPosition(position));
+                    loadHistoric(SessionData.getInstance().getActualFarm().getUuid());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 FarmStatsActivity.this.fillData();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
+                Toast.makeText(FarmStatsActivity.this,"Nothing Selected", Toast.LENGTH_SHORT);
             }
 
         });
@@ -190,34 +157,116 @@ public class FarmStatsActivity extends AppCompatActivity {
         yougerCowsTextView.setText(String.valueOf(r.nextInt(100)));
         cowsTextView.setText(String.valueOf(r.nextInt(100)));
         bullsTextView.setText(String.valueOf(r.nextInt(100)));
+    }
 
+    private void loadFarmStats(){
+        final Call<List<Animal>> farmStats = FarmogoApiJacksonAdapter.getApiService(this).getAllAnimals();
+        farmStats.enqueue(new Callback<List<Animal>>() {
+            @Override
+            public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
+                List<Animal> animal = response.body();
+                Map<String, List<Animal>> groupAnimal = new HashMap<String, List<Animal>>();
+                ArrayList<String> listAnimalTypes = new ArrayList<>();
+
+                for (Animal animals : animal) {
+                    String key = animals.getAnimalTypeId();
+                    if(groupAnimal.get(key) == null){
+                        groupAnimal.put(key, new ArrayList<Animal>());
+                    }
+                    groupAnimal.get(key).add(animals);
+                    listAnimalTypes.add(animals.getAnimalTypeId());
+                }
+                animalType(listAnimalTypes);
+            }
+
+            @Override
+            public void onFailure(Call<List<Animal>> call, Throwable t) {
+                Log.e("Error loadFarmStats", "error");
+
+            }
+        });
+    }
+
+    private void animalType(final ArrayList<String> listAnimalTypes){
+        final Call<ArrayList<AnimalType>> animalType = FarmogoApiJacksonAdapter.getApiService(this).getAnimalTypes();
+        animalType.enqueue(new Callback<ArrayList<AnimalType>>() {
+            @Override
+            public void onResponse(Call<ArrayList<AnimalType>> call, Response<ArrayList<AnimalType>> response) {
+                ArrayList<AnimalType> animalType = response.body();
+                Set<String> st = new HashSet<String>(listAnimalTypes);
+                for (String s : st) {
+                    for (AnimalType type : animalType) {
+                        if(s.equals(type.getUuid())){
+                            System.out.println(type.getDescription() + ": " + Collections.frequency(listAnimalTypes, s));
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<AnimalType>> call, Throwable t) {
+
+            }
+        });
 
     }
-    private void initSpinnerFarmChoose() {
-        String[] incidences = getResources().getStringArray(R.array.incidences_example);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, incidences);
-        spinner.setAdapter(adapter);
-
-
-    }
     private void loadFarms() {
         final Call<ArrayList<Farm>> farm = FarmogoApiJacksonAdapter.getApiService(this).getFarms();
         farm.enqueue(new Callback<ArrayList<Farm>>() {
             @Override
             public void onResponse(Call<ArrayList<Farm>> call, Response<ArrayList<Farm>> response) {
-                if (response.isSuccessful()) {
+                if(response.isSuccessful()){
                     ArrayList<Farm> farm = response.body();
-                    ArrayAdapter farmAdapter = new ArrayAdapter(FarmStatsActivity.this, R.layout.spinner, farm);
-                    Spinner farmSpinner = (Spinner) findViewById(R.id.spinnerstatistics);
-                    farmSpinner.setAdapter(farmAdapter);
+                    ArrayAdapter farmAdapter = null;
+
+                    try {
+                        SessionData.getInstance().setFarms(farm);
+                        farmAdapter = new ArrayAdapter(FarmStatsActivity.this, R.layout.spinner, SessionData.getInstance().getFarms());
+
+                    } catch (IOException e) {
+                        Toast.makeText(FarmStatsActivity.this, "We cannot load farms", Toast.LENGTH_SHORT);
+                    }
+                    spinner = (Spinner) findViewById(R.id.spinnerstatistics);
+                    spinner.setAdapter(farmAdapter);
+                    try {
+                        if(SessionData.getInstance().getActualFarm() == null) {
+                            SessionData.getInstance().setActualFarm(SessionData.getInstance().getFarms().get(0));
+                        }
+                        loadHistoric(SessionData.getInstance().getActualFarm().getUuid());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<Farm>> call, Throwable t) {
+            }
+        });
+    }
+
+    private void loadHistoric(String idFarm){
+        Call<ArrayList<Incidence>> lastIncidences = FarmogoApiJacksonAdapter.getApiService(this).getLastIncidences(idFarm);
+        lastIncidences.enqueue(new Callback<ArrayList<Incidence>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Incidence>> call, Response<ArrayList<Incidence>> response) {
+                refreshRecyclerView(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Incidence>> call, Throwable t) {
 
             }
         });
     }
+    private void refreshRecyclerView(ArrayList<Incidence> lastIncidences){
+        recyclerView = findViewById(R.id.recyclerviewStatistics);
+        recyclerView.setHasFixedSize(true);
+        mAdapter = new FarmIncidenceAdapter(lastIncidences);
+        recyclerView.setAdapter(mAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+
 }

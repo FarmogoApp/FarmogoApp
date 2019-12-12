@@ -48,7 +48,7 @@
     <string name="password_example" translatable="false">111111</string>
     <string name="username">Username</string>
     <string name="username_example" translatable="false">FarmWorker</string>
-    <string name="registration_succesful">Registration Succesful</string>
+    <string name="registration_succesful">Registration Successful</string>
     <string name="login_succesfull">Login Succesfull</string>
     <string name="sold">Sold</string>
     <string name="died">Died</string>
@@ -69,7 +69,6 @@
     <string name="scheduled_for">Scheduled for</string>
     <string name="building_optional">Building (optional)</string>
     <string name="section_optional">Section (optional)</string>
-    <string name="birthday" >Birth date</string>
     <string name="unregisrer_cow">Unregister Cow</string>
     <string name="guide">Guide</string>
     <string name="choose_type">Choose type</string>
@@ -93,7 +92,16 @@
     <string name="recovery_email">We have sent an email to reset your password</string>
     <string name="reset_password">Reset password:</string>
     <string name="unregister_cow">Unregister cow</string>
-    <string-array name="gender">
+    <string name="location">Location</string>
+    <string name="animal_type">Animal type</string>
+    <string name="sex">Sex</string>
+    <string name="origin">Origin</string>
+    <string name="birth_date">Birth date</string>
+    <string name="mother_id">Mother ID</string>
+    <string name="official_id">Official ID</string>
+    <string name="nfc_ear_tag">NFC ear tag</string>
+    <string name="registration_failed">Registration failed</string>
+    <string-array name="sexs">
         <item>Male</item>
         <item>Female</item>
     </string-array>
@@ -177,5 +185,6 @@
         <item>Stand</item>
         <item>Abortion</item>
     </string-array>
+    <string name="get_current_farm_error">Couldn\'t get current farm</string>
 </resources>
 

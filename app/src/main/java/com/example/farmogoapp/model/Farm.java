@@ -1,10 +1,12 @@
 package com.example.farmogoapp.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,7 +17,8 @@ public class Farm implements Serializable {
     private List<Building> buildings;
     private AnimalCounter animalCounter;
     private String userOwnerId;
-    private LocalDate subscriptionExpiration;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date subscriptionExpiration;
 
     public Farm() {
         animalCounter = new AnimalCounter();
@@ -70,11 +73,11 @@ public class Farm implements Serializable {
         this.userOwnerId = userOwnerId;
     }
 
-    public LocalDate getSubscriptionExpiration() {
+    public Date getSubscriptionExpiration() {
         return subscriptionExpiration;
     }
 
-    public void setSubscriptionExpiration(LocalDate subscriptionExpiration) {
+    public void setSubscriptionExpiration(Date subscriptionExpiration) {
         this.subscriptionExpiration = subscriptionExpiration;
     }
 
@@ -92,4 +95,10 @@ public class Farm implements Serializable {
     public int hashCode() {
         return Objects.hash(uuid, name, officialId);
     }
+
+    @Override
+    public String toString() {
+        return this.getName();
+    }
 }
+

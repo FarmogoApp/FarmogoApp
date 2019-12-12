@@ -14,26 +14,27 @@
             android:id="@+id/tag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="NFC ear tag"
+            android:text="@string/nfc_ear_tag"
             android:textColor="@android:color/background_dark"
             android:textSize="20sp" />
 
+        <!-- TODO: Link NFC to animal -->
         <Button
             android:id="@+id/buttonScan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Scan NFC" />
+            android:text="Scan NFC (?)" />
 
         <TextView
             android:id="@+id/officialID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Official ID"
+            android:text="@string/official_id"
             android:textColor="@android:color/background_dark"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextOfficialID"
+            android:id="@+id/etOfficialId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -43,26 +44,25 @@
             android:id="@+id/motherID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mother ID"
+            android:text="@string/mother_id"
             android:textColor="@android:color/background_dark"
             android:textSize="20sp" />
 
         <Spinner
-            android:id="@+id/spinnerMotherID"
+            android:id="@+id/spnMotherId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
-
             android:id="@+id/birthDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Birth date"
+            android:text="@string/birth_date"
             android:textColor="@android:color/background_dark"
-            android:textSize="20sp"></TextView>
+            android:textSize="20sp" />
 
         <CalendarView
-            android:id="@+id/calendarBirthDate"
+            android:id="@+id/clvBirthDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -70,12 +70,12 @@
             android:id="@+id/origin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Origin"
+            android:text="@string/origin"
             android:textColor="@android:color/background_dark"
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextOrigin"
+            android:id="@+id/etOrigin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -85,25 +85,26 @@
             android:id="@+id/sex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sex"
+            android:text="@string/sex"
             android:textColor="@android:color/background_dark"
             android:textSize="20sp" />
 
         <Spinner
-            android:id="@+id/spinnerSex"
+            android:id="@+id/spnSex"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:entries="@array/sexs"/>
 
         <TextView
             android:id="@+id/animalType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Animal type"
+            android:text="@string/animal_type"
             android:textColor="@android:color/background_dark"
             android:textSize="20sp" />
 
         <Spinner
-            android:id="@+id/spinnerAnimalType"
+            android:id="@+id/spnAnimalType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -116,7 +117,7 @@
             android:textSize="20sp" />
 
         <Spinner
-            android:id="@+id/spinnerRace"
+            android:id="@+id/spnRace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -124,17 +125,17 @@
             android:id="@+id/location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Location"
+            android:text="@string/location"
             android:textColor="@android:color/background_dark"
             android:textSize="20sp" />
 
         <Spinner
-            android:id="@+id/spinnerLocation"
+            android:id="@+id/spnLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button
-            android:id="@+id/btnregister"
+            android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/register_animal" />
