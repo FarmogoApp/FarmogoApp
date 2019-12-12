@@ -1,5 +1,16 @@
 package com.example.farmogoapp.ui.main.registerAnimal;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
@@ -13,18 +24,6 @@ import com.example.farmogoapp.model.Race;
 import com.example.farmogoapp.ui.main.SessionData;
 import com.example.farmogoapp.ui.main.farms.FarmStatsActivity;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -33,7 +32,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 
 
 public class RegisterCowActivity extends AppCompatActivity {
@@ -95,17 +93,8 @@ public class RegisterCowActivity extends AppCompatActivity {
     /**
      * If it fails, then go back to FarmStats
      */
-    private void getSessionFarm(){
-        try {
-            currentFarm = SessionData.getInstance().getActualFarm();
-
-        } catch (IOException e) {
-            Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.get_current_farm_error), Toast.LENGTH_LONG);
-            toast.show();
-            Intent intent = new Intent(RegisterCowActivity.this, FarmStatsActivity.class);
-            startActivity(intent);
-            e.printStackTrace();
-        }
+    private void getSessionFarm() {
+        currentFarm = SessionData.getInstance().getActualFarm();
     }
 
 
@@ -130,7 +119,7 @@ public class RegisterCowActivity extends AppCompatActivity {
         // Get user input
         String officialId = etOfficialId.getText().toString();
         Animal selectedMother = (Animal) spnMotherId.getSelectedItem();
-        if(birthDate == null) birthDate = new Date(clvBirthDate.getDate());
+        if (birthDate == null) birthDate = new Date(clvBirthDate.getDate());
         String origin = etOrigin.getText().toString();
         String selectedSex = spnSex.getSelectedItem().toString();
         AnimalType selectedAnimalType = (AnimalType) spnAnimalType.getSelectedItem();
@@ -156,7 +145,7 @@ public class RegisterCowActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Animal> call, Response<Animal> response) {
 
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
                     Intent intent = new Intent(RegisterCowActivity.this, FarmStatsActivity.class);
@@ -214,7 +203,7 @@ public class RegisterCowActivity extends AppCompatActivity {
             public void onResponse(Call<ArrayList<AnimalType>> call, Response<ArrayList<AnimalType>> response) {
                 ArrayList<AnimalType> data = response.body();
 
-                if(data != null) {
+                if (data != null) {
                     ArrayAdapter animalTypeAdapater = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, data);
                     spnAnimalType.setAdapter(animalTypeAdapater);
                 }
@@ -223,7 +212,7 @@ public class RegisterCowActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ArrayList<AnimalType>> call, Throwable t) {
                 t.printStackTrace();
-                Log.e("RegisterCowActivity","AnimalType error" );
+                Log.e("RegisterCowActivity", "AnimalType error");
             }
         });
     }
@@ -237,7 +226,7 @@ public class RegisterCowActivity extends AppCompatActivity {
             public void onResponse(Call<ArrayList<Race>> call, Response<ArrayList<Race>> response) {
                 ArrayList<Race> data = response.body();
 
-                if(data != null) {
+                if (data != null) {
                     ArrayAdapter raceAdapater = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, data);
                     spnRace.setAdapter(raceAdapater);
                 }
@@ -246,7 +235,7 @@ public class RegisterCowActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ArrayList<Race>> call, Throwable t) {
                 t.printStackTrace();
-                Log.e("RegisterCowActivity","Races error" );
+                Log.e("RegisterCowActivity", "Races error");
             }
         });
     }
@@ -263,11 +252,11 @@ public class RegisterCowActivity extends AppCompatActivity {
             public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
                 List<Animal> data = response.body();
 
-                if(data != null) {
+                if (data != null) {
                     ArrayList<Animal> mothers = new ArrayList<>();
 
-                    for (Animal animal: data) {
-                        if(animal.getSex().equalsIgnoreCase("Female")){
+                    for (Animal animal : data) {
+                        if (animal.getSex().equalsIgnoreCase("Female")) {
                             mothers.add(animal);
                         }
                     }
@@ -280,7 +269,7 @@ public class RegisterCowActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<Animal>> call, Throwable t) {
                 t.printStackTrace();
-                Log.e("RegisterCowActivity","Get all animals error" );
+                Log.e("RegisterCowActivity", "Get all animals error");
             }
         });
     }
@@ -290,8 +279,8 @@ public class RegisterCowActivity extends AppCompatActivity {
 
         ArrayList<Location> locations = new ArrayList<>();
 
-        for (Building building: currentFarm.getBuildings()){
-            for (Division division: building.getDivisions()) {
+        for (Building building : currentFarm.getBuildings()) {
+            for (Division division : building.getDivisions()) {
                 Location location = new Location(building, division);
                 locations.add(location);
                 Log.e("location", location.toString());
