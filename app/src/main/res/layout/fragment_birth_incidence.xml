@@ -96,7 +96,7 @@
                     android:layout_below="@+id/genderBirth"
                     android:entries="@array/gender"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"/>
+                    android:layout_height="35dp"/>
 
             </RelativeLayout>
 
@@ -118,9 +118,8 @@
                     android:id="@+id/raceBirthSpinner"
                     android:background="@drawable/spinner_bg"
                     android:layout_below="@+id/birthRaceText"
-                    android:entries="@array/races"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"/>
+                    android:layout_height="35dp"/>
             </RelativeLayout>
         </LinearLayout>
 

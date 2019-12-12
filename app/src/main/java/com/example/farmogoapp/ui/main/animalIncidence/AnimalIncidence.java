@@ -5,13 +5,24 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
+import com.example.farmogoapp.model.Animal;
+import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AnimalIncidence extends AppCompatActivity {
     private Spinner spinner;
+    public Animal animal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +32,31 @@ public class AnimalIncidence extends AppCompatActivity {
         String[] incidences = getResources().getStringArray(R.array.incidences);
         ArrayAdapter<String> adapter= new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, incidences);
         spinner.setAdapter(adapter);
+        if (getIntent().hasExtra("animalId")) {
+            loadAnimalData(getIntent().getStringExtra("animalId"));
+        }
         registerListeners();
+    }
+
+    private void loadAnimalData(String idAnimal) {
+        final Call<Animal> animal = FarmogoApiJacksonAdapter.getApiService(this).getAnimal(idAnimal);
+        animal.enqueue(new Callback<Animal>() {
+            @Override
+            public void onResponse(Call<Animal> call, Response<Animal> response) {
+                updateAnimal(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Animal> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(AnimalIncidence.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void updateAnimal(Animal animal) {
+        this.animal = animal;
     }
 
     @Override
@@ -37,8 +72,16 @@ public class AnimalIncidence extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
+
+                        Bundle args = new Bundle();
+                        FragmentBirthIncidence fragment = new FragmentBirthIncidence();
+                        if (animal != null){
+                            args.putString("animalId", animal.getOfficialId());
+
+                            fragment.setArguments(args);
+                        }
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.Fragment, FragmentBirthIncidence.newInstance()).commit();
+                                .replace(R.id.Fragment, fragment).commit();
                         break;
                     case 1:
                         getSupportFragmentManager().beginTransaction()

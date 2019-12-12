@@ -3,28 +3,44 @@ package com.example.farmogoapp.ui.main.animalIncidence;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
+import com.example.farmogoapp.model.AnimalType;
+import com.example.farmogoapp.model.Race;
+import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class FragmentBirthIncidence extends Fragment {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class FragmentBirthIncidence extends Fragment implements Callback{
 
     private View view;
     private Button registerCow;
     private Calendar calendar = Calendar.getInstance();
     private EditText date;
+    private Spinner racesp;
+    private EditText eTMotherOfficialIdEdit;
+    private String idAnimal;
 
     public static FragmentBirthIncidence newInstance() {
         FragmentBirthIncidence fragment = new FragmentBirthIncidence();
@@ -38,17 +54,42 @@ public class FragmentBirthIncidence extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        super.onCreateView(inflater,container,savedInstanceState);
         view = inflater.inflate(R.layout.fragment_birth_incidence, container, false);
+
+        //if(getArguments().getString("animalId") != null){
+            //Log.e("asdasdad",getArguments().getString("animalId"));
+           // idAnimal = this.getArguments().getString("animalId", "");
+        //}
+
+        initializeRaceSpinner();
+        registerViews();
+        //eTMotherOfficialIdEdit.setText(this.idAnimal);
+        String myFormat = "dd/MM/yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        date.setText(sdf.format(calendar.getTime()));
+        registerListeners();
+
+        return view;
+    }
+
+
+
+
+    private void registerViews() {
         registerCow = view.findViewById(R.id.registerCow);
         date = view.findViewById(R.id.editTextBirth);
+        racesp = view.findViewById(R.id.raceBirthSpinner);
+        eTMotherOfficialIdEdit = view.findViewById(R.id.MotherOfficialIdEdit);
+    }
+
+    private void registerListeners() {
         registerCow.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Toast.makeText(getView().getContext(),getActivity().getString(R.string.register_cow),Toast.LENGTH_SHORT).show();
             }
         });
-        String myFormat = "dd/MM/yyyy";
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        date.setText(sdf.format(calendar.getTime()));
+
         final DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -71,8 +112,39 @@ public class FragmentBirthIncidence extends Fragment {
             }
         });
 
+    }
 
-        return view;
+    @Override
+    public void onResponse(Call call, Response response) {
+
+    }
+
+    @Override
+    public void onFailure(Call call, Throwable t) {
+        t.printStackTrace();
+        Log.e("FragmentBirthIncidence","Error" );
+    }
+
+    private void initializeRaceSpinner() {
+        Call<ArrayList<Race>> races = FarmogoApiJacksonAdapter.getApiService(getContext()).getRaces();
+
+        races.enqueue(new Callback<ArrayList<Race>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Race>> call, Response<ArrayList<Race>> response) {
+                ArrayList<Race> data = response.body();
+
+                if(data != null){
+                    ArrayAdapter raceAdapater = new ArrayAdapter(getContext(), R.layout.spinner, data);
+                    racesp.setAdapter(raceAdapater);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Race>> call, Throwable t) {
+                t.printStackTrace();
+                Log.e("FragmentBirthIncidence","Races error" );
+            }
+        });
     }
 
 }
