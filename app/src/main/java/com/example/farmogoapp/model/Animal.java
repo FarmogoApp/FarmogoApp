@@ -1,6 +1,7 @@
 package com.example.farmogoapp.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
 
@@ -35,6 +36,7 @@ public class Animal {
     private Date createdLocalDateTime;
     private String divisionId;
 
+    @JsonIgnore
     private boolean selected;
 
     public Animal() {
@@ -229,5 +231,8 @@ public class Animal {
         this.selected = selected;
     }
 
-
+    @Override
+    public String toString() {
+        return officialId;
+    }
 }

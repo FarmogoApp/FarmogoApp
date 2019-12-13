@@ -14,6 +14,9 @@ public class User implements Serializable {
     private String firebaseUuid;
     private List<String> firebaseNotificationTokens;
 
+    public User() {
+    }
+
     public User(String firebaseUuid, String email, String telephone, String name, String uuid){
         this.firebaseUuid = firebaseUuid;
         this.email = email;

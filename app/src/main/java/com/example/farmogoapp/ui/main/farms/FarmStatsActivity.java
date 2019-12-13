@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.AnimalType;
 import com.example.farmogoapp.model.Farm;
@@ -32,7 +33,6 @@ import com.example.farmogoapp.ui.main.SessionData;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -132,18 +132,14 @@ public class FarmStatsActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 loadFarmStats();
-                try {
-                    SessionData.getInstance().setActualFarm((Farm) parentView.getItemAtPosition(position));
-                    loadHistoric(SessionData.getInstance().getActualFarm().getUuid());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                SessionData.getInstance().setActualFarm((Farm) parentView.getItemAtPosition(position));
+                loadHistoric(SessionData.getInstance().getActualFarm().getUuid());
                 FarmStatsActivity.this.fillData();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                Toast.makeText(FarmStatsActivity.this,"Nothing Selected", Toast.LENGTH_SHORT);
+                Toast.makeText(FarmStatsActivity.this, "Nothing Selected", Toast.LENGTH_SHORT);
             }
 
         });
@@ -156,7 +152,7 @@ public class FarmStatsActivity extends AppCompatActivity {
         //bullsTextView.setText(String.valueOf(r.nextInt(100)));
     }
 
-    private void loadFarmStats(){
+    private void loadFarmStats() {
         final Call<List<Animal>> farmStats = FarmogoApiJacksonAdapter.getApiService(this).getAllAnimals();
         farmStats.enqueue(new Callback<List<Animal>>() {
             @Override
@@ -175,6 +171,7 @@ public class FarmStatsActivity extends AppCompatActivity {
                     //linearLayout.addView(myText);
                 });
                 //animalType(listAnimalTypes);
+
             }
 
             @Override
@@ -185,7 +182,7 @@ public class FarmStatsActivity extends AppCompatActivity {
         });
     }
 
-    private void animalType(final ArrayList<String> listAnimalTypes){
+    private void animalType(final ArrayList<String> listAnimalTypes) {
         final Call<ArrayList<AnimalType>> animalType = FarmogoApiJacksonAdapter.getApiService(this).getAnimalTypes();
         animalType.enqueue(new Callback<ArrayList<AnimalType>>() {
             @Override
@@ -194,7 +191,7 @@ public class FarmStatsActivity extends AppCompatActivity {
                 Set<String> st = new HashSet<String>(listAnimalTypes);
                 for (String s : st) {
                     for (AnimalType type : animalType) {
-                        if(s.equals(type.getUuid())){
+                        if (s.equals(type.getUuid())) {
                             System.out.println(type.getDescription() + ": " + Collections.frequency(listAnimalTypes, s));
                         }
                     }
@@ -214,27 +211,20 @@ public class FarmStatsActivity extends AppCompatActivity {
         farm.enqueue(new Callback<ArrayList<Farm>>() {
             @Override
             public void onResponse(Call<ArrayList<Farm>> call, Response<ArrayList<Farm>> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     ArrayList<Farm> farm = response.body();
                     ArrayAdapter farmAdapter = null;
+                    SessionData.getInstance().setFarms(farm);
+                    farmAdapter = new ArrayAdapter(FarmStatsActivity.this, R.layout.spinner, SessionData.getInstance().getFarms());
 
-                    try {
-                        SessionData.getInstance().setFarms(farm);
-                        farmAdapter = new ArrayAdapter(FarmStatsActivity.this, R.layout.spinner, SessionData.getInstance().getFarms());
-
-                    } catch (IOException e) {
-                        Toast.makeText(FarmStatsActivity.this, "We cannot load farms", Toast.LENGTH_SHORT);
-                    }
                     spinner = (Spinner) findViewById(R.id.spinnerstatistics);
                     spinner.setAdapter(farmAdapter);
-                    try {
-                        if(SessionData.getInstance().getActualFarm() == null) {
-                            SessionData.getInstance().setActualFarm(SessionData.getInstance().getFarms().get(0));
-                        }
-                        loadHistoric(SessionData.getInstance().getActualFarm().getUuid());
-                    } catch (IOException e) {
-                        e.printStackTrace();
+
+                    if (SessionData.getInstance().getActualFarm() == null) {
+                        SessionData.getInstance().setActualFarm(SessionData.getInstance().getFarms().get(0));
                     }
+                    loadHistoric(SessionData.getInstance().getActualFarm().getUuid());
+
                 }
             }
 
@@ -244,7 +234,7 @@ public class FarmStatsActivity extends AppCompatActivity {
         });
     }
 
-    private void loadHistoric(String idFarm){
+    private void loadHistoric(String idFarm) {
         Call<ArrayList<Incidence>> lastIncidences = FarmogoApiJacksonAdapter.getApiService(this).getLastIncidences(idFarm);
         lastIncidences.enqueue(new Callback<ArrayList<Incidence>>() {
             @Override
@@ -258,7 +248,8 @@ public class FarmStatsActivity extends AppCompatActivity {
             }
         });
     }
-    private void refreshRecyclerView(ArrayList<Incidence> lastIncidences){
+
+    private void refreshRecyclerView(ArrayList<Incidence> lastIncidences) {
         recyclerView = findViewById(R.id.recyclerviewStatistics);
         recyclerView.setHasFixedSize(true);
         mAdapter = new IncidenceAdapter(lastIncidences);
