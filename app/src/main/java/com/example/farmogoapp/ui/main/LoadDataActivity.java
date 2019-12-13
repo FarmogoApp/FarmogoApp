@@ -53,8 +53,10 @@ public class LoadDataActivity extends Activity {
                 e.printStackTrace();
             }
             Intent intent = new Intent(this, FarmStatsActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
+            finish();
         };
         Thread t= new Thread(r);
         t.start();
