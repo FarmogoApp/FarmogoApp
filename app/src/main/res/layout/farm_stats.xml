@@ -45,17 +45,19 @@
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/explotationrelativelayout"
-        android:gravity="center"
-        android:background="@drawable/round_corner"
-        android:id="@+id/statisticsrelativelayout"
-        tools:ignore="DuplicateIds,NotSibling">
+
+        <LinearLayout
+            android:id="@+id/statisticsrelativelayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@drawable/round_corner"
+            android:layout_below="@+id/explotationrelativelayout"
+            android:padding="10dp"
+            android:orientation="horizontal">
 
 
-        <TextView
+        <!-- <TextView
             android:id="@+id/label_cows_youger"
             android:layout_width="@dimen/farm_stats_label_width"
             android:layout_height="wrap_content"
@@ -107,8 +109,8 @@
             android:layout_alignBaseline="@+id/label_bulls"
             android:layout_toEndOf="@+id/label_bulls"
             android:text="@string/number_example"
-            android:textSize="@dimen/farm_stats_value_font_width" />
-    </RelativeLayout>
+            android:textSize="@dimen/farm_stats_value_font_width" />-->
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

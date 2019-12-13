@@ -10,9 +10,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +41,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
@@ -103,9 +106,9 @@ public class FarmStatsActivity extends AppCompatActivity {
     }
 
     private void registerViews() {
-        yougerCowsTextView = findViewById(R.id.cows_younger);
+        /*yougerCowsTextView = findViewById(R.id.cows_younger);
         cowsTextView = findViewById(R.id.cows);
-        bullsTextView = findViewById(R.id.bulls);
+        bullsTextView = findViewById(R.id.bulls);*/
         searchButton = findViewById(R.id.search);
         spinner = findViewById(R.id.spinnerstatistics);
         btnGestion = findViewById(R.id.Gestion);
@@ -157,21 +160,56 @@ public class FarmStatsActivity extends AppCompatActivity {
         farmStats.enqueue(new Callback<List<Animal>>() {
             @Override
             public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
-                List<Animal> animal = response.body();
 
-                Map<String, Long> counting = animal.stream().collect(
-                        Collectors.groupingBy(Animal::getAnimalTypeId, Collectors.counting()));
+                List<Animal> animals = SessionData.getInstance().getAnimals();
+                Farm actualFarm = SessionData.getInstance().getActualFarm();
+                Map<String, Long> collect = animals.stream()
+                        .filter( animal -> actualFarm.getUuid().equals(animal.getFarmId()))
+                        .collect(Collectors.groupingBy(Animal::getAnimalTypeId, Collectors.counting()));
 
 
-                LinearLayout linearLayout = (LinearLayout) findViewById(R.id.stats);
-                counting.forEach((k,v) ->{
-                    System.out.println("Key: " + k + ": Value: " + v);
-                    TextView myText = new TextView(FarmStatsActivity.this);
-                    myText.setText("Key: " + k + ": Value: " + v);
-                    //linearLayout.addView(myText);
+                LinearLayout linearLayout = (LinearLayout) findViewById(R.id.statisticsrelativelayout);
+                linearLayout.removeAllViews();
+                collect.forEach((k,v) ->{
+                    Optional<AnimalType> type = SessionData.getInstance().getAnimalType(k);
+                    if(type.isPresent()) {
+                        ImageView imageView = new ImageView(FarmStatsActivity.this);
+
+                        switch (type.get().getDescription()){
+                            case "Cow":
+                                imageView.setImageResource(R.drawable.cow);
+                                break;
+                            case "Bull":
+                                imageView.setImageResource(R.drawable.bull);
+                                break;
+                            case "Calf":
+                                imageView.setImageResource(R.drawable.bull);
+                        }
+                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(100, 100);
+                        imageView.setLayoutParams(params);
+                        linearLayout.addView(imageView);
+
+                        LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                        lparams.setMarginEnd(5);
+
+                        TextView typeTv = new TextView(FarmStatsActivity.this);
+                        TextView valueTv = new TextView(FarmStatsActivity.this);
+                        typeTv.setLayoutParams(lparams);
+                        valueTv.setLayoutParams(lparams);
+
+                        typeTv.setText(type.get().toString());
+                        typeTv.setPadding(5, 5, 5, 5);
+
+                        valueTv.setText(v.toString());
+                        valueTv.setTextSize(20);
+                        valueTv.setPadding(5, 5, 5, 5);
+                        linearLayout.addView(typeTv);
+                        linearLayout.addView(valueTv);
+
+                    }
+
                 });
-                //animalType(listAnimalTypes);
-
             }
 
             @Override
@@ -180,30 +218,6 @@ public class FarmStatsActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    private void animalType(final ArrayList<String> listAnimalTypes) {
-        final Call<ArrayList<AnimalType>> animalType = FarmogoApiJacksonAdapter.getApiService(this).getAnimalTypes();
-        animalType.enqueue(new Callback<ArrayList<AnimalType>>() {
-            @Override
-            public void onResponse(Call<ArrayList<AnimalType>> call, Response<ArrayList<AnimalType>> response) {
-                ArrayList<AnimalType> animalType = response.body();
-                Set<String> st = new HashSet<String>(listAnimalTypes);
-                for (String s : st) {
-                    for (AnimalType type : animalType) {
-                        if (s.equals(type.getUuid())) {
-                            System.out.println(type.getDescription() + ": " + Collections.frequency(listAnimalTypes, s));
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<AnimalType>> call, Throwable t) {
-
-            }
-        });
-
     }
 
     private void loadFarms() {

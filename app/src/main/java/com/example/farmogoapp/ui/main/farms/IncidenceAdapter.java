@@ -63,7 +63,6 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
             // to access the context from any ViewHolder instance.
             super(itemView);
             this.incidenceType = incidenceType;
-
             switch (incidenceType) {
                 case WEIGHT:
                     incidence_weight_animal_id = itemView.findViewById(R.id.incidence_weight_animal_id);
@@ -215,6 +214,7 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
                               }
             });
         }
+
 
     // Returns the total count of items in the list
     @Override
