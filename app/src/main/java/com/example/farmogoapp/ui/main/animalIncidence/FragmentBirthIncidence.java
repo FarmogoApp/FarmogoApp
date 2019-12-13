@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
@@ -51,7 +52,8 @@ public class FragmentBirthIncidence extends Fragment{
     private Spinner sexsp;
     private EditText eTMotherOfficialIdEdit;
     private EditText eTofficialId;
-    private String idAnimal;
+    private String animalUuid;
+    private String animalOfficialId;
 
     public static FragmentBirthIncidence newInstance() {
         FragmentBirthIncidence fragment = new FragmentBirthIncidence();
@@ -61,6 +63,15 @@ public class FragmentBirthIncidence extends Fragment{
         // Required empty public constructor
     }
 
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(getArguments() != null){
+            animalUuid = this.getArguments().getString("animalId", "");
+            animalOfficialId = this.getArguments().getString("animalOfficialId", "");
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -75,7 +86,7 @@ public class FragmentBirthIncidence extends Fragment{
 
         initializeRaceSpinner();
         registerViews();
-        //eTMotherOfficialIdEdit.setText(this.idAnimal);
+        eTMotherOfficialIdEdit.setText(this.animalOfficialId);
         String myFormat = "dd/MM/yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         date.setText(sdf.format(calendar.getTime()));
@@ -83,6 +94,7 @@ public class FragmentBirthIncidence extends Fragment{
 
         return view;
     }
+
     private void registerCow() {
 
         // Get user input
@@ -137,14 +149,15 @@ public class FragmentBirthIncidence extends Fragment{
         incidenceBirth.setBirthDate(new Date(date.getText().toString()));
 
         incidenceBirth.setRaceId(raceSelected.getUuid());
-       //User incidenceBirth.getCreatedBy(SessionData.getInstance().ge);
-      //  incidenceBirth.setOfficialId(SessionData.getInstance().);
-        //incidenceBirth.setSex(sexSelected);
+        incidenceBirth.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
+        //incidenceBirth.setOfficialId();
+        incidenceBirth.setSex(sexSelected);
        // incidenceBirth.setFarmId();
         //incidenceBirth.setAnimalId();
 
 
-        // POST animal
+
+        // POST incidence
         Call<Incidence> incidenceCall = FarmogoApiJacksonAdapter.getApiService(getContext()).createIncidence(incidenceBirth);
         incidenceCall.enqueue(new Callback<Incidence>() {
             @Override
@@ -184,6 +197,7 @@ public class FragmentBirthIncidence extends Fragment{
     }
 
     private void registerListeners() {
+
         registerCow.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 registerCow();
@@ -214,7 +228,6 @@ public class FragmentBirthIncidence extends Fragment{
         });
 
     }
-
 
     private void initializeRaceSpinner() {
         Call<ArrayList<Race>> raceCall = FarmogoApiJacksonAdapter.getApiService(getContext()).getRaces();

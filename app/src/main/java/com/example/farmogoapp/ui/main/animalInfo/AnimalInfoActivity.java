@@ -225,6 +225,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(AnimalInfoActivity.this, AnimalIncidence.class);
                 intent.putExtra("animalId", (String) animal.getUuid());
+                intent.putExtra("animalOfficialId", (String) animal.getOfficialId());
                 startActivity(intent);
             }
         });

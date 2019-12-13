@@ -1,6 +1,7 @@
 package com.example.farmogoapp.ui.main.animalIncidence;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,7 +22,10 @@ import retrofit2.Response;
 
 public class AnimalIncidence extends AppCompatActivity {
     private Spinner spinner;
-    public Animal animal;
+    public String animalUuid;
+    public String animalOfficialid;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,31 +37,13 @@ public class AnimalIncidence extends AppCompatActivity {
         ArrayAdapter<String> adapter= new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, incidences);
         spinner.setAdapter(adapter);
         if (getIntent().hasExtra("animalId")) {
-            loadAnimalData(getIntent().getStringExtra("animalId"));
+            Log.e("asdasfffffffffffffffffffdad", getIntent().getStringExtra("animalId"));
+            this.animalUuid = getIntent().getStringExtra("animalId");
+            this.animalOfficialid = getIntent().getStringExtra("animalOfficialId");
         }
         registerListeners();
     }
 
-    private void loadAnimalData(String idAnimal) {
-        final Call<Animal> animal = FarmogoApiJacksonAdapter.getApiService(this).getAnimal(idAnimal);
-        animal.enqueue(new Callback<Animal>() {
-            @Override
-            public void onResponse(Call<Animal> call, Response<Animal> response) {
-                updateAnimal(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<Animal> call, Throwable t) {
-                t.printStackTrace();
-                Toast.makeText(AnimalIncidence.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-
-    private void updateAnimal(Animal animal) {
-        this.animal = animal;
-    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -67,6 +53,7 @@ public class AnimalIncidence extends AppCompatActivity {
 
     private void registerListeners() {
 
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -75,9 +62,9 @@ public class AnimalIncidence extends AppCompatActivity {
 
                         Bundle args = new Bundle();
                         FragmentBirthIncidence fragment = new FragmentBirthIncidence();
-                        if (animal != null){
-                            args.putString("animalId", animal.getOfficialId());
-
+                        if (animalUuid != null){
+                            args.putString("animalId", animalUuid);
+                            args.putString("animalOfficialId", animalOfficialid);
                             fragment.setArguments(args);
                         }
                         getSupportFragmentManager().beginTransaction()
@@ -107,7 +94,7 @@ public class AnimalIncidence extends AppCompatActivity {
 
                     default:
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.Fragment, new FragmentBirthIncidence()).commit();
+                                .replace(R.id.Fragment, new FragmentWheighingIncidence()).commit();
                         break;
 
                 }
