@@ -33,6 +33,9 @@ public interface FarmogoApiService {
     @POST("users")
     Call<User> createUser(@Body User user);
 
+    @POST("incidences")
+    Call<Incidence> createIncidence(@Body Incidence incidence);
+
     @GET("incidences")
     Call<ArrayList<Incidence>> getIncidences();
 

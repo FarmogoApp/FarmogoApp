@@ -2,6 +2,7 @@ package com.example.farmogoapp.ui.main.animalIncidence;
 
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,27 +20,37 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
+import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.AnimalType;
 import com.example.farmogoapp.model.Race;
+import com.example.farmogoapp.model.incidences.Incidence;
+import com.example.farmogoapp.model.incidences.IncidenceBirth;
+import com.example.farmogoapp.ui.main.SessionData;
+import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
+import com.example.farmogoapp.ui.main.farms.FarmStatsActivity;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FragmentBirthIncidence extends Fragment implements Callback{
+public class FragmentBirthIncidence extends Fragment{
 
     private View view;
     private Button registerCow;
     private Calendar calendar = Calendar.getInstance();
     private EditText date;
     private Spinner racesp;
+    private Spinner sexsp;
     private EditText eTMotherOfficialIdEdit;
+    private EditText eTofficialId;
     private String idAnimal;
 
     public static FragmentBirthIncidence newInstance() {
@@ -72,6 +83,92 @@ public class FragmentBirthIncidence extends Fragment implements Callback{
 
         return view;
     }
+    private void registerCow() {
+
+        // Get user input
+        /*
+        String officialId = etOfficialId.getText().toString();
+        Animal selectedMother = (Animal) spnMotherId.getSelectedItem();
+        if(birthDate == null) birthDate = new Date(clvBirthDate.getDate());
+        String origin = etOrigin.getText().toString();
+        String selectedSex = spnSex.getSelectedItem().toString();
+        AnimalType selectedAnimalType = (AnimalType) spnAnimalType.getSelectedItem();
+        Race selectedRace = (Race) spnRace.getSelectedItem();
+        RegisterCowActivity.Location location = (RegisterCowActivity.Location) spnLocation.getSelectedItem();
+
+        // Set animal
+        Animal animal = new Animal();
+        animal.setOfficialId(officialId);
+        animal.setMotherId(selectedMother.getUuid());
+        animal.setMotherOfficialId(selectedMother.getOfficialId());
+        animal.setBirthDay(birthDate);
+        animal.setOrigin(origin);
+        animal.setSex(selectedSex);
+        animal.setAnimalTypeId(selectedAnimalType.getUuid());
+        animal.setRaceId(selectedRace.getUuid());
+        animal.setDivisionId(location.getDivision().getUuid());
+        animal.setFarmId(currentFarm.getUuid());
+
+*//*
+        String dates = date.getText().toString();
+        String[] parts = dates.split("/");
+        String day = parts[0]; // day
+        String month = parts[1]; // month
+        //String year = parts[2]; // year
+
+
+        IncidenceBirth birth = new IncidenceBirth();
+            birth.setBirthDate(LocalDate.of(2019, 11, 27));
+            birth.setOfficialId("ES12345566778");
+            birth.setRaceId(raceE.getUuid());
+            birth.setCreatedBy(user.getUuid());
+            birth.setOfficialId(farm.getAnimalCounter().toString());
+            birth.setSex("Male");
+            birth.setFarmId(farmA.getUuid());
+            birth.setAnimalId(animalA.getUuid());
+
+        */
+
+        String officialId = eTofficialId.getText().toString();
+        Race raceSelected = (Race) racesp.getSelectedItem();
+        String sexSelected = (String) sexsp.getSelectedItem();
+
+        IncidenceBirth incidenceBirth = new IncidenceBirth();
+        incidenceBirth.setBirthDate(new Date(date.getText().toString()));
+
+        incidenceBirth.setRaceId(raceSelected.getUuid());
+       //User incidenceBirth.getCreatedBy(SessionData.getInstance().ge);
+      //  incidenceBirth.setOfficialId(SessionData.getInstance().);
+        incidenceBirth.setSex(sexSelected);
+        incidenceBirth.setFarmId();
+        incidenceBirth.setAnimalId();
+
+
+        // POST animal
+        Call<Incidence> incidenceCall = FarmogoApiJacksonAdapter.getApiService(getContext()).createIncidence(incidenceBirth);
+        incidenceCall.enqueue(new Callback<Incidence>() {
+            @Override
+            public void onResponse(Call<Incidence> call, Response<Incidence> response) {
+
+                if(response.isSuccessful()) {
+                    Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
+                    toast.show();
+                    Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
+                    startActivity(intent);
+
+                } else {
+                    Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
+                    toast.show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Incidence> call, Throwable t) {
+                Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
+                toast.show();
+            }
+        });
+    }
 
 
 
@@ -80,12 +177,16 @@ public class FragmentBirthIncidence extends Fragment implements Callback{
         registerCow = view.findViewById(R.id.registerCow);
         date = view.findViewById(R.id.editTextBirth);
         racesp = view.findViewById(R.id.raceBirthSpinner);
+        sexsp = view.findViewById(R.id.genderBirthSpinner);
         eTMotherOfficialIdEdit = view.findViewById(R.id.MotherOfficialIdEdit);
+        eTofficialId = view.findViewById(R.id.officialIdEdit);
+
     }
 
     private void registerListeners() {
         registerCow.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                registerCow();
                 Toast.makeText(getView().getContext(),getActivity().getString(R.string.register_cow),Toast.LENGTH_SHORT).show();
             }
         });
@@ -114,27 +215,17 @@ public class FragmentBirthIncidence extends Fragment implements Callback{
 
     }
 
-    @Override
-    public void onResponse(Call call, Response response) {
-
-    }
-
-    @Override
-    public void onFailure(Call call, Throwable t) {
-        t.printStackTrace();
-        Log.e("FragmentBirthIncidence","Error" );
-    }
 
     private void initializeRaceSpinner() {
-        Call<ArrayList<Race>> races = FarmogoApiJacksonAdapter.getApiService(getContext()).getRaces();
+        Call<ArrayList<Race>> raceCall = FarmogoApiJacksonAdapter.getApiService(getContext()).getRaces();
 
-        races.enqueue(new Callback<ArrayList<Race>>() {
+        raceCall.enqueue(new Callback<ArrayList<Race>>() {
             @Override
             public void onResponse(Call<ArrayList<Race>> call, Response<ArrayList<Race>> response) {
                 ArrayList<Race> data = response.body();
 
                 if(data != null){
-                    ArrayAdapter raceAdapater = new ArrayAdapter(getContext(), R.layout.spinner, data);
+                    ArrayAdapter raceAdapater = new ArrayAdapter(getActivity().getApplicationContext(), R.layout.spinner, data);
                     racesp.setAdapter(raceAdapater);
                 }
             }
