@@ -29,6 +29,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.main.LoadDataActivity"
+            android:screenOrientation="portrait"
+            android:exported="true" />
+        <activity
             android:name=".ui.main.farms.AddExploitationActivity"
             android:screenOrientation="portrait"
             android:exported="true" />

@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
-import com.example.farmogoapp.io.FarmogoApiAdapter;
+import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.model.User;
 import com.example.farmogoapp.ui.main.farms.FarmStatsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -122,7 +122,7 @@ public class RegistrationActivity extends AppCompatActivity implements Callback<
 
     public void addInfo(FirebaseUser user, String tel, String name, String uuid) {
         User finaluser = new User(user.getUid(),user.getEmail(), tel, name, null );
-        Call<User> call = FarmogoApiAdapter.getApiService().createUser(finaluser);
+        Call<User> call = FarmogoApiJacksonAdapter.getApiService(this).createUser(finaluser);
         call.enqueue(this);
     }
 

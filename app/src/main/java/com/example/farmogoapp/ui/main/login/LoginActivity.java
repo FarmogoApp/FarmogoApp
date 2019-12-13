@@ -14,16 +14,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
-import com.example.farmogoapp.model.incidences.Incidence;
-import com.example.farmogoapp.ui.main.Session;
-import com.example.farmogoapp.ui.main.farms.FarmStatsActivity;
+import com.example.farmogoapp.model.User;
+import com.example.farmogoapp.ui.main.LoadDataActivity;
+import com.example.farmogoapp.ui.main.SessionData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,9 +40,11 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        Session s = new Session(this);
-        if (s.isValidSession()) {
-            Intent intent = new Intent(LoginActivity.this, FarmStatsActivity.class);
+        User actualUser = SessionData.getInstance().getActualUser();
+
+        if (actualUser != null) {
+            Log.d("LoginActivity", "Actual user" + actualUser.getUuid());
+            Intent intent = new Intent(LoginActivity.this, LoadDataActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             finish();
             startActivity(intent);
@@ -92,21 +92,36 @@ public class LoginActivity extends AppCompatActivity {
                             pd.dismiss();
                             FirebaseUser currentUser = mAuth.getCurrentUser();
                             startSession(currentUser);
-                            Intent intent = new Intent(LoginActivity.this, FarmStatsActivity.class);
-                            startActivity(intent);
-                            finish();
+
                         } else {
                             pd.hide();
                             Toast.makeText(LoginActivity.this, getString(R.string.user_auth_failed) + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
 
-                    private void startSession(FirebaseUser currentUser) {
-                        Session s = new Session(LoginActivity.this.getApplicationContext());
-                        s.start(currentUser.getUid(), currentUser.getDisplayName(), currentUser.getEmail());
-                    }
+
+
                 });
 
+    }
+
+    private void startSession(FirebaseUser currentUser) {
+        FarmogoApiJacksonAdapter.getApiService(LoginActivity.this)
+                .getByFirebaseUuid(currentUser.getUid()).enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                SessionData.getInstance().setActualUser(response.body());
+                Intent intent = new Intent(LoginActivity.this, LoadDataActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(LoginActivity.this, getString(R.string.user_auth_failed) + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void forgotPassword(View view) {

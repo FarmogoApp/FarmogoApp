@@ -139,9 +139,9 @@ public class FragmentBirthIncidence extends Fragment{
         incidenceBirth.setRaceId(raceSelected.getUuid());
        //User incidenceBirth.getCreatedBy(SessionData.getInstance().ge);
       //  incidenceBirth.setOfficialId(SessionData.getInstance().);
-        incidenceBirth.setSex(sexSelected);
-        incidenceBirth.setFarmId();
-        incidenceBirth.setAnimalId();
+        //incidenceBirth.setSex(sexSelected);
+       // incidenceBirth.setFarmId();
+        //incidenceBirth.setAnimalId();
 
 
         // POST animal
