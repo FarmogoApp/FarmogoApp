@@ -138,6 +138,15 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/stats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15sp"
+        android:orientation="vertical"
+        android:gravity="center">
+    </LinearLayout>
+
     <Button
         android:id="@+id/search"
         android:layout_alignParentBottom="true"

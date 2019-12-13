@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,23 +27,13 @@ import com.example.farmogoapp.model.AnimalType;
 import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 
-import com.example.farmogoapp.model.FarmHistory;
 import com.example.farmogoapp.model.incidences.Incidence;
-import com.example.farmogoapp.model.incidences.IncidenceBirth;
-import com.example.farmogoapp.model.incidences.IncidenceDischarge;
-import com.example.farmogoapp.model.incidences.IncidencePregnancy;
-import com.example.farmogoapp.model.incidences.IncidenceTreatment;
-import com.example.farmogoapp.model.incidences.IncidenceVisitor;
-import com.example.farmogoapp.model.incidences.IncidenceWeight;
-import com.example.farmogoapp.ui.main.Session;
 import com.example.farmogoapp.ui.main.SessionData;
-import com.example.farmogoapp.ui.main.login.LoginActivity;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -49,10 +41,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static java.util.stream.Collectors.groupingBy;
 
 public class FarmStatsActivity extends AppCompatActivity {
     private Button btnGestion;
@@ -64,6 +60,7 @@ public class FarmStatsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private Farm actualFarm;
+    private ArrayList<AnimalType> animalType;
 
 
     @Override
@@ -154,9 +151,9 @@ public class FarmStatsActivity extends AppCompatActivity {
 
     private void fillData() {
         Random r = new Random();
-        yougerCowsTextView.setText(String.valueOf(r.nextInt(100)));
-        cowsTextView.setText(String.valueOf(r.nextInt(100)));
-        bullsTextView.setText(String.valueOf(r.nextInt(100)));
+        //yougerCowsTextView.setText(String.valueOf(r.nextInt(100)));
+        //cowsTextView.setText(String.valueOf(r.nextInt(100)));
+        //bullsTextView.setText(String.valueOf(r.nextInt(100)));
     }
 
     private void loadFarmStats(){
@@ -165,18 +162,19 @@ public class FarmStatsActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
                 List<Animal> animal = response.body();
-                Map<String, List<Animal>> groupAnimal = new HashMap<String, List<Animal>>();
-                ArrayList<String> listAnimalTypes = new ArrayList<>();
 
-                for (Animal animals : animal) {
-                    String key = animals.getAnimalTypeId();
-                    if(groupAnimal.get(key) == null){
-                        groupAnimal.put(key, new ArrayList<Animal>());
-                    }
-                    groupAnimal.get(key).add(animals);
-                    listAnimalTypes.add(animals.getAnimalTypeId());
-                }
-                animalType(listAnimalTypes);
+                Map<String, Long> counting = animal.stream().collect(
+                        Collectors.groupingBy(Animal::getAnimalTypeId, Collectors.counting()));
+
+
+                LinearLayout linearLayout = (LinearLayout) findViewById(R.id.stats);
+                counting.forEach((k,v) ->{
+                    System.out.println("Key: " + k + ": Value: " + v);
+                    TextView myText = new TextView(FarmStatsActivity.this);
+                    myText.setText("Key: " + k + ": Value: " + v);
+                    //linearLayout.addView(myText);
+                });
+                //animalType(listAnimalTypes);
             }
 
             @Override
@@ -263,7 +261,7 @@ public class FarmStatsActivity extends AppCompatActivity {
     private void refreshRecyclerView(ArrayList<Incidence> lastIncidences){
         recyclerView = findViewById(R.id.recyclerviewStatistics);
         recyclerView.setHasFixedSize(true);
-        mAdapter = new FarmIncidenceAdapter(lastIncidences);
+        mAdapter = new IncidenceAdapter(lastIncidences);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
