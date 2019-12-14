@@ -17,8 +17,7 @@ public class Farm implements Serializable {
     private List<Building> buildings;
     private AnimalCounter animalCounter;
     private String userOwnerId;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date subscriptionExpiration;
+    private LocalDate subscriptionExpiration;
 
     public Farm() {
         animalCounter = new AnimalCounter();
@@ -73,11 +72,11 @@ public class Farm implements Serializable {
         this.userOwnerId = userOwnerId;
     }
 
-    public Date getSubscriptionExpiration() {
+    public LocalDate getSubscriptionExpiration() {
         return subscriptionExpiration;
     }
 
-    public void setSubscriptionExpiration(Date subscriptionExpiration) {
+    public void setSubscriptionExpiration(LocalDate subscriptionExpiration) {
         this.subscriptionExpiration = subscriptionExpiration;
     }
 
