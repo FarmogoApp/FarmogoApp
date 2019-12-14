@@ -21,7 +21,7 @@ import com.example.farmogoapp.model.Building;
 import com.example.farmogoapp.model.Division;
 import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.model.Race;
-import com.example.farmogoapp.ui.main.SessionData;
+import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.ui.main.farms.FarmStatsActivity;
 
 import java.util.ArrayList;
@@ -140,7 +140,7 @@ public class RegisterCowActivity extends AppCompatActivity {
         animal.setFarmId(currentFarm.getUuid());
 
         // POST animal
-        Call<Animal> animalCall = FarmogoApiJacksonAdapter.getApiService(this).postAnimal(animal);
+        Call<Animal> animalCall = FarmogoApiJacksonAdapter.getApiService().postAnimal(animal);
         animalCall.enqueue(new Callback<Animal>() {
             @Override
             public void onResponse(Call<Animal> call, Response<Animal> response) {
@@ -196,48 +196,20 @@ public class RegisterCowActivity extends AppCompatActivity {
 
     private void initializeAnimalTypeSpinner() {
 
-        Call<ArrayList<AnimalType>> animalTypeCall = FarmogoApiJacksonAdapter.getApiService(this).getAnimalTypes();
-
-        animalTypeCall.enqueue(new Callback<ArrayList<AnimalType>>() {
-            @Override
-            public void onResponse(Call<ArrayList<AnimalType>> call, Response<ArrayList<AnimalType>> response) {
-                ArrayList<AnimalType> data = response.body();
-
-                if (data != null) {
-                    ArrayAdapter animalTypeAdapater = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, data);
-                    spnAnimalType.setAdapter(animalTypeAdapater);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<AnimalType>> call, Throwable t) {
-                t.printStackTrace();
-                Log.e("RegisterCowActivity", "AnimalType error");
-            }
-        });
+        List<AnimalType> animalTypes = SessionData.getInstance().getAnimalTypes();
+        if (animalTypes != null) {
+            ArrayAdapter animalTypeAdapater = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, animalTypes);
+            spnAnimalType.setAdapter(animalTypeAdapater);
+        }
     }
 
 
     private void initializeRaceSpinner() {
-        Call<ArrayList<Race>> raceCall = FarmogoApiJacksonAdapter.getApiService(this).getRaces();
-
-        raceCall.enqueue(new Callback<ArrayList<Race>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Race>> call, Response<ArrayList<Race>> response) {
-                ArrayList<Race> data = response.body();
-
-                if (data != null) {
-                    ArrayAdapter raceAdapater = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, data);
-                    spnRace.setAdapter(raceAdapater);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<Race>> call, Throwable t) {
-                t.printStackTrace();
-                Log.e("RegisterCowActivity", "Races error");
-            }
-        });
+        List<Race> races = SessionData.getInstance().getRaces();
+        if (races != null) {
+            ArrayAdapter raceAdapater = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, races);
+            spnRace.setAdapter(raceAdapater);
+        }
     }
 
 
@@ -245,33 +217,19 @@ public class RegisterCowActivity extends AppCompatActivity {
      * Get all animals and filter by sex female
      */
     private void initializeMotherIdSpinner() {
-        Call<List<Animal>> animalCall = FarmogoApiJacksonAdapter.getApiService(this).getAllAnimals();
+        List<Animal> animals = SessionData.getInstance().getAnimals();
+        if (animals != null) {
+            ArrayList<Animal> mothers = new ArrayList<>();
 
-        animalCall.enqueue(new Callback<List<Animal>>() {
-            @Override
-            public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
-                List<Animal> data = response.body();
-
-                if (data != null) {
-                    ArrayList<Animal> mothers = new ArrayList<>();
-
-                    for (Animal animal : data) {
-                        if (animal.getSex().equalsIgnoreCase("Female")) {
-                            mothers.add(animal);
-                        }
-                    }
-
-                    ArrayAdapter mothersAdapater = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, mothers);
-                    spnMotherId.setAdapter(mothersAdapater);
+            for (Animal animal : animals) {
+                if (animal.getSex().equalsIgnoreCase("Female")) {
+                    mothers.add(animal);
                 }
             }
 
-            @Override
-            public void onFailure(Call<List<Animal>> call, Throwable t) {
-                t.printStackTrace();
-                Log.e("RegisterCowActivity", "Get all animals error");
-            }
-        });
+            ArrayAdapter mothersAdapater = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, mothers);
+            spnMotherId.setAdapter(mothersAdapater);
+        }
     }
 
 

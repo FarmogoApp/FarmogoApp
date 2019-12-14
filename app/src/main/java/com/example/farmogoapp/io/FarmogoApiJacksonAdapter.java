@@ -1,16 +1,13 @@
 package com.example.farmogoapp.io;
 
-import android.content.Context;
-
 import com.example.farmogoapp.model.User;
-import com.example.farmogoapp.ui.main.SessionData;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-import java.io.IOException;
-
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -19,7 +16,9 @@ public class FarmogoApiJacksonAdapter {
 
     private static FarmogoApiService API_SERVICE;
 
-    public static FarmogoApiService getApiService(Context ctx) {
+    public static FarmogoApiService getApiService() {
+
+        if (API_SERVICE != null) return API_SERVICE;
 
         // Creamos un interceptor y le indicamos el log level a usar
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
@@ -28,20 +27,17 @@ public class FarmogoApiJacksonAdapter {
         // Asociamos el interceptor a las peticiones
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
-        httpClient.addInterceptor(new Interceptor() {
-            @Override
-            public Response intercept(Chain chain) throws IOException {
+        httpClient.addInterceptor(chain -> {
 
-                User user = SessionData.getInstance().getActualUser();
-                if (user == null) {
-                    return chain.proceed(chain.request());
-                }
-                Request request = chain.request();
-                Request newRequest = request.newBuilder()
-                        .addHeader("Authorization", "Bearer " + user.getFirebaseUuid())
-                        .build();
-                return chain.proceed(newRequest);
+            User user = SessionData.getInstance().getActualUser();
+            if (user == null) {
+                return chain.proceed(chain.request());
             }
+            Request request = chain.request();
+            Request newRequest = request.newBuilder()
+                    .addHeader("Authorization", "Bearer " + user.getFirebaseUuid())
+                    .build();
+            return chain.proceed(newRequest);
         });
         httpClient.addInterceptor(logging);
 
@@ -49,16 +45,25 @@ public class FarmogoApiJacksonAdapter {
         String baseUrl = "http://farmogo.quierovinos.com:8080/api/";
 
 
-        if (API_SERVICE == null) {
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(baseUrl)
-                    .addConverterFactory(JacksonConverterFactory.create())
-                    .client(httpClient.build()) // <-- usamos el log level
-                    .build();
-            API_SERVICE = retrofit.create(FarmogoApiService.class);
-        }
+        ObjectMapper objectMapper = getObjectMapper();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(JacksonConverterFactory.create(objectMapper))
+                .client(httpClient.build()) // <-- usamos el log level
+                .build();
+        API_SERVICE = retrofit.create(FarmogoApiService.class);
 
         return API_SERVICE;
     }
+
+    public static ObjectMapper getObjectMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        objectMapper.registerModule(new JavaTimeModule());
+        return objectMapper;
+    }
+
 
 }

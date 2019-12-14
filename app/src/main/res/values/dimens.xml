@@ -5,4 +5,5 @@
     <dimen name="farm_stats_label_font_width">22sp</dimen>
     <dimen name="farm_stats_value_font_width">22sp</dimen>
     <dimen name="animal_info_button_size">35dp</dimen>
+    <dimen name="animal_info_label_width">140dp</dimen>
 </resources>

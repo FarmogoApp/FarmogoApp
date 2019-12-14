@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.main.LoadDataActivity"
+            android:name=".io.LoadDataActivity"
             android:screenOrientation="portrait"
             android:exported="true" />
         <activity
