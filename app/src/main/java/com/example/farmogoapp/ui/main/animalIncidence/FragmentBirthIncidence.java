@@ -27,6 +27,7 @@ import com.example.farmogoapp.model.incidences.IncidenceBirth;
 import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
@@ -45,9 +46,11 @@ public class FragmentBirthIncidence extends Fragment{
     private Spinner sexsp;
     private EditText eTMotherOfficialIdEdit;
     private EditText eTofficialId;
+    private EditText eT_obs;
     private String animalUuid;
     private String animalOfficialId;
     private String farmId;
+    private String farmAnimalCounter;
 
     public static FragmentBirthIncidence newInstance() {
         FragmentBirthIncidence fragment = new FragmentBirthIncidence();
@@ -65,6 +68,7 @@ public class FragmentBirthIncidence extends Fragment{
             animalUuid = this.getArguments().getString("animalId", "");
             animalOfficialId = this.getArguments().getString("animalOfficialId", "");
             farmId = this.getArguments().getString("farmId", "");
+            farmAnimalCounter = this.getArguments().getString("farmAnimalCounter", "");
         }
     }
 
@@ -74,14 +78,10 @@ public class FragmentBirthIncidence extends Fragment{
         super.onCreateView(inflater,container,savedInstanceState);
         view = inflater.inflate(R.layout.fragment_birth_incidence, container, false);
 
-        //if(getArguments().getString("animalId") != null){
-            //Log.e("asdasdad",getArguments().getString("animalId"));
-           // idAnimal = this.getArguments().getString("animalId", "");
-        //}
-
         initializeRaceSpinner();
         registerViews();
         eTMotherOfficialIdEdit.setText(this.animalOfficialId);
+        eTofficialId.setText(this.farmAnimalCounter);
         String myFormat = "dd/MM/yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         date.setText(sdf.format(calendar.getTime()));
@@ -92,41 +92,9 @@ public class FragmentBirthIncidence extends Fragment{
 
     private void registerCow() {
 
-        // Get user input
-        /*
-        String officialId = etOfficialId.getText().toString();
-        Animal selectedMother = (Animal) spnMotherId.getSelectedItem();
-        if(birthDate == null) birthDate = new Date(clvBirthDate.getDate());
-        String origin = etOrigin.getText().toString();
-        String selectedSex = spnSex.getSelectedItem().toString();
-        AnimalType selectedAnimalType = (AnimalType) spnAnimalType.getSelectedItem();
-        Race selectedRace = (Race) spnRace.getSelectedItem();
-        RegisterCowActivity.Location location = (RegisterCowActivity.Location) spnLocation.getSelectedItem();
-
-        // Set animal
-        Animal animal = new Animal();
-        animal.setOfficialId(officialId);
-        animal.setMotherId(selectedMother.getUuid());
-        animal.setMotherOfficialId(selectedMother.getOfficialId());
-        animal.setBirthDay(birthDate);
-        animal.setOrigin(origin);
-        animal.setSex(selectedSex);
-        animal.setAnimalTypeId(selectedAnimalType.getUuid());
-        animal.setRaceId(selectedRace.getUuid());
-        animal.setDivisionId(location.getDivision().getUuid());
-        animal.setFarmId(currentFarm.getUuid());
-
-*//*
-        String dates = date.getText().toString();
-        String[] parts = dates.split("/");
-        String day = parts[0]; // day
-        String month = parts[1]; // month
-        //String year = parts[2]; // year
-
-
+        /*parametros que seteamos en el test del back
         IncidenceBirth birth = new IncidenceBirth();
             birth.setBirthDate(LocalDate.of(2019, 11, 27));
-            birth.setOfficialId("ES12345566778");
             birth.setRaceId(raceE.getUuid());
             birth.setCreatedBy(user.getUuid());
             birth.setOfficialId(farm.getAnimalCounter().toString());
@@ -135,22 +103,24 @@ public class FragmentBirthIncidence extends Fragment{
             birth.setAnimalId(animalA.getUuid());
 
         */
+        String dates = date.getText().toString();
+        String[] parts = dates.split("/");
+        int day = Integer.valueOf(parts[0]); // day
+        int month = Integer.valueOf(parts[1]); // month
+        int year = Integer.valueOf(parts[2]); // year
 
-        String officialId = eTofficialId.getText().toString();
         Race raceSelected = (Race) racesp.getSelectedItem();
         String sexSelected = (String) sexsp.getSelectedItem();
 
         IncidenceBirth incidenceBirth = new IncidenceBirth();
-       // incidenceBirth.setBirthDate(new Date(date.getText().toString()));
-
+        incidenceBirth.setBirthDate(LocalDate.of(year, month, day));
         incidenceBirth.setRaceId(raceSelected.getUuid());
-       incidenceBirth.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
-        //incidenceBirth.setOfficialId();
+        incidenceBirth.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
+        incidenceBirth.setOfficialId(eTofficialId.getText().toString());
         incidenceBirth.setSex(sexSelected);
         incidenceBirth.setFarmId(this.farmId);
-        incidenceBirth.setAnimalId(this.animalOfficialId);
-
-
+        incidenceBirth.setAnimalId(eTMotherOfficialIdEdit.getText().toString());
+        incidenceBirth.setObservations(eT_obs.getText().toString());
 
         // POST incidence
         Call<Incidence> incidenceCall = FarmogoApiJacksonAdapter.getApiService().createIncidence(incidenceBirth);
@@ -162,6 +132,7 @@ public class FragmentBirthIncidence extends Fragment{
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
                     Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
+                    //intent.putExtra("animalId", (String) );
                     startActivity(intent);
 
                 } else {
@@ -188,7 +159,7 @@ public class FragmentBirthIncidence extends Fragment{
         sexsp = view.findViewById(R.id.genderBirthSpinner);
         eTMotherOfficialIdEdit = view.findViewById(R.id.MotherOfficialIdEdit);
         eTofficialId = view.findViewById(R.id.officialIdEdit);
-
+        eT_obs = view.findViewById(R.id.ed_obs);
     }
 
     private void registerListeners() {

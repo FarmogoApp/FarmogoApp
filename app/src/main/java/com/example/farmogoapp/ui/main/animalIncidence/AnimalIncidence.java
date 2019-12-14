@@ -13,10 +13,10 @@ import com.example.farmogoapp.R;
 
 public class AnimalIncidence extends AppCompatActivity {
     private Spinner spinner;
-    public String animalUuid;
-    public String animalOfficialId;
-    public String farmId;
-
+    private String animalUuid;
+    private String animalOfficialId;
+    private String farmId;
+    private String farmAnimalCounter;
 
 
     @Override
@@ -33,6 +33,7 @@ public class AnimalIncidence extends AppCompatActivity {
             this.animalUuid = getIntent().getStringExtra("animalId");
             this.animalOfficialId = getIntent().getStringExtra("animalOfficialId");
             this.farmId = getIntent().getStringExtra("farmId");
+            this.farmAnimalCounter = getIntent().getStringExtra("farmAnimalCounter");
         }
         registerListeners();
     }
@@ -59,6 +60,7 @@ public class AnimalIncidence extends AppCompatActivity {
                             args.putString("animalId", animalUuid);
                             args.putString("animalOfficialId", animalOfficialId);
                             args.putString("farmId", farmId);
+                            args.putString("farmAnimalCounter", farmAnimalCounter);
                             fragment.setArguments(args);
                         }
                         getSupportFragmentManager().beginTransaction()

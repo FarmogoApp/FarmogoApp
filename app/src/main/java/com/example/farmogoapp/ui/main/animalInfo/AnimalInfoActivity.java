@@ -204,7 +204,6 @@ public class AnimalInfoActivity extends AppCompatActivity {
 
         SessionData instance = SessionData.getInstance();
         Optional<Race> race1 = instance.getRace(animal.getRaceId());
-        //Optional<Farm> farm1 = instance.getFarm(animal.getRaceId());
         loadFarmData(this.animal.getFarmId());
 
         race.setText(race1.orElse(new Race()).getName());
@@ -245,7 +244,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
                 intent.putExtra("animalId", (String) animal.getUuid());
                 intent.putExtra("animalOfficialId", (String) animal.getOfficialId());
                 intent.putExtra("farmId", (String) animal.getFarmId());
-                //intent.putExtra("farmAnimalCounter", (String) farm.);
+                intent.putExtra("farmAnimalCounter", (String) farm.getAnimalCounter().toString());
                 startActivity(intent);
             }
         });
