@@ -6,24 +6,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.farmogoapp.R;
-import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
-import com.example.farmogoapp.model.Animal;
-import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class AnimalIncidence extends AppCompatActivity {
     private Spinner spinner;
     public String animalUuid;
-    public String animalOfficialid;
+    public String animalOfficialId;
+    public String farmId;
 
 
 
@@ -39,7 +31,8 @@ public class AnimalIncidence extends AppCompatActivity {
         if (getIntent().hasExtra("animalId")) {
             Log.e("asdasfffffffffffffffffffdad", getIntent().getStringExtra("animalId"));
             this.animalUuid = getIntent().getStringExtra("animalId");
-            this.animalOfficialid = getIntent().getStringExtra("animalOfficialId");
+            this.animalOfficialId = getIntent().getStringExtra("animalOfficialId");
+            this.farmId = getIntent().getStringExtra("farmId");
         }
         registerListeners();
     }
@@ -64,7 +57,8 @@ public class AnimalIncidence extends AppCompatActivity {
                         FragmentBirthIncidence fragment = new FragmentBirthIncidence();
                         if (animalUuid != null){
                             args.putString("animalId", animalUuid);
-                            args.putString("animalOfficialId", animalOfficialid);
+                            args.putString("animalOfficialId", animalOfficialId);
+                            args.putString("farmId", farmId);
                             fragment.setArguments(args);
                         }
                         getSupportFragmentManager().beginTransaction()

@@ -17,25 +17,18 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
-import com.example.farmogoapp.model.Animal;
-import com.example.farmogoapp.model.AnimalType;
 import com.example.farmogoapp.model.Race;
 import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.model.incidences.IncidenceBirth;
 import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
-import com.example.farmogoapp.ui.main.farms.FarmStatsActivity;
-import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 import retrofit2.Call;
@@ -54,6 +47,7 @@ public class FragmentBirthIncidence extends Fragment{
     private EditText eTofficialId;
     private String animalUuid;
     private String animalOfficialId;
+    private String farmId;
 
     public static FragmentBirthIncidence newInstance() {
         FragmentBirthIncidence fragment = new FragmentBirthIncidence();
@@ -70,6 +64,7 @@ public class FragmentBirthIncidence extends Fragment{
         if(getArguments() != null){
             animalUuid = this.getArguments().getString("animalId", "");
             animalOfficialId = this.getArguments().getString("animalOfficialId", "");
+            farmId = this.getArguments().getString("farmId", "");
         }
     }
 
@@ -152,8 +147,8 @@ public class FragmentBirthIncidence extends Fragment{
        incidenceBirth.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
         //incidenceBirth.setOfficialId();
         incidenceBirth.setSex(sexSelected);
-       // incidenceBirth.setFarmId();
-        //incidenceBirth.setAnimalId();
+        incidenceBirth.setFarmId(this.farmId);
+        incidenceBirth.setAnimalId(this.animalOfficialId);
 
 
 
