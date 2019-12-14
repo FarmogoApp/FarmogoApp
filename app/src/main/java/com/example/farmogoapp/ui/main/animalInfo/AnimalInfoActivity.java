@@ -41,7 +41,6 @@ import java.util.Optional;
 public class AnimalInfoActivity extends AppCompatActivity {
 
     private Button btnList;
-    private boolean state;
     private ImageButton btnAddRemove;
     private Button btnIncidences;
     private RecyclerView recyclerView;
@@ -56,6 +55,9 @@ public class AnimalInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animal_info);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        btnAddRemove = findViewById(R.id.mas);
+        btnIncidences = findViewById(R.id.IncidenciaAnimalInfo);
 
         if (getIntent().getAction() == NfcAdapter.ACTION_NDEF_DISCOVERED) {
             loadAnimalDataFromNfc(getIntent());
@@ -65,10 +67,6 @@ public class AnimalInfoActivity extends AppCompatActivity {
             loadAnimalData(getIntent().getStringExtra("animalId"));
         }
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        btnAddRemove = findViewById(R.id.mas);
-        btnIncidences = findViewById(R.id.IncidenciaAnimalInfo);
-        state = true;
 
         ArrayList<HistoryInfo> animal_History = new ArrayList<>();
         HistoryInfo historyInfo1 = new HistoryInfo("dolor", "Selevit", "28/10/2019");
@@ -179,6 +177,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
         race.setText(race1.orElse(new Race()).getName());
         farm.setText(farm1.orElse(new Farm()).getOfficialId());
         mother.setText(animal.getMotherOfficialId());
+        btnAddRemove.setImageResource( animal.isSelected()? android.R.drawable.ic_menu_delete : android.R.drawable.ic_menu_add );
 
         //TODO: update list of incidences
 
@@ -192,15 +191,17 @@ public class AnimalInfoActivity extends AppCompatActivity {
     }
 
     private void registerListeners() {
-        btnAddRemove.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (state) {
-                    btnAddRemove.setImageResource(android.R.drawable.ic_menu_delete);
-                } else {
-                    btnAddRemove.setImageResource(android.R.drawable.ic_menu_add);
-                }
-                state = !state;
+        btnAddRemove.setOnClickListener(v -> {
+
+            if (animal.isSelected()){
+                SessionData.getInstance().removeAnimalFromCart(animal.getUuid());
+                animal.setSelected(false);
+                btnAddRemove.setImageResource(android.R.drawable.ic_menu_add);
+            }else{
+                SessionData.getInstance().addAnimalToCart(animal.getUuid());
+                animal.setSelected(true);
+                btnAddRemove.setImageResource(android.R.drawable.ic_menu_delete);
+
             }
         });
 

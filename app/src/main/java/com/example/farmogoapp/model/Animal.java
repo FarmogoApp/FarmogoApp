@@ -3,6 +3,8 @@ package com.example.farmogoapp.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Animal {
@@ -10,30 +12,24 @@ public class Animal {
     private String uuid;
     private String farmId;
     private String officialId;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date birthDay;
+    private LocalDate birthDay;
     private String sex;
     private String raceId;
     private String motherOfficialId;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date enrrollementDate;
+    private LocalDate enrrollementDate;
     private String enrollmentCause;
     private String origin;
     private String enrollmentSanitaryRegister;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date dischargeDate;
+    private LocalDate dischargeDate;
     private String dischargeCause;
     private String dischargeDestination;
     private String dischargeSanitaryRegister;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date dateBonus1;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date dateBonus2;
+    private LocalDate dateBonus1;
+    private LocalDate dateBonus2;
     private String animalTypeId;
     private String tagId;
     private String motherId;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.S")
-    private Date createdLocalDateTime;
+    private LocalDateTime createdLocalDateTime;
     private String divisionId;
 
     @JsonIgnore
@@ -54,7 +50,6 @@ public class Animal {
         this.uuid = uuid;
     }
 
-
     public String getFarmId() {
         return farmId;
     }
@@ -71,11 +66,11 @@ public class Animal {
         this.officialId = officialId;
     }
 
-    public Date getBirthDay() {
+    public LocalDate getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(Date birthDay) {
+    public void setBirthDay(LocalDate birthDay) {
         this.birthDay = birthDay;
     }
 
@@ -103,11 +98,11 @@ public class Animal {
         this.motherOfficialId = motherOfficialId;
     }
 
-    public Date getEnrrollementDate() {
+    public LocalDate getEnrrollementDate() {
         return enrrollementDate;
     }
 
-    public void setEnrrollementDate(Date enrrollementDate) {
+    public void setEnrrollementDate(LocalDate enrrollementDate) {
         this.enrrollementDate = enrrollementDate;
     }
 
@@ -135,11 +130,11 @@ public class Animal {
         this.enrollmentSanitaryRegister = enrollmentSanitaryRegister;
     }
 
-    public Date getDischargeDate() {
+    public LocalDate getDischargeDate() {
         return dischargeDate;
     }
 
-    public void setDischargeDate(Date dischargeDate) {
+    public void setDischargeDate(LocalDate dischargeDate) {
         this.dischargeDate = dischargeDate;
     }
 
@@ -167,19 +162,19 @@ public class Animal {
         this.dischargeSanitaryRegister = dischargeSanitaryRegister;
     }
 
-    public Date getDateBonus1() {
+    public LocalDate getDateBonus1() {
         return dateBonus1;
     }
 
-    public void setDateBonus1(Date dateBonus1) {
+    public void setDateBonus1(LocalDate dateBonus1) {
         this.dateBonus1 = dateBonus1;
     }
 
-    public Date getDateBonus2() {
+    public LocalDate getDateBonus2() {
         return dateBonus2;
     }
 
-    public void setDateBonus2(Date dateBonus2) {
+    public void setDateBonus2(LocalDate dateBonus2) {
         this.dateBonus2 = dateBonus2;
     }
 
@@ -207,11 +202,11 @@ public class Animal {
         this.motherId = motherId;
     }
 
-    public Date getCreatedLocalDateTime() {
+    public LocalDateTime getCreatedLocalDateTime() {
         return createdLocalDateTime;
     }
 
-    public void setCreatedLocalDateTime(Date createdLocalDateTime) {
+    public void setCreatedLocalDateTime(LocalDateTime createdLocalDateTime) {
         this.createdLocalDateTime = createdLocalDateTime;
     }
 

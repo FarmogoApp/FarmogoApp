@@ -15,18 +15,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
+import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.AnimalType;
 import com.example.farmogoapp.model.Building;
 import com.example.farmogoapp.model.Division;
 import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.model.Race;
-import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.ui.main.farms.FarmStatsActivity;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -71,7 +72,7 @@ public class RegisterCowActivity extends AppCompatActivity {
     private Spinner spnLocation;
     private Button btnRegister;
 
-    private Date birthDate;
+    private LocalDate birthDate;
     private Farm currentFarm;
 
     @Override
@@ -119,7 +120,8 @@ public class RegisterCowActivity extends AppCompatActivity {
         // Get user input
         String officialId = etOfficialId.getText().toString();
         Animal selectedMother = (Animal) spnMotherId.getSelectedItem();
-        if (birthDate == null) birthDate = new Date(clvBirthDate.getDate());
+        if (birthDate == null)
+            birthDate = Instant.ofEpochMilli(clvBirthDate.getDate()).atZone(ZoneId.systemDefault()).toLocalDate();
         String origin = etOrigin.getText().toString();
         String selectedSex = spnSex.getSelectedItem().toString();
         AnimalType selectedAnimalType = (AnimalType) spnAnimalType.getSelectedItem();
@@ -184,11 +186,7 @@ public class RegisterCowActivity extends AppCompatActivity {
         clvBirthDate.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView clv, int year, int month, int date) {
-                Calendar cal = Calendar.getInstance();
-                cal.set(Calendar.YEAR, year);
-                cal.set(Calendar.MONTH, month);
-                cal.set(Calendar.DAY_OF_MONTH, date);
-                birthDate = cal.getTime();
+                birthDate = LocalDate.of(year, month + 1, date);
             }
         });
     }
