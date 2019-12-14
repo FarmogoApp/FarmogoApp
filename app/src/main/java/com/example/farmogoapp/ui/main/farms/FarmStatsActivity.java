@@ -154,7 +154,7 @@ public class FarmStatsActivity extends AppCompatActivity {
                                 imageView.setImageResource(R.drawable.bull);
                                 break;
                             case "Calf":
-                                imageView.setImageResource(R.drawable.bull);
+                                imageView.setImageResource(R.drawable.calf);
                         }
                         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(100, 100);
                         imageView.setLayoutParams(params);
@@ -241,6 +241,4 @@ public class FarmStatsActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
-
-
 }
