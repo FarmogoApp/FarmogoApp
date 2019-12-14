@@ -55,15 +55,10 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class FarmStatsActivity extends AppCompatActivity {
     private Button btnGestion;
-    private TextView yougerCowsTextView;
-    private TextView cowsTextView;
-    private TextView bullsTextView;
     private Button searchButton;
     private Spinner spinner;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
-    private Farm actualFarm;
-    private ArrayList<AnimalType> animalType;
 
 
     @Override
@@ -72,23 +67,17 @@ public class FarmStatsActivity extends AppCompatActivity {
         inflater.inflate(R.menu.farmstats, menu);
 
         MenuItem item = menu.findItem(R.id.add_farm);
-        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Intent intent = new Intent(FarmStatsActivity.this, AddExploitationActivity.class);
-                startActivity(intent);
-                return true;
-            }
+        item.setOnMenuItemClickListener(item1 -> {
+            Intent intent = new Intent(FarmStatsActivity.this, AddExploitationActivity.class);
+            startActivity(intent);
+            return true;
         });
 
         MenuItem list = menu.findItem(R.id.edit_farm);
-        list.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Intent intent = new Intent(FarmStatsActivity.this, AddExploitationActivity.class);
-                startActivity(intent);
-                return true;
-            }
+        list.setOnMenuItemClickListener(item12 -> {
+            Intent intent = new Intent(FarmStatsActivity.this, AddExploitationActivity.class);
+            startActivity(intent);
+            return true;
         });
         return true;
     }
@@ -99,16 +88,12 @@ public class FarmStatsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.farm_stats);
         registerViews();
-        fillData();
         registerListeners();
         loadFarms();
 
     }
 
     private void registerViews() {
-        /*yougerCowsTextView = findViewById(R.id.cows_younger);
-        cowsTextView = findViewById(R.id.cows);
-        bullsTextView = findViewById(R.id.bulls);*/
         searchButton = findViewById(R.id.search);
         spinner = findViewById(R.id.spinnerstatistics);
         btnGestion = findViewById(R.id.Gestion);
@@ -116,19 +101,13 @@ public class FarmStatsActivity extends AppCompatActivity {
 
     private void registerListeners() {
 
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(FarmStatsActivity.this, SeachAnimalsActivity.class);
-                startActivity(intent);
-            }
+        searchButton.setOnClickListener(v -> {
+            Intent intent = new Intent(FarmStatsActivity.this, SeachAnimalsActivity.class);
+            startActivity(intent);
         });
-        btnGestion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(FarmStatsActivity.this, RegisterCowActivity.class);
-                startActivity(intent);
-            }
+        btnGestion.setOnClickListener(v -> {
+            Intent intent = new Intent(FarmStatsActivity.this, RegisterCowActivity.class);
+            startActivity(intent);
         });
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -137,7 +116,6 @@ public class FarmStatsActivity extends AppCompatActivity {
                 loadFarmStats();
                 SessionData.getInstance().setActualFarm((Farm) parentView.getItemAtPosition(position));
                 loadHistoric(SessionData.getInstance().getActualFarm().getUuid());
-                FarmStatsActivity.this.fillData();
             }
 
             @Override
@@ -146,13 +124,6 @@ public class FarmStatsActivity extends AppCompatActivity {
             }
 
         });
-    }
-
-    private void fillData() {
-        Random r = new Random();
-        //yougerCowsTextView.setText(String.valueOf(r.nextInt(100)));
-        //cowsTextView.setText(String.valueOf(r.nextInt(100)));
-        //bullsTextView.setText(String.valueOf(r.nextInt(100)));
     }
 
     private void loadFarmStats() {
@@ -168,7 +139,7 @@ public class FarmStatsActivity extends AppCompatActivity {
                         .collect(Collectors.groupingBy(Animal::getAnimalTypeId, Collectors.counting()));
 
 
-                LinearLayout linearLayout = (LinearLayout) findViewById(R.id.statisticsrelativelayout);
+                LinearLayout linearLayout = findViewById(R.id.statisticsrelativelayout);
                 linearLayout.removeAllViews();
                 collect.forEach((k,v) ->{
                     Optional<AnimalType> type = SessionData.getInstance().getAnimalType(k);
