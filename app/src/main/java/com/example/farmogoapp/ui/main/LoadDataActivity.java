@@ -1,12 +1,12 @@
 package com.example.farmogoapp.ui.main;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Lifecycle;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
@@ -24,7 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoadDataActivity extends Activity {
+public class LoadDataActivity extends AppCompatActivity {
 
 
 
@@ -36,32 +36,47 @@ public class LoadDataActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.await);
         loadAll();
-
+        if (existsData()){
+            startNextActivity();
+        }
     }
 
     public void loadAll() {
-
         countDownLatch = new CountDownLatch(4);
         final Runnable r = () -> {
             this.updatefarms();
             this.updateAnimals();
             this.updateAnimalTypes();
             this.updateRaces();
+
             try {
                 countDownLatch.await();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            Intent intent = new Intent(this, FarmStatsActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+
+            Log.d(this.getClass().getName(), "DATA LOADED");
+
+            if(getLifecycle().getCurrentState().equals(Lifecycle.State.RESUMED)){
+                startNextActivity();
+            }
+
             finish();
         };
         Thread t= new Thread(r);
         t.start();
+    }
 
+    public boolean existsData(){
+        return SessionData.getInstance().getFarms()!=null;
+    }
 
+    public void startNextActivity(){
+        Intent intent = new Intent(this, FarmStatsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        Log.d(this.getClass().getName(), "STATED NEXT ACTIVITY");
     }
 
 
