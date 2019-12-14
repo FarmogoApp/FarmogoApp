@@ -54,21 +54,30 @@ public class AnimalIncidence extends AppCompatActivity {
                 switch (position) {
                     case 0:
 
-                        Bundle args = new Bundle();
-                        FragmentBirthIncidence fragment = new FragmentBirthIncidence();
+                        Bundle bundleBirth = new Bundle();
+                        FragmentBirthIncidence fragmentBirth = new FragmentBirthIncidence();
                         if (animalUuid != null){
-                            args.putString("animalId", animalUuid);
-                            args.putString("animalOfficialId", animalOfficialId);
-                            args.putString("farmId", farmId);
-                            args.putString("farmAnimalCounter", farmAnimalCounter);
-                            fragment.setArguments(args);
+                            bundleBirth.putString("animalId", animalUuid);
+                            bundleBirth.putString("animalOfficialId", animalOfficialId);
+                            bundleBirth.putString("farmId", farmId);
+                            bundleBirth.putString("farmAnimalCounter", farmAnimalCounter);
+                            fragmentBirth.setArguments(bundleBirth);
                         }
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.Fragment, fragment).commit();
+                                .replace(R.id.Fragment, fragmentBirth).commit();
                         break;
                     case 1:
+                        Bundle bundleTreatment = new Bundle();
+                        FragmentTreatmentIncidence fragmentTreatment = new FragmentTreatmentIncidence();
+                        if (animalUuid != null){
+                            bundleTreatment.putString("animalId", animalUuid);
+                            bundleTreatment.putString("animalOfficialId", animalOfficialId);
+                            bundleTreatment.putString("farmId", farmId);
+                            fragmentTreatment.setArguments(bundleTreatment);
+                        }
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.Fragment, FragmentTreatmentIncidence.newInstance()).commit();
+                                .replace(R.id.Fragment, fragmentTreatment).commit();
+
                         break;
                     case 2:
                         getSupportFragmentManager().beginTransaction()

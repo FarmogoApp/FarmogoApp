@@ -132,7 +132,7 @@ public class FragmentBirthIncidence extends Fragment{
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
                     Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
-                    //intent.putExtra("animalId", (String) );
+                    intent.putExtra("animalId", (String) incidenceBirth.getOfficialId());//animal info del nuevo animal
                     startActivity(intent);
 
                 } else {

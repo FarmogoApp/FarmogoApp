@@ -45,13 +45,13 @@
                 android:text="@string/type"/>
 
             <Spinner
-                android:layout_marginTop="5dp"
-                android:id="@+id/sp_tipo"
-                android:background="@drawable/spinner_bg"
-                android:layout_below="@+id/tipo"
-                android:entries="@array/type"
+                android:id="@+id/sp_TreatmentType"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"/>
+                android:layout_height="35dp"
+                android:layout_below="@+id/tipo"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/spinner_bg"
+                android:entries="@array/type" />
 
         </RelativeLayout>
     </LinearLayout>
@@ -76,12 +76,10 @@
                 android:text="@string/medicine"/>
 
             <EditText
-                android:id="@+id/ed_medicamento"
+                android:id="@+id/ed_TreatmentMedicine"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:paddingStart="5dp"
-                android:clickable="true"
-                android:focusable="false"
                 android:background="@drawable/round_corner"
                 android:layout_below="@+id/medicamento"
                 android:layout_width="match_parent"
@@ -111,12 +109,10 @@
                 android:text="@string/dose"/>
 
             <EditText
-                android:id="@+id/ed_dosis"
+                android:id="@+id/ed_TreatmentDose"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:paddingStart="5dp"
-                android:clickable="true"
-                android:focusable="false"
                 android:background="@drawable/round_corner"
                 android:layout_below="@+id/dosis"
                 android:layout_width="match_parent"
@@ -146,7 +142,7 @@
                 android:text="@string/observations"/>
 
             <EditText
-                android:id="@+id/ed_obs"
+                android:id="@+id/ed_Treatmentobs"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:paddingStart="5dp"
@@ -169,7 +165,7 @@
         android:orientation="horizontal"
         android:layout_below="@id/linear6">
         <Button
-            android:id="@+id/save"
+            android:id="@+id/saveTreatment"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:text="@string/save"
