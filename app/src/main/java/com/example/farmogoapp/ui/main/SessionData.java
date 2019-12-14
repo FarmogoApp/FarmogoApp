@@ -72,6 +72,9 @@ public class SessionData {
         return loadObject(FARMS, new TypeReference<List<Farm>>() {
         });
     }
+    public Optional<Farm> getFarm(String uuid){
+        return getFarms().stream().filter(f -> f.getUuid().equals(uuid)).findAny();
+    }
 
     public void setAnimals(List<Animal> animals) {
         saveObject(ANIMALS, animals);

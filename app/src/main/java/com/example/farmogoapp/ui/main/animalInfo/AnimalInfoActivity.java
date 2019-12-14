@@ -33,8 +33,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.model.Animal;
+import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.model.HistoryInfo;
+import com.example.farmogoapp.model.Race;
 import com.example.farmogoapp.model.incidences.Incidence;
+import com.example.farmogoapp.ui.main.SessionData;
 import com.example.farmogoapp.ui.main.animalIncidence.AnimalIncidence;
 import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
@@ -43,6 +46,7 @@ import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -191,10 +195,17 @@ public class AnimalInfoActivity extends AppCompatActivity {
         TextView farm = findViewById(R.id.farmNumber_exemple);
         TextView mother = findViewById(R.id.mother_exemple);
         officialId.setText(animal.getOfficialId());
-        sex.setText(animal.getSex());
-        race.setText(animal.getRaceId()); // TODO: get race
-        farm.setText(animal.getFarmId()); // TODO: get farm
-        mother.setText(animal.getMotherId()); // TODO: get official id of mother
+
+        String[] stringArray = getResources().getStringArray(R.array.sexs);
+        sex.setText(stringArray[animal.getSex().equals("Male")?0:1]);
+
+        SessionData instance = SessionData.getInstance();
+        Optional<Race> race1 = instance.getRace(animal.getRaceId());
+        Optional<Farm> farm1 = instance.getFarm(animal.getRaceId());
+        
+        race.setText(race1.orElse(new Race()).getName());
+        farm.setText(farm1.orElse(new Farm()).getOfficialId());
+        mother.setText(animal.getMotherOfficialId());
 
         //TODO: update list of incidences
 
