@@ -72,7 +72,8 @@ public class SessionData {
         return loadObject(FARMS, new TypeReference<List<Farm>>() {
         });
     }
-    public Optional<Farm> getFarm(String uuid){
+
+    public Optional<Farm> getFarm(String uuid) {
         return getFarms().stream().filter(f -> f.getUuid().equals(uuid)).findAny();
     }
 
@@ -81,11 +82,14 @@ public class SessionData {
     }
 
     public List<Animal> getAnimals() {
-        return loadObject(ANIMALS, new TypeReference<List<Animal>>() {
+        List<Animal> animals = loadObject(ANIMALS, new TypeReference<List<Animal>>() {
         });
+        List<String> animalCart = getAnimalCart();
+        animals.forEach(a -> a.setSelected(animalCart.contains(a.getUuid())));
+        return animals;
     }
 
-    public Optional<Animal> getAnimal(String uuid){
+    public Optional<Animal> getAnimal(String uuid) {
         return getAnimals().stream().filter(a -> a.getUuid().equals(uuid)).findAny();
     }
 
@@ -98,7 +102,7 @@ public class SessionData {
         });
     }
 
-    public Optional<AnimalType> getAnimalType(String uuid){
+    public Optional<AnimalType> getAnimalType(String uuid) {
         return getAnimalTypes().stream().filter(a -> a.getUuid().equals(uuid)).findAny();
     }
 
@@ -111,30 +115,34 @@ public class SessionData {
         });
     }
 
-    public Optional<Race> getRace(String uuid){
+    public Optional<Race> getRace(String uuid) {
         return getRaces().stream().filter(a -> a.getUuid().equals(uuid)).findAny();
     }
 
-    public List<String> getAnimalCart(){
+    public List<String> getAnimalCart() {
         List<String> animals = loadObject(ANIMAL_CART, new TypeReference<ArrayList<String>>() {
         });
         if (animals == null) return new ArrayList<>();
         return animals;
     }
 
-    public List<Animal> getAnimalCardObj(){
+    public List<Animal> getAnimalCardObj() {
         List<String> animals = loadObject(ANIMAL_CART, new TypeReference<ArrayList<String>>() {
         });
         List<Animal> animals1 = getAnimals();
         return animals1.stream().filter(a -> animals.contains(a.getUuid())).collect(Collectors.toList());
     }
 
-    public void addAnimalToCart(String animalId){
-        saveObject(ANIMAL_CART, getAnimalCart().add(animalId));
+    public void addAnimalToCart(String animalId) {
+        List<String> animalCart = getAnimalCart();
+        animalCart.add(animalId);
+        saveObject(ANIMAL_CART, animalCart);
     }
 
-    public void removeAnimalFromCart(String animalId){
-        saveObject(ANIMAL_CART, getAnimalCart().remove(animalId));
+    public void removeAnimalFromCart(String animalId) {
+        List<String> animalCart = getAnimalCart();
+        animalCart.remove(animalId);
+        saveObject(ANIMAL_CART, animalCart);
     }
 
     public void clearAll() {
@@ -148,6 +156,7 @@ public class SessionData {
             StringWriter sw = new StringWriter();
             objectMapper.writeValue(sw, value);
             String str = sw.toString();
+            Log.d("SessionData save", key + " -> " + str);
             SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
             defaultSharedPreferences.edit()
                     .putString(key, str)
@@ -162,6 +171,7 @@ public class SessionData {
         try {
             SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
             String str = defaultSharedPreferences.getString(key, null);
+            Log.d("SessionData load", key + " -> " + str);
             if (str == null) return null;
             return objectMapper.readValue(str, tClass);
         } catch (IOException ex) {
@@ -175,6 +185,7 @@ public class SessionData {
         try {
             SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
             String str = defaultSharedPreferences.getString(key, null);
+            Log.d("SessionData load", key + " -> " + str);
             if (str == null) return null;
             return objectMapper.readValue(str, tRef);
         } catch (IOException ex) {

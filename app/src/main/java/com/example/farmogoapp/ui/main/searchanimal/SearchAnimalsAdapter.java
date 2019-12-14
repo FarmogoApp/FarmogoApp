@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
 
@@ -69,21 +70,25 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
 
         final ImageButton button = v.findViewById(R.id.animal_list_button);
 
+        if (animal.isSelected()){
+        }
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View buttonView) {
-                if (animal.isSelected()){
-                    animal.setSelected(false);
-                    button.setImageResource(android.R.drawable.ic_menu_add);
-                    row.setBackgroundColor(activity.getResources().getColor(R.color.colorText));
-                }else{
-                    animal.setSelected(true);
-                    button.setImageResource(android.R.drawable.ic_menu_delete);
-                    row.setBackgroundColor(activity.getResources().getColor(R.color.colorSecondary));
-                }
+        button.setImageResource( animal.isSelected()? android.R.drawable.ic_menu_delete : android.R.drawable.ic_menu_add );
 
+
+        button.setOnClickListener(buttonView -> {
+            if (animal.isSelected()){
+                SessionData.getInstance().removeAnimalFromCart(animal.getUuid());
+                animal.setSelected(false);
+                button.setImageResource(android.R.drawable.ic_menu_add);
+                row.setBackgroundColor(activity.getColor(R.color.colorText));
+            }else{
+                SessionData.getInstance().addAnimalToCart(animal.getUuid());
+                animal.setSelected(true);
+                button.setImageResource(android.R.drawable.ic_menu_delete);
+                row.setBackgroundColor(activity.getColor(R.color.colorSecondary));
             }
+
         });
 
 
