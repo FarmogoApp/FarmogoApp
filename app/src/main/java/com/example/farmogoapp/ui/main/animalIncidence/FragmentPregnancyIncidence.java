@@ -57,9 +57,9 @@ public class FragmentPregnancyIncidence extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
-            //animalUuid = this.getArguments().getString("animalId", "");
-            //animalOfficialId = this.getArguments().getString("animalOfficialId", "");
-            //farmId = this.getArguments().getString("farmId", "");
+            animalUuid = this.getArguments().getString("animalId", "");
+            animalOfficialId = this.getArguments().getString("animalOfficialId", "");
+            farmId = this.getArguments().getString("farmId", "");
         }
     }
 
@@ -99,12 +99,6 @@ public class FragmentPregnancyIncidence extends Fragment {
 
     private void saveIncidence() {
 
-        /*  IncidenceTreatment incidenceTreatment = new IncidenceTreatment();
-            incidenceTreatment.setTreatmentType(TreatmentType.Vaccine);
-
-            incidenceTreatment.setCreatedBy(user.getUuid());
-            incidenceTreatment.setAnimalId(animalA.getUuid());
-            incidenceTreatment.setFarmId(farmA.getUuid());*/
         PregnancyType pregnancyType = (PregnancyType) spPregnancyType.getSelectedItem();
         IncidencePregnancy incidencePregnancy = new IncidencePregnancy();
 
