@@ -78,23 +78,17 @@ public class SeachAnimalsActivity extends AppCompatActivity {
         });
 
         MenuItem item = menu.findItem(R.id.register_animal);
-        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Intent intent = new Intent(SeachAnimalsActivity.this, RegisterCowActivity.class);
-                startActivity(intent);
-                return true;
-            }
+        item.setOnMenuItemClickListener(item12 -> {
+            Intent intent = new Intent(SeachAnimalsActivity.this, RegisterCowActivity.class);
+            startActivity(intent);
+            return true;
         });
 
         MenuItem list = menu.findItem(R.id.list_selected);
-        list.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Intent intent = new Intent(SeachAnimalsActivity.this, AnimalListActivity.class);
-                startActivity(intent);
-                return true;
-            }
+        list.setOnMenuItemClickListener(item1 -> {
+            Intent intent = new Intent(SeachAnimalsActivity.this, AnimalListActivity.class);
+            startActivity(intent);
+            return true;
         });
         return true;
     }
@@ -105,8 +99,14 @@ public class SeachAnimalsActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        searchAnimalsAdapter.updateAnimals();
+    }
+
     private void prepareDataAdapter() {
-        searchAnimalsAdapter = new SearchAnimalsAdapter(SeachAnimalsActivity.this, SessionData.getInstance().getAnimals());
+        searchAnimalsAdapter = new SearchAnimalsAdapter(SeachAnimalsActivity.this);
         resultListView.setAdapter(searchAnimalsAdapter);
     }
 

@@ -31,10 +31,16 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
     private List<Animal> animalList;
     private List<Animal> animalListVisible;
 
-    public SearchAnimalsAdapter(Activity activity, List<Animal> animalList) {
+    public SearchAnimalsAdapter(Activity activity) {
         this.activity = activity;
-        this.animalList = animalList;
+        animalList = new ArrayList<>();
+        animalListVisible = new ArrayList<>();
+    }
+
+    public void updateAnimals(){
+        this.animalList = SessionData.getInstance().getAnimals();
         this.animalListVisible = animalList;
+        this.notifyDataSetChanged();
     }
 
     @Override

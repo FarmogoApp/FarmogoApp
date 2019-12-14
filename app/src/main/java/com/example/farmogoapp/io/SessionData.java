@@ -90,7 +90,11 @@ public class SessionData {
     }
 
     public Optional<Animal> getAnimal(String uuid) {
-        return getAnimals().stream().filter(a -> a.getUuid().equals(uuid)).findAny();
+        List<String> animalCart = getAnimalCart();
+        return getAnimals().stream()
+                .filter(a -> a.getUuid().equals(uuid))
+                .peek( a -> a.setSelected(animalCart.contains(a.getUuid())))
+                .findAny();
     }
 
     public void setAnimalTypes(List<AnimalType> animalTypes) {

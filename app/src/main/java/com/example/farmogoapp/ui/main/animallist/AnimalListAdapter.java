@@ -1,6 +1,5 @@
 package com.example.farmogoapp.ui.main.animallist;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -16,70 +15,66 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.graphics.Typeface.BOLD;
 
-public class animal_list_adapter extends RecyclerView.Adapter<animal_list_adapter.MyViewHolder> {
-    private List<Animal> Animal_Id_List;
+public class AnimalListAdapter extends RecyclerView.Adapter<AnimalListAdapter.MyViewHolder> {
+    private List<Animal> animalsList;
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
-        public Animal animal;
-        public TextView nameTextView;
-        public ImageButton messageButton;
-        public ImageView animalImage;
+        TextView nameTextView;
+        ImageButton removeButton;
+        ImageView animalImage;
 
-        @SuppressLint("WrongViewCast")
+
         public MyViewHolder(View itemView) {
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
-            nameTextView = (TextView) itemView.findViewById(R.id.animal_listid);
-            messageButton = (ImageButton) itemView.findViewById(R.id.animal_list_button);
-            animalImage = (ImageView) itemView.findViewById(R.id.animal_list_image);
+            nameTextView = itemView.findViewById(R.id.animal_listid);
+            removeButton = itemView.findViewById(R.id.animal_list_button);
+            animalImage = itemView.findViewById(R.id.animal_list_image);
         }
     }
-    public animal_list_adapter(List<Animal> IdList) {
-        Animal_Id_List = IdList;
 
+
+    public AnimalListAdapter() {
+        this.animalsList = new ArrayList<>();
+    }
+
+    public void updateAnimalList(){
+        this.animalsList = SessionData.getInstance().getAnimalCardObj();
+        this.notifyDataSetChanged();
     }
 
     @Override
-    public animal_list_adapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AnimalListAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
         final View contactView = inflater.inflate(R.layout.recycler_view_animal_list, parent, false);
         final MyViewHolder viewHolder = new MyViewHolder(contactView);
-        ImageButton removeButton = contactView.findViewById(R.id.animal_list_button);
-        removeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               Animal_Id_List.remove(viewHolder.animal);
-               notifyDataSetChanged();
-            }
-        });
-
-        // Return a new holder instance
 
         return viewHolder;
     }
 
     // Involves populating data into the item through holder
     @Override
-    public void onBindViewHolder(animal_list_adapter.MyViewHolder viewHolder, int position) {
+    public void onBindViewHolder(AnimalListAdapter.MyViewHolder viewHolder, int position) {
         // Get the data model based on position
-        Animal animal_id= Animal_Id_List.get(position);
-        viewHolder.animal = animal_id;
+        Animal animal = animalsList.get(position);
+
         // Set item views based on your views and data model
-        TextView textView = viewHolder.nameTextView;
-        SpannableString spannableString = new SpannableString(animal_id.getOfficialId());
+        SpannableString spannableString = new SpannableString(animal.getOfficialId());
         spannableString
                 .setSpan(new StyleSpan(BOLD),
                         spannableString.length() - 4,
@@ -91,17 +86,20 @@ public class animal_list_adapter extends RecyclerView.Adapter<animal_list_adapte
                         spannableString.length(),
                         Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 
-        textView.setText(spannableString);
+        viewHolder.nameTextView.setText(spannableString);
 
-        //Button button = viewHolder.messageButton;
-       // button.setText(id_List.isOnline() ? "Message" : "Offline");
-       // button.setEnabled(id_List.isOnline());
+        viewHolder.removeButton.setOnClickListener(v -> {
+            animalsList.remove(animal);
+            SessionData.getInstance().removeAnimalFromCart(animal.getUuid());
+            notifyDataSetChanged();
+        });
+
     }
 
     // Returns the total count of items in the list
     @Override
     public int getItemCount() {
-        return Animal_Id_List.size();
+        return animalsList.size();
     }
 
 }
