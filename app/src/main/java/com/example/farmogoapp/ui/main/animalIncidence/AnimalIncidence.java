@@ -80,12 +80,31 @@ public class AnimalIncidence extends AppCompatActivity {
 
                         break;
                     case 2:
+
+                        Bundle bundlePregnancy = new Bundle();
+                        FragmentPregnancyIncidence fragmentPregnancy = new FragmentPregnancyIncidence();
+                        if (animalUuid != null){
+                            bundlePregnancy.putString("animalId", animalUuid);
+                            bundlePregnancy.putString("animalOfficialId", animalOfficialId);
+                            bundlePregnancy.putString("farmId", farmId);
+                            fragmentPregnancy.setArguments(bundlePregnancy);
+                        }
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.Fragment, FragmentPregnancyIncidence.newInstance()).commit();
+                                .replace(R.id.Fragment, fragmentPregnancy).commit();
                         break;
                     case 3:
+
+                        Bundle bundleWheighing = new Bundle();
+                        FragmentWheighingIncidence fragmentWheighing = new FragmentWheighingIncidence();
+                        if (animalUuid != null){
+                            bundleWheighing.putString("animalId", animalUuid);
+                            bundleWheighing.putString("animalOfficialId", animalOfficialId);
+                            bundleWheighing.putString("farmId", farmId);
+                            fragmentWheighing.setArguments(bundleWheighing);
+                        }
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.Fragment, FragmentWheighingIncidence.newInstance()).commit();
+                                .replace(R.id.Fragment, fragmentWheighing).commit();
+
                         break;
                     case 4:
                         getSupportFragmentManager().beginTransaction()
