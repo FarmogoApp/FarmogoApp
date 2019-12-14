@@ -2,7 +2,6 @@ package com.example.farmogoapp.ui.main.farms;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,11 +20,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
+import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.AnimalType;
 import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.model.incidences.Incidence;
-import com.example.farmogoapp.ui.main.SessionData;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 
@@ -144,87 +143,51 @@ public class FarmStatsActivity extends AppCompatActivity {
     }
 
     private void loadFarmStats() {
-        final Call<List<Animal>> farmStats = FarmogoApiJacksonAdapter.getApiService(this).getAllAnimals();
-        farmStats.enqueue(new Callback<List<Animal>>() {
-            @Override
-            public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
-                List<Animal> animal = response.body();
-                Map<String, List<Animal>> groupAnimal = new HashMap<String, List<Animal>>();
-                ArrayList<String> listAnimalTypes = new ArrayList<>();
+        List<Animal> animals = SessionData.getInstance().getAnimals();
+        Map<String, List<Animal>> groupAnimal = new HashMap<>();
+        ArrayList<String> listAnimalTypes = new ArrayList<>();
 
-                for (Animal animals : animal) {
-                    String key = animals.getAnimalTypeId();
-                    if (groupAnimal.get(key) == null) {
-                        groupAnimal.put(key, new ArrayList<Animal>());
-                    }
-                    groupAnimal.get(key).add(animals);
-                    listAnimalTypes.add(animals.getAnimalTypeId());
-                }
-                animalType(listAnimalTypes);
+        for (Animal animal : animals) {
+            String key = animal.getAnimalTypeId();
+            if (groupAnimal.get(key) == null) {
+                groupAnimal.put(key, new ArrayList<>());
             }
-
-            @Override
-            public void onFailure(Call<List<Animal>> call, Throwable t) {
-                Log.e("Error loadFarmStats", "error");
-
-            }
-        });
+            groupAnimal.get(key).add(animal);
+            listAnimalTypes.add(animal.getAnimalTypeId());
+        }
+        animalType(listAnimalTypes);
     }
 
     private void animalType(final ArrayList<String> listAnimalTypes) {
-        final Call<ArrayList<AnimalType>> animalType = FarmogoApiJacksonAdapter.getApiService(this).getAnimalTypes();
-        animalType.enqueue(new Callback<ArrayList<AnimalType>>() {
-            @Override
-            public void onResponse(Call<ArrayList<AnimalType>> call, Response<ArrayList<AnimalType>> response) {
-                ArrayList<AnimalType> animalType = response.body();
-                Set<String> st = new HashSet<String>(listAnimalTypes);
-                for (String s : st) {
-                    for (AnimalType type : animalType) {
-                        if (s.equals(type.getUuid())) {
-                            System.out.println(type.getDescription() + ": " + Collections.frequency(listAnimalTypes, s));
-                        }
-                    }
+
+        List<AnimalType> animalTypes = SessionData.getInstance().getAnimalTypes();
+        Set<String> st = new HashSet<String>(listAnimalTypes);
+        for (String s : st) {
+            for (AnimalType type : animalTypes) {
+                if (s.equals(type.getUuid())) {
+                    System.out.println(type.getDescription() + ": " + Collections.frequency(listAnimalTypes, s));
                 }
             }
-
-            @Override
-            public void onFailure(Call<ArrayList<AnimalType>> call, Throwable t) {
-
-            }
-        });
-
+        }
     }
 
     private void loadFarms() {
-        final Call<ArrayList<Farm>> farm = FarmogoApiJacksonAdapter.getApiService(this).getFarms();
-        farm.enqueue(new Callback<ArrayList<Farm>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Farm>> call, Response<ArrayList<Farm>> response) {
-                if (response.isSuccessful()) {
-                    ArrayList<Farm> farm = response.body();
-                    ArrayAdapter farmAdapter = null;
-                    SessionData.getInstance().setFarms(farm);
-                    farmAdapter = new ArrayAdapter(FarmStatsActivity.this, R.layout.spinner, SessionData.getInstance().getFarms());
+        List<Farm> farms = SessionData.getInstance().getFarms();
+        ArrayAdapter farmAdapter = null;
+        SessionData.getInstance().setFarms(farms);
+        farmAdapter = new ArrayAdapter(FarmStatsActivity.this, R.layout.spinner, SessionData.getInstance().getFarms());
 
-                    spinner = (Spinner) findViewById(R.id.spinnerstatistics);
-                    spinner.setAdapter(farmAdapter);
+        spinner = (Spinner) findViewById(R.id.spinnerstatistics);
+        spinner.setAdapter(farmAdapter);
 
-                    if (SessionData.getInstance().getActualFarm() == null) {
-                        SessionData.getInstance().setActualFarm(SessionData.getInstance().getFarms().get(0));
-                    }
-                    loadHistoric(SessionData.getInstance().getActualFarm().getUuid());
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<Farm>> call, Throwable t) {
-            }
-        });
+        if (SessionData.getInstance().getActualFarm() == null) {
+            SessionData.getInstance().setActualFarm(SessionData.getInstance().getFarms().get(0));
+        }
+        loadHistoric(SessionData.getInstance().getActualFarm().getUuid());
     }
 
     private void loadHistoric(String idFarm) {
-        Call<ArrayList<Incidence>> lastIncidences = FarmogoApiJacksonAdapter.getApiService(this).getLastIncidences(idFarm);
+        Call<ArrayList<Incidence>> lastIncidences = FarmogoApiJacksonAdapter.getApiService().getLastIncidences(idFarm);
         lastIncidences.enqueue(new Callback<ArrayList<Incidence>>() {
             @Override
             public void onResponse(Call<ArrayList<Incidence>> call, Response<ArrayList<Incidence>> response) {
