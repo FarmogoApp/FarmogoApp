@@ -22,7 +22,6 @@
 
         <activity android:name=".ui.main.login.LoginActivity"
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -72,9 +71,21 @@
             android:exported="true" />
         <activity
             android:name=".ui.main.login.RegistrationActivity"
-            android:screenOrientation="portrait"
-            android:exported="true" />
-    </application>
+            android:exported="true"
+            android:screenOrientation="portrait" />
 
+        <service android:name=".io.NotificationService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/cow" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorPrimaryDark" />
+    </application>
 
 </manifest>
