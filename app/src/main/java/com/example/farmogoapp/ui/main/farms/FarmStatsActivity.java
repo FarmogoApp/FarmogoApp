@@ -34,6 +34,7 @@ import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
+import com.example.farmogoapp.ui.main.settings.Settings;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -57,8 +58,6 @@ public class FarmStatsActivity extends AppCompatActivity {
     private Button btnGestion;
     private Button searchButton;
     private Spinner spinner;
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
 
 
     @Override
@@ -74,8 +73,15 @@ public class FarmStatsActivity extends AppCompatActivity {
         });
 
         MenuItem list = menu.findItem(R.id.edit_farm);
-        list.setOnMenuItemClickListener(item12 -> {
+        list.setOnMenuItemClickListener(item2 -> {
             Intent intent = new Intent(FarmStatsActivity.this, AddExploitationActivity.class);
+            startActivity(intent);
+            return true;
+        });
+
+        MenuItem settings = menu.findItem(R.id.tools);
+        settings.setOnMenuItemClickListener(item3 -> {
+            Intent intent = new Intent(FarmStatsActivity.this, Settings.class);
             startActivity(intent);
             return true;
         });
@@ -235,9 +241,9 @@ public class FarmStatsActivity extends AppCompatActivity {
     }
 
     private void refreshRecyclerView(ArrayList<Incidence> lastIncidences) {
-        recyclerView = findViewById(R.id.recyclerviewStatistics);
+        RecyclerView recyclerView = findViewById(R.id.recyclerviewStatistics);
         recyclerView.setHasFixedSize(true);
-        mAdapter = new IncidenceAdapter(lastIncidences);
+        RecyclerView.Adapter mAdapter = new IncidenceAdapter(lastIncidences);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
