@@ -2,7 +2,6 @@ package com.example.farmogoapp.ui.main.farms;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.se.omapi.Session;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +11,8 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
-import com.example.farmogoapp.model.AnimalType;
 import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.model.incidences.IncidenceBirth;
 import com.example.farmogoapp.model.incidences.IncidenceDischarge;
@@ -22,7 +21,6 @@ import com.example.farmogoapp.model.incidences.IncidenceTreatment;
 import com.example.farmogoapp.model.incidences.IncidenceType;
 import com.example.farmogoapp.model.incidences.IncidenceVisitor;
 import com.example.farmogoapp.model.incidences.IncidenceWeight;
-import com.example.farmogoapp.ui.main.SessionData;
 
 import java.util.List;
 import java.util.Optional;

@@ -4,6 +4,8 @@ package com.example.farmogoapp.ui.main;
 
 import android.app.Application;
 
+import com.example.farmogoapp.io.SessionData;
+
 public class AppGlobal extends Application {
 
     @Override

@@ -37,7 +37,7 @@
             <TextView
                 android:id="@+id/animal_id"
                 android:textColor="@android:color/black"
-                android:layout_width="@dimen/farm_stats_label_width"
+                android:layout_width="@dimen/animal_info_label_width"
                 android:layout_height="wrap_content"
                 android:text="@string/number"
                 android:textSize="@dimen/farm_stats_label_font_width" />
@@ -54,7 +54,7 @@
             <TextView
                 android:id="@+id/animal_genere"
                 android:textColor="@android:color/black"
-                android:layout_width="@dimen/farm_stats_label_width"
+                android:layout_width="@dimen/animal_info_label_width"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/animal_id"
                 android:text="@string/gender"
@@ -72,7 +72,7 @@
             <TextView
                 android:id="@+id/animal_raza"
                 android:textColor="@android:color/black"
-                android:layout_width="@dimen/farm_stats_label_width"
+                android:layout_width="@dimen/animal_info_label_width"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/animal_genere"
                 android:text="@string/race"
@@ -89,7 +89,7 @@
 
             <TextView
                 android:id="@+id/animal_farmNumber"
-                android:layout_width="@dimen/farm_stats_label_width"
+                android:layout_width="@dimen/animal_info_label_width"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/animal_raza"
                 android:text="@string/farm"
@@ -108,7 +108,7 @@
             <TextView
                 android:id="@+id/animal_mother"
                 android:textColor="@android:color/black"
-                android:layout_width="@dimen/farm_stats_label_width"
+                android:layout_width="@dimen/animal_info_label_width"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/animal_farmNumber"
                 android:text="@string/mother"
@@ -128,7 +128,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/raza_exemple"
             android:orientation="vertical">
 
             <TextView

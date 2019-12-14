@@ -25,13 +25,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
+import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.AnimalType;
 import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 
 import com.example.farmogoapp.model.incidences.Incidence;
-import com.example.farmogoapp.ui.main.SessionData;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 
@@ -156,7 +156,7 @@ public class FarmStatsActivity extends AppCompatActivity {
     }
 
     private void loadFarmStats() {
-        final Call<List<Animal>> farmStats = FarmogoApiJacksonAdapter.getApiService(this).getAllAnimals();
+        final Call<List<Animal>> farmStats = FarmogoApiJacksonAdapter.getApiService().getAllAnimals();
         farmStats.enqueue(new Callback<List<Animal>>() {
             @Override
             public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
@@ -221,7 +221,7 @@ public class FarmStatsActivity extends AppCompatActivity {
     }
 
     private void loadFarms() {
-        final Call<ArrayList<Farm>> farm = FarmogoApiJacksonAdapter.getApiService(this).getFarms();
+        final Call<ArrayList<Farm>> farm = FarmogoApiJacksonAdapter.getApiService().getFarms();
         farm.enqueue(new Callback<ArrayList<Farm>>() {
             @Override
             public void onResponse(Call<ArrayList<Farm>> call, Response<ArrayList<Farm>> response) {
@@ -249,7 +249,7 @@ public class FarmStatsActivity extends AppCompatActivity {
     }
 
     private void loadHistoric(String idFarm) {
-        Call<ArrayList<Incidence>> lastIncidences = FarmogoApiJacksonAdapter.getApiService(this).getLastIncidences(idFarm);
+        Call<ArrayList<Incidence>> lastIncidences = FarmogoApiJacksonAdapter.getApiService().getLastIncidences(idFarm);
         lastIncidences.enqueue(new Callback<ArrayList<Incidence>>() {
             @Override
             public void onResponse(Call<ArrayList<Incidence>> call, Response<ArrayList<Incidence>> response) {

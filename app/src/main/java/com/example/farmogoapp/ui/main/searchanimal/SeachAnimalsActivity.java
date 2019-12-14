@@ -16,6 +16,7 @@ import androidx.appcompat.widget.SearchView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
+import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
@@ -105,20 +106,8 @@ public class SeachAnimalsActivity extends AppCompatActivity {
 
 
     private void prepareDataAdapter() {
-        Call<List<Animal>> allAnimals = FarmogoApiJacksonAdapter.getApiService(this).getAllAnimals();
-        allAnimals.enqueue(new Callback<List<Animal>>() {
-            @Override
-            public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
-                searchAnimalsAdapter = new SearchAnimalsAdapter(SeachAnimalsActivity.this, response.body());
-                resultListView.setAdapter(searchAnimalsAdapter);
-            }
-
-            @Override
-            public void onFailure(Call<List<Animal>> call, Throwable t) {
-                Toast.makeText(SeachAnimalsActivity.this, "Error getting animals", Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        searchAnimalsAdapter = new SearchAnimalsAdapter(SeachAnimalsActivity.this, SessionData.getInstance().getAnimals());
+        resultListView.setAdapter(searchAnimalsAdapter);
     }
 
     private void doSearch(CharSequence query) {

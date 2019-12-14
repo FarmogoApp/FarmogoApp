@@ -1,11 +1,11 @@
 package com.example.farmogoapp.model.incidences;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
@@ -22,29 +22,21 @@ public abstract class Incidence {
     private String uuid;
     private IncidenceType type;
     private String observations;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date date;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date dueDate;
+    private LocalDate date;
+    private LocalDate dueDate;
     private boolean done;
     private boolean complete;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.S")
-    private Date created;
+    private LocalDateTime created;
     private String createdBy;
     private String animalId;
     private String farmId;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date removeDate;
+    private LocalDate removeDate;
     private String removeReason;
 
     public Incidence(IncidenceType incidenceType) {
         type = incidenceType;
-        created = new Date();
-        date = new Date();
-    }
-
-    public IncidenceType getType() {
-        return type;
+        created = LocalDateTime.now();
+        date = LocalDate.now();
     }
 
     public String getUuid() {
@@ -55,6 +47,14 @@ public abstract class Incidence {
         this.uuid = uuid;
     }
 
+    public IncidenceType getType() {
+        return type;
+    }
+
+    public void setType(IncidenceType type) {
+        this.type = type;
+    }
+
     public String getObservations() {
         return observations;
     }
@@ -63,19 +63,19 @@ public abstract class Incidence {
         this.observations = observations;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public Date getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
@@ -87,21 +87,20 @@ public abstract class Incidence {
         this.done = done;
     }
 
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-
     public boolean isComplete() {
         return complete;
     }
 
     public void setComplete(boolean complete) {
         this.complete = complete;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
     }
 
     public String getCreatedBy() {
@@ -128,11 +127,11 @@ public abstract class Incidence {
         this.farmId = farmId;
     }
 
-    public Date getRemoveDate() {
+    public LocalDate getRemoveDate() {
         return removeDate;
     }
 
-    public void setRemoveDate(Date removeDate) {
+    public void setRemoveDate(LocalDate removeDate) {
         this.removeDate = removeDate;
     }
 
