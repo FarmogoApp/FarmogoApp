@@ -122,7 +122,7 @@ public class RegistrationActivity extends AppCompatActivity implements Callback<
 
     public void addInfo(FirebaseUser user, String tel, String name, String uuid) {
         User finaluser = new User(user.getUid(),user.getEmail(), tel, name, null );
-        Call<User> call = FarmogoApiJacksonAdapter.getApiService(this).createUser(finaluser);
+        Call<User> call = FarmogoApiJacksonAdapter.getApiService().createUser(finaluser);
         call.enqueue(this);
     }
 

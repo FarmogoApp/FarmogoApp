@@ -1,8 +1,6 @@
 package com.example.farmogoapp.ui.main.animalInfo;
 
 import android.app.PendingIntent;
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.nfc.FormatException;
@@ -12,45 +10,33 @@ import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
-import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
+import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.model.HistoryInfo;
 import com.example.farmogoapp.model.Race;
-import com.example.farmogoapp.model.incidences.Incidence;
-import com.example.farmogoapp.ui.main.SessionData;
 import com.example.farmogoapp.ui.main.animalIncidence.AnimalIncidence;
 import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
-import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
-import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Optional;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class AnimalInfoActivity extends AppCompatActivity {
 
@@ -171,20 +157,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
     }
 
     private void loadAnimalData(String idAnimal) {
-        final Call<Animal> animal = FarmogoApiJacksonAdapter.getApiService(this).getAnimal(idAnimal);
-        animal.enqueue(new Callback<Animal>() {
-            @Override
-            public void onResponse(Call<Animal> call, Response<Animal> response) {
-                updateViewWithAnimal(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<Animal> call, Throwable t) {
-                t.printStackTrace();
-                Toast.makeText(AnimalInfoActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        updateViewWithAnimal(SessionData.getInstance().getAnimal(idAnimal).orElse(new Animal()));
     }
 
     public void updateViewWithAnimal(Animal animal) {
@@ -197,12 +170,12 @@ public class AnimalInfoActivity extends AppCompatActivity {
         officialId.setText(animal.getOfficialId());
 
         String[] stringArray = getResources().getStringArray(R.array.sexs);
-        sex.setText(stringArray[animal.getSex().equals("Male")?0:1]);
+        sex.setText(stringArray[animal.getSex().equals("Male") ? 0 : 1]);
 
         SessionData instance = SessionData.getInstance();
         Optional<Race> race1 = instance.getRace(animal.getRaceId());
         Optional<Farm> farm1 = instance.getFarm(animal.getRaceId());
-        
+
         race.setText(race1.orElse(new Race()).getName());
         farm.setText(farm1.orElse(new Farm()).getOfficialId());
         mother.setText(animal.getMotherOfficialId());

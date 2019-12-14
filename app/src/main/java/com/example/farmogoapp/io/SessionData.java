@@ -1,4 +1,4 @@
-package com.example.farmogoapp.ui.main;
+package com.example.farmogoapp.io;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -37,10 +37,10 @@ public class SessionData {
 
     private SessionData(Context context) {
         this.context = context;
-        this.objectMapper = new ObjectMapper();
+        this.objectMapper = FarmogoApiJacksonAdapter.getObjectMapper();
     }
 
-    static void init(Context context) {
+    public static void init(Context context) {
         instance = new SessionData(context);
     }
 

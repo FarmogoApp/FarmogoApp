@@ -15,8 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.model.User;
-import com.example.farmogoapp.ui.main.LoadDataActivity;
-import com.example.farmogoapp.ui.main.SessionData;
+import com.example.farmogoapp.io.LoadDataActivity;
+import com.example.farmogoapp.io.SessionData;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void startSession(FirebaseUser currentUser) {
-        FarmogoApiJacksonAdapter.getApiService(LoginActivity.this)
+        FarmogoApiJacksonAdapter.getApiService()
                 .getByFirebaseUuid(currentUser.getUid()).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {

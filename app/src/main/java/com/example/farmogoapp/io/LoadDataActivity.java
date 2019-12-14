@@ -1,4 +1,4 @@
-package com.example.farmogoapp.ui.main;
+package com.example.farmogoapp.io;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Lifecycle;
 
 import com.example.farmogoapp.R;
-import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.AnimalType;
 import com.example.farmogoapp.model.Farm;
@@ -25,8 +24,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoadDataActivity extends AppCompatActivity {
-
-
 
     private CountDownLatch countDownLatch;
 
@@ -81,7 +78,7 @@ public class LoadDataActivity extends AppCompatActivity {
 
 
     public void updatefarms() {
-        FarmogoApiJacksonAdapter.getApiService(this).getFarms().enqueue(new Callback<ArrayList<Farm>>() {
+        FarmogoApiJacksonAdapter.getApiService().getFarms().enqueue(new Callback<ArrayList<Farm>>() {
             @Override
             public void onResponse(Call<ArrayList<Farm>> call, Response<ArrayList<Farm>> response) {
                 if (response.isSuccessful()) {
@@ -109,7 +106,7 @@ public class LoadDataActivity extends AppCompatActivity {
 
 
     public void updateRaces() {
-        FarmogoApiJacksonAdapter.getApiService(this).getRaces().enqueue(new Callback<ArrayList<Race>>() {
+        FarmogoApiJacksonAdapter.getApiService().getRaces().enqueue(new Callback<ArrayList<Race>>() {
             @Override
             public void onResponse(Call<ArrayList<Race>> call, Response<ArrayList<Race>> response) {
                 if (response.isSuccessful()) {
@@ -131,7 +128,7 @@ public class LoadDataActivity extends AppCompatActivity {
     }
 
     public void updateAnimalTypes() {
-        FarmogoApiJacksonAdapter.getApiService(this).getAnimalTypes().enqueue(new Callback<ArrayList<AnimalType>>() {
+        FarmogoApiJacksonAdapter.getApiService().getAnimalTypes().enqueue(new Callback<ArrayList<AnimalType>>() {
             @Override
             public void onResponse(Call<ArrayList<AnimalType>> call, Response<ArrayList<AnimalType>> response) {
                 if (response.isSuccessful()) {
@@ -153,7 +150,7 @@ public class LoadDataActivity extends AppCompatActivity {
     }
 
     public void updateAnimals() {
-        FarmogoApiJacksonAdapter.getApiService(this).getAllAnimals().enqueue(new Callback<List<Animal>>() {
+        FarmogoApiJacksonAdapter.getApiService().getAllAnimals().enqueue(new Callback<List<Animal>>() {
             @Override
             public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
                 if (response.isSuccessful()) {
