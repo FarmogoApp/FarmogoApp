@@ -21,12 +21,12 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
+import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.AnimalType;
 import com.example.farmogoapp.model.Race;
 import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.model.incidences.IncidenceBirth;
-import com.example.farmogoapp.ui.main.SessionData;
 import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
 import com.example.farmogoapp.ui.main.farms.FarmStatsActivity;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
@@ -146,10 +146,10 @@ public class FragmentBirthIncidence extends Fragment{
         String sexSelected = (String) sexsp.getSelectedItem();
 
         IncidenceBirth incidenceBirth = new IncidenceBirth();
-        incidenceBirth.setBirthDate(new Date(date.getText().toString()));
+       // incidenceBirth.setBirthDate(new Date(date.getText().toString()));
 
         incidenceBirth.setRaceId(raceSelected.getUuid());
-        incidenceBirth.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
+       incidenceBirth.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
         //incidenceBirth.setOfficialId();
         incidenceBirth.setSex(sexSelected);
        // incidenceBirth.setFarmId();
@@ -158,7 +158,7 @@ public class FragmentBirthIncidence extends Fragment{
 
 
         // POST incidence
-        Call<Incidence> incidenceCall = FarmogoApiJacksonAdapter.getApiService(getContext()).createIncidence(incidenceBirth);
+        Call<Incidence> incidenceCall = FarmogoApiJacksonAdapter.getApiService().createIncidence(incidenceBirth);
         incidenceCall.enqueue(new Callback<Incidence>() {
             @Override
             public void onResponse(Call<Incidence> call, Response<Incidence> response) {
@@ -230,7 +230,7 @@ public class FragmentBirthIncidence extends Fragment{
     }
 
     private void initializeRaceSpinner() {
-        Call<ArrayList<Race>> raceCall = FarmogoApiJacksonAdapter.getApiService(getContext()).getRaces();
+        Call<ArrayList<Race>> raceCall = FarmogoApiJacksonAdapter.getApiService().getRaces();
 
         raceCall.enqueue(new Callback<ArrayList<Race>>() {
             @Override
