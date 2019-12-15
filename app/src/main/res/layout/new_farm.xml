@@ -1,0 +1,192 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/titleLinear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/farm_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/new_farm"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/farmNameLinear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/titleLinear"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:textColor="@android:color/background_dark"
+                        android:id="@+id/exitOfficialIdText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="@string/farm_name"/>
+
+                    <EditText
+                        android:id="@+id/nameEdit"
+                        android:layout_marginTop="5dp"
+                         android:layout_marginBottom="5dp"
+                        android:paddingStart="5dp"
+                        android:background="@drawable/round_corner"
+                        android:layout_below="@+id/exitOfficialIdText"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:hint="@string/farm_name"/>
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:id="@+id/linear3"
+                android:layout_below="@id/farmNameLinear"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/prefixTxt"
+                        android:textSize="20dp"
+                        android:textColor="@android:color/background_dark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/counter_prefix"/>
+
+                    <EditText
+                        android:id="@+id/prefixEdit"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingStart="5dp"
+                        android:background="@drawable/round_corner"
+                        android:layout_below="@+id/prefixTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:hint="@string/counter_prefix"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/counterText"
+                        android:textSize="20dp"
+                        android:textColor="@android:color/background_dark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/counter"/>
+
+                    <EditText
+                        android:id="@+id/counterEdit"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingStart="5dp"
+                        android:background="@drawable/round_corner"
+                        android:layout_below="@+id/counterText"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:hint="@string/counter"
+                        android:inputType="number"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/officialIdLinear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear3"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:textColor="@android:color/background_dark"
+                        android:id="@+id/oficialIdTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="@string/official_id_farm"/>
+
+                    <EditText
+                        android:id="@+id/officialFarmIdEdit"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingStart="5dp"
+                        android:background="@drawable/round_corner"
+                        android:layout_below="@+id/oficialIdTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:hint="@string/official_id_farm"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/officialIdLinear">
+
+                <Button
+                    android:id="@+id/saveFarm"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/save_farm"
+                    android:layout_width="150dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/round_shape"
+                    android:layout_margin="5dp"
+                    android:textColor="@android:color/white"
+                    android:onClick="saveFarm"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</FrameLayout>

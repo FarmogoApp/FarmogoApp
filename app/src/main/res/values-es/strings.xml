@@ -150,4 +150,10 @@
     <string name="get_current_farm_error">No se pudo obtener la granja actual</string>
     <string name="cache_memory">Vaciando memoria caché…</string>
     <string name="all_farms">Todas las explotaciones</string>
+    <string name="farm_name">Farm name</string>
+    <string name="counter_prefix">Counter Prefix</string>
+    <string name="counter">Counter</string>
+    <string name="official_id_farm">Official ID</string>
+    <string name="save_farm">Save Farm</string>
+    <string name="manage_farms">Manage Farms</string>
 </resources>

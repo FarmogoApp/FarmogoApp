@@ -51,4 +51,9 @@ public class Building implements Serializable {
     public int hashCode() {
         return Objects.hash(uuid, name, divisions);
     }
+
+    @Override
+    public String toString() {
+        return this.getName();
+    }
 }

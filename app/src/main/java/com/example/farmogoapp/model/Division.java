@@ -38,4 +38,9 @@ public class Division implements Serializable {
     public int hashCode() {
         return Objects.hash(uuid, name);
     }
+
+    @Override
+    public String toString() {
+        return this.getName();
+    }
 }
