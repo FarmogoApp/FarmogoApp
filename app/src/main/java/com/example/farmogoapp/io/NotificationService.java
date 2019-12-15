@@ -32,11 +32,11 @@ public class NotificationService extends FirebaseMessagingService {
         switch (val){
             case "race":
                 dataUpdater.updateRaces();
-                pushNotification("Races updated","");
+                pushNotification(getString(R.string.races_updated),"");
                 break;
             case "animalType":
                 dataUpdater.updateAnimalTypes();
-                pushNotification("AnimalTypes updated","");
+                pushNotification(getString(R.string.animaltypes_updated),"");
                 break;
         }
 

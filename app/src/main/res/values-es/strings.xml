@@ -135,8 +135,6 @@
     <string name="please_enter_password">Por favor introduce la contraseña</string>
     <string name="recovery_email">Hemos enviado un email para restablecer la contraseña</string>
     <string name="reset_password">Contraseña restablecida:</string>
-    <string name="password_example" translatable="false">111111</string>
-    <string name="login_email_example" translatable="false">a@b.com</string>
     <string name="unregister_cow">Quitar vaca</string>
     <string name="location">Ubicación</string>
     <string name="animal_type">Tipo de animal</string>
@@ -151,4 +149,7 @@
     <string name="CHANNEL_DESCRIPTION">Notificaciones a todos los usuarios de Farmogo</string>
     <string name="cache_memory">Vaciando memoria caché…</string>
     <string name="all_farms">Todas las explotaciones</string>
+    <string name="animaltypes_updated">Tipo de animales actualizados</string>
+    <string name="clear_selection">Limpiar selección</string>
+    <string name="races_updated">Razas actualizadas</string>
 </resources>
