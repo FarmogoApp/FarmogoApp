@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,21 +17,10 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.farmogoapp.R;
-import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
-import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.Farm;
-import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
-
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 
 public class SeachAnimalsActivity extends AppCompatActivity {
 
