@@ -5,26 +5,36 @@
     android:padding="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+  <RelativeLayout
+      android:id="@+id/rLId"
+      android:layout_weight="1"
+      android:layout_marginEnd="5dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
 
   <ImageView
       android:id="@+id/animal_list_image"
       android:layout_width="50dp"
       android:layout_height="50dp"
-      android:src="@drawable/bull" />
+      android:layout_alignParentLeft="true"
+      android:src="@drawable/logo" />
 
   <TextView
       android:id="@+id/animal_listid"
       android:gravity="center"
-      android:layout_width="280dp"
+      android:layout_width="220dp"
       android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
       android:layout_gravity="center"
       android:padding="5dp" />
 
   <ImageButton
       android:id="@+id/animal_list_button"
       android:layout_marginStart="10dp"
+      android:layout_alignParentEnd="true"
       android:layout_width="50dp"
-      android:layout_height="match_parent"
+      android:layout_height="50dp"
       android:background="@drawable/round_shape"
       android:src="@android:drawable/ic_menu_delete" />
+  </RelativeLayout>
 </LinearLayout>
