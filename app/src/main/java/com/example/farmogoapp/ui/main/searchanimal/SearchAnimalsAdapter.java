@@ -22,6 +22,7 @@ import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import static android.graphics.Typeface.BOLD;
 
@@ -29,18 +30,42 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
 
     private Activity activity;
     private List<Animal> animalList;
+    private List<Animal> animalListAvailable;
     private List<Animal> animalListVisible;
+    private String farmId;
+    private boolean allFarms;
 
-    public SearchAnimalsAdapter(Activity activity) {
+    public SearchAnimalsAdapter(Activity activity, String farmId) {
         this.activity = activity;
         animalList = new ArrayList<>();
         animalListVisible = new ArrayList<>();
+        this.farmId = farmId;
     }
 
     public void updateAnimals(){
         this.animalList = SessionData.getInstance().getAnimals();
-        this.animalListVisible = animalList;
+        updateList();
+    }
+
+    public void updateList(){
+        if (allFarms) {
+            this.animalListAvailable = animalList;
+        }else{
+            this.animalListAvailable = animalList.stream()
+                    .filter(a -> farmId.equals(a.getFarmId()))
+                    .collect(Collectors.toList());
+        }
+        this.animalListVisible = this.animalListAvailable;
+
         this.notifyDataSetChanged();
+    }
+
+    public boolean isAllFarms() {
+        return allFarms;
+    }
+
+    public void setAllFarms(boolean allFarms) {
+        this.allFarms = allFarms;
     }
 
     @Override
@@ -118,7 +143,7 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
 
     public void setFilter(CharSequence text) {
         animalListVisible = new ArrayList<>();
-        for (Animal animal : animalList) {
+        for (Animal animal : animalListAvailable) {
             String officialId = animal.getOfficialId();
             if (officialId.substring(2).startsWith(text.toString()) ||
                     officialId.substring(officialId.length() - 4).startsWith(text.toString())) {
