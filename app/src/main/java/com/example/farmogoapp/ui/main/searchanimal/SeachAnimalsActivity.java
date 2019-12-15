@@ -7,17 +7,21 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
+import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
 
@@ -35,6 +39,9 @@ public class SeachAnimalsActivity extends AppCompatActivity {
     private SearchView searchView;
     private ListView resultListView;
     private SearchAnimalsAdapter searchAnimalsAdapter;
+    private SwitchCompat filterSwitch;
+    private TextView filterText;
+    private Farm farm;
 
 
     @Override
@@ -42,7 +49,22 @@ public class SeachAnimalsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.searchanimal_activity);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        farm = SessionData.getInstance().getActualFarm();
         registerViews();
+
+        filterSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                searchAnimalsAdapter.setAllFarms(isChecked);
+                searchAnimalsAdapter.updateList();
+                if(isChecked){
+                    filterText.setText(getString(R.string.all_farms));
+                }else{
+                    filterText.setText(getString(R.string.farm)+": " + farm.getOfficialId());
+                }
+            }
+        });
+
         prepareDataAdapter();
     }
 
@@ -106,7 +128,8 @@ public class SeachAnimalsActivity extends AppCompatActivity {
     }
 
     private void prepareDataAdapter() {
-        searchAnimalsAdapter = new SearchAnimalsAdapter(SeachAnimalsActivity.this);
+        searchAnimalsAdapter = new SearchAnimalsAdapter(SeachAnimalsActivity.this, farm.getUuid());
+        searchAnimalsAdapter.setAllFarms(filterSwitch.isChecked());
         resultListView.setAdapter(searchAnimalsAdapter);
     }
 
@@ -116,5 +139,8 @@ public class SeachAnimalsActivity extends AppCompatActivity {
 
     private void registerViews() {
         resultListView = findViewById(R.id.result_list);
+        filterSwitch = findViewById(R.id.filterSwitch);
+        filterText = findViewById(R.id.filterText);
+
     }
 }
