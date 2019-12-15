@@ -54,6 +54,7 @@ public class AnimalListActivity extends AppCompatActivity {
     private void registerListeners() {
         btnIncidence.setOnClickListener(v -> {
             Intent intent = new Intent(AnimalListActivity.this, AnimalIncidence.class);
+            intent.putExtra("incidenceType", (Integer) 2);
             startActivity(intent);
         });
 

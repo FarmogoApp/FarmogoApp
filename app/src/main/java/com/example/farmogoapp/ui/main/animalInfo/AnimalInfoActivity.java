@@ -30,7 +30,6 @@ import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.Farm;
-import com.example.farmogoapp.model.HistoryInfo;
 import com.example.farmogoapp.model.Race;
 import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.ui.main.animalIncidence.AnimalIncidence;
@@ -255,6 +254,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(AnimalInfoActivity.this, AnimalIncidence.class);
+                intent.putExtra("incidenceType", (Integer) 1);
                 intent.putExtra("animalId", (String) animal.getUuid());
                 intent.putExtra("animalOfficialId", (String) animal.getOfficialId());
                 intent.putExtra("farmId", (String) animal.getFarmId());

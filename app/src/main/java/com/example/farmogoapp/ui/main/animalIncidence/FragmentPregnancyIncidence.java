@@ -39,7 +39,6 @@ public class FragmentPregnancyIncidence extends Fragment {
     private Spinner spPregnancyType;
     private ArrayList<PregnancyType> pregnancyTypes;
     private EditText eTPregnancyObs;
-    private String animalUuid;
     private String animalOfficialId;
     private String farmId;
 
@@ -57,7 +56,6 @@ public class FragmentPregnancyIncidence extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
-            animalUuid = this.getArguments().getString("animalId", "");
             animalOfficialId = this.getArguments().getString("animalOfficialId", "");
             farmId = this.getArguments().getString("farmId", "");
         }
@@ -108,6 +106,7 @@ public class FragmentPregnancyIncidence extends Fragment {
 
         incidencePregnancy.setPregnancyType(pregnancyType);
         incidencePregnancy.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
+        incidencePregnancy.setObservations(eTPregnancyObs.getText().toString());
         incidencePregnancy.setAnimalId(this.animalOfficialId);
         incidencePregnancy.setFarmId(this.farmId);
 

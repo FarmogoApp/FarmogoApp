@@ -47,7 +47,6 @@ public class FragmentBirthIncidence extends Fragment{
     private EditText eTMotherOfficialIdEdit;
     private EditText eTofficialId;
     private EditText eT_obs;
-    private String animalUuid;
     private String animalOfficialId;
     private String farmId;
     private String farmAnimalCounter;
@@ -65,7 +64,6 @@ public class FragmentBirthIncidence extends Fragment{
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
-            animalUuid = this.getArguments().getString("animalId", "");
             animalOfficialId = this.getArguments().getString("animalOfficialId", "");
             farmId = this.getArguments().getString("farmId", "");
             farmAnimalCounter = this.getArguments().getString("farmAnimalCounter", "");

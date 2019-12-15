@@ -37,7 +37,6 @@ public class FragmentTreatmentIncidence extends Fragment {
     private EditText  eTTreatmentMedicine;
     private EditText  eTTreatmentDose;
     private EditText eTTreatmentObs;
-    private String animalUuid;
     private String animalOfficialId;
     private String farmId;
     private ArrayList<TreatmentType> treatmentType;
@@ -52,13 +51,11 @@ public class FragmentTreatmentIncidence extends Fragment {
     }
 
 
-
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
-            animalUuid = this.getArguments().getString("animalId", "");
+
             animalOfficialId = this.getArguments().getString("animalOfficialId", "");
             farmId = this.getArguments().getString("farmId", "");
         }
@@ -98,6 +95,7 @@ public class FragmentTreatmentIncidence extends Fragment {
         incidenceTreatment.setTreatmentType(treatmentType);
         incidenceTreatment.setMedicine(eTTreatmentMedicine.getText().toString());
         incidenceTreatment.setDose(eTTreatmentDose.getText().toString());
+        incidenceTreatment.setObservations(eTTreatmentObs.getText().toString());
         incidenceTreatment.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
         incidenceTreatment.setAnimalId(this.animalOfficialId);
         incidenceTreatment.setFarmId(this.farmId);
