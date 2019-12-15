@@ -2,23 +2,50 @@ package com.example.farmogoapp.io;
 
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.example.farmogoapp.MainActivity;
 import com.example.farmogoapp.R;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.google.gson.JsonObject;
+
+import java.util.Map;
 
 public class NotificationService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
+        Log.d("MESSAGE","NEW COMM");
+        Map<String, String> data = remoteMessage.getData();
 
+        String val = data.get("updated");
+        Log.d("ACTION", val);
+
+        if (val == null) return;
+
+        DataUpdater dataUpdater = new DataUpdater();
+        switch (val){
+            case "race":
+                dataUpdater.updateRaces();
+                pushNotification("Races updated","");
+                break;
+            case "animalType":
+                dataUpdater.updateAnimalTypes();
+                pushNotification("AnimalTypes updated","");
+                break;
+        }
+
+        /*
         if(remoteMessage.getNotification() != null) {
             pushNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
         }
+
+         */
     }
 
     private void pushNotification(String title, String body){
