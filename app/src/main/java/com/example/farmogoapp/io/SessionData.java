@@ -148,6 +148,9 @@ public class SessionData {
         animalCart.remove(animalId);
         saveObject(ANIMAL_CART, animalCart);
     }
+    public void clearCart() {
+        saveObject(ANIMAL_CART, new ArrayList<>());
+    }
 
     public void clearAll() {
         SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -198,5 +201,6 @@ public class SessionData {
             return null;
         }
     }
+
 
 }

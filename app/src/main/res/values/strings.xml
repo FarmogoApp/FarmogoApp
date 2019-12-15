@@ -189,5 +189,6 @@
     <string name="get_current_farm_error">Couldn\'t get current farm</string>
     <string name="cache_memory">Erasing cache memory…</string>
     <string name="all_farms">All farms</string>
+    <string name="clear_selection">Clear selection</string>
 </resources>
 
