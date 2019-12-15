@@ -194,5 +194,7 @@
     <string name="cache_memory">Erasing cache memory…</string>
     <string name="all_farms">All farms</string>
     <string name="clear_selection">Clear selection</string>
+    <string name="races_updated">Races Updated</string>
+    <string name="animaltypes_updated">Animal Types updated</string>
 </resources>
 

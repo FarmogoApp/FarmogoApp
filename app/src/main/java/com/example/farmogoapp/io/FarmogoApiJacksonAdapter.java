@@ -17,6 +17,8 @@ public class FarmogoApiJacksonAdapter {
 
     private static FarmogoApiService API_SERVICE;
 
+    private static ObjectMapper objectMapper = null;
+
     public static FarmogoApiService getApiService() {
 
         if (API_SERVICE != null) return API_SERVICE;
@@ -59,11 +61,13 @@ public class FarmogoApiJacksonAdapter {
     }
 
     public static ObjectMapper getObjectMapper() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        objectMapper.registerModule(new JavaTimeModule());
+        if (objectMapper == null) {
+            objectMapper = new ObjectMapper();
+            objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+            objectMapper.registerModule(new JavaTimeModule());
+        }
         return objectMapper;
     }
 

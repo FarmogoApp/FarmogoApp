@@ -146,12 +146,13 @@
     <string name="Date">Fecha</string>
     <string name="Destino">Destí</string>
     <string name="guia_certificado">Guía/Certificat</string>
-    <string name="password_example" translatable="false">111111</string>
-    <string name="login_email_example" translatable="false">a@b.com</string>
     <string name="unregister_cow">Unregister cow</string>
     <string name="registration_failed">No s\'ha pogut registrar l\'animal</string>
     <string name="get_current_farm_error">No s\'ha pogut obtenir la granja actual</string>
     <string name="CHANNEL_DESCRIPTION">Notificacions a tots els usuaris de Farmogo</string>
     <string name="cache_memory">Buidant memòria caché…</string>
     <string name="all_farms">Totes les explotacions</string>
+    <string name="clear_selection">Netejar selecció</string>
+    <string name="animaltypes_updated">Tipus d\'animals actualitzats</string>
+    <string name="races_updated">Races actualitzades</string>
 </resources>
