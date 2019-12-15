@@ -74,6 +74,7 @@
             android:name=".ui.main.login.RegistrationActivity"
             android:screenOrientation="portrait"
             android:exported="true" />
+        <activity android:name=".ui.main.settings.Settings" />
     </application>
 
 

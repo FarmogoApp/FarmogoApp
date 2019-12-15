@@ -55,5 +55,7 @@ public interface FarmogoApiService {
     @GET("users/firebase/{uuid}")
     Call<User> getByFirebaseUuid(@Path("uuid") String uuid);
 
+    @GET("animals/{id}/incidences")
+    Call<ArrayList<Incidence>> getAnimalIncidences(@Path("id") String idAnimal);
 }
 

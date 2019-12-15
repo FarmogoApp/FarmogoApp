@@ -2,6 +2,9 @@ package com.example.farmogoapp.ui.main.animallist;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -54,6 +57,19 @@ public class AnimalListActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.animallist, menu);
+        MenuItem clear = menu.findItem(R.id.clear);
+        clear.setOnMenuItemClickListener(item -> {
+            SessionData.getInstance().clearCart();
+            mAdapter.updateAnimalList();
+            return true;
+        });
+        return true;
     }
 
 
