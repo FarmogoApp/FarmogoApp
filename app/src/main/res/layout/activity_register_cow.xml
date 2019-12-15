@@ -104,14 +104,17 @@
                     android:layout_height="wrap_content"
                     android:text="@string/mother_id"/>
 
-                <Spinner
+                <EditText
+                    android:id="@+id/edMotherId"
                     android:layout_marginTop="5dp"
-                    android:id="@+id/spnMotherId"
-                    android:background="@drawable/spinner_bg"
+                    android:layout_marginBottom="5dp"
+                    android:paddingStart="5dp"
+                    android:background="@drawable/round_corner"
                     android:layout_below="@+id/motherID"
-                    android:entries="@array/mother"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"/>
+                    android:layout_height="35dp"
+                    android:hint="@string/mother_id" />
+
             </RelativeLayout>
         </LinearLayout>
 

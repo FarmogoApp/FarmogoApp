@@ -65,7 +65,7 @@ public class RegisterCowActivity extends AppCompatActivity {
 
 
     private EditText etOfficialId;
-    private Spinner spnMotherId;
+    private EditText eTMotherId;
     private EditText clvBirthDate;
     private EditText etOrigin;
     private Spinner spnSex;
@@ -91,7 +91,7 @@ public class RegisterCowActivity extends AppCompatActivity {
         registerListeners();
 
         getSessionFarm();
-        initializeMotherIdSpinner();
+        //initializeMotherIdSpinner();
         initializeAnimalTypeSpinner();
         initializeRaceSpinner();
         initializeLocationSpinner();
@@ -107,7 +107,7 @@ public class RegisterCowActivity extends AppCompatActivity {
 
     private void findAllComponents() {
         etOfficialId = findViewById(R.id.etOfficialId);
-        spnMotherId = findViewById(R.id.spnMotherId);
+        eTMotherId = findViewById(R.id.edMotherId);
         clvBirthDate = findViewById(R.id.clvBirthDate);
         etOrigin = findViewById(R.id.etOrigin);
         spnSex = findViewById(R.id.spnSex);
@@ -125,7 +125,7 @@ public class RegisterCowActivity extends AppCompatActivity {
 
         // Get user input
         String officialId = etOfficialId.getText().toString();
-        Animal selectedMother = (Animal) spnMotherId.getSelectedItem();
+        //Animal selectedMother = (Animal) spnMotherId.getSelectedItem();
 
         String origin = etOrigin.getText().toString();
         String selectedSex = spnSex.getSelectedItem().toString();
@@ -141,8 +141,9 @@ public class RegisterCowActivity extends AppCompatActivity {
         // Set animal
         Animal animal = new Animal();
         animal.setOfficialId(officialId);
-        animal.setMotherId(selectedMother.getUuid());
-        animal.setMotherOfficialId(selectedMother.getOfficialId());
+        //animal.setMotherId(selectedMother.getUuid());
+        //animal.setMotherOfficialId(selectedMother.getOfficialId());
+        animal.setMotherOfficialId(eTMotherId.getText().toString());
         animal.setBirthDay(LocalDate.of(year, month, day));
         animal.setOrigin(origin);
         animal.setSex(selectedSex);
@@ -238,7 +239,7 @@ public class RegisterCowActivity extends AppCompatActivity {
 
     /**
      * Get all animals and filter by sex female
-     */
+     *//*
     private void initializeMotherIdSpinner() {
         List<Animal> animals = SessionData.getInstance().getAnimals();
         if (animals != null) {
@@ -253,7 +254,7 @@ public class RegisterCowActivity extends AppCompatActivity {
             ArrayAdapter mothersAdapater = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, mothers);
             spnMotherId.setAdapter(mothersAdapater);
         }
-    }
+    }*/
 
 
     private void initializeLocationSpinner() {
