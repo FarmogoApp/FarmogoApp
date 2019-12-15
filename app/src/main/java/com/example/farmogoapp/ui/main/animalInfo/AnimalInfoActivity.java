@@ -26,17 +26,24 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.model.HistoryInfo;
 import com.example.farmogoapp.model.Race;
+import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.ui.main.animalIncidence.AnimalIncidence;
 import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
+import com.example.farmogoapp.ui.main.farms.IncidenceAdapter;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AnimalInfoActivity extends AppCompatActivity {
 
@@ -66,19 +73,6 @@ public class AnimalInfoActivity extends AppCompatActivity {
         if (getIntent().hasExtra("animalId")) {
             loadAnimalData(getIntent().getStringExtra("animalId"));
         }
-
-
-        ArrayList<HistoryInfo> animal_History = new ArrayList<>();
-        HistoryInfo historyInfo1 = new HistoryInfo("dolor", "Selevit", "28/10/2019");
-        HistoryInfo historyInfo2 = new HistoryInfo("dolor", "Selevit", "28/10/2019");
-        animal_History.add(historyInfo1);
-        animal_History.add(historyInfo2);
-
-        recyclerView = findViewById(R.id.recyclerview_animalInfo);
-        recyclerView.setHasFixedSize(true);
-        mAdapter = new animal_info_adapter(animal_History);
-        recyclerView.setAdapter(mAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         registerListeners();
 
         nfcSwitch = findViewById(R.id.writeNfc);
@@ -86,6 +80,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         nfcSwitch.setEnabled(nfcAdapter != null);
         nfcSwitch.setChecked(false);
+        loadHistoric(getIntent().getStringExtra("animalId"));
     }
 
 
@@ -100,6 +95,30 @@ public class AnimalInfoActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         disableNfcWriter();
+    }
+
+    private void loadHistoric(String idAnimal) {
+        Call<ArrayList<Incidence>> animalIncidence = FarmogoApiJacksonAdapter.getApiService().getAnimalIncidences(idAnimal);
+        animalIncidence.enqueue(new Callback<ArrayList<Incidence>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Incidence>> call, Response<ArrayList<Incidence>> response) {
+                refreshRecyclerView(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Incidence>> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+    private void refreshRecyclerView(ArrayList<Incidence> lastIncidences) {
+        RecyclerView recyclerView = findViewById(R.id.recyclerview_animalInfo);
+        recyclerView.setHasFixedSize(true);
+        RecyclerView.Adapter mAdapter = new IncidenceAdapter(lastIncidences);
+        recyclerView.setAdapter(mAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void enableNfcWriter() {
