@@ -41,6 +41,7 @@ public class FragmentPregnancyIncidence extends Fragment {
     private EditText eTPregnancyObs;
     private String animalOfficialId;
     private String farmId;
+    private Integer incidenceType;
 
 
     public static FragmentPregnancyIncidence newInstance() {
@@ -58,6 +59,7 @@ public class FragmentPregnancyIncidence extends Fragment {
         if(getArguments() != null){
             animalOfficialId = this.getArguments().getString("animalOfficialId", "");
             farmId = this.getArguments().getString("farmId", "");
+            incidenceType = this.getArguments().getInt("incidenceType");
         }
     }
 
@@ -120,7 +122,7 @@ public class FragmentPregnancyIncidence extends Fragment {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
                     Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
-                    intent.putExtra("animalId", (String) incidencePregnancy.getAnimalId());
+                    //intent.putExtra("animalId", (String) incidencePregnancy.getAnimalId());
                     startActivity(intent);
 
                 } else {

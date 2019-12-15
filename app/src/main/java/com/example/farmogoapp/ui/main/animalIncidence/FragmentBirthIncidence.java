@@ -50,6 +50,7 @@ public class FragmentBirthIncidence extends Fragment{
     private String animalOfficialId;
     private String farmId;
     private String farmAnimalCounter;
+    private Integer incidenceType;
 
     public static FragmentBirthIncidence newInstance() {
         FragmentBirthIncidence fragment = new FragmentBirthIncidence();
@@ -67,6 +68,7 @@ public class FragmentBirthIncidence extends Fragment{
             animalOfficialId = this.getArguments().getString("animalOfficialId", "");
             farmId = this.getArguments().getString("farmId", "");
             farmAnimalCounter = this.getArguments().getString("farmAnimalCounter", "");
+            incidenceType = this.getArguments().getInt("incidenceType");
         }
     }
 

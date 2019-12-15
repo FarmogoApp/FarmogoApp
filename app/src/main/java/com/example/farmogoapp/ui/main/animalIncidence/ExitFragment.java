@@ -44,6 +44,7 @@ public class ExitFragment extends Fragment {
     private String animalOfficialId;
     private String farmId;
     private ArrayList<DischargeType> dischargeType;
+    private Integer incidenceType;
 
     public static ExitFragment newInstance() {
         ExitFragment fragment = new ExitFragment();
@@ -59,6 +60,7 @@ public class ExitFragment extends Fragment {
         if(getArguments() != null){
             animalOfficialId = this.getArguments().getString("animalOfficialId", "");
             farmId = this.getArguments().getString("farmId", "");
+            incidenceType = this.getArguments().getInt("incidenceType");
         }
     }
 
@@ -111,7 +113,7 @@ public class ExitFragment extends Fragment {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
                     Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
-                    intent.putExtra("animalId", (String) incidenceDischarge.getAnimalId());
+                    //intent.putExtra("animalId", (String) incidenceDischarge.getAnimalId());
                     startActivity(intent);
 
                 } else {

@@ -9,7 +9,6 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
-import com.example.farmogoapp.io.SessionData;
 
 public class AnimalIncidence extends AppCompatActivity {
     private Spinner spinner;
@@ -34,7 +33,8 @@ public class AnimalIncidence extends AppCompatActivity {
     }
 
     private void chooseIncidenceType() {
-        if (this.incidenceType.equals(1) || SessionData.getInstance().getAnimalCardObj().size() == 1){
+        //if (this.incidenceType.equals(1) || SessionData.getInstance().getAnimalCardObj().size() == 1){//una vaca en el carrito
+        if (this.incidenceType.equals(1)){
             String[] incidences = getResources().getStringArray(R.array.incidencesSimple);
             ArrayAdapter<String> adapter= new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, incidences);
             spinner.setAdapter(adapter);
@@ -65,6 +65,7 @@ public class AnimalIncidence extends AppCompatActivity {
 
                         if (animalOfficialId != null){ bundleTreatment.putString("animalOfficialId", animalOfficialId);}
                         if (farmId != null){ bundleTreatment.putString("farmId", farmId); }
+                        if (incidenceType != null){ bundleTreatment.putInt("incidenceType", incidenceType); }
                         fragmentTreatment.setArguments(bundleTreatment);
 
                         getSupportFragmentManager().beginTransaction()
@@ -78,6 +79,7 @@ public class AnimalIncidence extends AppCompatActivity {
 
                         if (animalOfficialId != null){ bundlePregnancy.putString("animalOfficialId", animalOfficialId);}
                         if (farmId != null){ bundlePregnancy.putString("farmId", farmId);}
+                        if (incidenceType != null){ bundlePregnancy.putInt("incidenceType", incidenceType); }
                         fragmentPregnancy.setArguments(bundlePregnancy);
 
                         getSupportFragmentManager().beginTransaction()
@@ -90,6 +92,7 @@ public class AnimalIncidence extends AppCompatActivity {
 
                         if (animalOfficialId != null){bundleWheighing.putString("animalOfficialId", animalOfficialId);}
                         if (farmId != null){ bundleWheighing.putString("farmId", farmId);}
+                        if (incidenceType != null){ bundleWheighing.putInt("incidenceType", incidenceType); }
                         fragmentWheighing.setArguments(bundleWheighing);
 
                         getSupportFragmentManager().beginTransaction()
@@ -102,6 +105,7 @@ public class AnimalIncidence extends AppCompatActivity {
                         ExitFragment fragmentDischarge = new ExitFragment();
                         if (animalOfficialId != null){ bundleDischarge.putString("animalOfficialId", animalOfficialId);}
                         if (farmId != null){ bundleDischarge.putString("farmId", farmId); }
+                        if (incidenceType != null){ bundleDischarge.putInt("incidenceType", incidenceType); }
                         fragmentDischarge.setArguments(bundleDischarge);
 
                         getSupportFragmentManager().beginTransaction()
@@ -145,6 +149,7 @@ public class AnimalIncidence extends AppCompatActivity {
                         if (animalOfficialId != null){ bundleBirth.putString("animalOfficialId", animalOfficialId); }
                         if (farmId != null){ bundleBirth.putString("farmId", farmId); }
                         if (farmAnimalCounter != null){ bundleBirth.putString("farmAnimalCounter", farmAnimalCounter);}
+                        if (incidenceType != null){ bundleBirth.putInt("incidenceType", incidenceType); }
                         fragmentBirth.setArguments(bundleBirth);
 
                         getSupportFragmentManager().beginTransaction()
@@ -156,6 +161,7 @@ public class AnimalIncidence extends AppCompatActivity {
 
                         if (animalOfficialId != null){ bundleTreatment.putString("animalOfficialId", animalOfficialId);}
                         if (farmId != null){ bundleTreatment.putString("farmId", farmId); }
+                        if (incidenceType != null){ bundleTreatment.putInt("incidenceType", incidenceType); }
                         fragmentTreatment.setArguments(bundleTreatment);
 
                         getSupportFragmentManager().beginTransaction()
@@ -169,6 +175,7 @@ public class AnimalIncidence extends AppCompatActivity {
 
                         if (animalOfficialId != null){ bundlePregnancy.putString("animalOfficialId", animalOfficialId);}
                         if (farmId != null){ bundlePregnancy.putString("farmId", farmId);}
+                        if (incidenceType != null){ bundlePregnancy.putInt("incidenceType", incidenceType); }
                         fragmentPregnancy.setArguments(bundlePregnancy);
 
                         getSupportFragmentManager().beginTransaction()
@@ -181,6 +188,7 @@ public class AnimalIncidence extends AppCompatActivity {
 
                         if (animalOfficialId != null){bundleWheighing.putString("animalOfficialId", animalOfficialId);}
                         if (farmId != null){ bundleWheighing.putString("farmId", farmId);}
+                        if (incidenceType != null){ bundleWheighing.putInt("incidenceType", incidenceType); }
                         fragmentWheighing.setArguments(bundleWheighing);
 
                         getSupportFragmentManager().beginTransaction()
@@ -193,6 +201,7 @@ public class AnimalIncidence extends AppCompatActivity {
                         ExitFragment fragmentDischarge = new ExitFragment();
                         if (animalOfficialId != null){ bundleDischarge.putString("animalOfficialId", animalOfficialId);}
                         if (farmId != null){ bundleDischarge.putString("farmId", farmId); }
+                        if (incidenceType != null){ bundleDischarge.putInt("incidenceType", incidenceType); }
                         fragmentDischarge.setArguments(bundleDischarge);
 
                         getSupportFragmentManager().beginTransaction()

@@ -31,6 +31,7 @@ public class FragmentWheighingIncidence extends Fragment {
     private EditText eTWheinghingObs;
     private String animalOfficialId;
     private String farmId;
+    private Integer incidenceType;
 
     public static FragmentWheighingIncidence newInstance() {
         FragmentWheighingIncidence fragment = new FragmentWheighingIncidence();
@@ -46,6 +47,7 @@ public class FragmentWheighingIncidence extends Fragment {
         if(getArguments() != null){
             animalOfficialId = this.getArguments().getString("animalOfficialId", "");
             farmId = this.getArguments().getString("farmId", "");
+            incidenceType = this.getArguments().getInt("incidenceType");
         }
     }
 
@@ -60,7 +62,7 @@ public class FragmentWheighingIncidence extends Fragment {
         return view;
     }
 
-    private void saveIncidence() {
+    private void saveIncidenceSimple() {
 
         /*  IncidenceWeight incidence = new IncidenceWeight();
             incidence.setDone(true);
@@ -90,7 +92,7 @@ public class FragmentWheighingIncidence extends Fragment {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
                     Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
-                    intent.putExtra("animalId", (String) incidenceWeight.getAnimalId());
+                    //intent.putExtra("animalId", (String) incidenceWeight.getAnimalId());
                     startActivity(intent);
 
                 } else {
@@ -118,7 +120,7 @@ public class FragmentWheighingIncidence extends Fragment {
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                saveIncidence();
+                saveIncidenceSimple();
                 Toast.makeText(getView().getContext(),getActivity().getString(R.string.incidence_saved),Toast.LENGTH_SHORT).show();
             }
         });

@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
+import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.model.incidences.IncidenceTreatment;
 import com.example.farmogoapp.model.incidences.TreatmentType;
@@ -40,6 +41,7 @@ public class FragmentTreatmentIncidence extends Fragment {
     private String animalOfficialId;
     private String farmId;
     private ArrayList<TreatmentType> treatmentType;
+    private Integer incidenceType;
 
 
     public static FragmentTreatmentIncidence newInstance() {
@@ -58,6 +60,7 @@ public class FragmentTreatmentIncidence extends Fragment {
 
             animalOfficialId = this.getArguments().getString("animalOfficialId", "");
             farmId = this.getArguments().getString("farmId", "");
+            incidenceType = this.getArguments().getInt("incidenceType");
         }
     }
 
@@ -80,7 +83,57 @@ public class FragmentTreatmentIncidence extends Fragment {
         return TreatmentType.values();
     }
 
-    private void saveIncidence() {
+    private void saveIncidenceSimple() {
+
+        /*  IncidenceTreatment incidenceTreatment = new IncidenceTreatment();
+            incidenceTreatment.setTreatmentType(TreatmentType.Vaccine);
+            incidenceTreatment.setMedicine("tetanus");
+            incidenceTreatment.setDose("100mg");
+            incidenceTreatment.setCreatedBy(user.getUuid());
+            incidenceTreatment.setAnimalId(animalA.getUuid());
+            incidenceTreatment.setFarmId(farmA.getUuid());*/
+        TreatmentType treatmentType = (TreatmentType) spTreatmentType.getSelectedItem();
+        IncidenceTreatment incidenceTreatment = new IncidenceTreatment();
+
+        incidenceTreatment.setTreatmentType(treatmentType);
+        incidenceTreatment.setMedicine(eTTreatmentMedicine.getText().toString());
+        incidenceTreatment.setDose(eTTreatmentDose.getText().toString());
+        incidenceTreatment.setObservations(eTTreatmentObs.getText().toString());
+        incidenceTreatment.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
+
+        for(Animal animal : SessionData.getInstance().getAnimalCardObj()) {
+
+            incidenceTreatment.setAnimalId(animal.getOfficialId());
+            incidenceTreatment.setFarmId(animal.getFarmId());
+
+            // POST incidence
+            Call<Incidence> incidenceCall = FarmogoApiJacksonAdapter.getApiService().createIncidence(incidenceTreatment);
+            incidenceCall.enqueue(new Callback<Incidence>() {
+                @Override
+                public void onResponse(Call<Incidence> call, Response<Incidence> response) {
+
+                    if (response.isSuccessful()) {
+                        Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
+                        toast.show();
+                        Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
+                        //intent.putExtra("animalId", (String) incidenceTreatment.getAnimalId());
+                        startActivity(intent);
+
+                    } else {
+                        Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Incidence> call, Throwable t) {
+                    Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
+                    toast.show();
+                }
+            });
+        }
+    }
+    private void saveIncidenceMultiple() {
 
         /*  IncidenceTreatment incidenceTreatment = new IncidenceTreatment();
             incidenceTreatment.setTreatmentType(TreatmentType.Vaccine);
@@ -110,7 +163,7 @@ public class FragmentTreatmentIncidence extends Fragment {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
                     Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
-                    intent.putExtra("animalId", (String) incidenceTreatment.getAnimalId());
+                    //intent.putExtra("animalId", (String) incidenceTreatment.getAnimalId());
                     startActivity(intent);
 
                 } else {
@@ -139,7 +192,8 @@ public class FragmentTreatmentIncidence extends Fragment {
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                saveIncidence();
+                if(incidenceType == 1){saveIncidenceSimple();}
+                if(incidenceType == 2){saveIncidenceMultiple();}
                 Toast.makeText(getView().getContext(),getActivity().getString(R.string.incidence_saved),Toast.LENGTH_SHORT).show();
             }
         });
