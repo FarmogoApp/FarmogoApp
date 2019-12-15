@@ -1,40 +1,41 @@
 package com.example.farmogoapp.io;
 
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
-import com.example.farmogoapp.ui.main.farms.FarmStatsActivity;
+import com.example.farmogoapp.MainActivity;
+import com.example.farmogoapp.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-
-import java.util.Map;
 
 public class NotificationService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        Map<String, String> data = remoteMessage.getData();
+        super.onMessageReceived(remoteMessage);
 
-        PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, FarmStatsActivity.class), 0);
-        Resources r = getResources();
-        Notification notification = new NotificationCompat.Builder(this)
-                .setTicker("ticker")
-                .setSmallIcon(android.R.drawable.ic_menu_report_image)
-                .setContentTitle(data.get("title"))
-                .setContentText(data.get("body"))
-                .setContentIntent(pi)
-                .setAutoCancel(true)
-                .build();
+        if(remoteMessage.getNotification() != null) {
+            pushNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
+        }
+    }
 
-        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(0, notification);
+    private void pushNotification(String title, String body){
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0, intent, 0);
 
-        Log.d("MSG", "Message Received!");
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, getString(R.string.ALL_CHANNEL_ID))
+                .setSmallIcon(R.drawable.cow)
+                .setContentTitle(title)
+                .setContentText(body)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(pendingIntent)
+                .setChannelId(getString(R.string.ALL_CHANNEL_ID))
+                .setAutoCancel(true);
 
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+        notificationManagerCompat.notify(1, builder.build());
     }
 }

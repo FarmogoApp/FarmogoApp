@@ -2,13 +2,13 @@ package com.example.farmogoapp.ui.main;
 
 
 import android.app.Application;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
+import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.SessionData;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
@@ -18,19 +18,27 @@ public class AppGlobal extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        FirebaseMessaging.getInstance().subscribeToTopic("all")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "Subscribed to topic";
-                        if (!task.isSuccessful()) {
-                            msg = "Subscribe failed";
-                        }
-                        Log.d(TAG, msg);
+        FirebaseMessaging.getInstance().subscribeToTopic(getString(R.string.topic))
+                .addOnCompleteListener(task -> {
+                    String msg = "Subscribed to topic";
+                    if (!task.isSuccessful()) {
+                        msg = "Subscribe failed";
                     }
+                    Log.d(TAG, msg);
                 });
+        createNotificationChannel();
         CacheManager.init(this);
         SessionData.init(this);
+    }
+
+    private void createNotificationChannel(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel notificationChannel = new NotificationChannel(getString(R.string.ALL_CHANNEL_ID),getString(R.string.ALL_CHANNEL), NotificationManager.IMPORTANCE_DEFAULT );
+            notificationChannel.setDescription(getString(R.string.CHANNEL_DESCRIPTION));
+            notificationChannel.setShowBadge(true);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
     }
 
 

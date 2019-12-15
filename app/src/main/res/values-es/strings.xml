@@ -148,4 +148,5 @@
     <string name="nfc_ear_tag">Crotal NFC</string>
     <string name="registration_failed">No se ha podido registrar el animal</string>
     <string name="get_current_farm_error">No se pudo obtener la granja actual</string>
+    <string name="CHANNEL_DESCRIPTION">Notificaciones a todos los usuarios de Farmogo</string>
 </resources>

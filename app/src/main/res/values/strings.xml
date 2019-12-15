@@ -187,5 +187,9 @@
         <item>Abortion</item>
     </string-array>
     <string name="get_current_farm_error">Couldn\'t get current farm</string>
+    <string name="ALL_CHANNEL_ID" translatable="false">all</string>
+    <string name="ALL_CHANNEL" translatable="false">all</string>
+    <string name="CHANNEL_DESCRIPTION">Notifications to all Farmogo users</string>
+    <string name="topic" translatable="false">all</string>
 </resources>
 
