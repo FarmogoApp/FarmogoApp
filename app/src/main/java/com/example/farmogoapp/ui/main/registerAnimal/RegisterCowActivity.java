@@ -1,12 +1,13 @@
 package com.example.farmogoapp.ui.main.registerAnimal;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -24,11 +25,12 @@ import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.model.Race;
 import com.example.farmogoapp.ui.main.farms.FarmStatsActivity;
 
-import java.time.Instant;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -64,15 +66,14 @@ public class RegisterCowActivity extends AppCompatActivity {
 
     private EditText etOfficialId;
     private Spinner spnMotherId;
-    private CalendarView clvBirthDate;
+    private EditText clvBirthDate;
     private EditText etOrigin;
     private Spinner spnSex;
     private Spinner spnAnimalType;
     private Spinner spnRace;
     private Spinner spnLocation;
     private Button btnRegister;
-
-    private LocalDate birthDate;
+    private Calendar calendar = Calendar.getInstance();
     private Farm currentFarm;
 
     @Override
@@ -82,6 +83,11 @@ public class RegisterCowActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_register_cow);
         findAllComponents();
+
+        String myFormat = "dd/MM/yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        clvBirthDate.setText(sdf.format(calendar.getTime()));
+
         registerListeners();
 
         getSessionFarm();
@@ -120,20 +126,24 @@ public class RegisterCowActivity extends AppCompatActivity {
         // Get user input
         String officialId = etOfficialId.getText().toString();
         Animal selectedMother = (Animal) spnMotherId.getSelectedItem();
-        if (birthDate == null)
-            birthDate = Instant.ofEpochMilli(clvBirthDate.getDate()).atZone(ZoneId.systemDefault()).toLocalDate();
+
         String origin = etOrigin.getText().toString();
         String selectedSex = spnSex.getSelectedItem().toString();
         AnimalType selectedAnimalType = (AnimalType) spnAnimalType.getSelectedItem();
         Race selectedRace = (Race) spnRace.getSelectedItem();
         Location location = (Location) spnLocation.getSelectedItem();
 
+        String dates = clvBirthDate.getText().toString();
+        String[] parts = dates.split("/");
+        int day = Integer.valueOf(parts[0]); // day
+        int month = Integer.valueOf(parts[1]); // month
+        int year = Integer.valueOf(parts[2]); // year
         // Set animal
         Animal animal = new Animal();
         animal.setOfficialId(officialId);
         animal.setMotherId(selectedMother.getUuid());
         animal.setMotherOfficialId(selectedMother.getOfficialId());
-        animal.setBirthDay(birthDate);
+        animal.setBirthDay(LocalDate.of(year, month, day));
         animal.setOrigin(origin);
         animal.setSex(selectedSex);
         animal.setAnimalTypeId(selectedAnimalType.getUuid());
@@ -183,10 +193,25 @@ public class RegisterCowActivity extends AppCompatActivity {
             }
         });
 
-        clvBirthDate.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        final DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onSelectedDayChange(CalendarView clv, int year, int month, int date) {
-                birthDate = LocalDate.of(year, month + 1, date);
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, monthOfYear);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                String myFormat = "dd/MM/yyyy";
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                clvBirthDate.setText(sdf.format(calendar.getTime()));
+            }
+
+        };
+
+        clvBirthDate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                new DatePickerDialog(RegisterCowActivity.this, datePickerListener, calendar
+                        .get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
     }
