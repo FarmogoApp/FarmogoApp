@@ -112,8 +112,18 @@ public class AnimalIncidence extends AppCompatActivity {
                         break;
 
                     case 5:
+
+                        Bundle bundleDischarge = new Bundle();
+                        ExitFragment fragmentDischarge = new ExitFragment();
+                        if (animalUuid != null){
+                            bundleDischarge.putString("animalId", animalUuid);
+                            bundleDischarge.putString("animalOfficialId", animalOfficialId);
+                            bundleDischarge.putString("farmId", farmId);
+                            fragmentDischarge.setArguments(bundleDischarge);
+                        }
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.Fragment, ExitFragment.newInstance()).commit();
+                                .replace(R.id.Fragment, fragmentDischarge).commit();
+
                         break;
 
                     default:
