@@ -191,5 +191,8 @@
     <string name="ALL_CHANNEL" translatable="false">all</string>
     <string name="CHANNEL_DESCRIPTION">Notifications to all Farmogo users</string>
     <string name="topic" translatable="false">all</string>
+    <string name="cache_memory">Erasing cache memory…</string>
+    <string name="all_farms">All farms</string>
+    <string name="clear_selection">Clear selection</string>
 </resources>
 

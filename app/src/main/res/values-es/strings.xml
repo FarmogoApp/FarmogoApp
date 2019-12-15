@@ -149,4 +149,6 @@
     <string name="registration_failed">No se ha podido registrar el animal</string>
     <string name="get_current_farm_error">No se pudo obtener la granja actual</string>
     <string name="CHANNEL_DESCRIPTION">Notificaciones a todos los usuarios de Farmogo</string>
+    <string name="cache_memory">Vaciando memoria caché…</string>
+    <string name="all_farms">Todas las explotaciones</string>
 </resources>

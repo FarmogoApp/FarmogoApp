@@ -15,12 +15,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import static android.graphics.Typeface.BOLD;
 
@@ -28,12 +30,42 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
 
     private Activity activity;
     private List<Animal> animalList;
+    private List<Animal> animalListAvailable;
     private List<Animal> animalListVisible;
+    private String farmId;
+    private boolean allFarms;
 
-    public SearchAnimalsAdapter(Activity activity, List<Animal> animalList) {
+    public SearchAnimalsAdapter(Activity activity, String farmId) {
         this.activity = activity;
-        this.animalList = animalList;
-        this.animalListVisible = animalList;
+        animalList = new ArrayList<>();
+        animalListVisible = new ArrayList<>();
+        this.farmId = farmId;
+    }
+
+    public void updateAnimals(){
+        this.animalList = SessionData.getInstance().getAnimals();
+        updateList();
+    }
+
+    public void updateList(){
+        if (allFarms) {
+            this.animalListAvailable = animalList;
+        }else{
+            this.animalListAvailable = animalList.stream()
+                    .filter(a -> farmId.equals(a.getFarmId()))
+                    .collect(Collectors.toList());
+        }
+        this.animalListVisible = this.animalListAvailable;
+
+        this.notifyDataSetChanged();
+    }
+
+    public boolean isAllFarms() {
+        return allFarms;
+    }
+
+    public void setAllFarms(boolean allFarms) {
+        this.allFarms = allFarms;
     }
 
     @Override
@@ -69,21 +101,25 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
 
         final ImageButton button = v.findViewById(R.id.animal_list_button);
 
+        if (animal.isSelected()){
+        }
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View buttonView) {
-                if (animal.isSelected()){
-                    animal.setSelected(false);
-                    button.setImageResource(android.R.drawable.ic_menu_add);
-                    row.setBackgroundColor(activity.getResources().getColor(R.color.colorText));
-                }else{
-                    animal.setSelected(true);
-                    button.setImageResource(android.R.drawable.ic_menu_delete);
-                    row.setBackgroundColor(activity.getResources().getColor(R.color.colorSecondary));
-                }
+        button.setImageResource( animal.isSelected()? android.R.drawable.ic_menu_delete : android.R.drawable.ic_menu_add );
 
+
+        button.setOnClickListener(buttonView -> {
+            if (animal.isSelected()){
+                SessionData.getInstance().removeAnimalFromCart(animal.getUuid());
+                animal.setSelected(false);
+                button.setImageResource(android.R.drawable.ic_menu_add);
+                row.setBackgroundColor(activity.getColor(R.color.colorText));
+            }else{
+                SessionData.getInstance().addAnimalToCart(animal.getUuid());
+                animal.setSelected(true);
+                button.setImageResource(android.R.drawable.ic_menu_delete);
+                row.setBackgroundColor(activity.getColor(R.color.colorSecondary));
             }
+
         });
 
 
@@ -107,7 +143,7 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
 
     public void setFilter(CharSequence text) {
         animalListVisible = new ArrayList<>();
-        for (Animal animal : animalList) {
+        for (Animal animal : animalListAvailable) {
             String officialId = animal.getOfficialId();
             if (officialId.substring(2).startsWith(text.toString()) ||
                     officialId.substring(officialId.length() - 4).startsWith(text.toString())) {
