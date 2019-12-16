@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "326315669120-qspquf4ukiligirlahsu7k9docrqab26.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.farmogoapp",
+            "certificate_hash": "e666100fdb861d239841de6c84169e162ac82bc1"
+          }
+        },
+        {
           "client_id": "326315669120-760rkqfp5cctmos3hhsm847h6318kv3r.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

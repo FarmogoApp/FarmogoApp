@@ -7,4 +7,6 @@
     <dimen name="animal_info_button_size">35dp</dimen>
     <dimen name="animal_info_label_width">120dp</dimen>
     <dimen name="margin_recycler_bottom">10dp</dimen>
+    <dimen name="edit_width">36dp</dimen>
+    <dimen name="edit_height">32dp</dimen>
 </resources>

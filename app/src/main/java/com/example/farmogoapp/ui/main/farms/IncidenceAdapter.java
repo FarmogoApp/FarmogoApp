@@ -2,6 +2,7 @@ package com.example.farmogoapp.ui.main.farms;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,13 +22,15 @@ import com.example.farmogoapp.model.incidences.IncidenceTreatment;
 import com.example.farmogoapp.model.incidences.IncidenceType;
 import com.example.farmogoapp.model.incidences.IncidenceVisitor;
 import com.example.farmogoapp.model.incidences.IncidenceWeight;
+import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
 
 import java.util.List;
 import java.util.Optional;
 
-public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyViewHolder> {
+public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyViewHolder> implements View.OnClickListener {
     private List<Incidence> incidencesList;
-
+    private Context context;
+    Boolean isUnique;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
@@ -65,6 +68,10 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
+
+            if(!isUnique) {
+                itemView.setOnClickListener(IncidenceAdapter.this);
+            }
             this.incidenceType = incidenceType;
             switch (incidenceType) {
                 case WEIGHT:
@@ -100,8 +107,10 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
 
         }
     }
-    public IncidenceAdapter(List<Incidence> incidences) {
+    public IncidenceAdapter(List<Incidence> incidences, Context applicationContext, Boolean isUniqueAnimal) {
         incidencesList = incidences;
+        context = applicationContext;
+        isUnique= isUniqueAnimal;
     }
 
     @Override
@@ -140,6 +149,8 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
     public void onBindViewHolder(final IncidenceAdapter.MyViewHolder viewHolder, int position) {
         final Incidence incidence1 = incidencesList.get(position);
         Log.d("Position", "Position: " + position + " - " + viewHolder.incidenceType.name());
+
+        viewHolder.itemView.setTag(incidence1.getAnimalId());
         incidence1.accept(new IncidenceVisitor(){
             @Override
             public void visit(IncidenceDischarge obj) {
@@ -151,10 +162,7 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
                 }
 
                 TextView incidence_discharge_type_tv = viewHolder.incidence_discharge_type;
-
-                if (obj != null){
-                    incidence_discharge_type_tv.setText(obj.getDischargeType().toString());
-                }
+                incidence_discharge_type_tv.setText(obj.getType().toString());
 
                 TextView incidence_discharge_health_register_tv = viewHolder.incidence_discharge_health_register;
                 incidence_discharge_health_register_tv.setText(obj.getHealthRegister());
@@ -173,7 +181,7 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
                 }
 
                 TextView incidence_pregnancy_type_tv = viewHolder.incidence_pregnancy_type;
-                incidence_pregnancy_type_tv.setText(obj.getPregnancyType().toString());
+                incidence_pregnancy_type_tv.setText(obj.getType().toString());
 
                 TextView incidence_pregnancy_date_tv = viewHolder.incidence_pregnancy_date;
                 incidence_pregnancy_date_tv.setText(obj.getDate().toString());
@@ -188,7 +196,7 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
                 }
 
                 TextView animal_treatment_type_tv = viewHolder.incidence_treatment_type;
-                animal_treatment_type_tv.setText(obj.getTreatmentType().toString());
+                animal_treatment_type_tv.setText(obj.getType().toString());
 
                 TextView animal_treatment_medicine_tv = viewHolder.incidence_treatment_medicine;
                 animal_treatment_medicine_tv.setText(obj.getMedicine());
@@ -204,7 +212,6 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
                 if(oficialId.isPresent()) {
                     animal_weight_id_tv.setText(oficialId.get().getOfficialId());
                 }
-
 
                 TextView animal_weight_type_tv = viewHolder.incidence_weight_type;
                 animal_weight_type_tv.setText(obj.getType().toString());
@@ -237,9 +244,14 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
             }
         });
     }
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(context, AnimalInfoActivity.class);
+        intent.putExtra("animalId", (String) v.getTag());
+        context.startActivity(intent);
+    }
 
-
-    // Returns the total count of items in the list
+    // Returns the total count of items in the listºººººº
     @Override
     public int getItemCount() {
         return incidencesList.size();

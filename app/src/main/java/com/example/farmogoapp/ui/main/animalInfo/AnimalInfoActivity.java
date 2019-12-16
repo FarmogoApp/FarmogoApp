@@ -116,7 +116,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
     private void refreshRecyclerView(ArrayList<Incidence> lastIncidences) {
         RecyclerView recyclerView = findViewById(R.id.recyclerview_animalInfo);
         recyclerView.setHasFixedSize(true);
-        RecyclerView.Adapter mAdapter = new IncidenceAdapter(lastIncidences);
+        RecyclerView.Adapter mAdapter = new IncidenceAdapter(lastIncidences, getApplicationContext().getApplicationContext(),true);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
