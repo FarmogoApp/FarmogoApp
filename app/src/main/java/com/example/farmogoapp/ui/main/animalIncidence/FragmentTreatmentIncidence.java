@@ -83,7 +83,34 @@ public class FragmentTreatmentIncidence extends Fragment {
         return TreatmentType.values();
     }
 
-    private void saveIncidenceSimple() {
+    private void CreateTreatmentIncidence(IncidenceTreatment incidenceTreatment) {
+        Call<Incidence> incidenceCall = FarmogoApiJacksonAdapter.getApiService().createIncidence(incidenceTreatment);
+        incidenceCall.enqueue(new Callback<Incidence>() {
+            @Override
+            public void onResponse(Call<Incidence> call, Response<Incidence> response) {
+
+                if (response.isSuccessful()) {
+                    Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
+                    toast.show();
+                    Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
+                    //intent.putExtra("animalId", (String) incidenceTreatment.getAnimalId());
+                    startActivity(intent);
+
+                } else {
+                    Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
+                    toast.show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Incidence> call, Throwable t) {
+                Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
+                toast.show();
+            }
+        });
+    }
+
+    private void saveIncidenceMultiple() {
 
         /*  IncidenceTreatment incidenceTreatment = new IncidenceTreatment();
             incidenceTreatment.setTreatmentType(TreatmentType.Vaccine);
@@ -105,43 +132,12 @@ public class FragmentTreatmentIncidence extends Fragment {
 
             incidenceTreatment.setAnimalId(animal.getOfficialId());
             incidenceTreatment.setFarmId(animal.getFarmId());
-
-            // POST incidence
-            Call<Incidence> incidenceCall = FarmogoApiJacksonAdapter.getApiService().createIncidence(incidenceTreatment);
-            incidenceCall.enqueue(new Callback<Incidence>() {
-                @Override
-                public void onResponse(Call<Incidence> call, Response<Incidence> response) {
-
-                    if (response.isSuccessful()) {
-                        Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
-                        toast.show();
-                        Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
-                        //intent.putExtra("animalId", (String) incidenceTreatment.getAnimalId());
-                        startActivity(intent);
-
-                    } else {
-                        Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
-                        toast.show();
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<Incidence> call, Throwable t) {
-                    Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
-                    toast.show();
-                }
-            });
+            CreateTreatmentIncidence(incidenceTreatment);
         }
     }
-    private void saveIncidenceMultiple() {
 
-        /*  IncidenceTreatment incidenceTreatment = new IncidenceTreatment();
-            incidenceTreatment.setTreatmentType(TreatmentType.Vaccine);
-            incidenceTreatment.setMedicine("tetanus");
-            incidenceTreatment.setDose("100mg");
-            incidenceTreatment.setCreatedBy(user.getUuid());
-            incidenceTreatment.setAnimalId(animalA.getUuid());
-            incidenceTreatment.setFarmId(farmA.getUuid());*/
+    private void saveIncidenceSimple() {
+
         TreatmentType treatmentType = (TreatmentType) spTreatmentType.getSelectedItem();
         IncidenceTreatment incidenceTreatment = new IncidenceTreatment();
 
@@ -154,30 +150,7 @@ public class FragmentTreatmentIncidence extends Fragment {
         incidenceTreatment.setFarmId(this.farmId);
 
         // POST incidence
-        Call<Incidence> incidenceCall = FarmogoApiJacksonAdapter.getApiService().createIncidence(incidenceTreatment);
-        incidenceCall.enqueue(new Callback<Incidence>() {
-            @Override
-            public void onResponse(Call<Incidence> call, Response<Incidence> response) {
-
-                if(response.isSuccessful()) {
-                    Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
-                    toast.show();
-                    Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
-                    //intent.putExtra("animalId", (String) incidenceTreatment.getAnimalId());
-                    startActivity(intent);
-
-                } else {
-                    Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
-                    toast.show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Incidence> call, Throwable t) {
-                Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
-                toast.show();
-            }
-        });
+        CreateTreatmentIncidence(incidenceTreatment);
     }
 
     private void registerViews() {

@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
+import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.incidences.DischargeType;
 import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.model.incidences.IncidenceDischarge;
@@ -81,7 +82,7 @@ public class ExitFragment extends Fragment {
         return DischargeType.values();
     }
 
-    private void saveIncidence() {
+    private void saveIncidenceSimple() {
 
         /*  IncidenceDischarge incidenceDischarge = new IncidenceDischarge();
             incidenceDischarge.setHealthRegister("test register");
@@ -99,11 +100,43 @@ public class ExitFragment extends Fragment {
         incidenceDischarge.setObservations(eTDischargeObs.getText().toString());
         incidenceDischarge.setDischargeDestination(eTDischargeDestination.getText().toString());
         incidenceDischarge.setDone(false);
-        incidenceDischarge.setAnimalId(this.animalOfficialId);
         incidenceDischarge.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
+        incidenceDischarge.setAnimalId(this.animalOfficialId);
         incidenceDischarge.setFarmId(this.farmId);
 
         // POST incidence
+        CreateDischargeIncidence(incidenceDischarge);
+    }
+
+    private void saveIncidenceMultiple() {
+
+        /*  IncidenceDischarge incidenceDischarge = new IncidenceDischarge();
+            incidenceDischarge.setHealthRegister("test register");
+            incidenceDischarge.setDischargeType(DischargeType.Slaughterhouse);
+            incidenceDischarge.setObservations("observations");
+            incidenceDischarge.setDone(false);
+            incidenceDischarge.setAnimalId(animalA.getUuid());
+            incidenceDischarge.setCreatedBy(user.getUuid());
+            incidenceDischarge.setFarmId(farmA.getUuid());*/
+
+        DischargeType dischargeType = (DischargeType) spDischargeType.getSelectedItem();
+        IncidenceDischarge incidenceDischarge = new IncidenceDischarge();
+        incidenceDischarge.setHealthRegister(eTDischargeCertificate.getText().toString());
+        incidenceDischarge.setDischargeType(dischargeType);
+        incidenceDischarge.setObservations(eTDischargeObs.getText().toString());
+        incidenceDischarge.setDischargeDestination(eTDischargeDestination.getText().toString());
+        incidenceDischarge.setDone(false);
+        incidenceDischarge.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
+        for(Animal animal : SessionData.getInstance().getAnimalCardObj()) {
+
+            incidenceDischarge.setAnimalId(animal.getOfficialId());
+            incidenceDischarge.setFarmId(animal.getFarmId());
+            // POST incidence
+            CreateDischargeIncidence(incidenceDischarge);
+        }
+    }
+
+    private void CreateDischargeIncidence(IncidenceDischarge incidenceDischarge) {
         Call<Incidence> incidenceCall = FarmogoApiJacksonAdapter.getApiService().createIncidence(incidenceDischarge);
         incidenceCall.enqueue(new Callback<Incidence>() {
             @Override
@@ -143,7 +176,8 @@ public class ExitFragment extends Fragment {
 
         unregisterButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                saveIncidence();
+                if(incidenceType == 1){saveIncidenceSimple();}
+                if(incidenceType == 2){saveIncidenceMultiple();}
                 Toast.makeText(getView().getContext(),getActivity().getString(R.string.unregistersucces),Toast.LENGTH_SHORT).show();
             }
         });

@@ -166,7 +166,8 @@ public class FragmentBirthIncidence extends Fragment{
 
         registerCow.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                registerCow();
+                if(incidenceType == 1){registerCow();}
+                //if(incidenceType == 2){}
                 Toast.makeText(getView().getContext(),getActivity().getString(R.string.register_cow),Toast.LENGTH_SHORT).show();
             }
         });

@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
+import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.model.incidences.IncidencePregnancy;
 import com.example.farmogoapp.model.incidences.PregnancyType;
@@ -90,14 +91,15 @@ public class FragmentPregnancyIncidence extends Fragment {
 
         saveButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                saveIncidence();
+                if(incidenceType == 1){saveIncidenceSimple();}
+                if(incidenceType == 2){saveIncidenceMultiple();}
                 Toast.makeText(getView().getContext(),getActivity().getString(R.string.incidence_saved),Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
-    private void saveIncidence() {
+    private void saveIncidenceSimple() {
     /*IncidencePregnancy incidencePregnancy = new IncidencePregnancy();
             incidencePregnancy.setPregnancyType(PregnancyType.Zeal);
             incidencePregnancy.setCreatedBy(user.getUuid());
@@ -109,10 +111,34 @@ public class FragmentPregnancyIncidence extends Fragment {
         incidencePregnancy.setPregnancyType(pregnancyType);
         incidencePregnancy.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
         incidencePregnancy.setObservations(eTPregnancyObs.getText().toString());
-        incidencePregnancy.setAnimalId(this.animalOfficialId);
-        incidencePregnancy.setFarmId(this.farmId);
 
         // POST incidence
+        createPregnancyIncidence(incidencePregnancy);
+    }
+
+    private void saveIncidenceMultiple() {
+    /*IncidencePregnancy incidencePregnancy = new IncidencePregnancy();
+            incidencePregnancy.setPregnancyType(PregnancyType.Zeal);
+            incidencePregnancy.setCreatedBy(user.getUuid());
+            incidencePregnancy.setFarmId(farm.getUuid());
+            incidencePregnancy.setAnimalId(animalB.getUuid());*/
+        PregnancyType pregnancyType = (PregnancyType) spPregnancyType.getSelectedItem();
+        IncidencePregnancy incidencePregnancy = new IncidencePregnancy();
+
+        incidencePregnancy.setPregnancyType(pregnancyType);
+        incidencePregnancy.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
+        incidencePregnancy.setObservations(eTPregnancyObs.getText().toString());
+
+        for(Animal animal : SessionData.getInstance().getAnimalCardObj()) {
+
+            incidencePregnancy.setAnimalId(animal.getOfficialId());
+            incidencePregnancy.setFarmId(animal.getFarmId());
+            // POST incidence
+            createPregnancyIncidence(incidencePregnancy);
+        }
+    }
+
+    private void createPregnancyIncidence(IncidencePregnancy incidencePregnancy) {
         Call<Incidence> incidenceCall = FarmogoApiJacksonAdapter.getApiService().createIncidence(incidencePregnancy);
         incidenceCall.enqueue(new Callback<Incidence>() {
             @Override

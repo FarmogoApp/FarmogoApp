@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
+import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.model.incidences.IncidenceWeight;
 import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
@@ -62,27 +63,7 @@ public class FragmentWheighingIncidence extends Fragment {
         return view;
     }
 
-    private void saveIncidenceSimple() {
-
-        /*  IncidenceWeight incidence = new IncidenceWeight();
-            incidence.setDone(true);
-            incidence.setWeight(100);
-            incidence.setAnimalId(animalA.getUuid());
-            incidence.setCreatedBy(user.getUuid());
-            incidence.setFarmId(farmA.getUuid());
-            incidence.setDate(LocalDate.of(2018, 5, 1));*/
-
-        /*String myFormat = "dd/MM/yyyy";
-                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-                date.setText(sdf.format(calendar.getTime()));*/
-        IncidenceWeight incidenceWeight = new IncidenceWeight();
-        incidenceWeight.setDone(true);
-        incidenceWeight.setWeight(Integer.valueOf(eTWheinghingPesaje.getText().toString()));
-        incidenceWeight.setAnimalId(this.animalOfficialId);
-        incidenceWeight.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
-        incidenceWeight.setFarmId(this.farmId);
-
-        // POST incidence
+    private void CreateWheighingIncidence(IncidenceWeight incidenceWeight) {
         Call<Incidence> incidenceCall = FarmogoApiJacksonAdapter.getApiService().createIncidence(incidenceWeight);
         incidenceCall.enqueue(new Callback<Incidence>() {
             @Override
@@ -109,6 +90,60 @@ public class FragmentWheighingIncidence extends Fragment {
         });
     }
 
+    private void saveIncidenceSimple() {
+
+        /*  IncidenceWeight incidence = new IncidenceWeight();
+            incidence.setDone(true);
+            incidence.setWeight(100);
+            incidence.setAnimalId(animalA.getUuid());
+            incidence.setCreatedBy(user.getUuid());
+            incidence.setFarmId(farmA.getUuid());
+            incidence.setDate(LocalDate.of(2018, 5, 1));*/
+
+        /*String myFormat = "dd/MM/yyyy";
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                date.setText(sdf.format(calendar.getTime()));*/
+        IncidenceWeight incidenceWeight = new IncidenceWeight();
+        incidenceWeight.setDone(true);
+        incidenceWeight.setWeight(Integer.valueOf(eTWheinghingPesaje.getText().toString()));
+        incidenceWeight.setAnimalId(this.animalOfficialId);
+        incidenceWeight.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
+        incidenceWeight.setFarmId(this.farmId);
+        incidenceWeight.setObservations(eTWheinghingObs.getText().toString());
+
+        // POST incidence
+        CreateWheighingIncidence(incidenceWeight);
+    }
+
+    private void saveIncidenceMultiple() {
+
+        /*  IncidenceWeight incidence = new IncidenceWeight();
+            incidence.setDone(true);
+            incidence.setWeight(100);
+            incidence.setAnimalId(animalA.getUuid());
+            incidence.setCreatedBy(user.getUuid());
+            incidence.setFarmId(farmA.getUuid());
+            incidence.setDate(LocalDate.of(2018, 5, 1));*/
+
+        /*String myFormat = "dd/MM/yyyy";
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                date.setText(sdf.format(calendar.getTime()));*/
+        IncidenceWeight incidenceWeight = new IncidenceWeight();
+        incidenceWeight.setDone(true);
+        incidenceWeight.setWeight(Integer.valueOf(eTWheinghingPesaje.getText().toString()));
+        incidenceWeight.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
+        incidenceWeight.setObservations(eTWheinghingObs.getText().toString());
+
+        for(Animal animal : SessionData.getInstance().getAnimalCardObj()) {
+
+            incidenceWeight.setAnimalId(animal.getOfficialId());
+            incidenceWeight.setFarmId(animal.getFarmId());
+            // POST incidence
+            CreateWheighingIncidence(incidenceWeight);
+        }
+    }
+
+
     private void registerViews() {
         saveButton = view.findViewById(R.id.saveWheinghing);
         eTWheinghingPesaje = view.findViewById(R.id.ed_WheinghingPesaje);
@@ -120,7 +155,9 @@ public class FragmentWheighingIncidence extends Fragment {
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                saveIncidenceSimple();
+                if(incidenceType == 1){saveIncidenceSimple();}
+                if(incidenceType == 2){saveIncidenceMultiple();}
+
                 Toast.makeText(getView().getContext(),getActivity().getString(R.string.incidence_saved),Toast.LENGTH_SHORT).show();
             }
         });
