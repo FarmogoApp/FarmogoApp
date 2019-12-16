@@ -33,7 +33,6 @@ public interface FarmogoApiService {
     @POST("users")
     Call<User> createUser(@Body User user);
 
-    @Headers("Content-Type: application/json")
     @POST("incidences")
     Call<Incidence> createIncidence(@Body Incidence incidence);
 

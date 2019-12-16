@@ -151,7 +151,10 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
                 }
 
                 TextView incidence_discharge_type_tv = viewHolder.incidence_discharge_type;
-                incidence_discharge_type_tv.setText(obj.getDischargeType().toString());
+
+                if (obj != null){
+                    incidence_discharge_type_tv.setText(obj.getDischargeType().toString());
+                }
 
                 TextView incidence_discharge_health_register_tv = viewHolder.incidence_discharge_health_register;
                 incidence_discharge_health_register_tv.setText(obj.getHealthRegister());

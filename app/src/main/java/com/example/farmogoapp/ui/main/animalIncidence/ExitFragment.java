@@ -23,6 +23,7 @@ import com.example.farmogoapp.model.incidences.DischargeType;
 import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.model.incidences.IncidenceDischarge;
 import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
+import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,6 +47,7 @@ public class ExitFragment extends Fragment {
     private String farmId;
     private ArrayList<DischargeType> dischargeType;
     private Integer incidenceType;
+    private String animalUuid;
 
     public static ExitFragment newInstance() {
         ExitFragment fragment = new ExitFragment();
@@ -59,6 +61,7 @@ public class ExitFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
+            animalUuid = this.getArguments().getString("animalId", "");
             animalOfficialId = this.getArguments().getString("animalOfficialId", "");
             farmId = this.getArguments().getString("farmId", "");
             incidenceType = this.getArguments().getInt("incidenceType");
@@ -101,7 +104,7 @@ public class ExitFragment extends Fragment {
         incidenceDischarge.setDischargeDestination(eTDischargeDestination.getText().toString());
         incidenceDischarge.setDone(false);
         incidenceDischarge.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
-        incidenceDischarge.setAnimalId(this.animalOfficialId);
+        incidenceDischarge.setAnimalId(this.animalUuid);
         incidenceDischarge.setFarmId(this.farmId);
 
         // POST incidence
@@ -129,7 +132,7 @@ public class ExitFragment extends Fragment {
         incidenceDischarge.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
         for(Animal animal : SessionData.getInstance().getAnimalCardObj()) {
 
-            incidenceDischarge.setAnimalId(animal.getOfficialId());
+            incidenceDischarge.setAnimalId(animal.getUuid());
             incidenceDischarge.setFarmId(animal.getFarmId());
             // POST incidence
             CreateDischargeIncidence(incidenceDischarge);
@@ -145,9 +148,15 @@ public class ExitFragment extends Fragment {
                 if(response.isSuccessful()) {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
-                    Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
-                    //intent.putExtra("animalId", (String) incidenceDischarge.getAnimalId());
-                    startActivity(intent);
+
+                    if (incidenceType == 1) {
+                        Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
+                        intent.putExtra("animalId", (String) incidenceDischarge.getAnimalId());
+                        startActivity(intent);
+                    }else if(incidenceType == 2){
+                        Intent intent = new Intent(getContext(), AnimalListActivity.class);
+                        startActivity(intent);
+                    }
 
                 } else {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);

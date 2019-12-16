@@ -23,6 +23,7 @@ import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.model.incidences.IncidenceTreatment;
 import com.example.farmogoapp.model.incidences.TreatmentType;
 import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
+import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,6 +43,7 @@ public class FragmentTreatmentIncidence extends Fragment {
     private String farmId;
     private ArrayList<TreatmentType> treatmentType;
     private Integer incidenceType;
+    private String animalUuid;
 
 
     public static FragmentTreatmentIncidence newInstance() {
@@ -57,7 +59,7 @@ public class FragmentTreatmentIncidence extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
-
+            animalUuid = this.getArguments().getString("animalId", "");
             animalOfficialId = this.getArguments().getString("animalOfficialId", "");
             farmId = this.getArguments().getString("farmId", "");
             incidenceType = this.getArguments().getInt("incidenceType");
@@ -92,9 +94,14 @@ public class FragmentTreatmentIncidence extends Fragment {
                 if (response.isSuccessful()) {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
-                    Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
-                    //intent.putExtra("animalId", (String) incidenceTreatment.getAnimalId());
-                    startActivity(intent);
+                    if (incidenceType == 1) {
+                        Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
+                        intent.putExtra("animalId", (String) incidenceTreatment.getAnimalId());
+                        startActivity(intent);
+                    }else if(incidenceType == 2){
+                        Intent intent = new Intent(getContext(), AnimalListActivity.class);
+                        startActivity(intent);
+                    }
 
                 } else {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
@@ -130,7 +137,7 @@ public class FragmentTreatmentIncidence extends Fragment {
 
         for(Animal animal : SessionData.getInstance().getAnimalCardObj()) {
 
-            incidenceTreatment.setAnimalId(animal.getOfficialId());
+            incidenceTreatment.setAnimalId(animal.getUuid());
             incidenceTreatment.setFarmId(animal.getFarmId());
             CreateTreatmentIncidence(incidenceTreatment);
         }
@@ -146,7 +153,7 @@ public class FragmentTreatmentIncidence extends Fragment {
         incidenceTreatment.setDose(eTTreatmentDose.getText().toString());
         incidenceTreatment.setObservations(eTTreatmentObs.getText().toString());
         incidenceTreatment.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
-        incidenceTreatment.setAnimalId(this.animalOfficialId);
+        incidenceTreatment.setAnimalId(this.animalUuid);
         incidenceTreatment.setFarmId(this.farmId);
 
         // POST incidence

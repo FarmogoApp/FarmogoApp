@@ -20,6 +20,7 @@ import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.model.incidences.IncidenceWeight;
 import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
+import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +34,7 @@ public class FragmentWheighingIncidence extends Fragment {
     private String animalOfficialId;
     private String farmId;
     private Integer incidenceType;
+    private String animalUuid;
 
     public static FragmentWheighingIncidence newInstance() {
         FragmentWheighingIncidence fragment = new FragmentWheighingIncidence();
@@ -46,6 +48,7 @@ public class FragmentWheighingIncidence extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
+            animalUuid = this.getArguments().getString("animalId", "");
             animalOfficialId = this.getArguments().getString("animalOfficialId", "");
             farmId = this.getArguments().getString("farmId", "");
             incidenceType = this.getArguments().getInt("incidenceType");
@@ -72,9 +75,15 @@ public class FragmentWheighingIncidence extends Fragment {
                 if(response.isSuccessful()) {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
-                    Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
-                    //intent.putExtra("animalId", (String) incidenceWeight.getAnimalId());
-                    startActivity(intent);
+
+                    if (incidenceType == 1) {
+                        Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
+                        intent.putExtra("animalId", (String) incidenceWeight.getAnimalId());
+                        startActivity(intent);
+                    }else if(incidenceType == 2){
+                        Intent intent = new Intent(getContext(), AnimalListActivity.class);
+                        startActivity(intent);
+                    }
 
                 } else {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
@@ -106,7 +115,7 @@ public class FragmentWheighingIncidence extends Fragment {
         IncidenceWeight incidenceWeight = new IncidenceWeight();
         incidenceWeight.setDone(true);
         incidenceWeight.setWeight(Integer.valueOf(eTWheinghingPesaje.getText().toString()));
-        incidenceWeight.setAnimalId(this.animalOfficialId);
+        incidenceWeight.setAnimalId(this.animalUuid);
         incidenceWeight.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
         incidenceWeight.setFarmId(this.farmId);
         incidenceWeight.setObservations(eTWheinghingObs.getText().toString());
@@ -136,7 +145,7 @@ public class FragmentWheighingIncidence extends Fragment {
 
         for(Animal animal : SessionData.getInstance().getAnimalCardObj()) {
 
-            incidenceWeight.setAnimalId(animal.getOfficialId());
+            incidenceWeight.setAnimalId(animal.getUuid());
             incidenceWeight.setFarmId(animal.getFarmId());
             // POST incidence
             CreateWheighingIncidence(incidenceWeight);

@@ -24,6 +24,7 @@ import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.model.incidences.IncidencePregnancy;
 import com.example.farmogoapp.model.incidences.PregnancyType;
 import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
+import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,6 +44,7 @@ public class FragmentPregnancyIncidence extends Fragment {
     private String animalOfficialId;
     private String farmId;
     private Integer incidenceType;
+    private String animalUuid;
 
 
     public static FragmentPregnancyIncidence newInstance() {
@@ -58,6 +60,7 @@ public class FragmentPregnancyIncidence extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
+            animalUuid = this.getArguments().getString("animalId", "");
             animalOfficialId = this.getArguments().getString("animalOfficialId", "");
             farmId = this.getArguments().getString("farmId", "");
             incidenceType = this.getArguments().getInt("incidenceType");
@@ -111,7 +114,8 @@ public class FragmentPregnancyIncidence extends Fragment {
         incidencePregnancy.setPregnancyType(pregnancyType);
         incidencePregnancy.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
         incidencePregnancy.setObservations(eTPregnancyObs.getText().toString());
-
+        incidencePregnancy.setAnimalId(this.animalUuid);
+        incidencePregnancy.setFarmId(this.farmId);
         // POST incidence
         createPregnancyIncidence(incidencePregnancy);
     }
@@ -131,7 +135,7 @@ public class FragmentPregnancyIncidence extends Fragment {
 
         for(Animal animal : SessionData.getInstance().getAnimalCardObj()) {
 
-            incidencePregnancy.setAnimalId(animal.getOfficialId());
+            incidencePregnancy.setAnimalId(animal.getUuid());
             incidencePregnancy.setFarmId(animal.getFarmId());
             // POST incidence
             createPregnancyIncidence(incidencePregnancy);
@@ -147,9 +151,15 @@ public class FragmentPregnancyIncidence extends Fragment {
                 if(response.isSuccessful()) {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
-                    Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
-                    //intent.putExtra("animalId", (String) incidencePregnancy.getAnimalId());
-                    startActivity(intent);
+
+                    if (incidenceType == 1) {
+                        Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
+                        intent.putExtra("animalId", (String) incidencePregnancy.getAnimalId());
+                        startActivity(intent);
+                    }else if(incidenceType == 2){
+                        Intent intent = new Intent(getContext(), AnimalListActivity.class);
+                        startActivity(intent);
+                    }
 
                 } else {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);

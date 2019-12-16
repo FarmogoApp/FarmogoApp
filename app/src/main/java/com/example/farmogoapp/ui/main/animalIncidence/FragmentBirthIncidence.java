@@ -51,6 +51,7 @@ public class FragmentBirthIncidence extends Fragment{
     private String farmId;
     private String farmAnimalCounter;
     private Integer incidenceType;
+    private String animalUuid;
 
     public static FragmentBirthIncidence newInstance() {
         FragmentBirthIncidence fragment = new FragmentBirthIncidence();
@@ -65,6 +66,7 @@ public class FragmentBirthIncidence extends Fragment{
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
+            animalUuid = this.getArguments().getString("animalId", "");
             animalOfficialId = this.getArguments().getString("animalOfficialId", "");
             farmId = this.getArguments().getString("farmId", "");
             farmAnimalCounter = this.getArguments().getString("farmAnimalCounter", "");
@@ -119,7 +121,7 @@ public class FragmentBirthIncidence extends Fragment{
         incidenceBirth.setOfficialId(eTofficialId.getText().toString());
         incidenceBirth.setSex(sexSelected);
         incidenceBirth.setFarmId(this.farmId);
-        incidenceBirth.setAnimalId(eTMotherOfficialIdEdit.getText().toString());
+        incidenceBirth.setAnimalId(animalUuid);
         incidenceBirth.setObservations(eT_obs.getText().toString());
 
         // POST incidence
@@ -131,8 +133,9 @@ public class FragmentBirthIncidence extends Fragment{
                 if(response.isSuccessful()) {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
+
                     Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
-                    intent.putExtra("animalId", (String) incidenceBirth.getOfficialId());//animal info del nuevo animal
+                    intent.putExtra("animalId", (String) incidenceBirth.getAnimalId());//animal info del nuevo animal
                     startActivity(intent);
 
                 } else {

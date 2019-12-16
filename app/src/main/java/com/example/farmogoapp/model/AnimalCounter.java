@@ -28,7 +28,7 @@ public class AnimalCounter {
     }
 
     public String toString(){
-        return prefix + counter;
+        return String.format("%s%012d", prefix, counter);
     }
 
     public void incrementAnimalCounter(){
