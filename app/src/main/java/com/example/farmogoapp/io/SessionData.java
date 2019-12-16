@@ -155,6 +155,7 @@ public class SessionData {
     public void clearAll() {
         SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         defaultSharedPreferences.edit().clear().commit();
+        clearCart();
     }
 
 
