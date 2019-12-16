@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="30sp"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/farm_tittle_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15sp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtFarm"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Manage Farms"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addNewFarm"
+        android:text="Add new Farm"
+        android:layout_width="125dp"
+        android:layout_height="35dp"
+        android:background="@drawable/round_shape"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/farm_tittle_linear"
+        android:onClick="newFarm"/>
+
+
+    <LinearLayout
+        android:id="@+id/explotationLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15sp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@+id/addNewFarm">
+
+        <TextView
+            android:id="@+id/Explotation"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Farm:"
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimary" />
+        <Spinner
+            android:id="@+id/spinnerFarms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:spinnerMode="dropdown" />
+
+        <Button
+            android:id="@+id/edit_farm"
+            android:layout_width="@dimen/edit_width"
+            android:layout_height="@dimen/edit_height"
+            android:layout_margin="5dp"
+            android:background="@drawable/ic_edit_black_24dp"
+            android:gravity="center"
+            android:onClick="editFarm"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/shape_line_1"
+        android:layout_below="@id/explotationLinear"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/darker_gray"/>
+
+    <LinearLayout
+        android:id="@+id/building_tittle_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15sp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@+id/shape_line_1">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:id="@+id/txtBuilding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Building"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addNewBuilding"
+        android:text="Add new Building"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:background="@drawable/round_shape"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/building_tittle_linear"
+        android:onClick="newBuiling"/>
+
+    <LinearLayout
+        android:id="@+id/buildingLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15sp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@id/addNewBuilding">
+        <TextView
+            android:id="@+id/building"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Building:"
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimary" />
+        <Spinner
+            android:id="@+id/spinnerBuild"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:spinnerMode="dropdown" />
+
+        <Button
+            android:id="@+id/edit_building"
+            android:layout_width="@dimen/edit_width"
+            android:layout_height="@dimen/edit_height"
+            android:layout_margin="5dp"
+            android:background="@drawable/ic_edit_black_24dp"
+            android:gravity="center"
+            android:onClick="editBuilding"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/shape_line_2"
+        android:layout_below="@id/buildingLinear"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/darker_gray"/>
+
+    <LinearLayout
+        android:id="@+id/section_tittle_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15sp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@+id/shape_line_2">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtSection"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/division"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/addNewSection"
+        android:text="Add new Division"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:background="@drawable/round_shape"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/section_tittle_linear"
+        android:onClick="newDivision"/>
+
+    <LinearLayout
+        android:id="@+id/sectioninLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15sp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@id/addNewSection">
+        <TextView
+            android:id="@+id/section"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Section:"
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimary" />
+        <Spinner
+            android:id="@+id/spinnerSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:spinnerMode="dropdown" />
+        <Button
+            android:id="@+id/edit_section"
+            android:layout_width="@dimen/edit_width"
+            android:layout_height="@dimen/edit_height"
+            android:layout_margin="5dp"
+            android:background="@drawable/ic_edit_black_24dp"
+            android:gravity="center"
+            android:onClick="editDivision"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+
+

@@ -10,13 +10,7 @@
         android:icon="@drawable/ic_settings_white_24dp"/>
 
     <item android:id="@+id/add_farm"
-        android:title="@string/new_farm"
+        android:title="@string/manage_farms"
         app:showAsAction="never" />
-
-    <item
-        android:id="@+id/edit_farm"
-        android:title="@string/edit_farm"
-        app:showAsAction="never" />
-
 
 </menu>

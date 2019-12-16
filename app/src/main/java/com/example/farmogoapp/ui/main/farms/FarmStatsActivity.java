@@ -72,12 +72,6 @@ public class FarmStatsActivity extends AppCompatActivity {
             return true;
         });
 
-        MenuItem list = menu.findItem(R.id.edit_farm);
-        list.setOnMenuItemClickListener(item2 -> {
-            Intent intent = new Intent(FarmStatsActivity.this, AddExploitationActivity.class);
-            startActivity(intent);
-            return true;
-        });
 
         MenuItem settings = menu.findItem(R.id.tools);
         settings.setOnMenuItemClickListener(item3 -> {
@@ -243,8 +237,14 @@ public class FarmStatsActivity extends AppCompatActivity {
     private void refreshRecyclerView(ArrayList<Incidence> lastIncidences) {
         RecyclerView recyclerView = findViewById(R.id.recyclerviewStatistics);
         recyclerView.setHasFixedSize(true);
-        RecyclerView.Adapter mAdapter = new IncidenceAdapter(lastIncidences);
+        RecyclerView.Adapter mAdapter = new IncidenceAdapter(lastIncidences, getApplicationContext(),false);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadFarms();
     }
 }

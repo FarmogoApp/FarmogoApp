@@ -51,5 +51,9 @@ public interface FarmogoApiService {
 
     @GET("animals/{id}/incidences")
     Call<ArrayList<Incidence>> getAnimalIncidences(@Path("id") String idAnimal);
+
+    @POST("farms")
+    Call<Farm> createFarm(@Body Farm farm);
+
 }
 

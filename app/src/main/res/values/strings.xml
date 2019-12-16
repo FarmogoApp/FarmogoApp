@@ -194,6 +194,13 @@
     <string name="cache_memory">Erasing cache memory…</string>
     <string name="all_farms">All farms</string>
     <string name="clear_selection">Clear selection</string>
+    <string name="farm_name">Farm name</string>
+    <string name="counter_prefix">Counter Prefix</string>
+    <string name="counter">Counter</string>
+    <string name="official_id_farm">Official ID</string>
+    <string name="save_farm">Save Farm</string>
+    <string name="manage_farms">Manage Farms</string>
+    <string name="division">Division</string>
     <string name="races_updated">Races Updated</string>
     <string name="animaltypes_updated">Animal Types updated</string>
 </resources>
