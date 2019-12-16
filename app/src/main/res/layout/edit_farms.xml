@@ -183,14 +183,14 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Section"
+            android:text="@string/division"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp" />
 
     </LinearLayout>
     <Button
         android:id="@+id/addNewSection"
-        android:text="Add new Section"
+        android:text="Add new Division"
         android:layout_width="300dp"
         android:layout_height="35dp"
         android:background="@drawable/round_shape"

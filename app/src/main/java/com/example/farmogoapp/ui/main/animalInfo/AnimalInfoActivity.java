@@ -30,7 +30,6 @@ import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.Farm;
-import com.example.farmogoapp.model.HistoryInfo;
 import com.example.farmogoapp.model.Race;
 import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.ui.main.animalIncidence.AnimalIncidence;
@@ -116,7 +115,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
     private void refreshRecyclerView(ArrayList<Incidence> lastIncidences) {
         RecyclerView recyclerView = findViewById(R.id.recyclerview_animalInfo);
         recyclerView.setHasFixedSize(true);
-        RecyclerView.Adapter mAdapter = new IncidenceAdapter(lastIncidences);
+        RecyclerView.Adapter mAdapter = new IncidenceAdapter(lastIncidences, getApplicationContext().getApplicationContext(),true);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

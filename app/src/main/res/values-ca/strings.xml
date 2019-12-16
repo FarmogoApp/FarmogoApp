@@ -159,4 +159,5 @@
     <string name="official_id_farm">Official ID</string>
     <string name="save_farm">Save Farm</string>
     <string name="manage_farms">Manage Farms</string>
+    <string name="division">Division</string>
 </resources>
