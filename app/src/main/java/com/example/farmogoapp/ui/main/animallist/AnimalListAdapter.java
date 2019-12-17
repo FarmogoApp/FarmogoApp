@@ -17,9 +17,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
+import com.example.farmogoapp.model.AnimalType;
+import com.example.farmogoapp.model.Farm;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static android.graphics.Typeface.BOLD;
 
@@ -86,7 +91,12 @@ public class AnimalListAdapter extends RecyclerView.Adapter<AnimalListAdapter.My
                         spannableString.length(),
                         Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 
-/*
+
+        List<Animal> animals = SessionData.getInstance().getAnimals();
+        Farm actualFarm = SessionData.getInstance().getActualFarm();
+        Map<String, Long> collect = animals.stream()
+                .filter( animall -> actualFarm.getUuid().equals(animall.getFarmId()))
+                .collect(Collectors.groupingBy(Animal::getAnimalTypeId, Collectors.counting()));
         collect.forEach((k,v) ->{
             Optional<AnimalType> type = SessionData.getInstance().getAnimalType(k);
             if(type.isPresent()) {
@@ -94,20 +104,20 @@ public class AnimalListAdapter extends RecyclerView.Adapter<AnimalListAdapter.My
 
                 switch (type.get().getDescription()){
                     case "Cow":
-                        viewHolder.animalImage.setImageResource((R.drawable.cow);
+                        viewHolder.animalImage.setImageResource(R.drawable.cow);
                         break;
                     case "Bull":
-                        viewHolder.animalImage.setImageResource((R.drawable.bull);
+                        viewHolder.animalImage.setImageResource(R.drawable.bull);
                         break;
                     case "Calf":
-                        viewHolder.animalImage.setImageResource((R.drawable.calf);
+                        viewHolder.animalImage.setImageResource(R.drawable.calf);
                         break;
                 }
 
 
             }
 
-        });*/
+        });
 
         viewHolder.nameTextView.setText(spannableString);
 
