@@ -1,15 +1,18 @@
 package com.example.farmogoapp.ui.main.farms;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
+import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.AnimalCounter;
 import com.example.farmogoapp.model.Building;
@@ -77,6 +80,14 @@ public class NewFarm extends AppCompatActivity {
             @Override
             public void onResponse(Call<Farm> call, Response<Farm> response) {
                 Log.e("aaaaaaaaaaaa", response.body().toString());
+                Farm farms = response.body();
+                Intent intent = new Intent(NewFarm.this, AddExploitationActivity.class);
+                SessionData.getInstance().setActualFarm(response.body());
+                Log.e("asdadasd", SessionData.getInstance().getActualFarm().toString());
+                Toast.makeText(NewFarm.this, "New Farm Created", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+                //startActivityForResult(intent,1);
+                finish();
             }
 
             @Override
