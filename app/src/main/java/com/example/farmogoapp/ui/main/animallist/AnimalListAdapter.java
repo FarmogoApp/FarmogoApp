@@ -86,7 +86,31 @@ public class AnimalListAdapter extends RecyclerView.Adapter<AnimalListAdapter.My
                         spannableString.length(),
                         Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 
+/*
+        collect.forEach((k,v) ->{
+            Optional<AnimalType> type = SessionData.getInstance().getAnimalType(k);
+            if(type.isPresent()) {
+                //ImageView imageView = new ImageView(FarmStatsActivity.this);
+
+                switch (type.get().getDescription()){
+                    case "Cow":
+                        viewHolder.animalImage.setImageResource((R.drawable.cow);
+                        break;
+                    case "Bull":
+                        viewHolder.animalImage.setImageResource((R.drawable.bull);
+                        break;
+                    case "Calf":
+                        viewHolder.animalImage.setImageResource((R.drawable.calf);
+                        break;
+                }
+
+
+            }
+
+        });*/
+
         viewHolder.nameTextView.setText(spannableString);
+
 
         viewHolder.removeButton.setOnClickListener(v -> {
             animalsList.remove(animal);

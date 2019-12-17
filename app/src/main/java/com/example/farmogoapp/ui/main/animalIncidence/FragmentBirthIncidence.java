@@ -19,9 +19,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.io.DataUpdater;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
-import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.Race;
 import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.model.incidences.IncidenceBirth;
@@ -122,7 +122,7 @@ public class FragmentBirthIncidence extends Fragment{
         incidenceBirth.setBirthDate(LocalDate.of(year, month, day));
         incidenceBirth.setRaceId(raceSelected.getUuid());
         incidenceBirth.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
-        incidenceBirth.setOfficialId(eTofficialId.getText().toString());
+        incidenceBirth.setChildOfficialId(eTofficialId.getText().toString());
         incidenceBirth.setSex(sexSelected);
         incidenceBirth.setFarmId(this.farmId);
         incidenceBirth.setAnimalId(animalUuid);
@@ -138,53 +138,19 @@ public class FragmentBirthIncidence extends Fragment{
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
 
+                    if (response.body() instanceof IncidenceBirth) {
 
-
-                    // Get animal
-                    Call<Animal> animalCall = FarmogoApiJacksonAdapter.getApiService().getAnimal(incidenceBirth.getOfficialId());
-                    animalCall.enqueue(new Callback<Animal>() {
-                        @Override
-                        public void onResponse(Call<Animal> call, Response<Animal> response) {
-
-                            if (response.isSuccessful()) {
-                                Animal data = response.body();
-                                Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
-                                intent.putExtra("animalId", (String) data.getUuid());//animal info del nuevo animal
-                                startActivity(intent);
-                                getActivity().finish();
-                            } else {
-                                Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
-                                toast.show();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<Animal> call, Throwable t) {
-                            Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
-                            toast.show();
-                        }
-                    });
-
-                    /*
-                    DataUpdater dataUpdater = new DataUpdater();
-                    //dataUpdater.updateAll();
-                    dataUpdater.updateAnimals();
-                    String childUuid = incidenceBirth.getAnimalId();
-                    List<Animal> animals = SessionData.getInstance().getAnimals();
-                    if (animals != null) {
-                        //ArrayList<Animal>  = new ArrayList<>();
-
-                        for (Animal animal : animals) {
-                            if (animal.getOfficialId().equals(incidenceBirth.getOfficialId())) {
-                                childUuid = animal.getUuid();
-                            }
-                        }
+                        DataUpdater dataUpdater = new DataUpdater();
+                        dataUpdater.updateAnimals(() -> {
+                            IncidenceBirth incidenceBirthresponse = (IncidenceBirth) response.body();
+                            Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
+                            intent.putExtra("animalId", (String) incidenceBirthresponse.getChildId());//animal info del nuevo animal
+                            startActivity(intent);
+                            getActivity().finish();
+                        });
 
                     }
-                    intent.putExtra("animalId", (String) childUuid);//animal info del nuevo animal
-                    startActivity(intent);
-                    getActivity().finish();
-*/
+
                 } else {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
                     toast.show();

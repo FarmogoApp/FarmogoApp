@@ -119,11 +119,21 @@ public class DataUpdater {
     }
 
     public void updateAnimals() {
+        this.updateAnimals(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+    }
+
+    public void updateAnimals(Runnable runnable) {
         FarmogoApiJacksonAdapter.getApiService().getAllAnimals().enqueue(new Callback<List<Animal>>() {
             @Override
             public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
                 if (response.isSuccessful()) {
                     SessionData.getInstance().setAnimals(response.body());
+                    runnable.run();
                 } else {
                     // TODO: ?????
                 }
