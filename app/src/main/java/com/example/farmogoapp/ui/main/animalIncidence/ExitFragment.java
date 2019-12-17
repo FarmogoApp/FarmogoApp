@@ -153,9 +153,11 @@ public class ExitFragment extends Fragment {
                         Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
                         intent.putExtra("animalId", (String) incidenceDischarge.getAnimalId());
                         startActivity(intent);
+                        getActivity().finish();
                     }else if(incidenceType == 2){
                         Intent intent = new Intent(getContext(), AnimalListActivity.class);
                         startActivity(intent);
+                        getActivity().finish();
                     }
 
                 } else {

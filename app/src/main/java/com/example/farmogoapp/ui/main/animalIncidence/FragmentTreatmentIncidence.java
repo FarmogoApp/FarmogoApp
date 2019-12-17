@@ -98,9 +98,11 @@ public class FragmentTreatmentIncidence extends Fragment {
                         Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
                         intent.putExtra("animalId", (String) incidenceTreatment.getAnimalId());
                         startActivity(intent);
+                        getActivity().finish();
                     }else if(incidenceType == 2){
                         Intent intent = new Intent(getContext(), AnimalListActivity.class);
                         startActivity(intent);
+                        getActivity().finish();
                     }
 
                 } else {

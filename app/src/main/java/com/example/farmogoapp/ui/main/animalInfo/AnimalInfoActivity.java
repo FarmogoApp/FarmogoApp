@@ -260,6 +260,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
                 intent.putExtra("farmId", (String) animal.getFarmId());
                 intent.putExtra("farmAnimalCounter", (String) farm.getAnimalCounter().toString());
                 startActivity(intent);
+                finish();
             }
         });
     }

@@ -19,8 +19,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.io.DataUpdater;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
+import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.Race;
 import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.model.incidences.IncidenceBirth;
@@ -30,6 +32,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 import retrofit2.Call;
@@ -135,8 +138,47 @@ public class FragmentBirthIncidence extends Fragment{
                     toast.show();
 
                     Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
-                    intent.putExtra("animalId", (String) incidenceBirth.getAnimalId());//animal info del nuevo animal
+
+                    // Get animal
+                    /*Call<Animal> animalCall = FarmogoApiJacksonAdapter.getApiService().getAnimal(incidenceBirth.getOfficialId());
+                    animalCall.enqueue(new Callback<Animal>() {
+                        @Override
+                        public void onResponse(Call<Animal> call, Response<Animal> response) {
+
+                            if (response.isSuccessful()) {
+                                Animal data = response.body();
+                                intent.putExtra("animalId", (String) data.getUuid());//animal info del nuevo animal
+                                startActivity(intent);
+                                getActivity().finish();
+                            } else {
+                                Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
+                                toast.show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Animal> call, Throwable t) {
+                            Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    });*/
+                    DataUpdater dataUpdater = new DataUpdater();
+                    dataUpdater.updateAll();
+                    String childUuid = incidenceBirth.getAnimalId();
+                    List<Animal> animals = SessionData.getInstance().getAnimals();
+                    if (animals != null) {
+                        //ArrayList<Animal>  = new ArrayList<>();
+
+                        for (Animal animal : animals) {
+                            if (animal.getOfficialId().equals(incidenceBirth.getOfficialId())) {
+                                childUuid = animal.getUuid();
+                            }
+                        }
+
+                    }
+                    intent.putExtra("animalId", (String) childUuid);//animal info del nuevo animal
                     startActivity(intent);
+                    getActivity().finish();
 
                 } else {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);

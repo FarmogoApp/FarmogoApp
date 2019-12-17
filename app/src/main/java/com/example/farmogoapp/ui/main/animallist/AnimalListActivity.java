@@ -99,6 +99,8 @@ public class AnimalListActivity extends AppCompatActivity {
                 //intent.putExtra("farmAnimalCounter", (String) this.farm.getAnimalCounter().toString());
             //}
             startActivity(intent);
+            finish();
+
         });
 
     }
