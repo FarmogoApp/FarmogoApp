@@ -81,9 +81,10 @@ public class FragmentWheighingIncidence extends Fragment {
                         intent.putExtra("animalId", (String) incidenceWeight.getAnimalId());
                         startActivity(intent);
                         getActivity().finish();
+                        /*
                     }else if(incidenceType == 2){
                         Intent intent = new Intent(getContext(), AnimalListActivity.class);
-                        startActivity(intent);
+                        startActivity(intent);*/
                     }
 
                 } else {
@@ -101,7 +102,9 @@ public class FragmentWheighingIncidence extends Fragment {
     }
 
     private void saveIncidenceSimple() {
-
+        if(!checkFields()){
+            return;
+        }
         /*  IncidenceWeight incidence = new IncidenceWeight();
             incidence.setDone(true);
             incidence.setWeight(100);
@@ -125,7 +128,19 @@ public class FragmentWheighingIncidence extends Fragment {
         CreateWheighingIncidence(incidenceWeight);
     }
 
+    public boolean checkFields(){
+
+        if (eTWheinghingPesaje.getText().toString().isEmpty()) {
+            eTWheinghingPesaje.setError("Camp obligatori");
+            return false;
+        }
+        return true;
+    }
+
     private void saveIncidenceMultiple() {
+        if(!checkFields()){
+            return;
+        }
 
         /*  IncidenceWeight incidence = new IncidenceWeight();
             incidence.setDone(true);
@@ -151,6 +166,8 @@ public class FragmentWheighingIncidence extends Fragment {
             // POST incidence
             CreateWheighingIncidence(incidenceWeight);
         }
+        Intent intent = new Intent(getContext(), AnimalListActivity.class);
+        startActivity(intent);
         getActivity().finish();
     }
 

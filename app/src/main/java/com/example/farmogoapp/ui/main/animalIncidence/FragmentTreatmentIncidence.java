@@ -99,10 +99,6 @@ public class FragmentTreatmentIncidence extends Fragment {
                         intent.putExtra("animalId", (String) incidenceTreatment.getAnimalId());
                         startActivity(intent);
                         getActivity().finish();
-                    }else if(incidenceType == 2 && i == SessionData.getInstance().getAnimalCardObj().size()-1){
-                        Intent intent = new Intent(getContext(), AnimalListActivity.class);
-                        startActivity(intent);
-                        getActivity().finish();
                     }
 
                 } else {
@@ -120,6 +116,9 @@ public class FragmentTreatmentIncidence extends Fragment {
     }
 
     private void saveIncidenceMultiple() {
+        if(!checkFields()){
+            return;
+        }
 
         /*  IncidenceTreatment incidenceTreatment = new IncidenceTreatment();
             incidenceTreatment.setTreatmentType(TreatmentType.Vaccine);
@@ -144,9 +143,15 @@ public class FragmentTreatmentIncidence extends Fragment {
             incidenceTreatment.setFarmId(SessionData.getInstance().getAnimalCardObj().get(i).getFarmId());
             CreateTreatmentIncidence(incidenceTreatment);
         }
+        Intent intent = new Intent(getContext(), AnimalListActivity.class);
+        startActivity(intent);
+        getActivity().finish();
     }
 
     private void saveIncidenceSimple() {
+        if(!checkFields()){
+            return;
+        }
 
         TreatmentType treatmentType = (TreatmentType) spTreatmentType.getSelectedItem();
         IncidenceTreatment incidenceTreatment = new IncidenceTreatment();
@@ -161,6 +166,19 @@ public class FragmentTreatmentIncidence extends Fragment {
 
         // POST incidence
         CreateTreatmentIncidence(incidenceTreatment);
+    }
+
+    public boolean checkFields(){
+
+        if (eTTreatmentDose.getText().toString().isEmpty()) {
+            eTTreatmentDose.setError("Camp obligatori");
+            return false;
+        }
+        if (eTTreatmentMedicine.getText().toString().isEmpty()) {
+            eTTreatmentMedicine.setError("Camp obligatori");
+            return false;
+        }
+        return true;
     }
 
     private void registerViews() {

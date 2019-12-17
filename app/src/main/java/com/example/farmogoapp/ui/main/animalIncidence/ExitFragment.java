@@ -86,6 +86,9 @@ public class ExitFragment extends Fragment {
     }
 
     private void saveIncidenceSimple() {
+        if(!checkFields()){
+            return;
+        }
 
         /*  IncidenceDischarge incidenceDischarge = new IncidenceDischarge();
             incidenceDischarge.setHealthRegister("test register");
@@ -112,6 +115,9 @@ public class ExitFragment extends Fragment {
     }
 
     private void saveIncidenceMultiple() {
+        if(!checkFields()){
+            return;
+        }
 
         /*  IncidenceDischarge incidenceDischarge = new IncidenceDischarge();
             incidenceDischarge.setHealthRegister("test register");
@@ -137,6 +143,8 @@ public class ExitFragment extends Fragment {
             // POST incidence
             CreateDischargeIncidence(incidenceDischarge);
         }
+        Intent intent = new Intent(getContext(), AnimalListActivity.class);
+        startActivity(intent);
         getActivity().finish();
     }
 
@@ -154,10 +162,10 @@ public class ExitFragment extends Fragment {
                         Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
                         intent.putExtra("animalId", (String) incidenceDischarge.getAnimalId());
                         startActivity(intent);
-                        getActivity().finish();
+                        getActivity().finish();/*
                     }else if(incidenceType == 2){
                         Intent intent = new Intent(getContext(), AnimalListActivity.class);
-                        startActivity(intent);
+                        startActivity(intent);*/
                     }
 
                 } else {
@@ -172,6 +180,16 @@ public class ExitFragment extends Fragment {
                 toast.show();
             }
         });
+    }
+
+    public boolean checkFields(){
+
+        if (eTDischargeCertificate.getText().toString().isEmpty()) {
+            eTDischargeCertificate.setError("Camp obligatori");
+            return false;
+        }
+
+        return true;
     }
 
     private void registerViews() {

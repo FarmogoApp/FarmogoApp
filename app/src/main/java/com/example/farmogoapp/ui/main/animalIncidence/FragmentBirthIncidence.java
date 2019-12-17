@@ -96,6 +96,9 @@ public class FragmentBirthIncidence extends Fragment{
     }
 
     private void registerCow() {
+        if(!checkFields()){
+            return;
+        }
 
         /*parametros que seteamos en el test del back
         IncidenceBirth birth = new IncidenceBirth();
@@ -163,7 +166,8 @@ public class FragmentBirthIncidence extends Fragment{
                         }
                     });*/
                     DataUpdater dataUpdater = new DataUpdater();
-                    dataUpdater.updateAll();
+                    //dataUpdater.updateAll();
+                    dataUpdater.updateAnimalsJose();
                     String childUuid = incidenceBirth.getAnimalId();
                     List<Animal> animals = SessionData.getInstance().getAnimals();
                     if (animals != null) {
@@ -194,7 +198,19 @@ public class FragmentBirthIncidence extends Fragment{
         });
     }
 
+    public boolean checkFields(){
 
+        if (eTofficialId.getText().toString().isEmpty()) {
+            eTofficialId.setError("Camp obligatori");
+            return false;
+        }
+
+        if (date.getText().toString().isEmpty()) {
+            date.setError("Camp obligatori");
+            return false;
+        }
+        return true;
+    }
 
 
     private void registerViews() {

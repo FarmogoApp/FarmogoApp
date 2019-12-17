@@ -103,6 +103,7 @@ public class FragmentPregnancyIncidence extends Fragment {
     }
 
     private void saveIncidenceSimple() {
+
     /*IncidencePregnancy incidencePregnancy = new IncidencePregnancy();
             incidencePregnancy.setPregnancyType(PregnancyType.Zeal);
             incidencePregnancy.setCreatedBy(user.getUuid());
@@ -121,6 +122,7 @@ public class FragmentPregnancyIncidence extends Fragment {
     }
 
     private void saveIncidenceMultiple() {
+
     /*IncidencePregnancy incidencePregnancy = new IncidencePregnancy();
             incidencePregnancy.setPregnancyType(PregnancyType.Zeal);
             incidencePregnancy.setCreatedBy(user.getUuid());
@@ -140,8 +142,11 @@ public class FragmentPregnancyIncidence extends Fragment {
             // POST incidence
             createPregnancyIncidence(incidencePregnancy);
         }
+        Intent intent = new Intent(getContext(), AnimalListActivity.class);
+        startActivity(intent);
         getActivity().finish();
     }
+
 
     private void createPregnancyIncidence(IncidencePregnancy incidencePregnancy) {
         Call<Incidence> incidenceCall = FarmogoApiJacksonAdapter.getApiService().createIncidence(incidencePregnancy);
@@ -158,9 +163,10 @@ public class FragmentPregnancyIncidence extends Fragment {
                         intent.putExtra("animalId", (String) incidencePregnancy.getAnimalId());
                         startActivity(intent);
                         getActivity().finish();
+                        /*
                     }else if(incidenceType == 2){
                         Intent intent = new Intent(getContext(), AnimalListActivity.class);
-                        startActivity(intent);
+                        startActivity(intent);*/
                     }
 
                 } else {

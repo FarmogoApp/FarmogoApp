@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
         @JsonSubTypes.Type(value = IncidenceTreatment.class, name = "TREATMENT"),
         @JsonSubTypes.Type(value = IncidencePregnancy.class, name = "PREGNANCY"),
         @JsonSubTypes.Type(value = IncidenceDischarge.class, name = "DISCHARGE"),
-        @JsonSubTypes.Type(value = IncidenceDischarge.class, name = "BIRTH")
+        @JsonSubTypes.Type(value = IncidenceBirth.class, name = "BIRTH")
 })
 public abstract class Incidence {
     private String uuid;
