@@ -137,6 +137,7 @@ public class ExitFragment extends Fragment {
             // POST incidence
             CreateDischargeIncidence(incidenceDischarge);
         }
+        getActivity().finish();
     }
 
     private void CreateDischargeIncidence(IncidenceDischarge incidenceDischarge) {
@@ -157,7 +158,6 @@ public class ExitFragment extends Fragment {
                     }else if(incidenceType == 2){
                         Intent intent = new Intent(getContext(), AnimalListActivity.class);
                         startActivity(intent);
-                        getActivity().finish();
                     }
 
                 } else {

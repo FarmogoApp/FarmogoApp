@@ -140,6 +140,7 @@ public class FragmentPregnancyIncidence extends Fragment {
             // POST incidence
             createPregnancyIncidence(incidencePregnancy);
         }
+        getActivity().finish();
     }
 
     private void createPregnancyIncidence(IncidencePregnancy incidencePregnancy) {
@@ -160,7 +161,6 @@ public class FragmentPregnancyIncidence extends Fragment {
                     }else if(incidenceType == 2){
                         Intent intent = new Intent(getContext(), AnimalListActivity.class);
                         startActivity(intent);
-                        getActivity().finish();
                     }
 
                 } else {

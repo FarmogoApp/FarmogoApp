@@ -18,7 +18,6 @@ import androidx.fragment.app.Fragment;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
-import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.model.incidences.IncidenceTreatment;
 import com.example.farmogoapp.model.incidences.TreatmentType;
@@ -44,6 +43,7 @@ public class FragmentTreatmentIncidence extends Fragment {
     private ArrayList<TreatmentType> treatmentType;
     private Integer incidenceType;
     private String animalUuid;
+    private Integer i = 0;
 
 
     public static FragmentTreatmentIncidence newInstance() {
@@ -99,7 +99,7 @@ public class FragmentTreatmentIncidence extends Fragment {
                         intent.putExtra("animalId", (String) incidenceTreatment.getAnimalId());
                         startActivity(intent);
                         getActivity().finish();
-                    }else if(incidenceType == 2){
+                    }else if(incidenceType == 2 && i == SessionData.getInstance().getAnimalCardObj().size()-1){
                         Intent intent = new Intent(getContext(), AnimalListActivity.class);
                         startActivity(intent);
                         getActivity().finish();
@@ -128,6 +128,7 @@ public class FragmentTreatmentIncidence extends Fragment {
             incidenceTreatment.setCreatedBy(user.getUuid());
             incidenceTreatment.setAnimalId(animalA.getUuid());
             incidenceTreatment.setFarmId(farmA.getUuid());*/
+
         TreatmentType treatmentType = (TreatmentType) spTreatmentType.getSelectedItem();
         IncidenceTreatment incidenceTreatment = new IncidenceTreatment();
 
@@ -137,10 +138,10 @@ public class FragmentTreatmentIncidence extends Fragment {
         incidenceTreatment.setObservations(eTTreatmentObs.getText().toString());
         incidenceTreatment.setCreatedBy(SessionData.getInstance().getActualUser().getUuid());
 
-        for(Animal animal : SessionData.getInstance().getAnimalCardObj()) {
-
-            incidenceTreatment.setAnimalId(animal.getUuid());
-            incidenceTreatment.setFarmId(animal.getFarmId());
+        //for(Animal animal : SessionData.getInstance().getAnimalCardObj()) {
+        for(i = 0;i<SessionData.getInstance().getAnimalCardObj().size();i++ ){
+            incidenceTreatment.setAnimalId(SessionData.getInstance().getAnimalCardObj().get(i).getUuid());
+            incidenceTreatment.setFarmId(SessionData.getInstance().getAnimalCardObj().get(i).getFarmId());
             CreateTreatmentIncidence(incidenceTreatment);
         }
     }

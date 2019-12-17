@@ -84,7 +84,6 @@ public class FragmentWheighingIncidence extends Fragment {
                     }else if(incidenceType == 2){
                         Intent intent = new Intent(getContext(), AnimalListActivity.class);
                         startActivity(intent);
-                        getActivity().finish();
                     }
 
                 } else {
@@ -152,6 +151,7 @@ public class FragmentWheighingIncidence extends Fragment {
             // POST incidence
             CreateWheighingIncidence(incidenceWeight);
         }
+        getActivity().finish();
     }
 
 
