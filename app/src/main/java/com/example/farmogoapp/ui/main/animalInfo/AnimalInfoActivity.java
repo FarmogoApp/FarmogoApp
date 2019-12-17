@@ -141,7 +141,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
         super.onNewIntent(intent);
         Log.d("intent", "new inten.  NFC detected " + intent.getAction());
         if (!nfcSwitch.isChecked()) return;
-        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())) {
+        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction()) || NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
             writeTag(intent);
         }
 
