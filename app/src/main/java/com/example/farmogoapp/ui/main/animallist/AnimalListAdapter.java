@@ -118,6 +118,12 @@ public class AnimalListAdapter extends RecyclerView.Adapter<AnimalListAdapter.My
             }
 
         });
+        if (animal.getDischargeDate() == null) {
+            viewHolder.itemView.setBackgroundColor(viewHolder.itemView.getResources().getColor(R.color.white));
+        }else{
+            viewHolder.itemView.setBackgroundColor(viewHolder.itemView.getResources().getColor(R.color.grey));
+        }
+
 
         viewHolder.nameTextView.setText(spannableString);
 

@@ -12,15 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
+import com.example.farmogoapp.model.AnimalType;
 import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -130,6 +133,28 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
             }
 
         });
+
+        Optional<AnimalType> animalType = SessionData.getInstance().getAnimalType(animal.getAnimalTypeId());
+
+        ImageView image = v.findViewById(R.id.animal_list_image);
+        switch (animalType.get().getDescription()) {
+            case "Cow":
+                image.setImageResource(R.drawable.cow);
+                break;
+            case "Bull":
+                image.setImageResource(R.drawable.bull);
+                break;
+            case "Calf":
+                image.setImageResource(R.drawable.calf);
+                break;
+        }
+
+        if (animal.getDischargeDate() == null) {
+            v.setBackgroundColor(v.getResources().getColor(R.color.white));
+        }else{
+            v.setBackgroundColor(v.getResources().getColor(R.color.grey));
+        }
+
 
 
         SpannableString spannableString = new SpannableString(animal.getOfficialId());
