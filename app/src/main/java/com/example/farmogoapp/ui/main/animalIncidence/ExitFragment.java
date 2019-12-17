@@ -184,6 +184,11 @@ public class ExitFragment extends Fragment {
 
     public boolean checkFields(){
 
+
+        if (eTDischargeDestination.getText().toString().isEmpty()) {
+            eTDischargeDestination.setError("Camp obligatori");
+            return false;
+        }
         if (eTDischargeCertificate.getText().toString().isEmpty()) {
             eTDischargeCertificate.setError("Camp obligatori");
             return false;

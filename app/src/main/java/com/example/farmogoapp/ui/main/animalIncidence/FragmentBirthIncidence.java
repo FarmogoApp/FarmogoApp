@@ -19,7 +19,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.farmogoapp.R;
-import com.example.farmogoapp.io.DataUpdater;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
@@ -32,7 +31,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
 import retrofit2.Call;
@@ -140,16 +138,17 @@ public class FragmentBirthIncidence extends Fragment{
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
 
-                    Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
+
 
                     // Get animal
-                    /*Call<Animal> animalCall = FarmogoApiJacksonAdapter.getApiService().getAnimal(incidenceBirth.getOfficialId());
+                    Call<Animal> animalCall = FarmogoApiJacksonAdapter.getApiService().getAnimal(incidenceBirth.getOfficialId());
                     animalCall.enqueue(new Callback<Animal>() {
                         @Override
                         public void onResponse(Call<Animal> call, Response<Animal> response) {
 
                             if (response.isSuccessful()) {
                                 Animal data = response.body();
+                                Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
                                 intent.putExtra("animalId", (String) data.getUuid());//animal info del nuevo animal
                                 startActivity(intent);
                                 getActivity().finish();
@@ -164,10 +163,12 @@ public class FragmentBirthIncidence extends Fragment{
                             Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
                             toast.show();
                         }
-                    });*/
+                    });
+
+                    /*
                     DataUpdater dataUpdater = new DataUpdater();
                     //dataUpdater.updateAll();
-                    dataUpdater.updateAnimalsJose();
+                    dataUpdater.updateAnimals();
                     String childUuid = incidenceBirth.getAnimalId();
                     List<Animal> animals = SessionData.getInstance().getAnimals();
                     if (animals != null) {
@@ -183,7 +184,7 @@ public class FragmentBirthIncidence extends Fragment{
                     intent.putExtra("animalId", (String) childUuid);//animal info del nuevo animal
                     startActivity(intent);
                     getActivity().finish();
-
+*/
                 } else {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
                     toast.show();

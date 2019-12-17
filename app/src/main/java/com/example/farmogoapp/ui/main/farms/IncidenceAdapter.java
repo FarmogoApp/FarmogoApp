@@ -154,7 +154,6 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
         incidence1.accept(new IncidenceVisitor(){
             @Override
             public void visit(IncidenceDischarge obj) {
-                Log.e("Errororoorr", "discharge");
 
                 TextView incidence_discharge_animal_id_tv = viewHolder.incidence_discharge_animal_id;
                 Optional<Animal> oficialId = SessionData.getInstance().getAnimal(obj.getAnimalId());
@@ -226,8 +225,6 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
 
             @Override
             public void visit(IncidenceBirth obj) {
-
-                Log.e("Errororoorr", "Birth");
 
                 TextView incidence_birth_animal_id = viewHolder.incidence_birth_animal_id;
                 Optional<Animal> oficialId = SessionData.getInstance().getAnimal(obj.getAnimalId());

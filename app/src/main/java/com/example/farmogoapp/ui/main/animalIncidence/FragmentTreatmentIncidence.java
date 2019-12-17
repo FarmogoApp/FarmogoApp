@@ -170,12 +170,12 @@ public class FragmentTreatmentIncidence extends Fragment {
 
     public boolean checkFields(){
 
-        if (eTTreatmentDose.getText().toString().isEmpty()) {
-            eTTreatmentDose.setError("Camp obligatori");
-            return false;
-        }
         if (eTTreatmentMedicine.getText().toString().isEmpty()) {
             eTTreatmentMedicine.setError("Camp obligatori");
+            return false;
+        }
+        if (eTTreatmentDose.getText().toString().isEmpty()) {
+            eTTreatmentDose.setError("Camp obligatori");
             return false;
         }
         return true;
