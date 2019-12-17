@@ -3,7 +3,8 @@ package com.example.farmogoapp.model.incidences;
 import java.time.LocalDate;
 
 public class IncidenceBirth extends Incidence {
-    private String officialId;
+    private String childOfficialId;
+    private String childId;
     private LocalDate birthDate;
     private String raceId;
     private String sex;
@@ -13,13 +14,7 @@ public class IncidenceBirth extends Incidence {
         super(IncidenceType.BIRTH);
     }
 
-    public String getOfficialId() {
-        return officialId;
-    }
 
-    public void setOfficialId(String officialId) {
-        this.officialId = officialId;
-    }
 
     public LocalDate getBirthDate() {
         return birthDate;
@@ -56,5 +51,21 @@ public class IncidenceBirth extends Incidence {
     @Override
     public void accept(IncidenceVisitor visitor) {
         visitor.visit(this);
+    }
+
+    public String getChildOfficialId() {
+        return childOfficialId;
+    }
+
+    public void setChildOfficialId(String childOfficialId) {
+        this.childOfficialId = childOfficialId;
+    }
+
+    public String getChildId() {
+        return childId;
+    }
+
+    public void setChildId(String childId) {
+        this.childId = childId;
     }
 }

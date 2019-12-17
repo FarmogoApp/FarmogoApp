@@ -47,12 +47,12 @@
 
             <Spinner
                 android:layout_marginTop="5dp"
-                android:id="@+id/sp_tipo"
+                android:id="@+id/sp_pregnancyType"
                 android:background="@drawable/spinner_bg"
                 android:layout_below="@+id/estado_embarazo"
                 android:entries="@array/pregnancy_state"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"/>
+                android:layout_height="35dp"/>
 
         </RelativeLayout>
 
@@ -79,7 +79,7 @@
                 android:text="@string/observations"/>
 
             <EditText
-                android:id="@+id/ed_obs"
+                android:id="@+id/ed_pregnancyObs"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:paddingStart="5dp"
@@ -102,7 +102,7 @@
         android:layout_below="@id/linear4">
 
         <Button
-            android:id="@+id/save"
+            android:id="@+id/savePregnancy"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:text="@string/save"

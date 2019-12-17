@@ -21,7 +21,7 @@
     <string name="race">Race</string>
     <string name="race_example" translatable="false">Limusin</string>
     <string name="farm_example" translatable="false">2342342342</string>
-    <string name="animal_example" translatable="false">5858588998</string>
+    <string name="animal_example" translatable="false">ES255858588998</string>
     <string name="record">Record</string>
     <string name="back">back</string>
     <string name="list">list</string>
@@ -162,15 +162,23 @@
         <item>Section 4</item>
         <item>Section 5</item>
     </string-array>
-    <string-array name="incidences">
-        <item>Birth</item>
+    <string-array name="incidencesSimple">
+    <item>Birth</item>
+    <item>Treatment</item>
+    <item>Pregnancy Monitoring</item>
+    <item>Weighing</item>
+    <item>Exit</item>
+    <item>Scheduled</item>
+    </string-array>
+
+    <string-array name="incidencesMultiple">
         <item>Treatment</item>
         <item>Pregnancy Monitoring</item>
         <item>Weighing</item>
-        <item>Scheduled</item>
         <item>Exit</item>
-
+        <item>Scheduled</item>
     </string-array>
+
     <string-array name="incidences_example">
         <item>95597533343</item>
         <item>95597553222</item>
@@ -193,6 +201,9 @@
     <string name="topic" translatable="false">all</string>
     <string name="cache_memory">Erasing cache memory…</string>
     <string name="all_farms">All farms</string>
+    <string name="all_animals">All animals</string>
+    <string name="only_alive">Presents</string>
+    <string name="of">of</string>
     <string name="clear_selection">Clear selection</string>
     <string name="farm_name">Farm name</string>
     <string name="counter_prefix">Counter Prefix</string>

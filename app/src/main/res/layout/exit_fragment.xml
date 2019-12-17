@@ -44,7 +44,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/tipo"
+                    android:id="@+id/tv_DischargeType"
                     android:textSize="20dp"
                     android:textColor="@android:color/background_dark"
                     android:layout_width="wrap_content"
@@ -53,12 +53,12 @@
 
                 <Spinner
                     android:layout_marginTop="5dp"
-                    android:id="@+id/exitType"
+                    android:id="@+id/sp_dischargeType"
                     android:background="@drawable/spinner_bg"
-                    android:layout_below="@+id/tipo"
+                    android:layout_below="@+id/tv_DischargeType"
                     android:entries="@array/exitType"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"/>
+                    android:layout_height="35dp"/>
 
             </RelativeLayout>
 
@@ -81,19 +81,19 @@
 
                 <TextView
                     android:textColor="@android:color/background_dark"
-                    android:id="@+id/exitDestinationText"
+                    android:id="@+id/tv_DischargeDestination"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
                     android:text="@string/Destino"/>
 
                 <EditText
-                    android:id="@+id/exitDestinationEdit"
+                    android:id="@+id/ed_DischargeDestination"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:paddingStart="5dp"
                     android:background="@drawable/round_corner"
-                    android:layout_below="@+id/exitDestinationText"
+                    android:layout_below="@+id/tv_DischargeDestination"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:hint="@string/Destino"/>
@@ -116,19 +116,19 @@
 
                 <TextView
                     android:textColor="@android:color/background_dark"
-                    android:id="@+id/exitCertificadoText"
+                    android:id="@+id/tv_DischargeCretificate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
                     android:text="@string/guia_certificado"/>
 
                 <EditText
-                    android:id="@+id/exitCertificadoEdit"
+                    android:id="@+id/ed_DischargeCertificate"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:paddingStart="5dp"
                     android:background="@drawable/round_corner"
-                    android:layout_below="@+id/exitCertificadoText"
+                    android:layout_below="@+id/tv_DischargeCretificate"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:hint="@string/guia_certificado"/>
@@ -137,13 +137,49 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_below="@id/certificadolinear"
+            android:id="@+id/observationlinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/certificadolinear"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:textColor="@android:color/background_dark"
+                    android:id="@+id/tv_DischargeObs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="@string/observations"/>
+
+                <EditText
+                    android:id="@+id/ed_DischargeObs"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingStart="5dp"
+                    android:background="@drawable/round_corner"
+                    android:layout_below="@+id/tv_DischargeObs"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:hint="@string/observations"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@id/observationlinear"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
             android:gravity="center"
-            android:paddingTop="30dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <Button
-                android:id="@+id/inregistercow"
+                android:id="@+id/unregistercow"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
                 android:text="@string/unregister_cow"

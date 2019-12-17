@@ -27,7 +27,8 @@ public class SeachAnimalsActivity extends AppCompatActivity {
     private SearchView searchView;
     private ListView resultListView;
     private SearchAnimalsAdapter searchAnimalsAdapter;
-    private SwitchCompat filterSwitch;
+    private SwitchCompat filterSwitchFarms;
+    private SwitchCompat filterSwitchAlive;
     private TextView filterText;
     private Farm farm;
 
@@ -39,21 +40,42 @@ public class SeachAnimalsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         farm = SessionData.getInstance().getActualFarm();
         registerViews();
-
-        filterSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        updateTextAnimalsFilter();
+        filterSwitchFarms.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 searchAnimalsAdapter.setAllFarms(isChecked);
                 searchAnimalsAdapter.updateList();
-                if(isChecked){
-                    filterText.setText(getString(R.string.all_farms));
-                }else{
-                    filterText.setText(getString(R.string.farm)+": " + farm.getOfficialId());
-                }
+                updateTextAnimalsFilter();
+            }
+        });
+        filterSwitchAlive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                searchAnimalsAdapter.setAllAnimals(isChecked);
+                searchAnimalsAdapter.updateList();
+                updateTextAnimalsFilter();
             }
         });
 
         prepareDataAdapter();
+    }
+
+    public void updateTextAnimalsFilter() {
+
+        boolean allFarms = filterSwitchFarms.isChecked();
+        boolean allAnimals = filterSwitchAlive.isChecked();
+        if(allFarms && allAnimals){
+            filterText.setText(getString(R.string.all_animals));
+        }else{
+            StringBuilder sb = new StringBuilder();
+            if (allAnimals) sb.append(getString(R.string.all_animals));
+            else sb.append(getString(R.string.only_alive));
+            sb.append(" ").append(getString(R.string.of)).append(" ");
+            if (allFarms) sb.append(getString(R.string.all_farms));
+            else sb.append(getString(R.string.farm)+": " + farm.getOfficialId());
+            filterText.setText(sb.toString());
+        }
     }
 
     @Override
@@ -117,7 +139,7 @@ public class SeachAnimalsActivity extends AppCompatActivity {
 
     private void prepareDataAdapter() {
         searchAnimalsAdapter = new SearchAnimalsAdapter(SeachAnimalsActivity.this, farm.getUuid());
-        searchAnimalsAdapter.setAllFarms(filterSwitch.isChecked());
+        searchAnimalsAdapter.setAllFarms(filterSwitchFarms.isChecked());
         resultListView.setAdapter(searchAnimalsAdapter);
     }
 
@@ -127,7 +149,8 @@ public class SeachAnimalsActivity extends AppCompatActivity {
 
     private void registerViews() {
         resultListView = findViewById(R.id.result_list);
-        filterSwitch = findViewById(R.id.filterSwitch);
+        filterSwitchFarms = findViewById(R.id.filterSwitchFarms);
+        filterSwitchAlive = findViewById(R.id.filterSwitchAlive);
         filterText = findViewById(R.id.filterText);
 
     }

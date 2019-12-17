@@ -7,4 +7,6 @@
 <color name="colorSecondary">#dadfff</color>
 <color name="colorText">#FFFFFF</color>
 <color name="colorTextHint">#51d8c7</color>
+<color name="grey">#dddddd</color>
+<color name="white">#ffffff</color>
 </resources>

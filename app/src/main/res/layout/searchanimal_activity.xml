@@ -13,7 +13,12 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/filterSwitch"
+            android:id="@+id/filterSwitchFarms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/filterSwitchAlive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

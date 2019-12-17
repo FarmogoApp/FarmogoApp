@@ -12,21 +12,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
+import com.example.farmogoapp.model.AnimalType;
 import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static android.graphics.Typeface.BOLD;
 
-public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickListener{
+public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickListener {
 
     private Activity activity;
     private List<Animal> animalList;
@@ -34,6 +37,8 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
     private List<Animal> animalListVisible;
     private String farmId;
     private boolean allFarms;
+    private boolean allAnimals;
+
 
     public SearchAnimalsAdapter(Activity activity, String farmId) {
         this.activity = activity;
@@ -42,19 +47,22 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
         this.farmId = farmId;
     }
 
-    public void updateAnimals(){
+    public void updateAnimals() {
         this.animalList = SessionData.getInstance().getAnimals();
         updateList();
     }
 
-    public void updateList(){
-        if (allFarms) {
-            this.animalListAvailable = animalList;
-        }else{
-            this.animalListAvailable = animalList.stream()
-                    .filter(a -> farmId.equals(a.getFarmId()))
-                    .collect(Collectors.toList());
+    public void updateList() {
+        Stream<Animal> stream = animalList.stream();
+
+        if (!allAnimals) {
+            stream = stream.filter(a -> a.getDischargeDate() == null);
         }
+        if (!allFarms) {
+            stream = stream.filter(a -> farmId.equals(a.getFarmId()));
+        }
+
+        this.animalListAvailable = stream.collect(Collectors.toList());
         this.animalListVisible = this.animalListAvailable;
 
         this.notifyDataSetChanged();
@@ -66,6 +74,10 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
 
     public void setAllFarms(boolean allFarms) {
         this.allFarms = allFarms;
+    }
+
+    public void setAllAnimals(boolean isChecked) {
+        this.allAnimals = isChecked;
     }
 
     @Override
@@ -101,19 +113,19 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
 
         final ImageButton button = v.findViewById(R.id.animal_list_button);
 
-        if (animal.isSelected()){
+        if (animal.isSelected()) {
         }
 
-        button.setImageResource( animal.isSelected()? android.R.drawable.ic_menu_delete : android.R.drawable.ic_menu_add );
+        button.setImageResource(animal.isSelected() ? android.R.drawable.ic_menu_delete : android.R.drawable.ic_menu_add);
 
 
         button.setOnClickListener(buttonView -> {
-            if (animal.isSelected()){
+            if (animal.isSelected()) {
                 SessionData.getInstance().removeAnimalFromCart(animal.getUuid());
                 animal.setSelected(false);
                 button.setImageResource(android.R.drawable.ic_menu_add);
                 row.setBackgroundColor(activity.getColor(R.color.colorText));
-            }else{
+            } else {
                 SessionData.getInstance().addAnimalToCart(animal.getUuid());
                 animal.setSelected(true);
                 button.setImageResource(android.R.drawable.ic_menu_delete);
@@ -121,6 +133,27 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
             }
 
         });
+
+        Optional<AnimalType> animalType = SessionData.getInstance().getAnimalType(animal.getAnimalTypeId());
+
+        ImageView image = v.findViewById(R.id.animal_list_image);
+        switch (animalType.get().getDescription()) {
+            case "Cow":
+                image.setImageResource(R.drawable.cow);
+                break;
+            case "Bull":
+                image.setImageResource(R.drawable.bull);
+                break;
+            case "Calf":
+                image.setImageResource(R.drawable.calf);
+                break;
+        }
+
+        if (animal.getDischargeDate() == null) {
+            v.setBackgroundColor(v.getResources().getColor(R.color.white));
+        }else{
+            v.setBackgroundColor(v.getResources().getColor(R.color.grey));
+        }
 
 
 
@@ -161,4 +194,6 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
         intent.putExtra("animalId", (String) v.getTag());
         activity.startActivity(intent);
     }
+
+
 }

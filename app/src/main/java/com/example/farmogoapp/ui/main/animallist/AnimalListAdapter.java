@@ -17,9 +17,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
+import com.example.farmogoapp.model.AnimalType;
+import com.example.farmogoapp.model.Farm;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static android.graphics.Typeface.BOLD;
 
@@ -86,7 +91,42 @@ public class AnimalListAdapter extends RecyclerView.Adapter<AnimalListAdapter.My
                         spannableString.length(),
                         Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 
+
+        List<Animal> animals = SessionData.getInstance().getAnimals();
+        Farm actualFarm = SessionData.getInstance().getActualFarm();
+        Map<String, Long> collect = animals.stream()
+                .filter( animall -> actualFarm.getUuid().equals(animall.getFarmId()))
+                .collect(Collectors.groupingBy(Animal::getAnimalTypeId, Collectors.counting()));
+        collect.forEach((k,v) ->{
+            Optional<AnimalType> type = SessionData.getInstance().getAnimalType(k);
+            if(type.isPresent()) {
+                //ImageView imageView = new ImageView(FarmStatsActivity.this);
+
+                switch (type.get().getDescription()){
+                    case "Cow":
+                        viewHolder.animalImage.setImageResource(R.drawable.cow);
+                        break;
+                    case "Bull":
+                        viewHolder.animalImage.setImageResource(R.drawable.bull);
+                        break;
+                    case "Calf":
+                        viewHolder.animalImage.setImageResource(R.drawable.calf);
+                        break;
+                }
+
+
+            }
+
+        });
+        if (animal.getDischargeDate() == null) {
+            viewHolder.itemView.setBackgroundColor(viewHolder.itemView.getResources().getColor(R.color.white));
+        }else{
+            viewHolder.itemView.setBackgroundColor(viewHolder.itemView.getResources().getColor(R.color.grey));
+        }
+
+
         viewHolder.nameTextView.setText(spannableString);
+
 
         viewHolder.removeButton.setOnClickListener(v -> {
             animalsList.remove(animal);

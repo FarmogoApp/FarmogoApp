@@ -50,15 +50,24 @@
     <string name="mother">Mare</string>
     <string name="farm">Explotació</string>
     <string name="register_animal">Registrar animal</string>
-    <string-array name="incidences">
+    <string-array name="incidencesSimple">
         <item>Naixement</item>
         <item>Tractament</item>
         <item>Seguiment embaràs</item>
         <item>Pesatge</item>
-        <item>Programat</item>
         <item>Sortida</item>
-
+        <item>Programat</item>
     </string-array>
+
+    <string-array name="incidencesMultiple">
+        <item>Tractament</item>
+        <item>Seguiment embaràs</item>
+        <item>Pesatge</item>
+        <item>Sortida</item>
+        <item>Programat</item>
+    </string-array>
+
+
     <string-array name="pregnancy_state">
         <item>Zel</item>
         <item>Parada</item>
@@ -162,4 +171,7 @@
     <string name="clear_selection">Netejar selecció</string>
     <string name="animaltypes_updated">Tipus d\'animals actualitzats</string>
     <string name="races_updated">Races actualitzades</string>
+    <string name="all_animals">Tots els animals</string>
+    <string name="of">de</string>
+    <string name="only_alive">Presents</string>
 </resources>
