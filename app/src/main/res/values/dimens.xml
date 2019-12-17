@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="farm_stats_chart_height">400dp</dimen>
-    <dimen name="farm_stats_label_width">200dp</dimen>
+    <dimen name="farm_stats_label_width">120dp</dimen>
     <dimen name="farm_stats_label_font_width">22sp</dimen>
     <dimen name="farm_stats_value_font_width">22sp</dimen>
     <dimen name="animal_info_button_size">35dp</dimen>
-    <dimen name="animal_info_label_width">140dp</dimen>
+    <dimen name="animal_info_label_width">120dp</dimen>
     <dimen name="margin_recycler_bottom">10dp</dimen>
     <dimen name="edit_width">36dp</dimen>
     <dimen name="edit_height">32dp</dimen>

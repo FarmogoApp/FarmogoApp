@@ -55,6 +55,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
     private Switch nfcSwitch;
     private NfcAdapter nfcAdapter;
     private Animal animal;
+    private Farm farm;
 
 
     @Override
@@ -167,6 +168,32 @@ public class AnimalInfoActivity extends AppCompatActivity {
         }
     }
 
+    private void loadFarmData(String farmId) {
+        Call<Farm> farmCall = FarmogoApiJacksonAdapter.getApiService().getFarm(farmId);
+
+        farmCall.enqueue(new Callback<Farm>() {
+            @Override
+            public void onResponse(Call<Farm> call, Response<Farm> response) {
+                Farm data = response.body();
+
+                if(data != null){
+                    updateFarm(data);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Farm> call, Throwable t) {
+                t.printStackTrace();
+                Log.e("AnimalInfoActivity","farm error" );
+            }
+        });
+    }
+
+    private void updateFarm(Farm data) {
+        this.farm = data;
+        TextView farmtv = findViewById(R.id.farmNumber_exemple);
+        farmtv.setText(this.farm.getOfficialId());
+    }
 
     private void loadAnimalDataFromNfc(Intent intent) {
         loadAnimalData(intent.getData().getPathSegments().get(0));
@@ -181,7 +208,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
         TextView officialId = findViewById(R.id.id_example);
         TextView sex = findViewById(R.id.genere_example);
         TextView race = findViewById(R.id.raza_exemple);
-        TextView farm = findViewById(R.id.farmNumber_exemple);
+
         TextView mother = findViewById(R.id.mother_exemple);
         officialId.setText(animal.getOfficialId());
 
@@ -190,10 +217,9 @@ public class AnimalInfoActivity extends AppCompatActivity {
 
         SessionData instance = SessionData.getInstance();
         Optional<Race> race1 = instance.getRace(animal.getRaceId());
-        Optional<Farm> farm1 = instance.getFarm(animal.getRaceId());
+        loadFarmData(this.animal.getFarmId());
 
         race.setText(race1.orElse(new Race()).getName());
-        farm.setText(farm1.orElse(new Farm()).getOfficialId());
         mother.setText(animal.getMotherOfficialId());
         btnAddRemove.setImageResource( animal.isSelected()? android.R.drawable.ic_menu_delete : android.R.drawable.ic_menu_add );
 
@@ -226,8 +252,15 @@ public class AnimalInfoActivity extends AppCompatActivity {
         btnIncidences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(AnimalInfoActivity.this, AnimalIncidence.class);
+                intent.putExtra("incidenceType", (Integer) 1);
+                intent.putExtra("animalId", (String) animal.getUuid());
+                intent.putExtra("animalOfficialId", (String) animal.getOfficialId());
+                intent.putExtra("farmId", (String) animal.getFarmId());
+                intent.putExtra("farmAnimalCounter", (String) farm.getAnimalCounter().toString());
                 startActivity(intent);
+                finish();
             }
         });
     }

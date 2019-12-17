@@ -2,143 +2,297 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_margin="20sp"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tag"
-            android:layout_width="match_parent"
+            android:id="@+id/titleRegister"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/nfc_ear_tag"
-            android:textColor="@android:color/background_dark"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="REGISTER COW"
+            android:textColor="@color/colorPrimary"
             android:textSize="20sp" />
 
-        <!-- TODO: Link NFC to animal -->
-        <Button
-            android:id="@+id/buttonScan"
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_below="@id/titleRegister"
+            android:id="@+id/linearr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:textColor="@android:color/background_dark"
+                    android:id="@+id/officialID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="@string/official_id"/>
+
+                <EditText
+                    android:id="@+id/etOfficialId"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingStart="5dp"
+                    android:background="@drawable/round_corner"
+                    android:layout_below="@+id/officialID"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:hint="@string/official_id"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:id="@+id/linear3"
+            android:layout_below="@id/linearr"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/sex"
+                    android:textSize="20dp"
+                    android:textColor="@android:color/background_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sex"/>
+
+                <Spinner
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/spnSex"
+                    android:background="@drawable/spinner_bg"
+                    android:layout_below="@+id/sex"
+                    android:entries="@array/sexs"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/motherID"
+                    android:textSize="20dp"
+                    android:textColor="@android:color/background_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mother_id"/>
+
+                <EditText
+                    android:id="@+id/edMotherId"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingStart="5dp"
+                    android:background="@drawable/round_corner"
+                    android:layout_below="@+id/motherID"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:hint="@string/mother_id" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Scan NFC (?)" />
+            android:id="@+id/origen"
+            android:layout_below="@id/linear3">
 
-        <TextView
-            android:id="@+id/officialID"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/origin"
+                    android:textSize="20dp"
+                    android:textColor="@android:color/background_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/origin"/>
+
+                <EditText
+                    android:id="@+id/etOrigin"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingStart="5dp"
+                    android:background="@drawable/round_corner"
+                    android:layout_below="@+id/origin"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:hint="@string/origin" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:id="@+id/linear6"
+            android:layout_below="@id/origen"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/animalType"
+                    android:textSize="20dp"
+                    android:textColor="@android:color/background_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/animal_type"/>
+
+                <Spinner
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/spnAnimalType"
+                    android:background="@drawable/spinner_bg"
+                    android:layout_below="@+id/animalType"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/race"
+                    android:textSize="20dp"
+                    android:textColor="@android:color/background_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/race"/>
+
+                <Spinner
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/spnRace"
+                    android:background="@drawable/spinner_bg"
+                    android:layout_below="@+id/race"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/official_id"
-            android:textColor="@android:color/background_dark"
-            android:textSize="20sp" />
+            android:id="@+id/linear5"
+            android:layout_below="@id/linear6">
 
-        <EditText
-            android:id="@+id/etOfficialId"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/location"
+                    android:textSize="20dp"
+                    android:textColor="@android:color/background_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/location"/>
+
+                <Spinner
+                    android:layout_below="@+id/location"
+                    android:padding="5dp"
+                    android:id="@+id/spnLocation"
+                    android:background="@drawable/spinner_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:id="@+id/linear8"
+            android:layout_below="@id/linear5">
 
-        <TextView
-            android:id="@+id/motherID"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/birthDate"
+                    android:textSize="20dp"
+                    android:textColor="@android:color/background_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/birth_date"/>
+
+                <EditText
+                    android:background="@drawable/spinner_bg"
+                    android:padding="5dp"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:id="@+id/clvBirthDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/birthDate"
+                    android:ems="10"
+                    android:inputType="date" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/mother_id"
-            android:textColor="@android:color/background_dark"
-            android:textSize="20sp" />
+            android:layout_below="@id/linear8">
 
-        <Spinner
-            android:id="@+id/spnMotherId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/register_animal"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:background="@drawable/round_shape"
+                android:layout_margin="5dp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </RelativeLayout>
 
-        <TextView
-            android:id="@+id/birthDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/birth_date"
-            android:textColor="@android:color/background_dark"
-            android:textSize="20sp" />
 
-        <CalendarView
-            android:id="@+id/clvBirthDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/origin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/origin"
-            android:textColor="@android:color/background_dark"
-            android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/etOrigin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:id="@+id/sex"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/sex"
-            android:textColor="@android:color/background_dark"
-            android:textSize="20sp" />
-
-        <Spinner
-            android:id="@+id/spnSex"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/sexs"/>
-
-        <TextView
-            android:id="@+id/animalType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/animal_type"
-            android:textColor="@android:color/background_dark"
-            android:textSize="20sp" />
-
-        <Spinner
-            android:id="@+id/spnAnimalType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/race"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/race"
-            android:textColor="@android:color/background_dark"
-            android:textSize="20sp" />
-
-        <Spinner
-            android:id="@+id/spnRace"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/location"
-            android:textColor="@android:color/background_dark"
-            android:textSize="20sp" />
-
-        <Spinner
-            android:id="@+id/spnLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/register_animal" />
-
-    </LinearLayout>
 </ScrollView>

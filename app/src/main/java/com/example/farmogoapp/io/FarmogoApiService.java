@@ -27,8 +27,14 @@ public interface FarmogoApiService {
     @GET("farms")
     Call<ArrayList<Farm>> getFarms();
 
+    @GET("farms/{id}")
+    Call<Farm> getFarm(@Path("id") String idFarm);
+
     @POST("users")
     Call<User> createUser(@Body User user);
+
+    @POST("incidences")
+    Call<Incidence> createIncidence(@Body Incidence incidence);
 
     @GET("incidences")
     Call<ArrayList<Incidence>> getIncidences();

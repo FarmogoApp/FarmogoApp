@@ -225,6 +225,7 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
 
             @Override
             public void visit(IncidenceBirth obj) {
+
                 TextView incidence_birth_animal_id = viewHolder.incidence_birth_animal_id;
                 Optional<Animal> oficialId = SessionData.getInstance().getAnimal(obj.getAnimalId());
                 if(oficialId.isPresent()) {

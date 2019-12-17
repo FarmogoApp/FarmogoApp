@@ -60,14 +60,23 @@
     <string name="mother">Madre</string>
     <string name="farm">Explotación</string>
     <string name="register_animal">Registrar animal</string>
-    <string-array name="incidences">
+    <string-array name="incidencesSimple">
         <item>Nacimiento</item>
         <item>Tratamiento</item>
         <item>Seguimiento embarazo</item>
         <item>Pesaje</item>
-        <item>Programado</item>
         <item>Salida</item>
+        <item>Programado</item>
     </string-array>
+    <string-array name="incidencesMultiple">
+        <item>Tratamiento</item>
+        <item>Seguimiento embarazo</item>
+        <item>Pesaje</item>
+        <item>Salida</item>
+        <item>Programado</item>
+    </string-array>
+
+
     <string-array name="pregnancy_state">
         <item>Celo</item>
         <item>Parada</item>

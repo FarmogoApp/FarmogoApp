@@ -94,25 +94,40 @@
 
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="15dp"
         android:id="@+id/linear5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/linear4">
-        <TextView
-            android:textColor="@android:color/background_dark"
-            android:id="@+id/dosis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/dose"/>
-        <EditText
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ed_dosis"
-            android:layout_marginStart="15dp"/>
+            android:layout_height="match_parent">
+
+            <TextView
+                android:textColor="@android:color/background_dark"
+                android:id="@+id/dosis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="@string/dose"/>
+
+            <EditText
+                android:id="@+id/ed_dosis"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingStart="5dp"
+                android:clickable="true"
+                android:focusable="false"
+                android:background="@drawable/round_corner"
+                android:layout_below="@+id/dosis"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:hint="@string/dose"/>
+        </RelativeLayout>
+
 
     </LinearLayout>
 
@@ -124,44 +139,67 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/linear5">
-        <TextView
-            android:textColor="@android:color/background_dark"
-            android:id="@+id/obs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/observations"
-            />
-        <EditText
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ed_obs"
-            android:layout_marginStart="15dp"/>
+            android:layout_height="match_parent">
+
+            <TextView
+                android:textColor="@android:color/background_dark"
+                android:id="@+id/obs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="@string/observations"/>
+
+            <EditText
+                android:id="@+id/ed_obs"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingStart="5dp"
+                android:background="@drawable/round_corner"
+                android:layout_below="@+id/obs"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:hint="@string/observations"/>
+        </RelativeLayout>
+
 
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="15dp"
         android:id="@+id/linear7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/linear6">
-        <TextView
-            android:textColor="@android:color/background_dark"
-            android:id="@+id/txt_scheduled"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/scheduled_for"
-            />
-        <EditText
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ed_scheduled"
-            android:clickable="true"
-            android:focusable="false"
-            android:layout_marginStart="15dp"/>
+            android:layout_height="match_parent">
+
+            <TextView
+                android:textColor="@android:color/background_dark"
+                android:id="@+id/txt_scheduled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="@string/scheduled_for"/>
+
+            <EditText
+                android:id="@+id/ed_scheduled"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingStart="5dp"
+                android:background="@drawable/round_corner"
+                android:layout_below="@+id/txt_scheduled"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:hint="@string/scheduled_for"/>
+        </RelativeLayout>
+
+
+
 
 
     </LinearLayout>

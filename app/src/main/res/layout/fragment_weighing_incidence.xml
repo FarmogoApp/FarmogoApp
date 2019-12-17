@@ -44,15 +44,15 @@
                 android:text="@string/weight"/>
 
             <EditText
-                android:id="@+id/ed_pesaje"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:paddingStart="5dp"
-                android:background="@drawable/round_corner"
-                android:layout_below="@+id/txt_pesaje"
+                android:id="@+id/ed_WheinghingPesaje"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:hint="@string/weight"/>
+                android:layout_below="@+id/txt_pesaje"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/round_corner"
+                android:hint="@string/weight"
+                android:paddingStart="5dp" />
         </RelativeLayout>
 
     </LinearLayout>
@@ -77,7 +77,7 @@
                 android:text="@string/observations"/>
 
             <EditText
-                android:id="@+id/ed_obs"
+                android:id="@+id/ed_WheinghingObs"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:paddingStart="5dp"
@@ -98,15 +98,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/linear4">
+
         <Button
-            android:id="@+id/save"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:text="@string/save"
+            android:id="@+id/saveWheinghing"
             android:layout_width="150dp"
             android:layout_height="35dp"
-            android:background="@drawable/round_shape"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
             android:layout_margin="5dp"
+            android:background="@drawable/round_shape"
+            android:text="@string/save"
             android:textColor="@android:color/white" />
     </LinearLayout>
 
