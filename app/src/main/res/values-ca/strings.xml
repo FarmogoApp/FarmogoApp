@@ -162,4 +162,7 @@
     <string name="clear_selection">Netejar selecció</string>
     <string name="animaltypes_updated">Tipus d\'animals actualitzats</string>
     <string name="races_updated">Races actualitzades</string>
+    <string name="all_animals">Tots els animals</string>
+    <string name="of">de</string>
+    <string name="only_alive">Presents</string>
 </resources>

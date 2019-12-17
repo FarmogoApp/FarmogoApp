@@ -159,4 +159,7 @@
     <string name="animaltypes_updated">Tipo de animales actualizados</string>
     <string name="clear_selection">Limpiar selección</string>
     <string name="races_updated">Razas actualizadas</string>
+    <string name="all_animals">Todos los animales</string>
+    <string name="of">de</string>
+    <string name="only_alive">Presentes</string>
 </resources>
