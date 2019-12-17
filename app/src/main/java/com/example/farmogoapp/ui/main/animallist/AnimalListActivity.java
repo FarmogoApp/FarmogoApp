@@ -39,9 +39,9 @@ public class AnimalListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerview_list);
         recyclerView.setHasFixedSize(true);
         prepareDataAdapter();
-        Log.e("AnimalListActivity",SessionData.getInstance().getAnimalCardObj().get(0).getUuid() );
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        loadFarmData(SessionData.getInstance().getAnimalCardObj().get(0).getUuid());
+        //Log.e("AnimalListActivity",SessionData.getInstance().getAnimalCardObj().get(0).getUuid() );
+        //loadFarmData(SessionData.getInstance().getAnimalCardObj().get(0).getUuid());
         registerListeners();
     }
 
