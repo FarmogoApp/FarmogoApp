@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.io.DataUpdater;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
@@ -161,9 +162,14 @@ public class RegisterCowActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
-                    Intent intent = new Intent(RegisterCowActivity.this, FarmStatsActivity.class);
-                    startActivity(intent);
 
+                    DataUpdater updater = new DataUpdater();
+                    updater.updateAnimals(()->{
+                        Intent intent = new Intent(RegisterCowActivity.this, FarmStatsActivity.class);
+                        startActivity(intent);
+                        finish();
+                    });
+                    
                 } else {
                     Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
                     toast.show();
