@@ -171,4 +171,5 @@
     <string name="all_animals">Todos los animales</string>
     <string name="of">de</string>
     <string name="only_alive">Presentes</string>
+    <string name="Discharge_error_response">No es posible añadir una nueva incidencia a un animal de baja</string>
 </resources>

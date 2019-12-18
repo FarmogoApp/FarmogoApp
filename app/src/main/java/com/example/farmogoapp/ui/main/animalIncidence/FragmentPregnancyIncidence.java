@@ -152,6 +152,7 @@ public class FragmentPregnancyIncidence extends Fragment {
                 if(response.isSuccessful()) {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
+                    Toast.makeText(getView().getContext(),getActivity().getString(R.string.incidence_saved),Toast.LENGTH_SHORT).show();
 
                     if (incidenceType == 1) {
                         Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
@@ -165,8 +166,17 @@ public class FragmentPregnancyIncidence extends Fragment {
                     }
 
                 } else {
-                    Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
-                    toast.show();
+                    if (response.code() == 406){
+                        Toast toast = Toast.makeText(getContext(), getString(R.string.Discharge_error_response), Toast.LENGTH_LONG);
+                        toast.show();
+                        /*Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
+                        intent.putExtra("animalId", (String) incidenceBirth.getAnimalId());//animal info del nuevo animal
+                        startActivity(intent);
+                        getActivity().finish();*/
+                    }else {
+                        Toast toast = Toast.makeText(getContext(), getString(R.string.registration_failed), Toast.LENGTH_LONG);
+                        toast.show();
+                    }
                 }
             }
 

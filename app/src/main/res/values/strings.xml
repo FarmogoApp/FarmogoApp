@@ -214,5 +214,6 @@
     <string name="division">Division</string>
     <string name="races_updated">Races Updated</string>
     <string name="animaltypes_updated">Animal Types updated</string>
+    <string name="Discharge_error_response">It is not possible to add a new incident to a discharge animal</string>
 </resources>
 
