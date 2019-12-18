@@ -207,11 +207,13 @@ public class FarmStatsActivity extends AppCompatActivity {
                     int index = SessionData.getInstance().getFarms().indexOf(SessionData.getInstance().getActualFarm());
                     spinner.setSelection(index);
 
-                    if (SessionData.getInstance().getActualFarm() == null) {
+                    if (SessionData.getInstance().getActualFarm() == null && SessionData.getInstance().getFarms()!=null && !SessionData.getInstance().getFarms().isEmpty()) {
                         SessionData.getInstance().setActualFarm(SessionData.getInstance().getFarms().get(0));
-                    }
-                    loadHistoric(SessionData.getInstance().getActualFarm().getUuid());
 
+                    }
+                    if (SessionData.getInstance().getActualFarm() != null ) {
+                        loadHistoric(SessionData.getInstance().getActualFarm().getUuid());
+                    }
                 }
             }
 
