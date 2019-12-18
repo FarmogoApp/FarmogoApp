@@ -151,23 +151,4 @@ public class DataUpdater {
             }
         });
     }
-
-    public void updateAnimalsJose() {
-        FarmogoApiJacksonAdapter.getApiService().getAllAnimals().enqueue(new Callback<List<Animal>>() {
-            @Override
-            public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
-                if (response.isSuccessful()) {
-                    SessionData.getInstance().setAnimals(response.body());
-                } else {
-                    // TODO: ?????
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<List<Animal>> call, Throwable t) {
-                // TODO: ?????
-            }
-        });
-    }
 }
