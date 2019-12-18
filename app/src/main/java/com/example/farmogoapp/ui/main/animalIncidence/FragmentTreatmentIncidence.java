@@ -120,14 +120,6 @@ public class FragmentTreatmentIncidence extends Fragment {
             return;
         }
 
-        /*  IncidenceTreatment incidenceTreatment = new IncidenceTreatment();
-            incidenceTreatment.setTreatmentType(TreatmentType.Vaccine);
-            incidenceTreatment.setMedicine("tetanus");
-            incidenceTreatment.setDose("100mg");
-            incidenceTreatment.setCreatedBy(user.getUuid());
-            incidenceTreatment.setAnimalId(animalA.getUuid());
-            incidenceTreatment.setFarmId(farmA.getUuid());*/
-
         TreatmentType treatmentType = (TreatmentType) spTreatmentType.getSelectedItem();
         IncidenceTreatment incidenceTreatment = new IncidenceTreatment();
 
@@ -171,13 +163,13 @@ public class FragmentTreatmentIncidence extends Fragment {
     public boolean checkFields(){
 
         if (eTTreatmentMedicine.getText().toString().isEmpty()) {
-            eTTreatmentMedicine.setError("Camp obligatori");
+            eTTreatmentMedicine.setError("Mandatory field");
             return false;
-        }
+        }/*incomplete incidence
         if (eTTreatmentDose.getText().toString().isEmpty()) {
-            eTTreatmentDose.setError("Camp obligatori");
+            eTTreatmentDose.setError("Mandatory field");
             return false;
-        }
+        }*/
         return true;
     }
 

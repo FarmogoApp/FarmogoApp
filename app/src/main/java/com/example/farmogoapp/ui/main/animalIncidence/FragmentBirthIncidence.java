@@ -98,17 +98,6 @@ public class FragmentBirthIncidence extends Fragment{
             return;
         }
 
-        /*parametros que seteamos en el test del back
-        IncidenceBirth birth = new IncidenceBirth();
-            birth.setBirthDate(LocalDate.of(2019, 11, 27));
-            birth.setRaceId(raceE.getUuid());
-            birth.setCreatedBy(user.getUuid());
-            birth.setOfficialId(farm.getAnimalCounter().toString());
-            birth.setSex("Male");
-            birth.setFarmId(farmA.getUuid());
-            birth.setAnimalId(animalA.getUuid());
-
-        */
         String dates = date.getText().toString();
         String[] parts = dates.split("/");
         int day = Integer.valueOf(parts[0]); // day
@@ -168,12 +157,12 @@ public class FragmentBirthIncidence extends Fragment{
     public boolean checkFields(){
 
         if (eTofficialId.getText().toString().isEmpty()) {
-            eTofficialId.setError("Camp obligatori");
+            eTofficialId.setError("Mandatory field");
             return false;
         }
 
         if (date.getText().toString().isEmpty()) {
-            date.setError("Camp obligatori");
+            date.setError("Mandatory field");
             return false;
         }
         return true;

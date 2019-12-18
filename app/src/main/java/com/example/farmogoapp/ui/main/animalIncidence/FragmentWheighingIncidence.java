@@ -105,13 +105,6 @@ public class FragmentWheighingIncidence extends Fragment {
         if(!checkFields()){
             return;
         }
-        /*  IncidenceWeight incidence = new IncidenceWeight();
-            incidence.setDone(true);
-            incidence.setWeight(100);
-            incidence.setAnimalId(animalA.getUuid());
-            incidence.setCreatedBy(user.getUuid());
-            incidence.setFarmId(farmA.getUuid());
-            incidence.setDate(LocalDate.of(2018, 5, 1));*/
 
         /*String myFormat = "dd/MM/yyyy";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
@@ -131,7 +124,7 @@ public class FragmentWheighingIncidence extends Fragment {
     public boolean checkFields(){
 
         if (eTWheinghingPesaje.getText().toString().isEmpty()) {
-            eTWheinghingPesaje.setError("Camp obligatori");
+            eTWheinghingPesaje.setError("Mandatory field");
             return false;
         }
         return true;
@@ -142,17 +135,6 @@ public class FragmentWheighingIncidence extends Fragment {
             return;
         }
 
-        /*  IncidenceWeight incidence = new IncidenceWeight();
-            incidence.setDone(true);
-            incidence.setWeight(100);
-            incidence.setAnimalId(animalA.getUuid());
-            incidence.setCreatedBy(user.getUuid());
-            incidence.setFarmId(farmA.getUuid());
-            incidence.setDate(LocalDate.of(2018, 5, 1));*/
-
-        /*String myFormat = "dd/MM/yyyy";
-                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-                date.setText(sdf.format(calendar.getTime()));*/
         IncidenceWeight incidenceWeight = new IncidenceWeight();
         incidenceWeight.setDone(true);
         incidenceWeight.setWeight(Integer.valueOf(eTWheinghingPesaje.getText().toString()));

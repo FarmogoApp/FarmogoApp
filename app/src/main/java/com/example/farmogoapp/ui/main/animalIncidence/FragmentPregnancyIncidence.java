@@ -123,11 +123,6 @@ public class FragmentPregnancyIncidence extends Fragment {
 
     private void saveIncidenceMultiple() {
 
-    /*IncidencePregnancy incidencePregnancy = new IncidencePregnancy();
-            incidencePregnancy.setPregnancyType(PregnancyType.Zeal);
-            incidencePregnancy.setCreatedBy(user.getUuid());
-            incidencePregnancy.setFarmId(farm.getUuid());
-            incidencePregnancy.setAnimalId(animalB.getUuid());*/
         PregnancyType pregnancyType = (PregnancyType) spPregnancyType.getSelectedItem();
         IncidencePregnancy incidencePregnancy = new IncidencePregnancy();
 

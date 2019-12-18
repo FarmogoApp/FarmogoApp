@@ -90,15 +90,6 @@ public class ExitFragment extends Fragment {
             return;
         }
 
-        /*  IncidenceDischarge incidenceDischarge = new IncidenceDischarge();
-            incidenceDischarge.setHealthRegister("test register");
-            incidenceDischarge.setDischargeType(DischargeType.Slaughterhouse);
-            incidenceDischarge.setObservations("observations");
-            incidenceDischarge.setDone(false);
-            incidenceDischarge.setAnimalId(animalA.getUuid());
-            incidenceDischarge.setCreatedBy(user.getUuid());
-            incidenceDischarge.setFarmId(farmA.getUuid());*/
-
         DischargeType dischargeType = (DischargeType) spDischargeType.getSelectedItem();
         IncidenceDischarge incidenceDischarge = new IncidenceDischarge();
         incidenceDischarge.setHealthRegister(eTDischargeCertificate.getText().toString());
@@ -118,15 +109,6 @@ public class ExitFragment extends Fragment {
         if(!checkFields()){
             return;
         }
-
-        /*  IncidenceDischarge incidenceDischarge = new IncidenceDischarge();
-            incidenceDischarge.setHealthRegister("test register");
-            incidenceDischarge.setDischargeType(DischargeType.Slaughterhouse);
-            incidenceDischarge.setObservations("observations");
-            incidenceDischarge.setDone(false);
-            incidenceDischarge.setAnimalId(animalA.getUuid());
-            incidenceDischarge.setCreatedBy(user.getUuid());
-            incidenceDischarge.setFarmId(farmA.getUuid());*/
 
         DischargeType dischargeType = (DischargeType) spDischargeType.getSelectedItem();
         IncidenceDischarge incidenceDischarge = new IncidenceDischarge();
@@ -186,13 +168,14 @@ public class ExitFragment extends Fragment {
 
 
         if (eTDischargeDestination.getText().toString().isEmpty()) {
-            eTDischargeDestination.setError("Camp obligatori");
+            eTDischargeDestination.setError("Mandatory field");
             return false;
         }
+        /*incomplete incidence
         if (eTDischargeCertificate.getText().toString().isEmpty()) {
-            eTDischargeCertificate.setError("Camp obligatori");
+            eTDischargeCertificate.setError("Mandatory field");
             return false;
-        }
+        }*/
 
         return true;
     }
