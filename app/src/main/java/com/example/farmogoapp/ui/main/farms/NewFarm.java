@@ -124,5 +124,10 @@ public class NewFarm extends AppCompatActivity {
         txtCounter = findViewById(R.id.counterEdit);
         txtOfficialId = findViewById(R.id.officialFarmIdEdit);
     }
+    @Override
+    public boolean onSupportNavigateUp() {
+        this.finish();
+        return super.onSupportNavigateUp();
+    }
 }
 
