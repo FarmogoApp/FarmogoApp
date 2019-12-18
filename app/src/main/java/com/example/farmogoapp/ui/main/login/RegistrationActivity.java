@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
+import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.User;
 import com.example.farmogoapp.ui.main.farms.FarmStatsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -136,6 +137,8 @@ public class RegistrationActivity extends AppCompatActivity implements Callback<
     public void onResponse(Call<User> call, Response<User> response) {
         if(response.isSuccessful()){
             User user = response.body();
+
+            SessionData.getInstance().setActualUser(user);
 
             pd.setMessage("Creant usuari...");
             pd.show();
