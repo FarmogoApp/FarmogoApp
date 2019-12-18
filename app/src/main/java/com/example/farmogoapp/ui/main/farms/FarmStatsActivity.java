@@ -199,11 +199,13 @@ public class FarmStatsActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     ArrayList<Farm> farm = response.body();
                     ArrayAdapter farmAdapter = null;
-                    SessionData.getInstance().setFarms(farm);
+                    //SessionData.getInstance().setFarms(farm);
                     farmAdapter = new ArrayAdapter(FarmStatsActivity.this, R.layout.spinner, SessionData.getInstance().getFarms());
 
                     spinner = (Spinner) findViewById(R.id.spinnerstatistics);
                     spinner.setAdapter(farmAdapter);
+                    int index = SessionData.getInstance().getFarms().indexOf(SessionData.getInstance().getActualFarm());
+                    spinner.setSelection(index);
 
                     if (SessionData.getInstance().getActualFarm() == null) {
                         SessionData.getInstance().setActualFarm(SessionData.getInstance().getFarms().get(0));
@@ -247,4 +249,6 @@ public class FarmStatsActivity extends AppCompatActivity {
         super.onResume();
         loadFarms();
     }
+
+
 }
