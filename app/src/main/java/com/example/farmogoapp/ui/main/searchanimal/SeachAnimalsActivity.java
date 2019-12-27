@@ -7,26 +7,30 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.farmogoapp.R;
-import com.example.farmogoapp.model.Animal;
-import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
+import com.example.farmogoapp.io.SessionData;
+import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
-
-
-import java.util.ArrayList;
-import java.util.Random;
+import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 
 public class SeachAnimalsActivity extends AppCompatActivity {
 
     private SearchView searchView;
     private ListView resultListView;
     private SearchAnimalsAdapter searchAnimalsAdapter;
+    private SwitchCompat filterSwitchFarms;
+    private SwitchCompat filterSwitchAlive;
+    private TextView filterText;
+    private Farm farm;
 
 
     @Override
@@ -34,8 +38,44 @@ public class SeachAnimalsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.searchanimal_activity);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        farm = SessionData.getInstance().getActualFarm();
         registerViews();
+        updateTextAnimalsFilter();
+        filterSwitchFarms.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                searchAnimalsAdapter.setAllFarms(isChecked);
+                searchAnimalsAdapter.updateList();
+                updateTextAnimalsFilter();
+            }
+        });
+        filterSwitchAlive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                searchAnimalsAdapter.setAllAnimals(isChecked);
+                searchAnimalsAdapter.updateList();
+                updateTextAnimalsFilter();
+            }
+        });
+
         prepareDataAdapter();
+    }
+
+    public void updateTextAnimalsFilter() {
+
+        boolean allFarms = filterSwitchFarms.isChecked();
+        boolean allAnimals = filterSwitchAlive.isChecked();
+        if(allFarms && allAnimals){
+            filterText.setText(getString(R.string.all_animals));
+        }else{
+            StringBuilder sb = new StringBuilder();
+            if (allAnimals) sb.append(getString(R.string.all_animals));
+            else sb.append(getString(R.string.only_alive));
+            sb.append(" ").append(getString(R.string.of)).append(" ");
+            if (allFarms) sb.append(getString(R.string.all_farms));
+            else sb.append(getString(R.string.farm)+": " + farm.getOfficialId());
+            filterText.setText(sb.toString());
+        }
     }
 
     @Override
@@ -70,23 +110,17 @@ public class SeachAnimalsActivity extends AppCompatActivity {
         });
 
         MenuItem item = menu.findItem(R.id.register_animal);
-        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Intent intent = new Intent(SeachAnimalsActivity.this, RegisterCowActivity.class);
-                startActivity(intent);
-                return true;
-            }
+        item.setOnMenuItemClickListener(item12 -> {
+            Intent intent = new Intent(SeachAnimalsActivity.this, RegisterCowActivity.class);
+            startActivity(intent);
+            return true;
         });
 
         MenuItem list = menu.findItem(R.id.list_selected);
-        list.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Intent intent = new Intent(SeachAnimalsActivity.this, AnimalListActivity.class);
-                startActivity(intent);
-                return true;
-            }
+        list.setOnMenuItemClickListener(item1 -> {
+            Intent intent = new Intent(SeachAnimalsActivity.this, AnimalListActivity.class);
+            startActivity(intent);
+            return true;
         });
         return true;
     }
@@ -97,14 +131,15 @@ public class SeachAnimalsActivity extends AppCompatActivity {
     }
 
 
-    private void prepareDataAdapter() {
-        ArrayList<Animal> testData = new ArrayList<>();
-        Random r = new Random();
-        for (int i = 0; i < 100; i++) {
-            testData.add(new Animal(Math.abs(r.nextLong() % 1_000_000_000_000L)));
-        }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        searchAnimalsAdapter.updateAnimals();
+    }
 
-        searchAnimalsAdapter = new SearchAnimalsAdapter(this, testData);
+    private void prepareDataAdapter() {
+        searchAnimalsAdapter = new SearchAnimalsAdapter(SeachAnimalsActivity.this, farm.getUuid());
+        searchAnimalsAdapter.setAllFarms(filterSwitchFarms.isChecked());
         resultListView.setAdapter(searchAnimalsAdapter);
     }
 
@@ -114,5 +149,9 @@ public class SeachAnimalsActivity extends AppCompatActivity {
 
     private void registerViews() {
         resultListView = findViewById(R.id.result_list);
+        filterSwitchFarms = findViewById(R.id.filterSwitchFarms);
+        filterSwitchAlive = findViewById(R.id.filterSwitchAlive);
+        filterText = findViewById(R.id.filterText);
+
     }
 }

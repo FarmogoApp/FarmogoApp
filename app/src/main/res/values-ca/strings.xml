@@ -9,11 +9,16 @@
     <string name="tab_two">Número d\'explotació</string>
     <string name="tab_three">Escorxador</string>
 
-    <string-array name="gender">
+    <string-array name="sexs">
         <item>Mascle</item>
         <item>Femella</item>
     </string-array>
 
+    <string-array name="exitType">
+        <item>Mort</item>
+        <item>venda de vaca</item>
+        <item>Escorxador</item>
+    </string-array>
     <string-array name="mother">
         <item>Mare 1</item>
         <item>Mare 2</item>
@@ -40,27 +45,42 @@
         <item>Explotació 5</item>
     </string-array>
     <string name="tag">TAG</string>
-    <string name="id_eartag">Codi crotal oficial</string>
+    <string name="id_eartag">ID oficial</string>
     <string name="gender">Génere</string>
     <string name="mother">Mare</string>
     <string name="farm">Explotació</string>
     <string name="register_animal">Registrar animal</string>
-    <string-array name="incidences">
-        <item>---------</item>
+    <string-array name="incidencesSimple">
+        <item>Naixement</item>
         <item>Tractament</item>
         <item>Seguiment embaràs</item>
         <item>Pesatge</item>
+        <item>Sortida</item>
         <item>Programat</item>
-        <item>Defuncio</item>
-        <item>Matader</item>
-        <item>Venta de vaca</item>
-        <item>Afegir nova incidència+</item>
     </string-array>
+
+    <string-array name="incidencesMultiple">
+        <item>Tractament</item>
+        <item>Seguiment embaràs</item>
+        <item>Pesatge</item>
+        <item>Sortida</item>
+        <item>Programat</item>
+    </string-array>
+
+
     <string-array name="pregnancy_state">
         <item>Zel</item>
         <item>Parada</item>
         <item>Abortament</item>
     </string-array>
+    <string-array name="races">
+        <item>Pirenaica</item>
+        <item>Parda de Montaña</item>
+        <item>Limusina</item>
+        <item>Frisona</item>
+        <item>Charoles</item>
+    </string-array>
+
     <string name="unregistersucces">Baixa correcta</string>
     <string name="choose_type">tria el tipus</string>
     <string name="unregisrer_cow">Baixa vaca</string>
@@ -84,10 +104,10 @@
     <string name="choose_farm">Seleccionar explotació</string>
     <string name="last_marquet_price">Últim preu de mercat: 1.008,45€</string>
     <string name="login">Accedir</string>
-    <string name="password">Contrassenya</string>
+    <string name="password">Contrasenya</string>
     <string name="registration" >Registrar-se</string>
     <string name="username">Usuari</string>
-    <string name="registration_succesfull">Enregistrat correctament</string>
+    <string name="registration_succesful">Enregistrat correctament</string>
     <string name="died">Defunció</string>
     <string name="login_succesfull">Accès correcte</string>
     <string name="slaughterhouse">Matadero</string>
@@ -108,6 +128,51 @@
     <string name="scheduled_for">Programat per</string>
     <string name="building_optional">Granja (opcional)</string>
     <string name="section_optional">Secció (opcional)</string>
-    <string name="birthday" >Naixement</string>
     <string name="edit_farm">Editar Explotació</string>
+    <string name="name_example">Juan</string>
+    <string name="telephone_example">656565656</string>
+    <string name="user_auth_failed">Autenticació fallida:</string>
+    <string name="log_in">Iniciant sessió...</string>
+    <string name="please_enter_email">Sisplau introdueixi el seu correu</string>
+    <string name="please_enter_password">Sisplau introdueixi la seva contrasenya</string>
+    <string name="forgot_your_password">Heu oblidat la vostra contrasenya?</string>
+    <string name="recovery_email">Li hem enviat un correu per recuperar la contrasenya</string>
+    <string name="reset_password">Recuperar contrasenya:</string>
+    <string name="Exit">Sortida</string>
+    <string name="BirthTitle">Naixement</string>
+    <string name="OfficialIDbirth">OfficialId</string>
+    <string name="register_cow">Register cow</string>
+    <string name="telephone">Telèfon</string>
+    <string name="name">Nom</string>
+    <string name="location">Ubicació</string>
+    <string name="animal_type">Tipus d\'animal</string>
+    <string name="sex">Sexe</string>
+    <string name="origin">Origen</string>
+    <string name="birth_date">Data de naixement</string>
+    <string name="mother_id">ID mare</string>
+    <string name="official_id">ID oficial</string>
+    <string name="nfc_ear_tag">Crotal NFC</string>
+    <string name="Date">Fecha</string>
+    <string name="Destino">Destí</string>
+    <string name="guia_certificado">Guía/Certificat</string>
+    <string name="unregister_cow">Unregister cow</string>
+    <string name="registration_failed">No s\'ha pogut registrar l\'animal</string>
+    <string name="get_current_farm_error">No s\'ha pogut obtenir la granja actual</string>
+    <string name="CHANNEL_DESCRIPTION">Notificacions a tots els usuaris de Farmogo</string>
+    <string name="cache_memory">Buidant memòria caché…</string>
+    <string name="all_farms">Totes les explotacions</string>
+    <string name="farm_name">Farm name</string>
+    <string name="counter_prefix">Counter Prefix</string>
+    <string name="counter">Counter</string>
+    <string name="official_id_farm">Official ID</string>
+    <string name="save_farm">Save Farm</string>
+    <string name="manage_farms">Manage Farms</string>
+    <string name="division">Division</string>
+    <string name="clear_selection">Netejar selecció</string>
+    <string name="animaltypes_updated">Tipus d\'animals actualitzats</string>
+    <string name="races_updated">Races actualitzades</string>
+    <string name="all_animals">Tots els animals</string>
+    <string name="of">de</string>
+    <string name="only_alive">Presents</string>
+    <string name="Discharge_error_response">No és possible afegir un nou incident a un animal de baixa</string>
 </resources>

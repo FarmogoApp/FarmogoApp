@@ -30,23 +30,30 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/linear1">
-        <TextView
-            android:textColor="@android:color/background_dark"
-            android:id="@+id/tipo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/type"/>
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Spinner
-            android:padding="5dp"
-            android:id="@+id/sp_tipo"
-            android:background="@color/colorGray"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/type"
-            android:layout_marginStart="20dp"
-            />
+            <TextView
+                android:id="@+id/tipo"
+                android:textSize="20dp"
+                android:textColor="@android:color/background_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/type"/>
+
+            <Spinner
+                android:id="@+id/sp_TreatmentType"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@+id/tipo"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/spinner_bg"
+                android:entries="@array/type" />
+
+        </RelativeLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_marginTop="15dp"
@@ -56,18 +63,29 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/linear3">
-        <TextView
-            android:textColor="@android:color/background_dark"
-            android:id="@+id/medicamento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/medicine"/>
-        <EditText
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ed_medicamento"
-            android:layout_marginStart="15dp"/>
+            android:layout_height="match_parent">
+
+            <TextView
+                android:textColor="@android:color/background_dark"
+                android:id="@+id/medicamento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="@string/medicine"/>
+
+            <EditText
+                android:id="@+id/ed_TreatmentMedicine"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingStart="5dp"
+                android:background="@drawable/round_corner"
+                android:layout_below="@+id/medicamento"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:hint="@string/medicine"/>
+        </RelativeLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_marginTop="15dp"
@@ -77,19 +95,30 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/linear4">
-        <TextView
-            android:textColor="@android:color/background_dark"
-            android:id="@+id/dosis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/dose"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ed_dosis"
-            android:layout_marginStart="15dp"/>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:textColor="@android:color/background_dark"
+                android:id="@+id/dosis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="@string/dose"/>
+
+            <EditText
+                android:id="@+id/ed_TreatmentDose"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingStart="5dp"
+                android:background="@drawable/round_corner"
+                android:layout_below="@+id/dosis"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:hint="@string/dose"/>
+        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -100,19 +129,30 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/linear5">
-        <TextView
-            android:textColor="@android:color/background_dark"
-            android:id="@+id/obs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/observations"
-            />
-        <EditText
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/ed_obs"
-            android:layout_marginStart="15dp"/>
+            android:layout_height="match_parent">
+
+            <TextView
+                android:textColor="@android:color/background_dark"
+                android:id="@+id/obs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="@string/observations"/>
+
+            <EditText
+                android:id="@+id/ed_Treatmentobs"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingStart="5dp"
+                android:background="@drawable/round_corner"
+                android:layout_below="@+id/obs"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:hint="@string/observations"/>
+        </RelativeLayout>
+
 
     </LinearLayout>
     <LinearLayout
@@ -124,15 +164,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/linear6">
-    <Button
-        android:id="@+id/save"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:background="@color/colorPrimary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/save"
-        />
+        <Button
+            android:id="@+id/saveTreatment"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/save"
+            android:layout_width="150dp"
+            android:layout_height="35dp"
+            android:background="@drawable/round_shape"
+            android:layout_margin="5dp"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
 </RelativeLayout>

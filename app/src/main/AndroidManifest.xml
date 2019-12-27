@@ -2,28 +2,94 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.farmogoapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.NFC" />
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
+        android:name=".ui.main.AppGlobal"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.main.login.LoginActivity">
+
+        <activity android:name=".ui.main.login.LoginActivity"
+            android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.farms.AddExploitationActivity" android:exported="true"/>
-        <activity android:name=".ui.main.farms.FarmStatsActivity" android:exported="true"/>
-        <activity android:name=".ui.main.searchanimal.SeachAnimalsActivity" android:exported="true"/>
-        <activity android:name=".ui.main.animallist.AnimalListActivity" android:exported="true"/>
-        <activity android:name=".ui.main.animalInfo.AnimalInfoActivity" android:exported="true"/>
-        <activity android:name=".ui.main.registerAnimal.RegisterCowActivity" android:exported="true"/>
-        <activity android:name=".ui.main.animalIncidence.AnimalIncidence" android:exported="true"/>
-        <activity android:name=".ui.main.login.RegistrationActivity" android:exported="true"/>
+        <activity
+            android:name=".io.LoadDataActivity"
+            android:screenOrientation="portrait"
+            android:exported="true" />
+        <activity
+            android:name=".ui.main.farms.AddExploitationActivity"
+            android:screenOrientation="portrait"
+            android:exported="true" />
+        <activity
+            android:name=".ui.main.farms.FarmStatsActivity"
+            android:screenOrientation="portrait"
+            android:exported="true" />
+        <activity
+            android:name=".ui.main.searchanimal.SeachAnimalsActivity"
+            android:screenOrientation="portrait"
+            android:exported="true" />
+        <activity
+            android:name=".ui.main.animallist.AnimalListActivity"
+            android:screenOrientation="portrait"
+            android:exported="true" />
+        <activity
+            android:name=".ui.main.animalInfo.AnimalInfoActivity"
+            android:screenOrientation="portrait"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="animal"
+                    android:scheme="farmogo" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.main.registerAnimal.RegisterCowActivity"
+            android:screenOrientation="portrait"
+            android:exported="true" />
+        <activity
+            android:name=".ui.main.animalIncidence.AnimalIncidence"
+            android:screenOrientation="portrait"
+            android:exported="true" />
+        <activity
+            android:name=".ui.main.login.RegistrationActivity"
+            android:screenOrientation="portrait"
+            android:exported="true" />
+        <activity android:name=".ui.main.settings.Settings" />
+
+        <activity android:name=".ui.main.farms.NewFarm" />
+        <service android:name=".io.NotificationService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/cow" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorPrimaryDark" />
     </application>
+
 
 </manifest>

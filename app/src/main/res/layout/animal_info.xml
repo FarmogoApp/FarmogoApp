@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_margin="30sp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_below="@+id/list"
+
         tools:ignore="UnknownId">
 
         <TextView
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
             android:id="@+id/animal_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,6 +28,7 @@
             android:textStyle="bold" />
 
         <RelativeLayout
+            android:background="@drawable/round_corner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center">
@@ -31,7 +36,8 @@
 
             <TextView
                 android:id="@+id/animal_id"
-                android:layout_width="@dimen/farm_stats_label_width"
+                android:textColor="@android:color/black"
+                android:layout_width="@dimen/animal_info_label_width"
                 android:layout_height="wrap_content"
                 android:text="@string/number"
                 android:textSize="@dimen/farm_stats_label_font_width" />
@@ -47,7 +53,8 @@
 
             <TextView
                 android:id="@+id/animal_genere"
-                android:layout_width="@dimen/farm_stats_label_width"
+                android:textColor="@android:color/black"
+                android:layout_width="@dimen/animal_info_label_width"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/animal_id"
                 android:text="@string/gender"
@@ -64,7 +71,8 @@
 
             <TextView
                 android:id="@+id/animal_raza"
-                android:layout_width="@dimen/farm_stats_label_width"
+                android:textColor="@android:color/black"
+                android:layout_width="@dimen/animal_info_label_width"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/animal_genere"
                 android:text="@string/race"
@@ -81,10 +89,11 @@
 
             <TextView
                 android:id="@+id/animal_farmNumber"
-                android:layout_width="@dimen/farm_stats_label_width"
+                android:layout_width="@dimen/animal_info_label_width"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/animal_raza"
                 android:text="@string/farm"
+                android:textColor="@android:color/black"
                 android:textSize="@dimen/farm_stats_label_font_width" />
 
             <TextView
@@ -98,7 +107,8 @@
 
             <TextView
                 android:id="@+id/animal_mother"
-                android:layout_width="@dimen/farm_stats_label_width"
+                android:textColor="@android:color/black"
+                android:layout_width="@dimen/animal_info_label_width"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/animal_farmNumber"
                 android:text="@string/mother"
@@ -118,10 +128,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/raza_exemple"
             android:orientation="vertical">
 
             <TextView
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -143,14 +153,36 @@
 
     </LinearLayout>
 
-
     <ImageButton
+
         android:id="@+id/mas"
         android:layout_width="@dimen/animal_info_button_size"
         android:layout_height="@dimen/animal_info_button_size"
-        android:text="@string/plus"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:src="@android:drawable/ic_menu_add"/>
+        android:src="@android:drawable/ic_menu_add"
+        android:background="@drawable/round_shape"
+        android:text="@string/plus" />
+
+    <Button
+        android:id="@+id/IncidenciaAnimalInfo"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:textColor="@android:color/white"
+        android:background="@drawable/round_shape"
+        android:text="@string/incidence" />
+
+    <Switch
+        android:id="@+id/writeNfc"
+        android:layout_width="75dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:textColor="@android:color/white"
+        android:enabled="false"
+        android:checked="false"
+        android:background="@drawable/round_shape" />
 
 </RelativeLayout>

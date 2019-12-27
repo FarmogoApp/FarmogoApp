@@ -4,15 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.main.searchanimal.SeachAnimalsActivity">
 
+    <item android:id="@+id/tools"
+        android:title="Tools"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_settings_white_24dp"/>
 
     <item android:id="@+id/add_farm"
-        android:title="@string/new_farm"
+        android:title="@string/manage_farms"
         app:showAsAction="never" />
-
-    <item
-        android:id="@+id/edit_farm"
-        android:title="@string/edit_farm"
-        app:showAsAction="never" />
-
 
 </menu>

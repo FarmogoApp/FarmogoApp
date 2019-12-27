@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_recycler_bottom">
+
+
+
+    <TextView
+        android:id="@+id/incidence_discharge_animal_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@tools:sample/lorem"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/incidence_discharge_dischargeType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/incidence_discharge_animal_id"
+        tools:text="@tools:sample/lorem"
+        />
+    <TextView
+        android:id="@+id/incidence_discharge_health_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/incidence_discharge_date"
+        android:layout_alignParentEnd="true"
+        tools:text="@tools:sample/lorem" />
+    <TextView
+        android:id="@+id/incidence_discharge_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        tools:text="@tools:sample/lorem" />
+
+
+
+</RelativeLayout>

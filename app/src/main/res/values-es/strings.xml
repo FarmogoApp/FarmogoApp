@@ -13,9 +13,21 @@
     <string name="choose_type">Elige el tipo</string>
     <string name="guide">Guia</string>
     <string name="unregistersucces">Baja correcta</string>
-    <string-array name="gender">
+    <string-array name="sexs">
         <item>Macho</item>
         <item>Hembra</item>
+    </string-array>
+    <string-array name="exitType">
+        <item>Muerte</item>
+        <item>Venta de vaca</item>
+        <item>Matadero</item>
+    </string-array>
+    <string-array name="races">
+        <item>Pirenaica</item>
+        <item>Parda de Montaña</item>
+        <item>Limusina</item>
+        <item>Frisona</item>
+        <item>Charoles</item>
     </string-array>
     <string-array name="mother">
         <item>Madre 1</item>
@@ -43,22 +55,28 @@
         <item>Explotación 5</item>
     </string-array>
     <string name="tag">TAG</string>
-    <string name="id_eartag">Código crotal oficial</string>
+    <string name="id_eartag">ID oficial</string>
     <string name="gender">Género</string>
     <string name="mother">Madre</string>
     <string name="farm">Explotación</string>
     <string name="register_animal">Registrar animal</string>
-    <string-array name="incidences">
-        <item>-------</item>
+    <string-array name="incidencesSimple">
+        <item>Nacimiento</item>
         <item>Tratamiento</item>
         <item>Seguimiento embarazo</item>
         <item>Pesaje</item>
+        <item>Salida</item>
         <item>Programado</item>
-        <item>Defuncio</item>
-        <item>Matadero</item>
-        <item>Venta de vaca</item>
-        <item>Añadir nueva incidencia+</item>
     </string-array>
+    <string-array name="incidencesMultiple">
+        <item>Tratamiento</item>
+        <item>Seguimiento embarazo</item>
+        <item>Pesaje</item>
+        <item>Salida</item>
+        <item>Programado</item>
+    </string-array>
+
+
     <string-array name="pregnancy_state">
         <item>Celo</item>
         <item>Parada</item>
@@ -86,7 +104,7 @@
     <string name="password">Contraseña</string>
     <string name="registration">Registrarse</string>
     <string name="username">Usuario</string>
-    <string name="registration_succesfull">Registrado correctamente</string>
+    <string name="registration_succesful">Registrado correctamente</string>
     <string name="died">Defunción</string>
     <string name="login_succesfull">Acceso correcto</string>
     <string name="slaughterhouse">Matadero</string>
@@ -107,6 +125,51 @@
     <string name="scheduled_for">Programado para</string>
     <string name="building_optional">Granja (opcional)</string>
     <string name="section_optional">Sección (opcional)</string>
-    <string name="birthday" >Nacimiento</string>
     <string name="edit_farm">Editar Explotación</string>
+    <string name="name_example">Juan</string>
+    <string name="name">Nombre</string>
+    <string name="telephone">Teléfono</string>
+    <string name="telephone_example">656565656</string>
+    <string name="Exit">Salida</string>
+    <string name="Destino">Destino</string>
+    <string name="guia_certificado">Guía/Certificado</string>
+    <string name="BirthTitle">Nacimiento</string>
+    <string name="OfficialIDbirth">Id Oficial</string>
+    <string name="register_cow">Registrar Vaca</string>
+    <string name="Date">Fecha</string>
+    <string name="forgot_your_password">¿Olvidate la contraseña?</string>
+    <string name="user_auth_failed">Autenticacion de usuario fallida:</string>
+    <string name="log_in">Logueando...</string>
+    <string name="please_enter_email">Por favor introduce el email</string>
+    <string name="please_enter_password">Por favor introduce la contraseña</string>
+    <string name="recovery_email">Hemos enviado un email para restablecer la contraseña</string>
+    <string name="reset_password">Contraseña restablecida:</string>
+    <string name="unregister_cow">Quitar vaca</string>
+    <string name="location">Ubicación</string>
+    <string name="animal_type">Tipo de animal</string>
+    <string name="sex">Sexo</string>
+    <string name="origin">Origen</string>
+    <string name="birth_date">Fecha de nacimiento</string>
+    <string name="mother_id">ID madre</string>
+    <string name="official_id">ID oficial</string>
+    <string name="nfc_ear_tag">Crotal NFC</string>
+    <string name="registration_failed">No se ha podido registrar el animal</string>
+    <string name="get_current_farm_error">No se pudo obtener la granja actual</string>
+    <string name="CHANNEL_DESCRIPTION">Notificaciones a todos los usuarios de Farmogo</string>
+    <string name="cache_memory">Vaciando memoria caché…</string>
+    <string name="all_farms">Todas las explotaciones</string>
+    <string name="farm_name">Farm name</string>
+    <string name="counter_prefix">Counter Prefix</string>
+    <string name="counter">Counter</string>
+    <string name="official_id_farm">Official ID</string>
+    <string name="save_farm">Save Farm</string>
+    <string name="manage_farms">Manage Farms</string>
+    <string name="division">Division</string>
+    <string name="animaltypes_updated">Tipo de animales actualizados</string>
+    <string name="clear_selection">Limpiar selección</string>
+    <string name="races_updated">Razas actualizadas</string>
+    <string name="all_animals">Todos los animales</string>
+    <string name="of">de</string>
+    <string name="only_alive">Presentes</string>
+    <string name="Discharge_error_response">No es posible añadir una nueva incidencia a un animal de baja</string>
 </resources>

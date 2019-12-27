@@ -10,7 +10,7 @@
     <string name="tab_two">Number of farm </string>
     <string name="tab_three">Name</string>
     <string name="tag">TAG</string>
-    <string name="id_eartag">Id offical eartag</string>
+    <string name="id_eartag">Official ID</string>
     <string name="gender">Gender</string>
     <string name="mother">Mother</string>
     <string name="farm">Farm</string>
@@ -21,7 +21,7 @@
     <string name="race">Race</string>
     <string name="race_example" translatable="false">Limusin</string>
     <string name="farm_example" translatable="false">2342342342</string>
-    <string name="animal_example" translatable="false">5858588998</string>
+    <string name="animal_example" translatable="false">ES255858588998</string>
     <string name="record">Record</string>
     <string name="back">back</string>
     <string name="list">list</string>
@@ -44,11 +44,11 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="registration">Registration</string>
-    <string name="login_email_example" translatable="false">info@farmogo.com</string>
-    <string name="password_example" translatable="false">12345678</string>
+    <string name="login_email_example" translatable="false">a@b.com</string>
+    <string name="password_example" translatable="false">111111</string>
     <string name="username">Username</string>
     <string name="username_example" translatable="false">FarmWorker</string>
-    <string name="registration_succesfull">Registration Succesfull</string>
+    <string name="registration_succesful">Registration Successful</string>
     <string name="login_succesfull">Login Succesfull</string>
     <string name="sold">Sold</string>
     <string name="died">Died</string>
@@ -69,15 +69,54 @@
     <string name="scheduled_for">Scheduled for</string>
     <string name="building_optional">Building (optional)</string>
     <string name="section_optional">Section (optional)</string>
-    <string name="birthday" >Birthday</string>
     <string name="unregisrer_cow">Unregister Cow</string>
     <string name="guide">Guide</string>
     <string name="choose_type">Choose type</string>
     <string name="unregistersucces">Unregister succesfully</string>
-    <string-array name="gender">
+    <string name="name">Name</string>
+    <string name="name_example">Juan</string>
+    <string name="telephone">Telephone</string>
+    <string name="telephone_example">656565656</string>
+    <string name="Exit">Exit</string>
+    <string name="Destino">Destination</string>guia_certificado
+    <string name="guia_certificado">Guide/Certificate</string>
+    <string name="BirthTitle">Birth</string>
+    <string name="OfficialIDbirth">Official Id</string>
+    <string name="register_cow">Register cow</string>
+    <string name="Date">Date</string>
+    <string name="forgot_your_password">forgot your password?</string>
+    <string name="user_auth_failed">User Authentication Failed:</string>
+    <string name="log_in">Log in...</string>
+    <string name="please_enter_email">Please enter your email</string>
+    <string name="please_enter_password">Please enter your password</string>
+    <string name="recovery_email">We have sent an email to reset your password</string>
+    <string name="reset_password">Reset password:</string>
+    <string name="unregister_cow">Unregister cow</string>
+    <string name="location">Location</string>
+    <string name="animal_type">Animal type</string>
+    <string name="sex">Sex</string>
+    <string name="origin">Origin</string>
+    <string name="birth_date">Birth date</string>
+    <string name="mother_id">Mother ID</string>
+    <string name="official_id">Official ID</string>
+    <string name="nfc_ear_tag">NFC ear tag</string>
+    <string name="registration_failed">Registration failed</string>
+
+    <string-array name="sexs">
         <item>Male</item>
         <item>Female</item>
-
+    </string-array>
+    <string-array name="races">
+        <item>Pirenaica</item>
+        <item>Parda de Montaña</item>
+        <item>Limusina</item>
+        <item>Frisona</item>
+        <item>Charoles</item>
+    </string-array>
+    <string-array name="exitType">
+        <item>Death</item>
+        <item>Sell cow</item>
+        <item>Slaugter house</item>
     </string-array>
     <string-array name="mother">
         <item>Mother 1</item>
@@ -123,17 +162,23 @@
         <item>Section 4</item>
         <item>Section 5</item>
     </string-array>
-    <string-array name="incidences">
-        <item>---------</item>
+    <string-array name="incidencesSimple">
+    <item>Birth</item>
+    <item>Treatment</item>
+    <item>Pregnancy Monitoring</item>
+    <item>Weighing</item>
+    <item>Exit</item>
+    <item>Scheduled</item>
+    </string-array>
+
+    <string-array name="incidencesMultiple">
         <item>Treatment</item>
         <item>Pregnancy Monitoring</item>
         <item>Weighing</item>
+        <item>Exit</item>
         <item>Scheduled</item>
-        <item>Death Cow</item>
-        <item>Abattoir</item>
-        <item>Sell Cow</item>
-        <item>Add new incidence+</item>
     </string-array>
+
     <string-array name="incidences_example">
         <item>95597533343</item>
         <item>95597553222</item>
@@ -149,5 +194,26 @@
         <item>Stand</item>
         <item>Abortion</item>
     </string-array>
+    <string name="get_current_farm_error">Couldn\'t get current farm</string>
+    <string name="ALL_CHANNEL_ID" translatable="false">all</string>
+    <string name="ALL_CHANNEL" translatable="false">all</string>
+    <string name="CHANNEL_DESCRIPTION">Notifications to all Farmogo users</string>
+    <string name="topic" translatable="false">all</string>
+    <string name="cache_memory">Erasing cache memory…</string>
+    <string name="all_farms">All farms</string>
+    <string name="all_animals">All animals</string>
+    <string name="only_alive">Presents</string>
+    <string name="of">of</string>
+    <string name="clear_selection">Clear selection</string>
+    <string name="farm_name">Farm name</string>
+    <string name="counter_prefix">Counter Prefix</string>
+    <string name="counter">Counter</string>
+    <string name="official_id_farm">Official ID</string>
+    <string name="save_farm">Save Farm</string>
+    <string name="manage_farms">Manage Farms</string>
+    <string name="division">Division</string>
+    <string name="races_updated">Races Updated</string>
+    <string name="animaltypes_updated">Animal Types updated</string>
+    <string name="Discharge_error_response">It is not possible to add a new incident to a discharge animal</string>
 </resources>
 
