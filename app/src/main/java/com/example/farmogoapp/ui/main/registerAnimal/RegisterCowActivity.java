@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -219,6 +220,34 @@ public class RegisterCowActivity extends AppCompatActivity {
                 new DatePickerDialog(RegisterCowActivity.this, datePickerListener, calendar
                         .get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                         calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+        spnAnimalType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                switch (position) {
+                    case 0:
+                        // Cow must be female
+                        spnSex.setSelection(1);
+                        spnSex.setEnabled(false);
+                        break;
+                    case 1:
+                        // Bull must be male
+                        spnSex.setSelection(0);
+                        spnSex.setEnabled(false);
+                        break;
+                    case 2:
+                        // Calf can be male or female
+                        spnSex.setEnabled(true);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
     }
