@@ -148,6 +148,7 @@ public class RegisterCowActivity extends AppCompatActivity {
         animal.setMotherOfficialId(eTMotherId.getText().toString());
         animal.setBirthDay(LocalDate.of(year, month, day));
         animal.setOrigin(origin);
+        animal.setEnrrollementDate(LocalDate.now());
         animal.setSex(selectedSex);
         animal.setAnimalTypeId(selectedAnimalType.getUuid());
         animal.setRaceId(selectedRace.getUuid());

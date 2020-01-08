@@ -79,7 +79,7 @@ public class NewFarm extends AppCompatActivity {
         call.enqueue(new Callback<Farm>() {
             @Override
             public void onResponse(Call<Farm> call, Response<Farm> response) {
-                Log.e("aaaaaaaaaaaa", response.body().toString());
+               // Log.e("aaaaaaaaaaaa", response.body().toString());
                 Farm farms = response.body();
                 Intent intent = new Intent(NewFarm.this, AddExploitationActivity.class);
                 SessionData.getInstance().setActualFarm(response.body());
