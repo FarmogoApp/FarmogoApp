@@ -89,6 +89,10 @@ public class FarmStatsActivity extends AppCompatActivity {
         setContentView(R.layout.farm_stats);
         registerViews();
         registerListeners();
+        if(SessionData.getInstance().getFarms().isEmpty()){
+            Intent intent = new Intent(FarmStatsActivity.this, NewFarm.class);
+            startActivity(intent);
+        }
         loadFarms();
 
     }
@@ -193,6 +197,7 @@ public class FarmStatsActivity extends AppCompatActivity {
 
     private void loadFarms() {
         final Call<ArrayList<Farm>> farm = FarmogoApiJacksonAdapter.getApiService().getFarms();
+
         farm.enqueue(new Callback<ArrayList<Farm>>() {
             @Override
             public void onResponse(Call<ArrayList<Farm>> call, Response<ArrayList<Farm>> response) {
