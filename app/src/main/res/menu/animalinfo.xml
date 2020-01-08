@@ -6,9 +6,8 @@
 
 
     <item android:id="@+id/list_selected"
+        android:actionLayout="@layout/feed_update_count"
         android:title="@string/selected_animal"
-        android:icon="@android:drawable/ic_menu_more"
-        app:showAsAction="collapseActionView|ifRoom" />
-
-
+        app:showAsAction="always"
+        />
 </menu>

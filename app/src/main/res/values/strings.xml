@@ -215,5 +215,6 @@
     <string name="races_updated">Races Updated</string>
     <string name="animaltypes_updated">Animal Types updated</string>
     <string name="Discharge_error_response">It is not possible to add a new incident to a discharge animal</string>
+    <string name="empty_list">Empty animal list</string>
 </resources>
 

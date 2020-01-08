@@ -38,6 +38,7 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
     private String farmId;
     private boolean allFarms;
     private boolean allAnimals;
+    Context contextG;
 
 
     public SearchAnimalsAdapter(Activity activity, String farmId) {
@@ -100,6 +101,7 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View v = convertView;
+        contextG = parent.getContext();
 
         if (convertView == null) {
             LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -131,6 +133,8 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
                 button.setImageResource(android.R.drawable.ic_menu_delete);
                 row.setBackgroundColor(activity.getColor(R.color.colorSecondary));
             }
+
+            ((SeachAnimalsActivity)contextG).invalidateOptionsMenu();
 
         });
 

@@ -247,6 +247,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
                 btnAddRemove.setImageResource(android.R.drawable.ic_menu_delete);
 
             }
+            invalidateOptionsMenu();
         });
 
         btnIncidences.setOnClickListener(new View.OnClickListener() {
@@ -271,6 +272,11 @@ public class AnimalInfoActivity extends AppCompatActivity {
         inflater.inflate(R.menu.animalinfo, menu);
 
         MenuItem list = menu.findItem(R.id.list_selected);
+        if(!SessionData.getInstance().getAnimalCardObj().isEmpty()) {
+            list.setVisible(true);
+        }else {
+            list.setVisible(false);
+        }
         list.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {

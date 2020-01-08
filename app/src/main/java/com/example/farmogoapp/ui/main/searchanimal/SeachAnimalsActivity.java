@@ -116,12 +116,19 @@ public class SeachAnimalsActivity extends AppCompatActivity {
             return true;
         });
 
-        MenuItem list = menu.findItem(R.id.list_selected);
-        list.setOnMenuItemClickListener(item1 -> {
-            Intent intent = new Intent(SeachAnimalsActivity.this, AnimalListActivity.class);
-            startActivity(intent);
-            return true;
-        });
+
+            MenuItem list = menu.findItem(R.id.list_selected);
+            if(!SessionData.getInstance().getAnimalCardObj().isEmpty()) {
+                list.setVisible(true);
+            }else {
+                list.setVisible(false);
+            }
+            list.setOnMenuItemClickListener(item1 -> {
+                Intent intent = new Intent(SeachAnimalsActivity.this, AnimalListActivity.class);
+                startActivity(intent);
+                return true;
+            });
+
         return true;
     }
 
@@ -134,6 +141,7 @@ public class SeachAnimalsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        invalidateOptionsMenu();
         searchAnimalsAdapter.updateAnimals();
     }
 
