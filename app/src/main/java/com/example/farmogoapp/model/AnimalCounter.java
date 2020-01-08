@@ -2,7 +2,7 @@ package com.example.farmogoapp.model;
 
 public class AnimalCounter {
     private String prefix;
-    private int counter;
+    private long counter;
 
     public AnimalCounter(String prefix, int counter) {
         this.prefix = prefix;
@@ -19,11 +19,11 @@ public class AnimalCounter {
         this.prefix = prefix;
     }
 
-    public int getCounter() {
+    public long getCounter() {
         return counter;
     }
 
-    public void setCounter(int counter) {
+    public void setCounter(long counter) {
         this.counter = counter;
     }
 
