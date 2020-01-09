@@ -177,4 +177,5 @@
     <string name="Discharge_error_response">No és possible afegir un nou incident a un animal de baixa</string>
     <string name="empty_list">Llista d\'animals buida</string>
     <string name="need_farm_to_work">Necessites una granja per poder utilitzar l\'aplicació</string>
+    <string name="discharged">De baixa</string>
 </resources>

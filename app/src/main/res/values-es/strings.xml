@@ -174,4 +174,5 @@
     <string name="Discharge_error_response">No es posible añadir una nueva incidencia a un animal de baja</string>
     <string name="empty_list">Listado de animales vacio</string>
     <string name="need_farm_to_work">Necesitas una granja para poder utilizar la aplicación</string>
+    <string name="discharged">De baja</string>
 </resources>
