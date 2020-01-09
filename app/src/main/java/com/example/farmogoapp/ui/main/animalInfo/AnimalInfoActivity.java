@@ -65,6 +65,10 @@ public class AnimalInfoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnAddRemove = findViewById(R.id.mas);
         btnIncidences = findViewById(R.id.IncidenciaAnimalInfo);
+        nfcSwitch = findViewById(R.id.writeNfc);
+        nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        nfcSwitch.setEnabled(nfcAdapter != null);
+        nfcSwitch.setChecked(false);
 
         if (getIntent().getAction() == NfcAdapter.ACTION_NDEF_DISCOVERED) {
             loadAnimalDataFromNfc(getIntent());
@@ -74,12 +78,6 @@ public class AnimalInfoActivity extends AppCompatActivity {
             loadAnimalData(getIntent().getStringExtra("animalId"));
         }
         registerListeners();
-
-        nfcSwitch = findViewById(R.id.writeNfc);
-
-        nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        nfcSwitch.setEnabled(nfcAdapter != null);
-        nfcSwitch.setChecked(false);
         loadHistoric(getIntent().getStringExtra("animalId"));
     }
 
@@ -223,6 +221,15 @@ public class AnimalInfoActivity extends AppCompatActivity {
         race.setText(race1.orElse(new Race()).getName());
         mother.setText(animal.getMotherOfficialId());
         btnAddRemove.setImageResource( animal.isSelected()? android.R.drawable.ic_menu_delete : android.R.drawable.ic_menu_add );
+
+
+        if(animal.getDischargeDate() == null){
+            nfcSwitch.setVisibility(View.VISIBLE);
+            btnAddRemove.setVisibility(View.VISIBLE);
+        }else{
+            nfcSwitch.setVisibility(View.INVISIBLE);
+            btnAddRemove.setVisibility(View.INVISIBLE);
+        }
 
         //TODO: update list of incidences
 

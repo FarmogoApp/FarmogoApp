@@ -89,7 +89,7 @@ public class FarmStatsActivity extends AppCompatActivity {
         setContentView(R.layout.farm_stats);
         registerViews();
         registerListeners();
-        if(SessionData.getInstance().getFarms().isEmpty()){
+        if(SessionData.getInstance().getFarms()==null || SessionData.getInstance().getFarms().isEmpty()){
             Intent intent = new Intent(FarmStatsActivity.this, NewFarm.class);
             startActivity(intent);
         }

@@ -1,41 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="@string/selected_animal"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_list"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:itemCount="31"
-            tools:listitem="@layout/recycler_view_animal_list" />
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/selected_animal"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:itemCount="31"
+                tools:listitem="@layout/recycler_view_animal_list" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/Incidencia"
         android:layout_width="150dp"
         android:layout_height="35dp"
-        android:layout_centerInParent="true"
         android:layout_alignParentBottom="true"
-        android:textColor="@android:color/white"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="25dp"
         android:background="@drawable/round_shape"
-        android:text="@string/incidence" />
+        android:text="@string/incidence"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>
