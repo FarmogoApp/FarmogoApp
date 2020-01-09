@@ -1,13 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.main.searchanimal.SeachAnimalsActivity">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/list_selected"
-        android:actionLayout="@layout/feed_update_count"
         android:title="@string/selected_animal"
+        app:actionLayout="@layout/feed_update_count"
         app:showAsAction="always"
         />
 </menu>

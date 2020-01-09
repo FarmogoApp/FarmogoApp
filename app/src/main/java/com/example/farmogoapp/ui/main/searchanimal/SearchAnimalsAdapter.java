@@ -8,6 +8,7 @@ import android.text.Spanned;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -135,7 +136,6 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
             }
 
             ((SeachAnimalsActivity)contextG).invalidateOptionsMenu();
-
         });
 
         Optional<AnimalType> animalType = SessionData.getInstance().getAnimalType(animal.getAnimalTypeId());
@@ -198,6 +198,5 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
         intent.putExtra("animalId", (String) v.getTag());
         activity.startActivity(intent);
     }
-
 
 }
