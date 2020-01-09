@@ -8,6 +8,7 @@ import android.text.Spanned;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -38,6 +39,7 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
     private String farmId;
     private boolean allFarms;
     private boolean allAnimals;
+    Context contextG;
 
 
     public SearchAnimalsAdapter(Activity activity, String farmId) {
@@ -100,6 +102,7 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View v = convertView;
+        contextG = parent.getContext();
 
         if (convertView == null) {
             LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -132,6 +135,7 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
                 row.setBackgroundColor(activity.getColor(R.color.colorSecondary));
             }
 
+            ((SeachAnimalsActivity)contextG).invalidateOptionsMenu();
         });
 
         Optional<AnimalType> animalType = SessionData.getInstance().getAnimalType(animal.getAnimalTypeId());
@@ -194,6 +198,5 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
         intent.putExtra("animalId", (String) v.getTag());
         activity.startActivity(intent);
     }
-
 
 }

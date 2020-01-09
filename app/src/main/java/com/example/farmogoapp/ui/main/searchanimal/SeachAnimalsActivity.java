@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import androidx.appcompat.widget.SwitchCompat;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Farm;
+import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
 import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
 
@@ -116,13 +118,23 @@ public class SeachAnimalsActivity extends AppCompatActivity {
             return true;
         });
 
-        MenuItem list = menu.findItem(R.id.list_selected);
-        list.setOnMenuItemClickListener(item1 -> {
-            Intent intent = new Intent(SeachAnimalsActivity.this, AnimalListActivity.class);
-            startActivity(intent);
-            return true;
-        });
+
+            MenuItem list = menu.findItem(R.id.list_selected);
+            if(!SessionData.getInstance().getAnimalCardObj().isEmpty()) {
+                list.setVisible(true);
+            }else {
+                list.setVisible(false);
+            }
+            TextView txtCount = list.getActionView().findViewById(R.id.cart_badge);
+            if(!SessionData.getInstance().getAnimalCardObj().isEmpty()){
+                txtCount.setText(String.valueOf(SessionData.getInstance().getAnimalCardObj().size()));
+            }
+
         return true;
+    }
+    public void goToList(View view){
+        Intent intent = new Intent(SeachAnimalsActivity.this, AnimalListActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -134,6 +146,7 @@ public class SeachAnimalsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        invalidateOptionsMenu();
         searchAnimalsAdapter.updateAnimals();
     }
 
@@ -154,4 +167,7 @@ public class SeachAnimalsActivity extends AppCompatActivity {
         filterText = findViewById(R.id.filterText);
 
     }
+
+
+
 }

@@ -172,4 +172,5 @@
     <string name="of">de</string>
     <string name="only_alive">Presentes</string>
     <string name="Discharge_error_response">No es posible añadir una nueva incidencia a un animal de baja</string>
+    <string name="empty_list">Listado de animales vacio</string>
 </resources>

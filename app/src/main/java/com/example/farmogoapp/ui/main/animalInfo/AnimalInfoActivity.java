@@ -87,6 +87,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        invalidateOptionsMenu();
         enableNfcWriter();
 
     }
@@ -247,6 +248,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
                 btnAddRemove.setImageResource(android.R.drawable.ic_menu_delete);
 
             }
+            invalidateOptionsMenu();
         });
 
         btnIncidences.setOnClickListener(new View.OnClickListener() {
@@ -271,15 +273,22 @@ public class AnimalInfoActivity extends AppCompatActivity {
         inflater.inflate(R.menu.animalinfo, menu);
 
         MenuItem list = menu.findItem(R.id.list_selected);
-        list.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Intent intent = new Intent(AnimalInfoActivity.this, AnimalListActivity.class);
-                startActivity(intent);
-                return true;
-            }
-        });
+        if(!SessionData.getInstance().getAnimalCardObj().isEmpty()) {
+            list.setVisible(true);
+        }else {
+            list.setVisible(false);
+        }
+        TextView txtCount = list.getActionView().findViewById(R.id.cart_badge);
+        if(!SessionData.getInstance().getAnimalCardObj().isEmpty()){
+            txtCount.setText(String.valueOf(SessionData.getInstance().getAnimalCardObj().size()));
+        }
+
         return true;
+    }
+
+    public void goToList(View view){
+        Intent intent = new Intent(AnimalInfoActivity.this, AnimalListActivity.class);
+        startActivity(intent);
     }
 
 }
