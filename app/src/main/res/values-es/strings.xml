@@ -130,7 +130,7 @@
     <string name="name">Nombre</string>
     <string name="telephone">Teléfono</string>
     <string name="telephone_example">656565656</string>
-    <string name="Exit">Salida</string>
+    <string name="Exit">Baja</string>
     <string name="Destino">Destino</string>
     <string name="guia_certificado">Guía/Certificado</string>
     <string name="BirthTitle">Nacimiento</string>

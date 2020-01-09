@@ -138,7 +138,8 @@
     <string name="forgot_your_password">Heu oblidat la vostra contrasenya?</string>
     <string name="recovery_email">Li hem enviat un correu per recuperar la contrasenya</string>
     <string name="reset_password">Recuperar contrasenya:</string>
-    <string name="Exit">Sortida</string>
+    <string name="Exit">Baixa</string>
+    <string name="unregister_cow">Baixa vaca</string>
     <string name="BirthTitle">Naixement</string>
     <string name="OfficialIDbirth">ID oficial</string>
     <string name="register_cow">Registrar vaca</string>
