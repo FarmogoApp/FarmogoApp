@@ -46,7 +46,7 @@
     </string-array>
     <string name="tag">TAG</string>
     <string name="id_eartag">ID oficial</string>
-    <string name="gender">Génere</string>
+    <string name="gender">Sexe</string>
     <string name="mother">Mare</string>
     <string name="farm">Explotació</string>
     <string name="register_animal">Registrar animal</string>
@@ -55,16 +55,16 @@
         <item>Tractament</item>
         <item>Seguiment embaràs</item>
         <item>Pesatge</item>
-        <item>Sortida</item>
-        <item>Programat</item>
+        <item>Baixa</item>
+        <!--item>Programat</item-->
     </string-array>
 
     <string-array name="incidencesMultiple">
         <item>Tractament</item>
         <item>Seguiment embaràs</item>
         <item>Pesatge</item>
-        <item>Sortida</item>
-        <item>Programat</item>
+        <item>Baixa</item>
+        <!--item>Programat</item -->
     </string-array>
 
 
@@ -110,7 +110,7 @@
     <string name="registration_succesful">Enregistrat correctament</string>
     <string name="died">Defunció</string>
     <string name="login_succesfull">Accès correcte</string>
-    <string name="slaughterhouse">Matadero</string>
+    <string name="slaughterhouse">Escorxador</string>
     <string name="sold">Venut</string>
     <string name="choose_incidence">Escollir incidència:</string>
     <string name="animal_incidence">Incidència Animal</string>
@@ -132,16 +132,17 @@
     <string name="name_example">Juan</string>
     <string name="telephone_example">656565656</string>
     <string name="user_auth_failed">Autenticació fallida:</string>
-    <string name="log_in">Iniciant sessió...</string>
+    <string name="log_in">Iniciant sessió…</string>
     <string name="please_enter_email">Sisplau introdueixi el seu correu</string>
     <string name="please_enter_password">Sisplau introdueixi la seva contrasenya</string>
     <string name="forgot_your_password">Heu oblidat la vostra contrasenya?</string>
     <string name="recovery_email">Li hem enviat un correu per recuperar la contrasenya</string>
     <string name="reset_password">Recuperar contrasenya:</string>
-    <string name="Exit">Sortida</string>
+    <string name="Exit">Baixa</string>
+    <string name="unregister_cow">Baixa vaca</string>
     <string name="BirthTitle">Naixement</string>
-    <string name="OfficialIDbirth">OfficialId</string>
-    <string name="register_cow">Register cow</string>
+    <string name="OfficialIDbirth">ID oficial</string>
+    <string name="register_cow">Registrar vaca</string>
     <string name="telephone">Telèfon</string>
     <string name="name">Nom</string>
     <string name="location">Ubicació</string>
@@ -152,22 +153,21 @@
     <string name="mother_id">ID mare</string>
     <string name="official_id">ID oficial</string>
     <string name="nfc_ear_tag">Crotal NFC</string>
-    <string name="Date">Fecha</string>
+    <string name="Date">Data</string>
     <string name="Destino">Destí</string>
     <string name="guia_certificado">Guía/Certificat</string>
-    <string name="unregister_cow">Unregister cow</string>
     <string name="registration_failed">No s\'ha pogut registrar l\'animal</string>
     <string name="get_current_farm_error">No s\'ha pogut obtenir la granja actual</string>
     <string name="CHANNEL_DESCRIPTION">Notificacions a tots els usuaris de Farmogo</string>
     <string name="cache_memory">Buidant memòria caché…</string>
     <string name="all_farms">Totes les explotacions</string>
-    <string name="farm_name">Farm name</string>
-    <string name="counter_prefix">Counter Prefix</string>
-    <string name="counter">Counter</string>
-    <string name="official_id_farm">Official ID</string>
-    <string name="save_farm">Save Farm</string>
-    <string name="manage_farms">Manage Farms</string>
-    <string name="division">Division</string>
+    <string name="farm_name">Nom de la granja</string>
+    <string name="counter_prefix">Prefix comptador</string>
+    <string name="counter">Comptador</string>
+    <string name="official_id_farm">ID oficial</string>
+    <string name="save_farm">Guardar granja</string>
+    <string name="manage_farms">Gestionar granges</string>
+    <string name="division">Divisió</string>
     <string name="clear_selection">Netejar selecció</string>
     <string name="animaltypes_updated">Tipus d\'animals actualitzats</string>
     <string name="races_updated">Races actualitzades</string>
@@ -176,4 +176,6 @@
     <string name="only_alive">Presents</string>
     <string name="Discharge_error_response">No és possible afegir un nou incident a un animal de baixa</string>
     <string name="empty_list">Llista d\'animals buida</string>
+    <string name="need_farm_to_work">Necessites una granja per poder utilitzar l\'aplicació</string>
+    <string name="discharged">De baixa</string>
 </resources>

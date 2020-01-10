@@ -77,7 +77,7 @@
     <string name="name_example">Juan</string>
     <string name="telephone">Telephone</string>
     <string name="telephone_example">656565656</string>
-    <string name="Exit">Exit</string>
+    <string name="Exit">Discharge</string>
     <string name="Destino">Destination</string>guia_certificado
     <string name="guia_certificado">Guide/Certificate</string>
     <string name="BirthTitle">Birth</string>
@@ -167,16 +167,16 @@
     <item>Treatment</item>
     <item>Pregnancy Monitoring</item>
     <item>Weighing</item>
-    <item>Exit</item>
-    <item>Scheduled</item>
+    <item>Discharge</item>
+    <!--item>Scheduled</item-->
     </string-array>
 
     <string-array name="incidencesMultiple">
         <item>Treatment</item>
         <item>Pregnancy Monitoring</item>
         <item>Weighing</item>
-        <item>Exit</item>
-        <item>Scheduled</item>
+        <item>Discharge</item>
+        <!--item>Scheduled</item-->
     </string-array>
 
     <string-array name="incidences_example">
@@ -216,5 +216,7 @@
     <string name="animaltypes_updated">Animal Types updated</string>
     <string name="Discharge_error_response">It is not possible to add a new incident to a discharge animal</string>
     <string name="empty_list">Empty animal list</string>
+    <string name="need_farm_to_work">You need a farm to work with app</string>
+    <string name="discharged">Discharged</string>
 </resources>
 
