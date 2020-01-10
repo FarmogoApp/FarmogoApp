@@ -183,4 +183,14 @@
     <string name="need_farm_to_work">Necesitas una granja para poder utilizar la aplicación</string>
     <string name="discharged">De baja</string>
     <string name="nfc_must_enabled">Activa el NFC</string>
+    <string name="clear_cache">Limpiar Cache</string>
+    <string name="log_out">Cerrar sesión</string>
+    <string name="add_new_building">Añadir nuevo edificio</string>
+    <string name="add_new_division">Añadir nueva división</string>
+    <string name="add_new_farm">Añadir nueva granja</string>
+    <string name="building">Edifició</string>
+    <string name="building_">Edifició:</string>
+    <string name="division_">División:</string>
+    <string name="farm_">Granja:</string>
+    <string name="please_wait_this_may_take_a_moment">Por favor espere, esto puede tomar un tiempo</string>
 </resources>

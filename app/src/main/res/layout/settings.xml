@@ -7,7 +7,7 @@
 
     <Button
         android:id="@+id/clear_cache"
-        android:text="Clear Cache"
+        android:text="@string/clear_cache"
         android:layout_width="200dp"
         android:layout_height="35dp"
         android:layout_gravity="center"
@@ -18,7 +18,7 @@
     </Button>
     <Button
         android:id="@+id/logout"
-        android:text="Log Out"
+        android:text="@string/log_out"
         android:layout_width="200dp"
         android:layout_height="35dp"
         android:layout_gravity="center"

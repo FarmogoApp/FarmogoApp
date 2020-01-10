@@ -186,4 +186,14 @@
     <string name="need_farm_to_work">Necessites una granja per poder utilitzar l\'aplicació</string>
     <string name="discharged">De baixa</string>
     <string name="nfc_must_enabled">Activa el NFC</string>
+    <string name="clear_cache">Netejar Cache</string>
+    <string name="log_out">Tancar sessió</string>
+    <string name="add_new_building">Afegir nou edifici</string>
+    <string name="add_new_division">Afegir nova divisió</string>
+    <string name="add_new_farm">Afegir nova granja</string>
+    <string name="building">Edifici</string>
+    <string name="building_">Edifici:</string>
+    <string name="division_">Divisió:</string>
+    <string name="farm_">Granja:</string>
+    <string name="please_wait_this_may_take_a_moment">Si us plau esperi, això pot tardar una estona</string>
 </resources>
