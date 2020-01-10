@@ -178,4 +178,5 @@
     <string name="empty_list">Llista d\'animals buida</string>
     <string name="need_farm_to_work">Necessites una granja per poder utilitzar l\'aplicació</string>
     <string name="discharged">De baixa</string>
+    <string name="nfc_must_enabled">Activa el NFC</string>
 </resources>

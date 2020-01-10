@@ -290,8 +290,12 @@ public class AnimalInfoActivity extends AppCompatActivity {
         });
 
         writeNfc.setOnClickListener((v)->{
-            nfcWriteEnabled = !nfcWriteEnabled;
-            setNfcButtonState(nfcWriteEnabled);
+            if (nfcAdapter.isEnabled()) {
+                nfcWriteEnabled = !nfcWriteEnabled;
+                setNfcButtonState(nfcWriteEnabled);
+            }else{
+                Toast.makeText(this, R.string.nfc_must_enabled, Toast.LENGTH_SHORT).show();
+            }
         });
     }
 

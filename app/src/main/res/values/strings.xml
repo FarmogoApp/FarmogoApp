@@ -218,5 +218,6 @@
     <string name="empty_list">Empty animal list</string>
     <string name="need_farm_to_work">You need a farm to work with app</string>
     <string name="discharged">Discharged</string>
+    <string name="nfc_must_enabled">NFC must be enabled</string>
 </resources>
 
