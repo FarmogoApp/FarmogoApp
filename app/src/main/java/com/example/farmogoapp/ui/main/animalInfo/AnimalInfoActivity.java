@@ -54,6 +54,8 @@ public class AnimalInfoActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private Switch nfcSwitch;
     private NfcAdapter nfcAdapter;
+
+    private String animalId;
     private Animal animal;
     private Farm farm;
 
@@ -71,11 +73,11 @@ public class AnimalInfoActivity extends AppCompatActivity {
         nfcSwitch.setChecked(false);
 
         if (getIntent().getAction() == NfcAdapter.ACTION_NDEF_DISCOVERED) {
-            loadAnimalDataFromNfc(getIntent());
+            animalId = getIntent().getData().getPathSegments().get(0);
         }
 
         if (getIntent().hasExtra("animalId")) {
-            loadAnimalData(getIntent().getStringExtra("animalId"));
+            animalId = getIntent().getStringExtra("animalId");
         }
         registerListeners();
         loadHistoric(getIntent().getStringExtra("animalId"));
@@ -85,6 +87,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        loadAnimalData(animalId);
         invalidateOptionsMenu();
         enableNfcWriter();
 
@@ -192,10 +195,6 @@ public class AnimalInfoActivity extends AppCompatActivity {
         this.farm = data;
         TextView farmtv = findViewById(R.id.farmNumber_exemple);
         farmtv.setText(this.farm.getOfficialId());
-    }
-
-    private void loadAnimalDataFromNfc(Intent intent) {
-        loadAnimalData(intent.getData().getPathSegments().get(0));
     }
 
     private void loadAnimalData(String idAnimal) {
