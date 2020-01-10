@@ -11,7 +11,7 @@
 
     <string name="unregisrer_cow">Baja vaca</string>
     <string name="choose_type">Elige el tipo</string>
-    <string name="guide">Guia</string>
+    <string name="guide">Guía</string>
     <string name="unregistersucces">Baja correcta</string>
 
     <string-array name="animalTypes">
@@ -63,7 +63,7 @@
     </string-array>
     <string name="tag">TAG</string>
     <string name="id_eartag">ID oficial</string>
-    <string name="gender">Género</string>
+    <string name="gender">Sexo</string>
     <string name="mother">Madre</string>
     <string name="farm">Explotación</string>
     <string name="register_animal">Registrar animal</string>
@@ -73,14 +73,14 @@
         <item>Seguimiento embarazo</item>
         <item>Pesaje</item>
         <item>Salida</item>
-        <item>Programado</item>
+        <!--item>Programado</item-->
     </string-array>
     <string-array name="incidencesMultiple">
         <item>Tratamiento</item>
         <item>Seguimiento embarazo</item>
         <item>Pesaje</item>
         <item>Salida</item>
-        <item>Programado</item>
+        <!--item>Programado</item-->
     </string-array>
 
 
@@ -131,13 +131,13 @@
     <string name="scheduled">Programado</string>
     <string name="scheduled_for">Programado para</string>
     <string name="building_optional">Granja (opcional)</string>
-    <string name="section_optional">Sección (opcional)</string>
+    <string name="section_optional">División (opcional)</string>
     <string name="edit_farm">Editar Explotación</string>
     <string name="name_example">Juan</string>
     <string name="name">Nombre</string>
     <string name="telephone">Teléfono</string>
     <string name="telephone_example">656565656</string>
-    <string name="Exit">Salida</string>
+    <string name="Exit">Baja</string>
     <string name="Destino">Destino</string>
     <string name="guia_certificado">Guía/Certificado</string>
     <string name="BirthTitle">Nacimiento</string>
@@ -165,13 +165,13 @@
     <string name="CHANNEL_DESCRIPTION">Notificaciones a todos los usuarios de Farmogo</string>
     <string name="cache_memory">Vaciando memoria caché…</string>
     <string name="all_farms">Todas las explotaciones</string>
-    <string name="farm_name">Farm name</string>
-    <string name="counter_prefix">Counter Prefix</string>
-    <string name="counter">Counter</string>
-    <string name="official_id_farm">Official ID</string>
-    <string name="save_farm">Save Farm</string>
-    <string name="manage_farms">Manage Farms</string>
-    <string name="division">Division</string>
+    <string name="farm_name">Nombre de la granja</string>
+    <string name="counter_prefix">Prefijo contador</string>
+    <string name="counter">Contador</string>
+    <string name="official_id_farm">ID oficial</string>
+    <string name="save_farm">Guardar granja</string>
+    <string name="manage_farms">Gestionar granjas</string>
+    <string name="division">División</string>
     <string name="animaltypes_updated">Tipo de animales actualizados</string>
     <string name="clear_selection">Limpiar selección</string>
     <string name="races_updated">Razas actualizadas</string>
@@ -180,4 +180,7 @@
     <string name="only_alive">Presentes</string>
     <string name="Discharge_error_response">No es posible añadir una nueva incidencia a un animal de baja</string>
     <string name="empty_list">Listado de animales vacio</string>
+    <string name="need_farm_to_work">Necesitas una granja para poder utilizar la aplicación</string>
+    <string name="discharged">De baja</string>
+    <string name="nfc_must_enabled">Activa el NFC</string>
 </resources>

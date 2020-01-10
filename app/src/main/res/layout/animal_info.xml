@@ -153,44 +153,47 @@
 
     </LinearLayout>
 
-    <ImageButton
 
-        android:id="@+id/mas"
-        android:layout_width="@dimen/animal_info_button_size"
-        android:layout_height="@dimen/animal_info_button_size"
-        android:layout_alignParentEnd="true"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:src="@android:drawable/ic_menu_add"
-        android:background="@drawable/round_shape"
-        android:text="@string/plus" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/IncidenciaAnimalInfo"
-        android:layout_width="150dp"
-        android:layout_height="35dp"
-        android:layout_centerInParent="true"
-        android:layout_alignParentBottom="true"
-        android:textColor="@android:color/white"
-        android:background="@drawable/round_shape"
-        android:text="@string/incidence" />
+        <ImageButton
+            android:id="@+id/writeNfc"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_nfc"
+            android:tint="@color/white"
+            android:alpha="1"
+            android:background="@drawable/round_shape"
+            android:contentDescription="NFC WRITTER" />
 
-    <ImageView
-        android:id="@+id/nfc_icon"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_centerInParent="true"
-        android:layout_alignParentBottom="true"
-        app:srcCompat="@drawable/ic_nfc" />
+        <Button
+            android:id="@+id/IncidenciaAnimalInfo"
+            android:layout_width="140dp"
+            android:layout_height="35dp"
+            android:layout_weight="3"
+            android:textColor="@android:color/white"
+            android:background="@drawable/round_shape"
+            android:text="@string/incidence" />
 
-    <Switch
-        android:id="@+id/writeNfc"
-        android:layout_width="75dp"
-        android:layout_height="35dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:textColor="@android:color/white"
-        android:enabled="false"
-        android:checked="false"
-        android:background="@drawable/round_shape" />
+        <ImageButton
+            android:id="@+id/mas"
+            android:layout_weight="1"
+            android:layout_width="60dp"
+            android:layout_height="@dimen/animal_info_button_size"
+            android:layout_marginStart="10dp"
+            android:src="@android:drawable/ic_menu_add"
+            android:background="@drawable/round_shape"
+            android:contentDescription="SELECT ANIMAL"
+            android:text="@string/plus" />
+
+
+    </LinearLayout>
+
 
 </RelativeLayout>

@@ -6,7 +6,7 @@
 
     <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/titleRegister"
@@ -52,6 +52,9 @@
                     android:layout_below="@+id/officialID"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
+                    android:textAllCaps="true"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="14"
                     android:hint="@string/official_id"/>
             </RelativeLayout>
         </LinearLayout>
@@ -142,10 +145,12 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:paddingStart="5dp"
+                    android:maxLength="50"
                     android:background="@drawable/round_corner"
                     android:layout_below="@+id/origin"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
+                    android:inputType="textCapSentences"
                     android:hint="@string/origin" />
             </RelativeLayout>
         </LinearLayout>
@@ -208,6 +213,9 @@
                     android:layout_below="@+id/motherID"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
+                    android:maxLength="14"
+                    android:textAllCaps="true"
+                    android:inputType="textCapCharacters"
                     android:hint="@string/mother_id" />
 
             </RelativeLayout>

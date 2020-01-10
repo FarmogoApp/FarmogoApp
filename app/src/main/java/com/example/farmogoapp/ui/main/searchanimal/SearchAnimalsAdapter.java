@@ -154,10 +154,17 @@ public class SearchAnimalsAdapter extends BaseAdapter implements View.OnClickLis
         }
 
         if (animal.getDischargeDate() == null) {
-            v.setBackgroundColor(v.getResources().getColor(R.color.white));
+            if (animal.isSelected()){
+                row.setBackgroundColor(activity.getColor(R.color.colorSecondary));
+            }else {
+                v.setBackgroundColor(v.getResources().getColor(R.color.white));
+            }
+            button.setVisibility(View.VISIBLE);
         }else{
             v.setBackgroundColor(v.getResources().getColor(R.color.grey));
+            button.setVisibility(View.INVISIBLE);
         }
+
 
 
 
