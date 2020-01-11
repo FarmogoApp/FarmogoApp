@@ -87,6 +87,8 @@
                 android:layout_below="@+id/obs"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
+                android:inputType="text"
+                android:imeOptions="actionDone"
                 android:hint="@string/observations"/>
         </RelativeLayout>
 

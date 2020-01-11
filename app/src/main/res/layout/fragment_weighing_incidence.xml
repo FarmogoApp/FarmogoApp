@@ -52,6 +52,8 @@
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/round_corner"
                 android:hint="@string/weight"
+                android:imeOptions="actionNext"
+                android:inputType="text"
                 android:paddingStart="5dp" />
         </RelativeLayout>
 
@@ -85,6 +87,8 @@
                 android:layout_below="@+id/obs"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
+                android:inputType="text"
+                android:imeOptions="actionDone"
                 android:hint="@string/observations"/>
         </RelativeLayout>
 
