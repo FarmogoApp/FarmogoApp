@@ -121,11 +121,7 @@
         <item>Frisona</item>
         <item>Charoles</item>
     </string-array>
-    <string-array name="exitType">
-        <item>Death</item>
-        <item>Sell cow</item>
-        <item>Slaugter house</item>
-    </string-array>
+
     <string-array name="mother">
         <item>Mother 1</item>
         <item>Mother 2</item>
@@ -191,13 +187,20 @@
         <item>95597533343</item>
         <item>95597553222</item>
     </string-array>
-    <string-array name="type">
+    <string-array name="treatmentTypes">
         <item>Vaccine</item>
         <item>Deworm</item>
         <item>Inseminate</item>
         <item>Others</item>
     </string-array>
-    <string-array name="pregnancy_state">
+
+    <string-array name="dischargeTypes">
+        <item>Death</item>
+        <item>Sale</item>
+        <item>Slaughterhouse</item>
+    </string-array>
+
+    <string-array name="pregnancyTypes">
         <item>Zeal</item>
         <item>Stand</item>
         <item>Abortion</item>

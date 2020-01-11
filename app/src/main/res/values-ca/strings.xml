@@ -15,17 +15,17 @@
         <item>Vedell/a</item>
     </string-array>
 
-
     <string-array name="sexs">
         <item>Mascle</item>
         <item>Femella</item>
     </string-array>
 
-    <string-array name="exitType">
+    <string-array name="dischargeTypes">
         <item>Mort</item>
-        <item>venda de vaca</item>
+        <item>Venda</item>
         <item>Escorxador</item>
     </string-array>
+
     <string-array name="mother">
         <item>Mare 1</item>
         <item>Mare 2</item>
@@ -75,11 +75,19 @@
     </string-array>
 
 
-    <string-array name="pregnancy_state">
+    <string-array name="pregnancyTypes">
         <item>Zel</item>
         <item>Parada</item>
         <item>Abortament</item>
     </string-array>
+
+    <string-array name="treatmentTypes">
+        <item>Vacunar</item>
+        <item>Desparasitar</item>
+        <item>Inseminar</item>
+        <item>Altres</item>
+    </string-array>
+
     <string-array name="races">
         <item>Pirenaica</item>
         <item>Parda de Montaña</item>

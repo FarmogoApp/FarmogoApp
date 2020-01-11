@@ -15,7 +15,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.farmogoapp.I18nUtils;
+import com.example.farmogoapp.I18nUtils.AnimalTypeI18n;
+import com.example.farmogoapp.I18nUtils.I18nUtils;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.DataUpdater;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
@@ -132,8 +133,8 @@ public class RegisterCowActivity extends AppCompatActivity {
         //Animal selectedMother = (Animal) spnMotherId.getSelectedItem();
 
         String origin = etOrigin.getText().toString();
-        String selectedSex = i18nUtils.getSexENLocale(spnSex.getSelectedItem().toString());
-        AnimalType selectedAnimalType = ((I18nUtils.AnimalTypeI18N) spnAnimalType.getSelectedItem()).getAnimalType();
+        String selectedSex = i18nUtils.getSexLocaleEN(spnSex.getSelectedItem().toString());
+        AnimalType selectedAnimalType = ((AnimalTypeI18n) spnAnimalType.getSelectedItem()).getAnimalType();
         Race selectedRace = (Race) spnRace.getSelectedItem();
         Location location = (Location) spnLocation.getSelectedItem();
 

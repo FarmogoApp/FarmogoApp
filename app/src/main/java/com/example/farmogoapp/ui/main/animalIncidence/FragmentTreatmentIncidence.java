@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.farmogoapp.I18nUtils.I18nUtils;
+import com.example.farmogoapp.I18nUtils.TreatmentTypeI18n;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
@@ -40,10 +42,10 @@ public class FragmentTreatmentIncidence extends Fragment {
     private EditText eTTreatmentObs;
     private String animalOfficialId;
     private String farmId;
-    private ArrayList<TreatmentType> treatmentType;
     private Integer incidenceType;
     private String animalUuid;
     private Integer i = 0;
+    private I18nUtils i18nUtils;
 
 
     public static FragmentTreatmentIncidence newInstance() {
@@ -74,15 +76,11 @@ public class FragmentTreatmentIncidence extends Fragment {
 
         registerViews();
 
-        treatmentType = new ArrayList<TreatmentType>(Arrays.asList(getTreatmentTypes()));
-        ArrayAdapter treatmentTypeAdapater = new ArrayAdapter(getActivity().getApplicationContext(), R.layout.spinner, treatmentType);
+        i18nUtils = new I18nUtils(getActivity().getApplicationContext());
+        ArrayAdapter treatmentTypeAdapater = new ArrayAdapter(getActivity().getApplicationContext(), R.layout.spinner, i18nUtils.getTreatmentTypesI18n());
         spTreatmentType.setAdapter(treatmentTypeAdapater);
         registerListeners();
         return view;
-    }
-
-    public TreatmentType[] getTreatmentTypes() {
-        return TreatmentType.values();
     }
 
     private void CreateTreatmentIncidence(IncidenceTreatment incidenceTreatment) {
@@ -130,7 +128,7 @@ public class FragmentTreatmentIncidence extends Fragment {
             return;
         }
 
-        TreatmentType treatmentType = (TreatmentType) spTreatmentType.getSelectedItem();
+        TreatmentType treatmentType = ((TreatmentTypeI18n) spTreatmentType.getSelectedItem()).getTreatmentType();
         IncidenceTreatment incidenceTreatment = new IncidenceTreatment();
 
         incidenceTreatment.setTreatmentType(treatmentType);

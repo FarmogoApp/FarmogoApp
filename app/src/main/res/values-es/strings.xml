@@ -25,9 +25,9 @@
         <item>Macho</item>
         <item>Hembra</item>
     </string-array>
-    <string-array name="exitType">
+    <string-array name="dischargeTypes">
         <item>Muerte</item>
-        <item>Venta de vaca</item>
+        <item>Venta</item>
         <item>Matadero</item>
     </string-array>
     <string-array name="races">
@@ -84,8 +84,15 @@
         <!--item>Programado</item-->
     </string-array>
 
+    <string-array name="treatmentTypes">
+        <item>Vacunar</item>
+        <item>Desparasitar</item>
+        <item>Inseminar</item>
+        <item>Otros</item>
+    </string-array>
 
-    <string-array name="pregnancy_state">
+
+    <string-array name="pregnancyTypes">
         <item>Celo</item>
         <item>Parada</item>
         <item>Aborto</item>

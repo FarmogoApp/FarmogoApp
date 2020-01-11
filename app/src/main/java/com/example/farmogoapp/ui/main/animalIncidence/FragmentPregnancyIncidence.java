@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.farmogoapp.I18nUtils.I18nUtils;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
@@ -25,6 +26,7 @@ import com.example.farmogoapp.model.incidences.IncidencePregnancy;
 import com.example.farmogoapp.model.incidences.PregnancyType;
 import com.example.farmogoapp.ui.main.animalInfo.AnimalInfoActivity;
 import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
+import com.example.farmogoapp.I18nUtils.PregnancyTypeI18n;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,12 +41,12 @@ public class FragmentPregnancyIncidence extends Fragment {
     private Button saveButton;
     private View view;
     private Spinner spPregnancyType;
-    private ArrayList<PregnancyType> pregnancyTypes;
     private EditText eTPregnancyObs;
     private String animalOfficialId;
     private String farmId;
     private Integer incidenceType;
     private String animalUuid;
+    private I18nUtils i18nUtils;
 
 
     public static FragmentPregnancyIncidence newInstance() {
@@ -74,15 +76,14 @@ public class FragmentPregnancyIncidence extends Fragment {
         view = inflater.inflate(R.layout.fragment_pregnancy_incidence, container, false);
 
         registerViews();
-        pregnancyTypes = new ArrayList<PregnancyType>(Arrays.asList(getPregancyTypes()));
-        ArrayAdapter pregnancyTypeAdapater = new ArrayAdapter(getActivity().getApplicationContext(), R.layout.spinner, pregnancyTypes);
+        i18nUtils = new I18nUtils(getActivity().getApplicationContext());
+        ArrayAdapter pregnancyTypeAdapater = new ArrayAdapter(getActivity().getApplicationContext(), R.layout.spinner, i18nUtils.getPregnancyTypesI18n());
         spPregnancyType.setAdapter(pregnancyTypeAdapater);
         registerListeners();
 
         return view;
     }
 
-    public PregnancyType[] getPregancyTypes() { return PregnancyType.values(); }
 
     private void registerViews() {
         saveButton = view.findViewById(R.id.savePregnancy);
@@ -109,7 +110,7 @@ public class FragmentPregnancyIncidence extends Fragment {
             incidencePregnancy.setCreatedBy(user.getUuid());
             incidencePregnancy.setFarmId(farm.getUuid());
             incidencePregnancy.setAnimalId(animalB.getUuid());*/
-        PregnancyType pregnancyType = (PregnancyType) spPregnancyType.getSelectedItem();
+        PregnancyType pregnancyType = ((PregnancyTypeI18n) spPregnancyType.getSelectedItem()).getPregnancyType();
         IncidencePregnancy incidencePregnancy = new IncidencePregnancy();
 
         incidencePregnancy.setPregnancyType(pregnancyType);
@@ -123,7 +124,7 @@ public class FragmentPregnancyIncidence extends Fragment {
 
     private void saveIncidenceMultiple() {
 
-        PregnancyType pregnancyType = (PregnancyType) spPregnancyType.getSelectedItem();
+        PregnancyType pregnancyType = ((PregnancyTypeI18n) spPregnancyType.getSelectedItem()).getPregnancyType();
         IncidencePregnancy incidencePregnancy = new IncidencePregnancy();
 
         incidencePregnancy.setPregnancyType(pregnancyType);

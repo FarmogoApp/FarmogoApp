@@ -51,7 +51,7 @@
                 android:layout_below="@+id/tipo"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/spinner_bg"
-                android:entries="@array/type" />
+                android:entries="@array/treatmentTypes" />
 
         </RelativeLayout>
     </LinearLayout>

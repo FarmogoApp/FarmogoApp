@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.farmogoapp.I18nUtils.DischargeTypeI18n;
+import com.example.farmogoapp.I18nUtils.I18nUtils;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
@@ -45,9 +47,9 @@ public class ExitFragment extends Fragment {
     private EditText eTDischargeObs;
     private String animalOfficialId;
     private String farmId;
-    private ArrayList<DischargeType> dischargeType;
     private Integer incidenceType;
     private String animalUuid;
+    private I18nUtils i18nUtils;
 
     public static ExitFragment newInstance() {
         ExitFragment fragment = new ExitFragment();
@@ -65,6 +67,7 @@ public class ExitFragment extends Fragment {
             animalOfficialId = this.getArguments().getString("animalOfficialId", "");
             farmId = this.getArguments().getString("farmId", "");
             incidenceType = this.getArguments().getInt("incidenceType");
+
         }
     }
 
@@ -74,23 +77,20 @@ public class ExitFragment extends Fragment {
 
         view= inflater.inflate(R.layout.exit_fragment, container, false);
         registerViews();
-        dischargeType = new ArrayList<DischargeType>(Arrays.asList(getDischargeTypes()));
-        ArrayAdapter dischargeTypeAdapater = new ArrayAdapter(getActivity().getApplicationContext(), R.layout.spinner, dischargeType);
+        i18nUtils = new I18nUtils(getActivity().getApplicationContext());
+        ArrayAdapter dischargeTypeAdapater = new ArrayAdapter(getActivity().getApplicationContext(), R.layout.spinner, i18nUtils.getDischargeTypesI18n());
         spDischargeType.setAdapter(dischargeTypeAdapater);
         registerListeners();
         return  view;
     }
 
-    public DischargeType[] getDischargeTypes() {
-        return DischargeType.values();
-    }
 
     private void saveIncidenceSimple() {
         if(!checkFields()){
             return;
         }
 
-        DischargeType dischargeType = (DischargeType) spDischargeType.getSelectedItem();
+        DischargeType dischargeType = ((DischargeTypeI18n) spDischargeType.getSelectedItem()).getDischargeType();
         IncidenceDischarge incidenceDischarge = new IncidenceDischarge();
         incidenceDischarge.setHealthRegister(eTDischargeCertificate.getText().toString());
         incidenceDischarge.setDischargeType(dischargeType);
