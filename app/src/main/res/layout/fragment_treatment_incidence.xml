@@ -84,6 +84,9 @@
                 android:layout_below="@+id/medicamento"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLines="1"
                 android:hint="@string/medicine"/>
         </RelativeLayout>
     </LinearLayout>
@@ -117,6 +120,9 @@
                 android:layout_below="@+id/dosis"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLines="1"
                 android:hint="@string/dose"/>
         </RelativeLayout>
     </LinearLayout>
@@ -150,6 +156,8 @@
                 android:layout_below="@+id/obs"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
+                android:imeOptions="actionDone"
+                android:inputType="text"
                 android:hint="@string/observations"/>
         </RelativeLayout>
 

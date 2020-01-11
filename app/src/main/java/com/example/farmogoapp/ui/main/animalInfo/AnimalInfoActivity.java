@@ -79,7 +79,12 @@ public class AnimalInfoActivity extends AppCompatActivity {
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter!=null){
             writeNfc.setAlpha(1.0f);
-          //  writeNfc.setVisibility(View.VISIBLE);
+            writeNfc.setEnabled(true);
+            writeNfc.setVisibility(View.VISIBLE);
+        }else{
+            writeNfc.setAlpha(0f);
+            writeNfc.setEnabled(false);
+            writeNfc.setVisibility(View.INVISIBLE);
         }
         nfcWriteEnabled  = false;
 
