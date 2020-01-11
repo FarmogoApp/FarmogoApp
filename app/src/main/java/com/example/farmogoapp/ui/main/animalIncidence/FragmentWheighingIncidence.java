@@ -134,7 +134,7 @@ public class FragmentWheighingIncidence extends Fragment {
     public boolean checkFields(){
 
         if (eTWheinghingPesaje.getText().toString().isEmpty()) {
-            eTWheinghingPesaje.setError("Mandatory field");
+            eTWheinghingPesaje.setError(getString(R.string.required_field));
             return false;
         }
         return true;

@@ -178,12 +178,12 @@ public class ExitFragment extends Fragment {
 
 
         if (eTDischargeDestination.getText().toString().isEmpty()) {
-            eTDischargeDestination.setError("Mandatory field");
+            eTDischargeDestination.setError(getString(R.string.required_field));
             return false;
         }
         /*incomplete incidence
         if (eTDischargeCertificate.getText().toString().isEmpty()) {
-            eTDischargeCertificate.setError("Mandatory field");
+            eTDischargeCertificate.setError(getString(R.string.required_field));
             return false;
         }*/
 

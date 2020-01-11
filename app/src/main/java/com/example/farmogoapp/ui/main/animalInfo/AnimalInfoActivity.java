@@ -179,7 +179,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
             ndef.close();
             nfcWriteEnabled = false;
             setNfcButtonState(nfcWriteEnabled);
-            Toast.makeText(this, "Tag has been written", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.tag_has_been_written), Toast.LENGTH_SHORT).show();
         } catch (FormatException e) {
             e.printStackTrace();
         } catch (IOException e) {

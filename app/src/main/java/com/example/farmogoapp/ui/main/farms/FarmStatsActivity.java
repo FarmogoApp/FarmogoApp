@@ -124,7 +124,7 @@ public class FarmStatsActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                Toast.makeText(FarmStatsActivity.this, "Nothing Selected", Toast.LENGTH_SHORT);
+                Toast.makeText(FarmStatsActivity.this, getString(R.string.nothing_selected), Toast.LENGTH_SHORT);
             }
 
         });

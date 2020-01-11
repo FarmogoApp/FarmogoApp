@@ -173,11 +173,11 @@ public class FragmentTreatmentIncidence extends Fragment {
     public boolean checkFields(){
 
         if (eTTreatmentMedicine.getText().toString().isEmpty()) {
-            eTTreatmentMedicine.setError("Mandatory field");
+            eTTreatmentMedicine.setError(getString(R.string.required_field));
             return false;
         }/*incomplete incidence
         if (eTTreatmentDose.getText().toString().isEmpty()) {
-            eTTreatmentDose.setError("Mandatory field");
+            eTTreatmentDose.setError(getString(R.string.required_field));
             return false;
         }*/
         return true;

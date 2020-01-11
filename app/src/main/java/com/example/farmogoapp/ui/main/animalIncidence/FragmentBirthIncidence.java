@@ -167,12 +167,12 @@ public class FragmentBirthIncidence extends Fragment{
     public boolean checkFields(){
 
         if (eTofficialId.getText().toString().isEmpty()) {
-            eTofficialId.setError("Mandatory field");
+            eTofficialId.setError(getString(R.string.required_field));
             return false;
         }
 
         if (date.getText().toString().isEmpty()) {
-            date.setError("Mandatory field");
+            date.setError(getString(R.string.required_field));
             return false;
         }
         return true;
