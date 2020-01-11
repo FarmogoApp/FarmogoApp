@@ -35,9 +35,22 @@ public class I18nUtils {
 
 
     private Context context;
+    private String[] sexsEN;
+    private String[] sexsDefault;
+    private String[] animalTypesEN;
+    private String[] animalTypesDefault;
 
     public I18nUtils(Context context) {
         this.context = context;
+        initializeArrays();
+    }
+
+    private void initializeArrays() {
+        sexsEN =  getLocalizedResources( context, Locale.ENGLISH).getStringArray(R.array.sexs);
+        sexsDefault = getLocalizedResources(context, Locale.getDefault()).getStringArray(R.array.sexs);
+
+        animalTypesEN =  getLocalizedResources(context, Locale.ENGLISH).getStringArray(R.array.animalTypes);
+        animalTypesDefault = getLocalizedResources(context, Locale.getDefault()).getStringArray(R.array.animalTypes);
     }
 
     /**
@@ -46,8 +59,7 @@ public class I18nUtils {
      * @return sex in EN locale
      */
     public String getSexENLocale(String sexDefaultLocale){
-        String[] sexsEN =  getLocalizedResources( context, Locale.ENGLISH).getStringArray(R.array.sexs);
-        String[] sexsDefault=  getLocalizedResources(context, Locale.getDefault()).getStringArray(R.array.sexs);
+
 
         for (int i = 0; i < sexsDefault.length ; i++) {
             if(sexsDefault[i].equalsIgnoreCase(sexDefaultLocale)) return sexsEN[i];
@@ -57,10 +69,6 @@ public class I18nUtils {
 
     public List<AnimalTypeI18N> generateI18NAnimalTypeList(List<AnimalType> animalTypeList){
         List<AnimalTypeI18N> animalTypeI18NList = new ArrayList<>();
-
-        String[] animalTypesEN =  getLocalizedResources(context, Locale.ENGLISH).getStringArray(R.array.animalTypes);
-        String[] animalTypesDefault=  getLocalizedResources(context, Locale.getDefault()).getStringArray(R.array.animalTypes);
-
 
         for (AnimalType animalType: animalTypeList){
             for (int i = 0; i < animalTypesEN.length; i++) {
@@ -72,6 +80,17 @@ public class I18nUtils {
 
         return animalTypeI18NList;
     }
+
+    public String getAnimalTypeInDefaultLocale(String animalTypeDescEN){
+
+        for (int i = 0; i < animalTypesEN.length ; i++) {
+            if(animalTypeDescEN.equalsIgnoreCase(animalTypesEN[i])){
+                return animalTypesDefault[i];
+            }
+        }
+        return animalTypeDescEN;
+    }
+
 
     /**
      * Return resources of a specific locale

@@ -113,6 +113,7 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+
     <string-array name="races">
         <item>Pirenaica</item>
         <item>Parda de Montaña</item>
@@ -267,5 +268,7 @@
     <string name="password_too_short">The password is too short</string>
     <string name="passwords_doesnt_match">The passwords doesn\'t match</string>
     <string name="Creating_user">Creating user...</string>
+    <string name="discharge">Discharge</string>
+    <string name="birth">Birth</string>
 </resources>
 

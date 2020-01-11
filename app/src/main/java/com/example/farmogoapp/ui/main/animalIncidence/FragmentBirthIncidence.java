@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.farmogoapp.I18nUtils;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.DataUpdater;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
@@ -53,6 +54,7 @@ public class FragmentBirthIncidence extends Fragment{
     private String farmAnimalCounter;
     private Integer incidenceType;
     private String animalUuid;
+    private I18nUtils i18nUtils;
 
     public static FragmentBirthIncidence newInstance() {
         FragmentBirthIncidence fragment = new FragmentBirthIncidence();
@@ -66,6 +68,8 @@ public class FragmentBirthIncidence extends Fragment{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        i18nUtils = new I18nUtils(getContext());
+
         if(getArguments() != null){
             animalUuid = this.getArguments().getString("animalId", "");
             animalOfficialId = this.getArguments().getString("animalOfficialId", "");
@@ -105,8 +109,7 @@ public class FragmentBirthIncidence extends Fragment{
         int year = Integer.valueOf(parts[2]); // year
 
         Race raceSelected = (Race) racesp.getSelectedItem();
-        String sexSelected = (String) sexsp.getSelectedItem();
-
+        String sexSelected = i18nUtils.getSexENLocale(sexsp.getSelectedItem().toString());
         IncidenceBirth incidenceBirth = new IncidenceBirth();
         incidenceBirth.setBirthDate(LocalDate.of(year, month, day));
         incidenceBirth.setRaceId(raceSelected.getUuid());

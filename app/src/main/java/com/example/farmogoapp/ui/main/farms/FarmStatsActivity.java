@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.farmogoapp.I18nUtils;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
@@ -58,6 +59,7 @@ public class FarmStatsActivity extends AppCompatActivity {
     private Button btnGestion;
     private Button searchButton;
     private Spinner spinner;
+    private I18nUtils i18nUtils;
 
 
     @Override
@@ -94,7 +96,7 @@ public class FarmStatsActivity extends AppCompatActivity {
             startActivity(intent);
         }
         loadFarms();
-
+        i18nUtils = new I18nUtils(getApplicationContext());
     }
 
     private void registerViews() {
@@ -173,7 +175,7 @@ public class FarmStatsActivity extends AppCompatActivity {
                         typeTv.setLayoutParams(lparams);
                         valueTv.setLayoutParams(lparams);
 
-                        typeTv.setText(type.get().toString());
+                        typeTv.setText(i18nUtils.getAnimalTypeInDefaultLocale(type.get().toString()));
                         typeTv.setPadding(5, 5, 5, 5);
 
                         valueTv.setText(v.toString());

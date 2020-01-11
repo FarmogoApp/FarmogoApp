@@ -17,8 +17,9 @@
     <string-array name="animalTypes">
         <item>Vaca</item>
         <item>Toro</item>
-        <item>Ternera</item>
+        <item>Ternero/a</item>
     </string-array>
+
 
     <string-array name="sexs">
         <item>Macho</item>
@@ -72,14 +73,14 @@
         <item>Tratamiento</item>
         <item>Seguimiento embarazo</item>
         <item>Pesaje</item>
-        <item>Salida</item>
+        <item>Baja</item>
         <!--item>Programado</item-->
     </string-array>
     <string-array name="incidencesMultiple">
         <item>Tratamiento</item>
         <item>Seguimiento embarazo</item>
         <item>Pesaje</item>
-        <item>Salida</item>
+        <item>Baja</item>
         <!--item>Programado</item-->
     </string-array>
 
@@ -145,7 +146,7 @@
     <string name="register_cow">Registrar Vaca</string>
     <string name="Date">Fecha</string>
     <string name="forgot_your_password">¿Olvidate la contraseña?</string>
-    <string name="user_auth_failed">Autenticacion de usuario fallida:</string>
+    <string name="user_auth_failed">Autenticación de usuario fallida:</string>
     <string name="log_in">Logueando...</string>
     <string name="please_enter_email">Por favor introduce el email</string>
     <string name="please_enter_password">Por favor introduce la contraseña</string>
@@ -224,4 +225,6 @@
     <string name="editing_name_building">Está editando el nombre del edificio</string>
     <string name="editing_name_division">Está editando el nombre de la división</string>
     <string name="editing_name_farm">Está editando el nombre de la granja</string>
+    <string name="discharge">Baja</string>
+    <string name="birth">Nacimiento</string>
 </resources>

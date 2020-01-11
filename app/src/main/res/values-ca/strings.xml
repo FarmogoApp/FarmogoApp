@@ -227,4 +227,6 @@
     <string name="editing_name_building">Esteu editant el nom de l’edifici</string>
     <string name="editing_name_division">Esteu editant el nom de la divisió</string>
     <string name="editing_name_farm">Esteu editant el nom de la granja</string>
+    <string name="discharge">Baixa</string>
+    <string name="birth">Naixement</string>
 </resources>
