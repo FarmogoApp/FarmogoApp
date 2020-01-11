@@ -115,7 +115,7 @@ public class AnimalListActivity extends AppCompatActivity {
         clear.setOnMenuItemClickListener(item -> {
             SessionData.getInstance().clearCart();
             mAdapter.updateAnimalList();
-            Toast.makeText(AnimalListActivity.this, "\n" + "Empty animal list", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AnimalListActivity.this, "\n" + getString(R.string.empty_animal_list), Toast.LENGTH_SHORT).show();
 
             finish();
             return true;

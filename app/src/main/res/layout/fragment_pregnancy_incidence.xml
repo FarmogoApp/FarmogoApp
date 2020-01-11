@@ -50,7 +50,7 @@
                 android:id="@+id/sp_pregnancyType"
                 android:background="@drawable/spinner_bg"
                 android:layout_below="@+id/estado_embarazo"
-                android:entries="@array/pregnancy_state"
+                android:entries="@array/pregnancyTypes"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"/>
 

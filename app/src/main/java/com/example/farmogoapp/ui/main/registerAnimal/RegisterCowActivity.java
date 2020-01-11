@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.farmogoapp.I18nUtils.AnimalTypeI18n;
+import com.example.farmogoapp.I18nUtils.I18nUtils;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.DataUpdater;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
@@ -40,7 +42,6 @@ import retrofit2.Response;
 
 
 public class RegisterCowActivity extends AppCompatActivity {
-
 
     class Location {
         private Building building;
@@ -77,6 +78,7 @@ public class RegisterCowActivity extends AppCompatActivity {
     private Button btnRegister;
     private Calendar calendar = Calendar.getInstance();
     private Farm currentFarm;
+    private I18nUtils i18nUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +86,7 @@ public class RegisterCowActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setContentView(R.layout.activity_register_cow);
+        i18nUtils = new I18nUtils(getApplicationContext());
         findAllComponents();
 
         String myFormat = "dd/MM/yyyy";
@@ -130,8 +133,8 @@ public class RegisterCowActivity extends AppCompatActivity {
         //Animal selectedMother = (Animal) spnMotherId.getSelectedItem();
 
         String origin = etOrigin.getText().toString();
-        String selectedSex = spnSex.getSelectedItem().toString();
-        AnimalType selectedAnimalType = (AnimalType) spnAnimalType.getSelectedItem();
+        String selectedSex = i18nUtils.getSexLocaleEN(spnSex.getSelectedItem().toString());
+        AnimalType selectedAnimalType = ((AnimalTypeI18n) spnAnimalType.getSelectedItem()).getAnimalType();
         Race selectedRace = (Race) spnRace.getSelectedItem();
         Location location = (Location) spnLocation.getSelectedItem();
 
@@ -258,10 +261,12 @@ public class RegisterCowActivity extends AppCompatActivity {
 
         List<AnimalType> animalTypes = SessionData.getInstance().getAnimalTypes();
         if (animalTypes != null) {
-            ArrayAdapter animalTypeAdapater = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, animalTypes);
+            ArrayAdapter animalTypeAdapater = new ArrayAdapter(RegisterCowActivity.this, R.layout.spinner, i18nUtils.generateI18NAnimalTypeList(animalTypes));
             spnAnimalType.setAdapter(animalTypeAdapater);
         }
     }
+
+
 
 
     private void initializeRaceSpinner() {

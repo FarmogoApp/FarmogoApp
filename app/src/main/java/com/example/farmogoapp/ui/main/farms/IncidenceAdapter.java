@@ -162,7 +162,7 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
                 }
 
                 TextView incidence_discharge_type_tv = viewHolder.incidence_discharge_type;
-                incidence_discharge_type_tv.setText(obj.getType().toString());
+                incidence_discharge_type_tv.setText(R.string.discharge);
 
                 TextView incidence_discharge_health_register_tv = viewHolder.incidence_discharge_health_register;
                 incidence_discharge_health_register_tv.setText(obj.getHealthRegister());
@@ -181,7 +181,7 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
                 }
 
                 TextView incidence_pregnancy_type_tv = viewHolder.incidence_pregnancy_type;
-                incidence_pregnancy_type_tv.setText(obj.getType().toString());
+                incidence_pregnancy_type_tv.setText(R.string.pregnancy_monitoring);
 
                 TextView incidence_pregnancy_date_tv = viewHolder.incidence_pregnancy_date;
                 incidence_pregnancy_date_tv.setText(obj.getDate().toString());
@@ -196,7 +196,7 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
                 }
 
                 TextView animal_treatment_type_tv = viewHolder.incidence_treatment_type;
-                animal_treatment_type_tv.setText(obj.getType().toString());
+                animal_treatment_type_tv.setText(R.string.treatment);
 
                 TextView animal_treatment_medicine_tv = viewHolder.incidence_treatment_medicine;
                 animal_treatment_medicine_tv.setText(obj.getMedicine());
@@ -214,7 +214,7 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
                 }
 
                 TextView animal_weight_type_tv = viewHolder.incidence_weight_type;
-                animal_weight_type_tv.setText(obj.getType().toString());
+                animal_weight_type_tv.setText(R.string.weighing);
 
                 TextView animal_weight_weight_tv = viewHolder.incidence_weight_weight;
                 animal_weight_weight_tv.setText(String.valueOf(obj.getWeight()));
@@ -234,10 +234,11 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
 
 
                 TextView incidence_birth_type = viewHolder.incidence_birth_type;
-                incidence_birth_type.setText(obj.getType().toString());
+                incidence_birth_type.setText(R.string.birth);
 
+                String[] sexArray = context.getResources().getStringArray(R.array.sexs);
                 TextView incidence_birth_sex = viewHolder.incidence_birth_sex;
-                incidence_birth_sex.setText(obj.getSex());
+                incidence_birth_sex.setText(sexArray[obj.getSex().equals("Male") ? 0 : 1]);
 
                 TextView incidence_birth_date = viewHolder.incidence_birth_date;
                 incidence_birth_date.setText(obj.getDate().toString());

@@ -72,12 +72,12 @@ public class NewFarm extends AppCompatActivity {
         Building build = new Building();
 
         Division division = new Division();
-        division.setName("Default Division");
+        division.setName(getString(R.string.default_division));
 
         List<Division> listDivisions = new ArrayList<Division>();
         listDivisions.add(division);
         build.setDivisions(listDivisions);
-        build.setName("Default Building");
+        build.setName(getString(R.string.default_building));
         listBuildings.add(build);
         farm.setBuildings(listBuildings);
 
@@ -90,7 +90,7 @@ public class NewFarm extends AppCompatActivity {
                 SessionData.getInstance().setActualFarm(response.body());
                 DataUpdater dataUpdater = new DataUpdater();
                 dataUpdater.updatefarms();
-                Toast.makeText(NewFarm.this, "New Farm Created", Toast.LENGTH_SHORT).show();
+                Toast.makeText(NewFarm.this, getString(R.string.new_farm_created), Toast.LENGTH_SHORT).show();
                 startActivity(intent);
                 finish();
             }
@@ -105,19 +105,19 @@ public class NewFarm extends AppCompatActivity {
     public boolean checkFields() {
 
         if (txtName.getText().toString().isEmpty()) {
-            txtName.setError("Camp obligatori");
+            txtName.setError(getString(R.string.required_field));
             return false;
         }
         if (txtCounterPrefix.getText().toString().isEmpty()) {
-            txtCounterPrefix.setError("Camp obligatori");
+            txtCounterPrefix.setError(getString(R.string.required_field));
             return false;
         }
         if (txtCounter.getText().toString().isEmpty()) {
-            txtCounter.setError("Camp obligatori");
+            txtCounter.setError(getString(R.string.required_field));
             return false;
         }
         if (txtOfficialId.getText().toString().isEmpty()) {
-            txtOfficialId.setError("Camp obligatori");
+            txtOfficialId.setError(getString(R.string.required_field));
             return false;
         }
         return true;

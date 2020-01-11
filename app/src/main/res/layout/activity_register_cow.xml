@@ -17,7 +17,7 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:padding="10dp"
-            android:text="REGISTER COW"
+            android:text="@string/register_animal"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp" />
 

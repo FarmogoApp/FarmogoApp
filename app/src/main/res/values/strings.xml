@@ -53,7 +53,7 @@
     <string name="sold">Sold</string>
     <string name="died">Died</string>
     <string name="slaughterhouse">Slaughterhouse</string>
-    <string name="choose_incidence">Choose incidence:</string>
+    <string name="choose_incidence">"Choose incidence: "</string>
     <string name="animal_incidence">Animal Incidence</string>
     <string name="treatment">Treatment</string>
     <string name="type">Type</string>
@@ -102,10 +102,18 @@
     <string name="nfc_ear_tag">NFC ear tag</string>
     <string name="registration_failed">Registration failed</string>
 
+    <string-array name="animalTypes">
+        <item>Cow</item>
+        <item>Bull</item>
+        <item>Calf</item>
+    </string-array>
+
+
     <string-array name="sexs">
         <item>Male</item>
         <item>Female</item>
     </string-array>
+
     <string-array name="races">
         <item>Pirenaica</item>
         <item>Parda de Montaña</item>
@@ -113,11 +121,7 @@
         <item>Frisona</item>
         <item>Charoles</item>
     </string-array>
-    <string-array name="exitType">
-        <item>Death</item>
-        <item>Sell cow</item>
-        <item>Slaugter house</item>
-    </string-array>
+
     <string-array name="mother">
         <item>Mother 1</item>
         <item>Mother 2</item>
@@ -183,13 +187,20 @@
         <item>95597533343</item>
         <item>95597553222</item>
     </string-array>
-    <string-array name="type">
+    <string-array name="treatmentTypes">
         <item>Vaccine</item>
         <item>Deworm</item>
         <item>Inseminate</item>
         <item>Others</item>
     </string-array>
-    <string-array name="pregnancy_state">
+
+    <string-array name="dischargeTypes">
+        <item>Death</item>
+        <item>Sale</item>
+        <item>Slaughterhouse</item>
+    </string-array>
+
+    <string-array name="pregnancyTypes">
         <item>Zeal</item>
         <item>Stand</item>
         <item>Abortion</item>
@@ -219,5 +230,48 @@
     <string name="need_farm_to_work">You need a farm to work with app</string>
     <string name="discharged">Discharged</string>
     <string name="nfc_must_enabled">NFC must be enabled</string>
+    <string name="clear_cache">Clear Cache</string>
+    <string name="log_out">Log Out</string>
+    <string name="add_new_farm">Add new Farm</string>
+    <string name="building">Building</string>
+    <string name="add_new_building">Add new Building</string>
+    <string name="add_new_division">Add new Division</string>
+    <string name="division_">"Division: "</string>
+    <string name="building_">"Building: "</string>
+    <string name="farm_">"Farm: "</string>
+    <string name="please_wait_this_may_take_a_moment">Please wait! This may take a moment.</string>
+    <string name="You_need_a_farm_to_use_the_app">You need a farm to use the app</string>
+    <string name="Add_New_Building_to">"Add New Building to: "</string>
+    <string name="Add_New_Division_to">"Add New Division to: "</string>
+    <string name="edit">"Edit: "</string>
+    <string name="editing_name_farm">You are editing the name of the farm</string>
+    <string name="accept">Accept</string>
+    <string name="cancel">Cancel</string>
+    <string name="new_division">New Division</string>
+    <string name="creating_new_division">You are creating new division</string>
+    <string name="Default">Default</string>
+    <string name="new_building">New Building</string>
+    <string name="creating_new_building">You are creating new building</string>
+    <string name="editing_name_division">You are editing the name of the division</string>
+    <string name="editing_name_building">You are editing the name of the building</string>
+    <string name="default_division">Default Division</string>
+    <string name="default_building">Default Building</string>
+    <string name="new_farm_created">New Farm Created</string>
+    <string name="required_field">Required field</string>
+    <string name="tag_has_been_written">Tag has been written</string>
+    <string name="empty_animal_list">Empty animal list</string>
+    <string name="nothing_selected">Nothing Selected</string>
+    <string name="User_registration_failed">User registration failed</string>
+    <string name="User_Authentication_ailed">"User Authentication Failed: "</string>
+    <string name="must_enter_name">You must enter a name</string>
+    <string name="email_is_empty">Email is empty</string>
+    <string name="incorrect_email">Incorrect email</string>
+    <string name="must_enter_phone_number">You must enter a phone number</string>
+    <string name="must_enter_password">You must enter a password</string>
+    <string name="password_too_short">The password is too short</string>
+    <string name="passwords_doesnt_match">The passwords doesn\'t match</string>
+    <string name="Creating_user">Creating user...</string>
+    <string name="discharge">Discharge</string>
+    <string name="birth">Birth</string>
 </resources>
 
