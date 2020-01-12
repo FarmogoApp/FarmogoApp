@@ -167,12 +167,12 @@
         <item>Section 5</item>
     </string-array>
     <string-array name="incidencesSimple">
-    <item>Birth</item>
-    <item>Treatment</item>
-    <item>Pregnancy Monitoring</item>
-    <item>Weighing</item>
-    <item>Discharge</item>
-    <!--item>Scheduled</item-->
+        <item>Treatment</item>
+        <item>Birth</item>
+        <item>Pregnancy Monitoring</item>
+        <item>Weighing</item>
+        <item>Discharge</item>
+        <!--item>Scheduled</item-->
     </string-array>
 
     <string-array name="incidencesMultiple">
@@ -273,5 +273,7 @@
     <string name="Creating_user">Creating user...</string>
     <string name="discharge">Discharge</string>
     <string name="birth">Birth</string>
+    <string name="incomptabile_birth_male">A male cannot give birth</string>
+    <string name="incomptabile_pregnancy_male">A male cannot be pregnant</string>
 </resources>
 

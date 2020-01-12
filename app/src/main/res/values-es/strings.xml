@@ -234,4 +234,6 @@
     <string name="editing_name_farm">Está editando el nombre de la granja</string>
     <string name="discharge">Baja</string>
     <string name="birth">Nacimiento</string>
+    <string name="incomptabile_birth_male">Los machos no pueden dar a luz</string>
+    <string name="incomptabile_pregnancy_male">El embarazo no corresponde a un macho</string>
 </resources>

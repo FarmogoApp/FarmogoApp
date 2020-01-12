@@ -237,4 +237,6 @@
     <string name="editing_name_farm">Esteu editant el nom de la granja</string>
     <string name="discharge">Baixa</string>
     <string name="birth">Naixement</string>
+    <string name="incomptabile_birth_male">Els mascles no poden donar a llum</string>
+    <string name="incomptabile_pregnancy_male">L\'embaràs no correspon a un mascle</string>
 </resources>
