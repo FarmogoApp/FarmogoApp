@@ -137,7 +137,7 @@ public class AnimalListAdapter extends RecyclerView.Adapter<AnimalListAdapter.My
             SessionData.getInstance().removeAnimalFromCart(animal.getUuid());
             if(getItemCount()==0){
                 ((AnimalListActivity)contextG).finish();
-                Toast.makeText(this.contextG, "\n" + contextG.getString(R.string.empty_list), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this.contextG, contextG.getString(R.string.empty_list), Toast.LENGTH_SHORT).show();
             }
             notifyDataSetChanged();
         });

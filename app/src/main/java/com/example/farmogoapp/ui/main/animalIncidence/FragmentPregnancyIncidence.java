@@ -153,7 +153,6 @@ public class FragmentPregnancyIncidence extends Fragment {
                 if(response.isSuccessful()) {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
-                    Toast.makeText(getView().getContext(),getActivity().getString(R.string.incidence_saved),Toast.LENGTH_SHORT).show();
 
                     if (incidenceType == 1) {
                         Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
