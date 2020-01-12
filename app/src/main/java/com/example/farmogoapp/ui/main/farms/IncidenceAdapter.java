@@ -256,6 +256,7 @@ public class IncidenceAdapter extends RecyclerView.Adapter<IncidenceAdapter.MyVi
     // Returns the total count of items in the listºººººº
     @Override
     public int getItemCount() {
+        if (incidencesList == null) return 0;
         return incidencesList.size();
     }
 

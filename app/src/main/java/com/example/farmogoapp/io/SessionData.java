@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -133,6 +134,7 @@ public class SessionData {
     public List<Animal> getAnimalCardObj() {
         List<String> animals = loadObject(ANIMAL_CART, new TypeReference<ArrayList<String>>() {
         });
+        if (animals == null) return Collections.EMPTY_LIST;
         List<Animal> animals1 = getAnimals();
         return animals1.stream().filter(a -> animals.contains(a.getUuid())).collect(Collectors.toList());
     }
