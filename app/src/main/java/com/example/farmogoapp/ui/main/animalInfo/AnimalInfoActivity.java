@@ -247,9 +247,13 @@ public class AnimalInfoActivity extends AppCompatActivity {
         if (animal.getDischargeDate() == null) {
             writeNfc.setVisibility(View.VISIBLE);
             btnAddRemove.setVisibility(View.VISIBLE);
+            btnIncidences.setVisibility(View.VISIBLE);
         } else {
             writeNfc.setVisibility(View.INVISIBLE);
             btnAddRemove.setVisibility(View.INVISIBLE);
+            btnIncidences.setVisibility(View.INVISIBLE);
+
+
         }
 
         //TODO: update list of incidences
