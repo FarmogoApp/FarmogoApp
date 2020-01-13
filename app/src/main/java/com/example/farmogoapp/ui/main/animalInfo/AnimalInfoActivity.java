@@ -97,7 +97,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
             animalId = getIntent().getStringExtra("animalId");
         }
         registerListeners();
-        loadHistoric(getIntent().getStringExtra("animalId"));
+        loadHistoric(animalId);
     }
 
 
