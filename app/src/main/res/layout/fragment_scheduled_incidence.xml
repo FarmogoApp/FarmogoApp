@@ -50,7 +50,7 @@
                 android:id="@+id/sp_tipo"
                 android:background="@drawable/spinner_bg"
                 android:layout_below="@+id/tipo"
-                android:entries="@array/type"
+                android:entries="@array/treatmentTypes"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"/>
 

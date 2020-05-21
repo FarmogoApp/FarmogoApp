@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,6 +31,8 @@ import static android.graphics.Typeface.BOLD;
 
 public class AnimalListAdapter extends RecyclerView.Adapter<AnimalListAdapter.MyViewHolder> {
     private List<Animal> animalsList;
+    Context contextG;
+
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -63,6 +66,7 @@ public class AnimalListAdapter extends RecyclerView.Adapter<AnimalListAdapter.My
     @Override
     public AnimalListAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
+        contextG = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
@@ -131,6 +135,10 @@ public class AnimalListAdapter extends RecyclerView.Adapter<AnimalListAdapter.My
         viewHolder.removeButton.setOnClickListener(v -> {
             animalsList.remove(animal);
             SessionData.getInstance().removeAnimalFromCart(animal.getUuid());
+            if(getItemCount()==0){
+                ((AnimalListActivity)contextG).finish();
+                Toast.makeText(this.contextG, contextG.getString(R.string.empty_list), Toast.LENGTH_SHORT).show();
+            }
             notifyDataSetChanged();
         });
 

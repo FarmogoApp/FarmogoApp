@@ -1,8 +1,11 @@
 package com.example.farmogoapp.ui.main.animalInfo;
 
+import android.animation.ObjectAnimator;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.nfc.FormatException;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
@@ -15,13 +18,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.widget.ImageViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,6 +41,7 @@ import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.ui.main.animalIncidence.AnimalIncidence;
 import com.example.farmogoapp.ui.main.animallist.AnimalListActivity;
 import com.example.farmogoapp.ui.main.farms.IncidenceAdapter;
+import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,8 +59,11 @@ public class AnimalInfoActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private Switch nfcSwitch;
+    private ImageButton writeNfc;
+    private boolean nfcWriteEnabled;
     private NfcAdapter nfcAdapter;
+
+    private String animalId;
     private Animal animal;
     private Farm farm;
 
@@ -65,28 +75,37 @@ public class AnimalInfoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnAddRemove = findViewById(R.id.mas);
         btnIncidences = findViewById(R.id.IncidenciaAnimalInfo);
+        writeNfc = findViewById(R.id.writeNfc);
+        nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        if (nfcAdapter!=null){
+            writeNfc.setAlpha(1.0f);
+            writeNfc.setEnabled(true);
+            writeNfc.setVisibility(View.VISIBLE);
+        }else{
+            writeNfc.setAlpha(0f);
+            writeNfc.setEnabled(false);
+            writeNfc.setVisibility(View.INVISIBLE);
+        }
+        nfcWriteEnabled  = false;
+
 
         if (getIntent().getAction() == NfcAdapter.ACTION_NDEF_DISCOVERED) {
-            loadAnimalDataFromNfc(getIntent());
+            animalId = getIntent().getData().getPathSegments().get(0);
         }
 
         if (getIntent().hasExtra("animalId")) {
-            loadAnimalData(getIntent().getStringExtra("animalId"));
+            animalId = getIntent().getStringExtra("animalId");
         }
         registerListeners();
-
-        nfcSwitch = findViewById(R.id.writeNfc);
-
-        nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        nfcSwitch.setEnabled(nfcAdapter != null);
-        nfcSwitch.setChecked(false);
-        loadHistoric(getIntent().getStringExtra("animalId"));
+        loadHistoric(animalId);
     }
 
 
     @Override
     protected void onResume() {
         super.onResume();
+        loadAnimalData(animalId);
+        invalidateOptionsMenu();
         enableNfcWriter();
 
     }
@@ -96,6 +115,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
         super.onPause();
         disableNfcWriter();
     }
+
 
     private void loadHistoric(String idAnimal) {
         Call<ArrayList<Incidence>> animalIncidence = FarmogoApiJacksonAdapter.getApiService().getAnimalIncidences(idAnimal);
@@ -116,7 +136,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
     private void refreshRecyclerView(ArrayList<Incidence> lastIncidences) {
         RecyclerView recyclerView = findViewById(R.id.recyclerview_animalInfo);
         recyclerView.setHasFixedSize(true);
-        RecyclerView.Adapter mAdapter = new IncidenceAdapter(lastIncidences, getApplicationContext().getApplicationContext(),true);
+        RecyclerView.Adapter mAdapter = new IncidenceAdapter(lastIncidences, getApplicationContext().getApplicationContext(), true);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -128,19 +148,22 @@ public class AnimalInfoActivity extends AppCompatActivity {
             PendingIntent pIntent = PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_CANCEL_CURRENT);
             IntentFilter[] fillterArr = new IntentFilter[]{};
             nfcAdapter.enableForegroundDispatch(this, pIntent, fillterArr, null);
+
         }
     }
 
     private void disableNfcWriter() {
-        if (nfcAdapter != null)
+        if (nfcAdapter != null) {
             nfcAdapter.disableForegroundDispatch(this);
+        }
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         Log.d("intent", "new inten.  NFC detected " + intent.getAction());
-        if (!nfcSwitch.isChecked()) return;
+
+        if (!nfcWriteEnabled) return;
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction()) || NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
             writeTag(intent);
         }
@@ -159,8 +182,9 @@ public class AnimalInfoActivity extends AppCompatActivity {
             message = new NdefMessage(records);
             ndef.writeNdefMessage(message);
             ndef.close();
-            nfcSwitch.setChecked(false);
-            Toast.makeText(this, "Tag has been written", Toast.LENGTH_SHORT).show();
+            nfcWriteEnabled = false;
+            setNfcButtonState(nfcWriteEnabled);
+            Toast.makeText(this, getString(R.string.tag_has_been_written), Toast.LENGTH_SHORT).show();
         } catch (FormatException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -176,7 +200,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
             public void onResponse(Call<Farm> call, Response<Farm> response) {
                 Farm data = response.body();
 
-                if(data != null){
+                if (data != null) {
                     updateFarm(data);
                 }
             }
@@ -184,7 +208,7 @@ public class AnimalInfoActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Farm> call, Throwable t) {
                 t.printStackTrace();
-                Log.e("AnimalInfoActivity","farm error" );
+                Log.e("AnimalInfoActivity", "farm error");
             }
         });
     }
@@ -193,10 +217,6 @@ public class AnimalInfoActivity extends AppCompatActivity {
         this.farm = data;
         TextView farmtv = findViewById(R.id.farmNumber_exemple);
         farmtv.setText(this.farm.getOfficialId());
-    }
-
-    private void loadAnimalDataFromNfc(Intent intent) {
-        loadAnimalData(intent.getData().getPathSegments().get(0));
     }
 
     private void loadAnimalData(String idAnimal) {
@@ -221,7 +241,20 @@ public class AnimalInfoActivity extends AppCompatActivity {
 
         race.setText(race1.orElse(new Race()).getName());
         mother.setText(animal.getMotherOfficialId());
-        btnAddRemove.setImageResource( animal.isSelected()? android.R.drawable.ic_menu_delete : android.R.drawable.ic_menu_add );
+        btnAddRemove.setImageResource(animal.isSelected() ? android.R.drawable.ic_menu_delete : android.R.drawable.ic_menu_add);
+
+
+        if (animal.getDischargeDate() == null) {
+            writeNfc.setVisibility(View.VISIBLE);
+            btnAddRemove.setVisibility(View.VISIBLE);
+            btnIncidences.setVisibility(View.VISIBLE);
+        } else {
+            writeNfc.setVisibility(View.INVISIBLE);
+            btnAddRemove.setVisibility(View.INVISIBLE);
+            btnIncidences.setVisibility(View.INVISIBLE);
+
+
+        }
 
         //TODO: update list of incidences
 
@@ -237,16 +270,17 @@ public class AnimalInfoActivity extends AppCompatActivity {
     private void registerListeners() {
         btnAddRemove.setOnClickListener(v -> {
 
-            if (animal.isSelected()){
+            if (animal.isSelected()) {
                 SessionData.getInstance().removeAnimalFromCart(animal.getUuid());
                 animal.setSelected(false);
                 btnAddRemove.setImageResource(android.R.drawable.ic_menu_add);
-            }else{
+            } else {
                 SessionData.getInstance().addAnimalToCart(animal.getUuid());
                 animal.setSelected(true);
                 btnAddRemove.setImageResource(android.R.drawable.ic_menu_delete);
 
             }
+            invalidateOptionsMenu();
         });
 
         btnIncidences.setOnClickListener(new View.OnClickListener() {
@@ -263,6 +297,31 @@ public class AnimalInfoActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        writeNfc.setOnClickListener((v)->{
+            if (nfcAdapter.isEnabled()) {
+                nfcWriteEnabled = !nfcWriteEnabled;
+                setNfcButtonState(nfcWriteEnabled);
+            }else{
+                Toast.makeText(this, R.string.nfc_must_enabled, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void setNfcButtonState(boolean active) {
+        if (active) {
+
+            ImageViewCompat.setImageTintList(writeNfc,
+                    ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red)));
+
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.blink);
+            writeNfc.startAnimation(animation);
+
+        }else{
+            writeNfc.setAnimation(null);
+            ImageViewCompat.setImageTintList(writeNfc,
+                    ColorStateList.valueOf(ContextCompat.getColor(this, R.color.white)));
+        }
     }
 
     @Override
@@ -271,15 +330,22 @@ public class AnimalInfoActivity extends AppCompatActivity {
         inflater.inflate(R.menu.animalinfo, menu);
 
         MenuItem list = menu.findItem(R.id.list_selected);
-        list.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Intent intent = new Intent(AnimalInfoActivity.this, AnimalListActivity.class);
-                startActivity(intent);
-                return true;
-            }
-        });
+        if (!SessionData.getInstance().getAnimalCardObj().isEmpty()) {
+            list.setVisible(true);
+        } else {
+            list.setVisible(false);
+        }
+        TextView txtCount = list.getActionView().findViewById(R.id.cart_badge);
+        if (!SessionData.getInstance().getAnimalCardObj().isEmpty()) {
+            txtCount.setText(String.valueOf(SessionData.getInstance().getAnimalCardObj().size()));
+        }
+
         return true;
+    }
+
+    public void goToList(View view) {
+        Intent intent = new Intent(AnimalInfoActivity.this, AnimalListActivity.class);
+        startActivity(intent);
     }
 
 }

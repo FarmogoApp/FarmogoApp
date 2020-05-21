@@ -3,18 +3,22 @@ package com.example.farmogoapp.ui.main.searchanimal;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.CompoundButton;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.SwitchCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.widget.ImageViewCompat;
 
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.SessionData;
@@ -27,8 +31,9 @@ public class SeachAnimalsActivity extends AppCompatActivity {
     private SearchView searchView;
     private ListView resultListView;
     private SearchAnimalsAdapter searchAnimalsAdapter;
-    private SwitchCompat filterSwitchFarms;
-    private SwitchCompat filterSwitchAlive;
+    private ImageView filterSwitchFarmsOne;
+    private ImageView filterSwitchFarmsMany;
+    private CheckBox filterDischarged;
     private TextView filterText;
     private Farm farm;
 
@@ -40,43 +45,41 @@ public class SeachAnimalsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         farm = SessionData.getInstance().getActualFarm();
         registerViews();
-        updateTextAnimalsFilter();
-        filterSwitchFarms.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                searchAnimalsAdapter.setAllFarms(isChecked);
-                searchAnimalsAdapter.updateList();
-                updateTextAnimalsFilter();
-            }
+
+        filterText.setText(getString(R.string.farm) + " " + farm.getOfficialId());
+
+        filterSwitchFarmsOne.setOnClickListener((v) -> {
+            searchAnimalsAdapter.setAllFarms(false);
+            searchAnimalsAdapter.updateList();
+
+            ImageViewCompat.setImageTintList(filterSwitchFarmsMany,
+                    ColorStateList.valueOf(ContextCompat.getColor(SeachAnimalsActivity.this, R.color.grey)));
+            ImageViewCompat.setImageTintList(filterSwitchFarmsOne,
+                    ColorStateList.valueOf(ContextCompat.getColor(SeachAnimalsActivity.this, R.color.black)));
+
+            filterText.setText(getString(R.string.farm) + " " + farm.getOfficialId());
+
         });
-        filterSwitchAlive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                searchAnimalsAdapter.setAllAnimals(isChecked);
-                searchAnimalsAdapter.updateList();
-                updateTextAnimalsFilter();
-            }
+        filterSwitchFarmsMany.setOnClickListener((v) -> {
+            searchAnimalsAdapter.setAllFarms(true);
+            searchAnimalsAdapter.updateList();
+
+            ImageViewCompat.setImageTintList(filterSwitchFarmsOne,
+                    ColorStateList.valueOf(ContextCompat.getColor(SeachAnimalsActivity.this, R.color.grey)));
+            ImageViewCompat.setImageTintList(filterSwitchFarmsMany,
+                    ColorStateList.valueOf(ContextCompat.getColor(SeachAnimalsActivity.this, R.color.black)));
+
+            filterText.setText(getString(R.string.all_farms));
+        });
+
+        filterDischarged.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            searchAnimalsAdapter.setAllAnimals(isChecked);
+            searchAnimalsAdapter.updateList();
         });
 
         prepareDataAdapter();
     }
 
-    public void updateTextAnimalsFilter() {
-
-        boolean allFarms = filterSwitchFarms.isChecked();
-        boolean allAnimals = filterSwitchAlive.isChecked();
-        if(allFarms && allAnimals){
-            filterText.setText(getString(R.string.all_animals));
-        }else{
-            StringBuilder sb = new StringBuilder();
-            if (allAnimals) sb.append(getString(R.string.all_animals));
-            else sb.append(getString(R.string.only_alive));
-            sb.append(" ").append(getString(R.string.of)).append(" ");
-            if (allFarms) sb.append(getString(R.string.all_farms));
-            else sb.append(getString(R.string.farm)+": " + farm.getOfficialId());
-            filterText.setText(sb.toString());
-        }
-    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -116,13 +119,24 @@ public class SeachAnimalsActivity extends AppCompatActivity {
             return true;
         });
 
+
         MenuItem list = menu.findItem(R.id.list_selected);
-        list.setOnMenuItemClickListener(item1 -> {
-            Intent intent = new Intent(SeachAnimalsActivity.this, AnimalListActivity.class);
-            startActivity(intent);
-            return true;
-        });
+        if (!SessionData.getInstance().getAnimalCardObj().isEmpty()) {
+            list.setVisible(true);
+        } else {
+            list.setVisible(false);
+        }
+        TextView txtCount = list.getActionView().findViewById(R.id.cart_badge);
+        if (!SessionData.getInstance().getAnimalCardObj().isEmpty()) {
+            txtCount.setText(String.valueOf(SessionData.getInstance().getAnimalCardObj().size()));
+        }
+
         return true;
+    }
+
+    public void goToList(View view) {
+        Intent intent = new Intent(SeachAnimalsActivity.this, AnimalListActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -134,12 +148,13 @@ public class SeachAnimalsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        invalidateOptionsMenu();
         searchAnimalsAdapter.updateAnimals();
     }
 
     private void prepareDataAdapter() {
         searchAnimalsAdapter = new SearchAnimalsAdapter(SeachAnimalsActivity.this, farm.getUuid());
-        searchAnimalsAdapter.setAllFarms(filterSwitchFarms.isChecked());
+        searchAnimalsAdapter.setAllFarms(false);
         resultListView.setAdapter(searchAnimalsAdapter);
     }
 
@@ -149,9 +164,12 @@ public class SeachAnimalsActivity extends AppCompatActivity {
 
     private void registerViews() {
         resultListView = findViewById(R.id.result_list);
-        filterSwitchFarms = findViewById(R.id.filterSwitchFarms);
-        filterSwitchAlive = findViewById(R.id.filterSwitchAlive);
+        filterSwitchFarmsOne = findViewById(R.id.filterSwitchFarmsOne);
+        filterSwitchFarmsMany = findViewById(R.id.filterSwitchFarmsMany);
+        filterDischarged = findViewById(R.id.filterDischarged);
         filterText = findViewById(R.id.filterText);
 
     }
+
+
 }

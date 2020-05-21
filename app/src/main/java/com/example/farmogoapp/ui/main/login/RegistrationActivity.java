@@ -72,7 +72,7 @@ public class RegistrationActivity extends AppCompatActivity implements Callback<
                                 if (task.isSuccessful()) {
                                     addInfo(FirebaseAuth.getInstance().getCurrentUser(),tel,nm,"");
                                 } else {
-                                    Toast.makeText(RegistrationActivity.this, "User Authentication Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegistrationActivity.this, getString(R.string.User_Authentication_ailed) + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -84,37 +84,37 @@ public class RegistrationActivity extends AppCompatActivity implements Callback<
     public boolean checkFields(String email, String password, String rpassword, String nm, String tel){
 
         if (nm.isEmpty()) {
-            name.setError("S'ha d'introduir un nom");
+            name.setError(getString(R.string.must_enter_name));
             return false;
         }
         if (email.isEmpty()) {
-            mail.setError("Error de email");
+            mail.setError(getString(R.string.email_is_empty));
             return false;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            mail.setError("Error de email incorrecto");
+            mail.setError(getString(R.string.incorrect_email));
             return false;
         }
 
         if (tel.isEmpty()) {
-            telephone.setError("S'ha d'introduir un telefon");
+            telephone.setError(getString(R.string.must_enter_phone_number));
             return false;
         }
 
         if (password.isEmpty() || rpassword.isEmpty()) {
-            epass.setError("S'ha d'introduir contrasenya");
-            erpass.setError("S'ha d'introduir contrasenya");
+            epass.setError(getString(R.string.must_enter_password));
+            erpass.setError(getString(R.string.must_enter_password));
             return false;
         }
 
         if (password.length() < 6) {
-            epass.setError("El password es massa curt");
+            epass.setError(getString(R.string.password_too_short));
             return false;
         }
 
         if (!Objects.equals(password, rpassword)) {
-            epass.setError("No coincideixen els passwords");
-            erpass.setError("No coincideixen els passwords");
+            epass.setError(getString(R.string.passwords_doesnt_match));
+            erpass.setError(getString(R.string.passwords_doesnt_match));
             return false;
         }
 
@@ -140,7 +140,7 @@ public class RegistrationActivity extends AppCompatActivity implements Callback<
 
             SessionData.getInstance().setActualUser(user);
 
-            pd.setMessage("Creant usuari...");
+            pd.setMessage(getString(R.string.Creating_user));
             pd.show();
             Log.e("User Email:", user.getEmail());
             Log.e("User Nom:", user.getName());
@@ -155,7 +155,7 @@ public class RegistrationActivity extends AppCompatActivity implements Callback<
 
     @Override
     public void onFailure(Call<User> call, Throwable t) {
-        Toast.makeText(this, "User Registration on MONGO Failed: " , Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.User_registration_failed) , Toast.LENGTH_SHORT).show();
 
     }
 

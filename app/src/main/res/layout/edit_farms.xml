@@ -25,7 +25,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Manage Farms"
+            android:text="@string/manage_farms"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp" />
 
@@ -33,7 +33,7 @@
 
     <Button
         android:id="@+id/addNewFarm"
-        android:text="Add new Farm"
+        android:text="@string/add_new_farm"
         android:layout_width="125dp"
         android:layout_height="35dp"
         android:background="@drawable/round_shape"
@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Farm:"
+            android:text="@string/farm_"
             android:layout_weight="1"
             android:textColor="@color/colorPrimary" />
         <Spinner
@@ -105,7 +105,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Building"
+            android:text="@string/building"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp" />
 
@@ -113,7 +113,7 @@
 
     <Button
         android:id="@+id/addNewBuilding"
-        android:text="Add new Building"
+        android:text="@string/add_new_building"
         android:layout_width="300dp"
         android:layout_height="35dp"
         android:background="@drawable/round_shape"
@@ -137,7 +137,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Building:"
+            android:text="@string/building_"
             android:layout_weight="1"
             android:textColor="@color/colorPrimary" />
         <Spinner
@@ -190,7 +190,7 @@
     </LinearLayout>
     <Button
         android:id="@+id/addNewSection"
-        android:text="Add new Division"
+        android:text="@string/add_new_division"
         android:layout_width="300dp"
         android:layout_height="35dp"
         android:background="@drawable/round_shape"
@@ -214,7 +214,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Section:"
+            android:text="@string/division_"
             android:layout_weight="1"
             android:textColor="@color/colorPrimary" />
         <Spinner

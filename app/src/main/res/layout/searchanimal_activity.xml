@@ -1,40 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/buttonsUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:padding="8dp"
-        android:paddingStart="14dp"
-        android:orientation="horizontal">
+        android:paddingStart="14dp">
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/filterSwitchFarms"
+        <ImageView
+            android:id="@+id/filterSwitchFarmsOne"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/one" />
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/filterSwitchAlive"
+        <ImageView
+            android:id="@+id/filterSwitchFarmsMany"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/filterSwitchFarmsOne"
+            android:src="@drawable/many"
+            android:tint="@color/grey" />
 
         <TextView
             android:id="@+id/filterText"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_toEndOf="@id/filterSwitchFarmsMany"
+            android:paddingStart="5dp"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/filterDischarged"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="5dp"
-            tools:text="All Farms" />
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="@string/discharged" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/result_list"
         android:layout_width="match_parent"
         android:layout_height="588dp"
+        android:layout_below="@id/buttonsUp"
+        android:layout_alignParentBottom="true"
         tools:itemCount="31"
         tools:listitem="@layout/searchanimal_itemlist" />
-</LinearLayout>
+</RelativeLayout>

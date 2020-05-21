@@ -55,10 +55,13 @@
                         android:layout_marginTop="5dp"
                          android:layout_marginBottom="5dp"
                         android:paddingStart="5dp"
+                        android:maxLength="50"
                         android:background="@drawable/round_corner"
                         android:layout_below="@+id/exitOfficialIdText"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
+                        android:inputType="text"
+                        android:imeOptions="actionNext"
                         android:hint="@string/farm_name"/>
                 </RelativeLayout>
 
@@ -98,6 +101,10 @@
                         android:layout_below="@+id/prefixTxt"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
+                        android:maxLength="2"
+                        android:textAllCaps="true"
+                        android:inputType="textCapCharacters"
+                        android:imeOptions="actionNext"
                         android:hint="@string/counter_prefix"/>
 
                 </RelativeLayout>
@@ -125,6 +132,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:hint="@string/counter"
+                        android:maxLength="12"
+                        android:imeOptions="actionNext"
                         android:inputType="number"/>
                 </RelativeLayout>
             </LinearLayout>
@@ -158,6 +167,10 @@
                         android:layout_below="@+id/oficialIdTxt"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
+                        android:textAllCaps="true"
+                        android:maxLength="14"
+                        android:inputType="textCapCharacters"
+                        android:imeOptions="actionDone"
                         android:hint="@string/official_id_farm"/>
                 </RelativeLayout>
 

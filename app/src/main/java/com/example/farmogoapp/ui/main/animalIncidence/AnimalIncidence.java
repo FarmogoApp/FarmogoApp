@@ -9,6 +9,13 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.farmogoapp.R;
+import com.example.farmogoapp.io.SessionData;
+import com.example.farmogoapp.model.Animal;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 public class AnimalIncidence extends AppCompatActivity {
     private Spinner spinner;
@@ -18,20 +25,42 @@ public class AnimalIncidence extends AppCompatActivity {
     private Integer incidenceType;
     private String animalId;
 
+    private boolean hasMales = false;
+    private boolean hasFemales = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animal_incidence);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         spinner= findViewById(R.id.incidencespiner);
+
+        List<Animal> animalCardObj = SessionData.getInstance().getAnimalCardObj();
+
+        hasMales = animalCardObj.stream().anyMatch(a -> "male".equalsIgnoreCase(a.getSex()));
+        hasFemales = animalCardObj.stream().anyMatch(a -> "female".equalsIgnoreCase(a.getSex()));
+
         if (getIntent().hasExtra("animalOfficialId")) {this.animalOfficialId = getIntent().getStringExtra("animalOfficialId");}
-        if (getIntent().hasExtra("animalId")) {this.animalId = getIntent().getStringExtra("animalId");}
+        if (getIntent().hasExtra("animalId")) {
+            this.animalId = getIntent().getStringExtra("animalId");
+            Optional<Animal> animal = SessionData.getInstance().getAnimal(this.animalId);
+
+            if (animal.isPresent()){
+                hasMales = "male".equalsIgnoreCase(animal.get().getSex());
+                hasFemales = "female".equalsIgnoreCase(animal.get().getSex());
+            }else{
+                finish();
+            }
+        }
+
+
         if (getIntent().hasExtra("farmId")) {this.farmId = getIntent().getStringExtra("farmId");}
         if (getIntent().hasExtra("farmAnimalCounter")) {this.farmAnimalCounter = getIntent().getStringExtra("farmAnimalCounter");}
         if (getIntent().hasExtra("incidenceType")) {
             this.incidenceType = getIntent().getIntExtra("incidenceType", 1);
             chooseIncidenceType();
         }
+
     }
 
     private void chooseIncidenceType() {
@@ -48,6 +77,7 @@ public class AnimalIncidence extends AppCompatActivity {
             registerListenerMultiple();
         }
     }
+
 
 
     @Override
@@ -76,6 +106,12 @@ public class AnimalIncidence extends AppCompatActivity {
 
                         break;
                     case 1:
+
+                        if (hasMales){
+                            getSupportFragmentManager().beginTransaction()
+                                    .replace(R.id.Fragment, new IncompatibleIncidence(R.string.incomptabile_pregnancy_male)).commit();
+                            break;
+                        }
 
                         Bundle bundlePregnancy = new Bundle();
                         FragmentPregnancyIncidence fragmentPregnancy = new FragmentPregnancyIncidence();
@@ -148,21 +184,6 @@ public class AnimalIncidence extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-
-                        Bundle bundleBirth = new Bundle();
-                        FragmentBirthIncidence fragmentBirth = new FragmentBirthIncidence();
-
-                        if (animalOfficialId != null){ bundleBirth.putString("animalOfficialId", animalOfficialId); }
-                        if (animalId != null){ bundleBirth.putString("animalId", animalId);}
-                        if (farmId != null){ bundleBirth.putString("farmId", farmId); }
-                        if (farmAnimalCounter != null){ bundleBirth.putString("farmAnimalCounter", farmAnimalCounter);}
-                        if (incidenceType != null){ bundleBirth.putInt("incidenceType", incidenceType); }
-                        fragmentBirth.setArguments(bundleBirth);
-
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.Fragment, fragmentBirth).commit();
-                        break;
-                    case 1:
                         Bundle bundleTreatment = new Bundle();
                         FragmentTreatmentIncidence fragmentTreatment = new FragmentTreatmentIncidence();
 
@@ -176,8 +197,32 @@ public class AnimalIncidence extends AppCompatActivity {
                                 .replace(R.id.Fragment, fragmentTreatment).commit();
 
                         break;
-                    case 2:
+                    case 1:
+                        if (hasMales){
+                            getSupportFragmentManager().beginTransaction()
+                                    .replace(R.id.Fragment, new IncompatibleIncidence(R.string.incomptabile_birth_male)).commit();
+                            break;
+                        }
+                        Bundle bundleBirth = new Bundle();
+                        FragmentBirthIncidence fragmentBirth = new FragmentBirthIncidence();
 
+                        if (animalOfficialId != null){ bundleBirth.putString("animalOfficialId", animalOfficialId); }
+                        if (animalId != null){ bundleBirth.putString("animalId", animalId);}
+                        if (farmId != null){ bundleBirth.putString("farmId", farmId); }
+                        if (farmAnimalCounter != null){ bundleBirth.putString("farmAnimalCounter", farmAnimalCounter);}
+                        if (incidenceType != null){ bundleBirth.putInt("incidenceType", incidenceType); }
+                        fragmentBirth.setArguments(bundleBirth);
+
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.Fragment, fragmentBirth).commit();
+                        break;
+
+                    case 2:
+                        if (hasMales){
+                            getSupportFragmentManager().beginTransaction()
+                                    .replace(R.id.Fragment, new IncompatibleIncidence(R.string.incomptabile_pregnancy_male)).commit();
+                            break;
+                        }
                         Bundle bundlePregnancy = new Bundle();
                         FragmentPregnancyIncidence fragmentPregnancy = new FragmentPregnancyIncidence();
 

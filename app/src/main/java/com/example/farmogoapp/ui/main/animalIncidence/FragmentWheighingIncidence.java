@@ -75,8 +75,6 @@ public class FragmentWheighingIncidence extends Fragment {
                 if(response.isSuccessful()) {
                     Toast toast = Toast.makeText(getContext(), getString(R.string.registration_succesful), Toast.LENGTH_SHORT);
                     toast.show();
-                    Toast.makeText(getView().getContext(),getActivity().getString(R.string.incidence_saved),Toast.LENGTH_SHORT).show();
-
                     if (incidenceType == 1) {
                         Intent intent = new Intent(getContext(), AnimalInfoActivity.class);
                         intent.putExtra("animalId", (String) incidenceWeight.getAnimalId());
@@ -134,7 +132,7 @@ public class FragmentWheighingIncidence extends Fragment {
     public boolean checkFields(){
 
         if (eTWheinghingPesaje.getText().toString().isEmpty()) {
-            eTWheinghingPesaje.setError("Mandatory field");
+            eTWheinghingPesaje.setError(getString(R.string.required_field));
             return false;
         }
         return true;

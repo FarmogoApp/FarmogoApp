@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +18,7 @@ import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Farm;
 import com.example.farmogoapp.ui.main.animalIncidence.AnimalIncidence;
+import com.example.farmogoapp.ui.main.farms.NewFarm;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -113,6 +115,9 @@ public class AnimalListActivity extends AppCompatActivity {
         clear.setOnMenuItemClickListener(item -> {
             SessionData.getInstance().clearCart();
             mAdapter.updateAnimalList();
+            Toast.makeText(AnimalListActivity.this, getString(R.string.empty_animal_list), Toast.LENGTH_SHORT).show();
+
+            finish();
             return true;
         });
         return true;

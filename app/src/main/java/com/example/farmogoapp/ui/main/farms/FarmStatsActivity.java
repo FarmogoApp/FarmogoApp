@@ -12,9 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,13 +21,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.farmogoapp.I18nUtils.I18nUtils;
 import com.example.farmogoapp.R;
 import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 import com.example.farmogoapp.io.SessionData;
 import com.example.farmogoapp.model.Animal;
 import com.example.farmogoapp.model.AnimalType;
 import com.example.farmogoapp.model.Farm;
-import com.example.farmogoapp.io.FarmogoApiJacksonAdapter;
 
 import com.example.farmogoapp.model.incidences.Incidence;
 import com.example.farmogoapp.ui.main.registerAnimal.RegisterCowActivity;
@@ -37,15 +35,9 @@ import com.example.farmogoapp.ui.main.searchanimal.SeachAnimalsActivity;
 import com.example.farmogoapp.ui.main.settings.Settings;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Random;
-import java.util.Set;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import retrofit2.Call;
@@ -58,6 +50,7 @@ public class FarmStatsActivity extends AppCompatActivity {
     private Button btnGestion;
     private Button searchButton;
     private Spinner spinner;
+    private I18nUtils i18nUtils;
 
 
     @Override
@@ -89,8 +82,12 @@ public class FarmStatsActivity extends AppCompatActivity {
         setContentView(R.layout.farm_stats);
         registerViews();
         registerListeners();
+        if(SessionData.getInstance().getFarms()==null || SessionData.getInstance().getFarms().isEmpty()){
+            Intent intent = new Intent(FarmStatsActivity.this, NewFarm.class);
+            startActivity(intent);
+        }
         loadFarms();
-
+        i18nUtils = new I18nUtils(getApplicationContext());
     }
 
     private void registerViews() {
@@ -120,7 +117,7 @@ public class FarmStatsActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                Toast.makeText(FarmStatsActivity.this, "Nothing Selected", Toast.LENGTH_SHORT);
+                Toast.makeText(FarmStatsActivity.this, getString(R.string.nothing_selected), Toast.LENGTH_SHORT);
             }
 
         });
@@ -169,7 +166,7 @@ public class FarmStatsActivity extends AppCompatActivity {
                         typeTv.setLayoutParams(lparams);
                         valueTv.setLayoutParams(lparams);
 
-                        typeTv.setText(type.get().toString());
+                        typeTv.setText(i18nUtils.getAnimalTypeLocaleDefault(type.get().toString()));
                         typeTv.setPadding(5, 5, 5, 5);
 
                         valueTv.setText(v.toString());
@@ -193,6 +190,7 @@ public class FarmStatsActivity extends AppCompatActivity {
 
     private void loadFarms() {
         final Call<ArrayList<Farm>> farm = FarmogoApiJacksonAdapter.getApiService().getFarms();
+
         farm.enqueue(new Callback<ArrayList<Farm>>() {
             @Override
             public void onResponse(Call<ArrayList<Farm>> call, Response<ArrayList<Farm>> response) {

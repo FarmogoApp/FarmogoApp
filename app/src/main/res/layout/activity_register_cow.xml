@@ -6,7 +6,7 @@
 
     <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/titleRegister"
@@ -17,7 +17,7 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:padding="10dp"
-            android:text="REGISTER COW"
+            android:text="@string/register_animal"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp" />
 
@@ -52,6 +52,10 @@
                     android:layout_below="@+id/officialID"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
+                    android:textAllCaps="true"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="14"
+                    android:imeOptions="actionNext"
                     android:hint="@string/official_id"/>
             </RelativeLayout>
         </LinearLayout>
@@ -72,6 +76,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
+
+                <TextView
+                    android:id="@+id/animalType"
+                    android:textSize="20dp"
+                    android:textColor="@android:color/background_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/animal_type"/>
+
+                <Spinner
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/spnAnimalType"
+                    android:background="@drawable/spinner_bg"
+                    android:layout_below="@+id/animalType"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
                 <TextView
                     android:id="@+id/sex"
                     android:textSize="20dp"
@@ -88,33 +118,6 @@
                     android:entries="@array/sexs"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_marginStart="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:id="@+id/motherID"
-                    android:textSize="20dp"
-                    android:textColor="@android:color/background_dark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/mother_id"/>
-
-                <EditText
-                    android:id="@+id/edMotherId"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:paddingStart="5dp"
-                    android:background="@drawable/round_corner"
-                    android:layout_below="@+id/motherID"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:hint="@string/mother_id" />
-
             </RelativeLayout>
         </LinearLayout>
 
@@ -143,10 +146,13 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:paddingStart="5dp"
+                    android:maxLength="50"
                     android:background="@drawable/round_corner"
                     android:layout_below="@+id/origin"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
+                    android:inputType="textCapSentences"
+                    android:imeOptions="actionNext"
                     android:hint="@string/origin" />
             </RelativeLayout>
         </LinearLayout>
@@ -169,29 +175,6 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/animalType"
-                    android:textSize="20dp"
-                    android:textColor="@android:color/background_dark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/animal_type"/>
-
-                <Spinner
-                    android:layout_marginTop="5dp"
-                    android:id="@+id/spnAnimalType"
-                    android:background="@drawable/spinner_bg"
-                    android:layout_below="@+id/animalType"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_marginStart="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
                     android:id="@+id/race"
                     android:textSize="20dp"
                     android:textColor="@android:color/background_dark"
@@ -206,6 +189,38 @@
                     android:layout_below="@+id/race"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/motherID"
+                    android:textSize="20dp"
+                    android:textColor="@android:color/background_dark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mother_id"/>
+
+                <EditText
+                    android:id="@+id/edMotherId"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingStart="5dp"
+                    android:background="@drawable/round_corner"
+                    android:layout_below="@+id/motherID"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:maxLength="14"
+                    android:textAllCaps="true"
+                    android:inputType="textCapCharacters"
+                    android:imeOptions="actionDone"
+                    android:hint="@string/mother_id" />
+
             </RelativeLayout>
         </LinearLayout>
 
