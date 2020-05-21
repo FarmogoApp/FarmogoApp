@@ -44,8 +44,8 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="registration">Registration</string>
-    <string name="login_email_example" translatable="false">a@b.com</string>
-    <string name="password_example" translatable="false">111111</string>
+    <string name="login_email_example" translatable="false">test1@farmogo.com</string>
+    <string name="password_example" translatable="false"></string>
     <string name="username">Username</string>
     <string name="username_example" translatable="false">FarmWorker</string>
     <string name="registration_succesful">Registration Successful</string>

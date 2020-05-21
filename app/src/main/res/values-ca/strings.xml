@@ -58,8 +58,8 @@
     <string name="farm">Explotació</string>
     <string name="register_animal">Registrar animal</string>
     <string-array name="incidencesSimple">
-        <item>Naixement</item>
         <item>Tractament</item>
+        <item>Naixement</item>
         <item>Seguiment embaràs</item>
         <item>Pesatge</item>
         <item>Baixa</item>
